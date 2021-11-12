@@ -1,0 +1,13 @@
+{
+  "defaults": {
+    "concurrency": 4,
+    "standard": "WCAG2AA",
+    "runners": ["axe"]
+  },
+  "urls": [
+      "http://localhost:10001/",
+      "http://localhost:10001/about",
+      "http://localhost:10001/acknowledgements",
+      "http://localhost:10001/report"
+  ]
+}
