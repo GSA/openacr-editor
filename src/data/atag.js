@@ -754,7 +754,7 @@ const atag = [
                 type: "note",
                 handle: "Note 2",
                 text:
-                  "This success criteria only applies when the output technology is “included” for conformance.",
+                  "This success criteria only applies when the output technology is "included" for conformance.",
               },
             ],
           },
@@ -786,7 +786,7 @@ const atag = [
                 type: "note",
                 handle: "Note",
                 text:
-                  "This success criterion only applies when the output technology is “included” for conformance.",
+                  "This success criterion only applies when the output technology is "included" for conformance.",
               },
             ],
           },
@@ -846,7 +846,7 @@ const atag = [
         id: "alternatives-manageable",
         handle: "Text alternatives can be managed",
         text:
-          "There is a tool for providing text alternatives to “non-text content”, like images, videos and data visualisation.",
+          "There is a tool for providing text alternatives to "non-text content", like images, videos and data visualisation.",
         num: "B.2.3",
         successcriteria: [
           {
@@ -871,7 +871,7 @@ const atag = [
                   {
                     handle: "No Generic or Irrelevant Strings",
                     text:
-                      "Generic strings (e.g. “image”) and irrelevant strings (e.g. the file name, file format) are not used as text alternatives; and",
+                      "Generic strings (e.g. "image") and irrelevant strings (e.g. the file name, file format) are not used as text alternatives; and",
                   },
                   {
                     handle: "In-Session Repairs",
