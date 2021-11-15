@@ -1,0 +1,25 @@
+name: OpenACR editor accessibility testing
+
+on:
+  pull_request:
+
+jobs:
+  build-test:
+    name: Building app, run app and test for accessibility issues
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source.
+        uses: actions/checkout@v2
+
+      - name: Install dependencies.
+        run: npm install
+
+      - name: Build app.
+        run: export NODE_ENV=development && npm run build
+
+      - name: Run app.
+        run: export NODE_ENV=development && npm run dev &
+
+      - name: Run accessibility test against all URLs from .pa11yci.
+        run: npm run a11y-test

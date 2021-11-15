@@ -5,7 +5,7 @@ With this tool, people can generate Accessibility Conformance Report in the [Ope
 ## ATAG Report Tool (ART)
 
 This editor is based on the [W3C ATAG Report Tool (ART)](https://github.com/w3c/wai-atag-report-tool).
-  
+
 ## Development
 
 This application is built with [Svelte](https://svelte.dev). To run it locally, you need to clone it this repository, have [Node](https://nodejs.org) installed and then run this in the project's directory:
@@ -43,7 +43,6 @@ In some deployment contexts, things like paths may need to vary. There are two s
 1. Add environment specific settings to `config/[environment-name].json`, for example `{ pathPrefix: "/editor" }` or `{ imageDir: "/images" }`
 2. Before running `npm run build` or `npm run dev`, set `export NODE_ENV=[environment-name]`
 
-
 #### Using in HTML
 
 Use variables in HTML, with `{{ variable-name }}`, for instance `{{ pathPrefix }}`. If you need these non-escaped, use triple brackets, for instance `{{{ pathPrefix }}}`.
@@ -54,13 +53,13 @@ Use variables in HTML, with `{{ variable-name }}`, for instance `{{ pathPrefix }
 
 In JavaScript, `__buildEnv__` is replaced with the name of the build environment using the [replace plugin for rollup](https://github.com/rollup/plugins).
 
-To use variables, this is how  you can import the JSON file that your build environment needs: 
+To use variables, this is how you can import the JSON file that your build environment needs:
 
 ```js
 import vars from "../../config/__buildEnv__.json";
 ```
 
-The vars are now in the `vars` object, you can reference them with `vars.variableName`, for instance `vars.pathPrefix`. 
+The vars are now in the `vars` object, you can reference them with `vars.variableName`, for instance `vars.pathPrefix`.
 
 ## Data structure
 

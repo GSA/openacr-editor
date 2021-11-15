@@ -18,7 +18,7 @@ export function importEvaluation(event) {
           evaluation.update((evaluation) => converted);
 
           if (converted.meta.name.value) {
-            alert(`Evaluation “${converted.meta.name.value}” loaded`);
+            alert(`Evaluation "${converted.meta.name.value}" loaded`);
           } else {
             alert("Evalution loaded");
           }

@@ -120,7 +120,7 @@
   }
 </style>
 
-<aside
+<div
   class="your-report"
   class:your-report--expanded={$showYourReport === true}
   bind:this={box}
@@ -177,7 +177,7 @@
     {/if}
   {:else}
     <ButtonShowHide expanded={false} on:toggle={toggleYourReport}>
-      Show “Your Report”
+      Show "Your Report"
     </ButtonShowHide>
   {/if}
-</aside>
+  </div>
