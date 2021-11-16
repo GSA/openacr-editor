@@ -1,6 +1,6 @@
 # OpenACR Editor
 
-With this tool, people can generate Accessibility Conformance Report in the [Open Product Accessibility Template (OPAT)](https://github.com/GSA/open-product-accessibility-template) format.
+With this tool, people can generate Accessibility Conformance Report in the [OpenACR](https://github.com/GSA/openacr) format.
 
 ## ATAG Report Tool (ART)
 
@@ -63,4 +63,4 @@ The vars are now in the `vars` object, you can reference them with `vars.variabl
 
 ## Data structure
 
-The editor uses the OPAT [schema](https://github.com/GSA/open-product-accessibility-template/tree/main/schema) and [catalog](https://github.com/GSA/open-product-accessibility-template/tree/main/catalog) as data structures.
+The editor uses the OpenACR [schema](https://github.com/GSA/openacr/tree/main/schema) and [catalog](https://github.com/GSA/open-product-accessibility-template/tree/main/catalog) as data structures.
