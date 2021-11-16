@@ -10,7 +10,6 @@
   import NavItem from "./components/NavItem.svelte";
   import { currentPage } from "./stores/currentPage.js";
   import { showYourReport } from "./stores/showYourReport.js";
-  import atag from "./data/atag.js";
   import { chapters } from '@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml';
   import chapterNavs from "./data/chapterNavs";
   import vars from "../config/__buildEnv__.json";
