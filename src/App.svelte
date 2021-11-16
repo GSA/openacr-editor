@@ -11,6 +11,8 @@
   import { currentPage } from "./stores/currentPage.js";
   import { showYourReport } from "./stores/showYourReport.js";
   import atag from "./data/atag.js";
+  import { chapters } from '@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml';
+  import chapterNavs from "./data/chapterNavs";
   import vars from "../config/__buildEnv__.json";
   export let url = "";
 
@@ -40,10 +42,10 @@
   <Nav>
     <NavItem to="/">Overview</NavItem>
     <NavItem to="/about">About</NavItem>
-    {#each atag as { principle, guidelines }, i}
-      <NavItem to="principle/{i + 1}">
-        {principle.num}
-        <span class="visuallyhidden">: {principle.handle}</span>
+    {#each chapters as chapter}
+      <NavItem to="principle/{chapter.id}">
+        {chapterNavs[chapter.id]}
+        <span class="visuallyhidden">: {chapter.label}</span>
       </NavItem>
     {/each}
     <NavItem to="/report">Report</NavItem>
