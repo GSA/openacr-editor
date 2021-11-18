@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-  <title>Acknowledgements</title>
+  <title>Acknowledgements| OpenACR Editor | GSA</title>
 </svelte:head>
 
 <Header>Acknowledgements</Header>

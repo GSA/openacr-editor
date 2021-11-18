@@ -12,7 +12,7 @@
 </script>
 
 <svelte:head>
-  <title>About | ATAG Report Tool | W3C WAI</title>
+  <title>About | OpenACR Editor | GSA</title>
 </svelte:head>
 
 <Header>About</Header>

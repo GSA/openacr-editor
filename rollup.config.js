@@ -6,6 +6,7 @@ import livereload from "rollup-plugin-livereload";
 import serve from "rollup-plugin-serve";
 import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
+import yaml from "@rollup/plugin-yaml";
 import replace from "@rollup/plugin-replace";
 
 const production = !process.env.ROLLUP_WATCH;
@@ -42,10 +43,15 @@ export default {
     }),
     commonjs(),
     json(),
+    yaml(),
     babel({
       extensions: [".js", ".mjs", ".html", ".svelte"],
       runtimeHelpers: true,
-      exclude: ["node_modules/@babel/**", "node_modules/core-js/**"],
+      exclude: [
+        "node_modules/@babel/**",
+        "node_modules/core-js/**",
+        "node_modules/@openacr/**",
+      ],
       presets: [
         [
           "@babel/preset-env",
