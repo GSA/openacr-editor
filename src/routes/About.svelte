@@ -169,5 +169,5 @@
 
 <Pager label="Previous/Next Principle">
   <PagerLink to="/" direction="previous">Overview</PagerLink>
-  <PagerLink to="/principle/1" direction="next">A.1</PagerLink>
+  <PagerLink to="/chapter/success_criteria_level_a" direction="next">A</PagerLink>
 </Pager>

@@ -6,6 +6,7 @@
   import Report from "./routes/Report.svelte";
   import Acknowledgements from "./routes/Acknowledgements.svelte";
   import Principle from "./components/Principle.svelte";
+  import Chapter from "./components/Chapter.svelte";
   import Nav from "./components/Nav.svelte";
   import NavItem from "./components/NavItem.svelte";
   import { currentPage } from "./stores/currentPage.js";
@@ -42,7 +43,7 @@
     <NavItem to="/">Overview</NavItem>
     <NavItem to="/about">About</NavItem>
     {#each chapters as chapter}
-      <NavItem to="principle/{chapter.id}">
+      <NavItem to="chapter/{chapter.id}">
         {chapterNavs[chapter.id]}
         <span class="visuallyhidden">: {chapter.label}</span>
       </NavItem>
@@ -58,6 +59,9 @@
     </Route>
     <Route path="/about">
       <About />
+    </Route>
+    <Route path="/chapter/:chapterId" let:params>
+      <Chapter chapterId={params.chapterId} />
     </Route>
     <Route path="/principle/:id" let:params>
       <Principle id={params.id - 1} />
