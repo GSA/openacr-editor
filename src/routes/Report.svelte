@@ -7,7 +7,7 @@
   import ReportSummary from "../components/report/ReportSummary.svelte";
   import ReportResults from "../components/report/ReportResults.svelte";
   import ReportHTMLDownload from "../components/report/ReportHTMLDownload.svelte";
-  import ReportJSONDownload from "../components/report/ReportJSONDownload.svelte";
+  import ReportYAMLDownload from "../components/report/ReportYAMLDownload.svelte";
 
   import { currentPage } from "../stores/currentPage.js";
 
@@ -31,7 +31,7 @@
 
 <p>
   <ReportHTMLDownload />
-  <ReportJSONDownload />
+  <ReportYAMLDownload />
 </p>
 
 <ReportHeader />

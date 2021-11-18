@@ -16,16 +16,15 @@
   import { cleanUp } from "../../utils/cleanUpReportHTML.js";
   import { createHTMLDownload } from "../../utils/createHTMLDownload.js";
 
-  const title = "Accessibility Report";
+  const title = "Accessibility Conformance Report";
   let htmlDownload, htmlDownloadTemplate, nameProvided;
 
   onMount(() => {
     htmlDownload = createHTMLDownload(htmlDownloadTemplate, title);
   });
   $: nameProvided =
-    $evaluation["meta"] &&
-    $evaluation["meta"]["name"] &&
-    $evaluation["meta"]["name"]["value"];
+    $evaluation["product"] &&
+    $evaluation["product"]["name"];
 
   $: items = getEvaluatedItems($evaluation);
   $: missingItems = getMissingItems($evaluation);
@@ -53,8 +52,8 @@
     }
   </style>
   <h1>
+    {#if nameProvided}{$evaluation['product']['name']} {/if}
     {title}
-    {#if nameProvided}for {$evaluation['meta']['name']['value']}{/if}
   </h1>
   <ReportHeader />
   <ReportSummary editing={false} />
