@@ -8,6 +8,13 @@
       "http://localhost:10001/",
       "http://localhost:10001/about",
       "http://localhost:10001/acknowledgements",
-      "http://localhost:10001/report"
+      "http://localhost:10001/report",
+      "http://localhost:10001/chapter/success_criteria_level_a",
+      "http://localhost:10001/chapter/success_criteria_level_aa",
+      "http://localhost:10001/chapter/success_criteria_level_aaa",
+      "http://localhost:10001/chapter/functional_performance_criteria",
+      "http://localhost:10001/chapter/hardware",
+      "http://localhost:10001/chapter/software",
+      "http://localhost:10001/chapter/support_documentation_and_services"
   ]
 }
