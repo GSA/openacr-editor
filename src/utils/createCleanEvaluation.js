@@ -1,7 +1,7 @@
 import atag from "../data/atag.js";
 import packageJson from "../../package.json";
 
-const datestamp = new Date().toDateString();
+const datestamp = new Date().toLocaleDateString();
 
 export function createCleanEvaluation() {
   const cleanEvaluation = {
