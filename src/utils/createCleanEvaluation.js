@@ -5,10 +5,35 @@ const datestamp = new Date().toDateString();
 
 export function createCleanEvaluation() {
   const cleanEvaluation = {
+    title: "Accessibility Conformance Report",
+    product: {
+      name: null,
+      version: null,
+      description: null,
+    },
+    author: {
+      name: null,
+      company_name: null,
+      address: null,
+      email: null,
+      phone: null,
+      website: null,
+    },
+    report_date: datestamp,
+    notes: null,
+    evaluation_methods_used: null,
+    legal_disclaimer: null,
+    repository: null,
+    feedback: null,
+    license: "GPL-2.0-or-later",
+    // ATAG will remove after OpenACR stuff has been added.
     evaluationData: {},
     meta: {},
   };
 
+  // To do add validation of JSON against schema.
+
+  // ATAG will remove after OpenACR stuff has been added.
   for (const principle of atag) {
     for (const guideline of principle.guidelines) {
       for (const successcriterion of guideline.successcriteria) {
@@ -28,6 +53,7 @@ export function createCleanEvaluation() {
     }
   }
 
+  // ATAG will remove after OpenACR stuff has been added.
   cleanEvaluation.meta = {
     name: {
       id: "name",

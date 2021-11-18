@@ -17,81 +17,155 @@
 
 <Header>About</Header>
 
-<h2>Authoring Tool</h2>
+<h2>Product</h2>
 
 <div class="field">
-  <label for="evaluation-meta-name">Name of tool</label>
+  <label for="evaluation-product-name">Name</label>
   <input
     type="text"
-    bind:value={$evaluation['meta']['name']['value']}
-    id="evaluation-meta-name"
+    bind:value={$evaluation['product']['name']}
+    id="evaluation-product-name"
     on:blur={() => evaluation.updateCache($evaluation)} />
 </div>
 
 <div class="field">
-  <label for="evaluation-meta-website">Website (URL)</label>
+  <label for="evaluation-product-version">Version</label>
+  <input
+    type="text"
+    bind:value={$evaluation['product']['version']}
+    id="evaluation-product-version"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-product-description">Description</label>
+  <textarea
+    bind:value={$evaluation['product']['description']}
+    id="evaluation-product-description"
+    on:change={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<h2>Author</h2>
+
+<div class="field">
+  <label for="evaluation-author-name">Name</label>
+  <input
+    type="text"
+    bind:value={$evaluation['author']['name']}
+    id="evaluation-author-name"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-author-company">Company Name</label>
+  <input
+    type="text"
+    bind:value={$evaluation['author']['company_name']}
+    id="evaluation-author-company"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-author-address">Address</label>
+  <input
+    type="text"
+    bind:value={$evaluation['author']['address']}
+    id="evaluation-author-address"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-author-email">Email</label>
+  <input
+    type="email"
+    bind:value={$evaluation['author']['email']}
+    id="evaluation-author-email"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-author-phone">Phone</label>
+  <input
+    type="tel"
+    bind:value={$evaluation['author']['phone']}
+    id="evaluation-author-phone"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-author-website">Website (URL)</label>
   <input
     type="url"
-    bind:value={$evaluation['meta']['website']['value']}
-    id="evaluation-meta-website"
+    bind:value={$evaluation['author']['website']}
+    id="evaluation-author-website"
     on:blur={() => evaluation.updateCache($evaluation)} />
 </div>
 
-<h2>Report</h2>
+<h2>ACR Report Details</h2>
 
 <div class="field">
-  <label for="evaluation-meta-conformance-target">Conformance Target</label>
-  <select
-    name="evaluation-meta-conformance-target"
-    id="evaluation-meta-conformance-target"
-    bind:value={$evaluation['meta']['conformanceTarget']['value']}
-    on:blur={() => {
-      evaluation.updateCache($evaluation);
-    }}>
-    <option value="A">Level A</option>
-    <option value="AA">Level AA</option>
-    <option value="AAA">Level AAA</option>
-  </select>
-</div>
-
-<div class="field">
-  <label for="evaluation-meta-eval-id">
-    Report Identifier (date, internal version number, or other)
+  <label for="evaluation-report-date">
+    Report Date
   </label>
   <input
     type="text"
-    bind:value={$evaluation['meta']['evaluationId']['value']}
-    id="evaluation-meta-eval-id"
+    bind:value={$evaluation['report_date']}
+    id="evaluation-report-date"
     on:change={() => evaluation.updateCache($evaluation)} />
 </div>
 
 <div class="field">
-  <label for="evaluation-meta-executive-summary">Executive Summary</label>
+  <label for="evaluation-notes">Notes</label>
   <textarea
-    bind:value={$evaluation['meta']['executiveSummary']['value']}
-    id="evaluation-meta-executive-summary"
+    bind:value={$evaluation['notes']}
+    id="evaluation-notes"
     on:change={() => evaluation.updateCache($evaluation)} />
 </div>
 
-<h2>Evaluator</h2>
+<div class="field">
+  <label for="evaluation-evaluation-methods-used">Evaluation Methods Used</label>
+  <textarea
+    bind:value={$evaluation['evaluation_methods_used']}
+    id="evaluation-evaluation-methods-used"
+    on:change={() => evaluation.updateCache($evaluation)} />
+</div>
 
 <div class="field">
-  <label for="evaluation-meta-your-name">Name of Evaluator</label>
+  <label for="evaluation-legal-disclaimer">Legal Disclaimer</label>
+  <textarea
+    bind:value={$evaluation['legal_disclaimer']}
+    id="evaluation-legal-disclaimer"
+    on:change={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-repository">Repository (URL)</label>
   <input
-    type="text"
-    bind:value={$evaluation['meta']['evaluatorName']['value']}
-    id="evaluation-meta-your-name"
+    type="url"
+    bind:value={$evaluation['repository']}
+    id="evaluation-repository"
     on:blur={() => evaluation.updateCache($evaluation)} />
 </div>
 
 <div class="field">
-  <label for="evaluation-meta-org-name">Organization of Evaluator</label>
+  <label for="evaluation-feedback">Feedback (URL)</label>
   <input
-    type="text"
-    bind:value={$evaluation['meta']['evaluatorOrg']['value']}
-    id="evaluation-meta-org-name"
+    type="url"
+    bind:value={$evaluation['feedback']}
+    id="evaluation-feedback"
     on:blur={() => evaluation.updateCache($evaluation)} />
 </div>
+
+<div class="field">
+  <label for="evaluation-license">License</label>
+  <input
+    type="text"
+    bind:value={$evaluation['license']}
+    id="evaluation-license"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<!-- TODO add related ACR URLs as an array of values. -->
 
 <Pager label="Previous/Next Principle">
   <PagerLink to="/" direction="previous">Overview</PagerLink>

@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
 import { createCleanEvaluation } from "../utils/createCleanEvaluation.js";
 
-const storageName = "atag_report_tool_evaluation";
+const storageName = "openacr_editor_store";
 
 // update this number whenever new things added to the data model to cachebust [remove this when stable]
 const DATA_MODEL = "17";

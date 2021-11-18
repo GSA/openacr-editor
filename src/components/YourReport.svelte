@@ -49,9 +49,8 @@
 
   $: fresh = evaluation.isFresh();
   $: nameProvided =
-    $evaluation["meta"] &&
-    $evaluation["meta"]["name"] &&
-    $evaluation["meta"]["name"]["value"];
+    $evaluation["product"] &&
+    $evaluation["product"]["name"];
   $: evaluatedItems = getEvaluatedItems($evaluation);
   $: progressPerPrinciple = getProgressPerPrinciple($evaluation);
   $: totalCriteria = Object.values($evaluation.evaluationData).filter(item =>
@@ -151,7 +150,7 @@
         {#if nameProvided}
           <div>
             <small class="your-report__heading-pre">Report for</small>
-            {$evaluation['meta']['name']['value']}
+            {$evaluation['product']['name']}
           </div>
         {:else}Your Report{/if}
         <ButtonShowHide expanded={true} on:toggle={toggleYourReport}>
