@@ -6,7 +6,7 @@ const datestamp = new Date().toLocaleDateString();
 
 export function createCleanEvaluation() {
   const cleanEvaluation = {
-    title: "Accessibility Conformance Report",
+    title: "",
     product: {
       name: "",
       version: "",

@@ -2,7 +2,7 @@
   import { evaluation } from "../../stores/evaluation.js";
   import yaml from "js-yaml";
 
-  $evaluation.title = $evaluation['product']['name'] + " " + $evaluation.title;
+  $evaluation.title = $evaluation['product']['name'] + " Accessibility Conformance Report";
 
   var reportFilename = "report";
   if ($evaluation['product']['name']) {
