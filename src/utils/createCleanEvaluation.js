@@ -1,5 +1,6 @@
 import atag from "../data/atag.js";
 import packageJson from "../../package.json";
+import { validateOpenACR } from "@openacr/openacr/src/validateOpenACR.ts";
 
 const datestamp = new Date().toLocaleDateString();
 
@@ -32,6 +33,8 @@ export function createCleanEvaluation() {
   };
 
   // To do add validation of JSON against schema.
+  const valid = validateOpenACR(cleanEvaluation, "openacr-0.1.0.json");
+  console.log(valid);
 
   // ATAG will remove after OpenACR stuff has been added.
   for (const principle of atag) {

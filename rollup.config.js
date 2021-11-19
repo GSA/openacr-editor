@@ -8,6 +8,7 @@ import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
 import yaml from "@rollup/plugin-yaml";
 import replace from "@rollup/plugin-replace";
+import typescript from "rollup-plugin-typescript";
 
 const production = !process.env.ROLLUP_WATCH;
 const buildEnv = process.env.NODE_ENV || "development";
@@ -44,6 +45,7 @@ export default {
     commonjs(),
     json(),
     yaml(),
+    typescript({ target: "es6" }),
     babel({
       extensions: [".js", ".mjs", ".html", ".svelte"],
       runtimeHelpers: true,
