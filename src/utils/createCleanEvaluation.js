@@ -1,30 +1,31 @@
 import atag from "../data/atag.js";
 import packageJson from "../../package.json";
+import { validateOpenACR } from "@openacr/openacr/src/validateOpenACR.ts";
 
-const datestamp = new Date().toDateString();
+const datestamp = new Date().toLocaleDateString();
 
 export function createCleanEvaluation() {
   const cleanEvaluation = {
     title: "Accessibility Conformance Report",
     product: {
-      name: null,
-      version: null,
-      description: null,
+      name: "",
+      version: "",
+      description: "",
     },
     author: {
-      name: null,
-      company_name: null,
-      address: null,
-      email: null,
-      phone: null,
-      website: null,
+      name: "",
+      company_name: "",
+      address: "",
+      email: "",
+      phone: "",
+      website: "",
     },
     report_date: datestamp,
-    notes: null,
-    evaluation_methods_used: null,
-    legal_disclaimer: null,
-    repository: null,
-    feedback: null,
+    notes: "",
+    evaluation_methods_used: "",
+    legal_disclaimer: "",
+    repository: "",
+    feedback: "",
     license: "GPL-2.0-or-later",
     // ATAG will remove after OpenACR stuff has been added.
     evaluationData: {},
@@ -32,6 +33,8 @@ export function createCleanEvaluation() {
   };
 
   // To do add validation of JSON against schema.
+  const valid = validateOpenACR(cleanEvaluation, "openacr-0.1.0.json");
+  console.log(valid);
 
   // ATAG will remove after OpenACR stuff has been added.
   for (const principle of atag) {

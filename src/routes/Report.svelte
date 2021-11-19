@@ -5,6 +5,7 @@
   import Header from "../components/Header.svelte";
   import ReportHeader from "../components/report/ReportHeader.svelte";
   import ReportSummary from "../components/report/ReportSummary.svelte";
+  import ReportValid from "../components/report/ReportValid.svelte";
   import ReportResults from "../components/report/ReportResults.svelte";
   import ReportHTMLDownload from "../components/report/ReportHTMLDownload.svelte";
   import ReportYAMLDownload from "../components/report/ReportYAMLDownload.svelte";
@@ -30,10 +31,7 @@
 <Header>Report</Header>
 
 <p>
-  <ReportHTMLDownload />
   <ReportYAMLDownload />
 </p>
 
-<ReportHeader />
-<ReportSummary />
-<ReportResults />
+<ReportValid />

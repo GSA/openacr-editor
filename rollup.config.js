@@ -1,13 +1,14 @@
 import svelte from "rollup-plugin-svelte";
 import resolve from "rollup-plugin-node-resolve";
 import babel from "rollup-plugin-babel";
-import commonjs from "rollup-plugin-commonjs";
+import commonjs from "@rollup/plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
 import serve from "rollup-plugin-serve";
 import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
 import yaml from "@rollup/plugin-yaml";
 import replace from "@rollup/plugin-replace";
+import typescript from "rollup-plugin-typescript";
 
 const production = !process.env.ROLLUP_WATCH;
 const buildEnv = process.env.NODE_ENV || "development";
@@ -41,7 +42,11 @@ export default {
       dedupe: (importee) =>
         importee === "svelte" || importee.startsWith("svelte/"),
     }),
-    commonjs(),
+    typescript({ target: "es6" }),
+    commonjs({
+      extensions: [".js", ".ts"],
+      transformMixedEsModules: true,
+    }),
     json(),
     yaml(),
     babel({
