@@ -9,6 +9,7 @@
   import ReportResults from "../components/report/ReportResults.svelte";
   import ReportHTMLDownload from "../components/report/ReportHTMLDownload.svelte";
   import ReportYAMLDownload from "../components/report/ReportYAMLDownload.svelte";
+  import ReportMarkdownDownload from "../components/report/ReportMarkdownDownload.svelte";
 
   import { currentPage } from "../stores/currentPage.js";
 
@@ -32,6 +33,7 @@
 
 <p>
   <ReportYAMLDownload />
+  <ReportMarkdownDownload />
 </p>
 
 <ReportValid />

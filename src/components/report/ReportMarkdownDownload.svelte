@@ -2,6 +2,7 @@
   import { evaluation } from "../../stores/evaluation.js";
   import yaml from "js-yaml";
   import { validateOpenACR } from "@openacr/openacr/src/validateOpenACR.ts";
+  import { outputOpenACR } from "@openacr/openacr/src/outputOpenACR.ts";
 
   $evaluation.title = $evaluation['product']['name'] + " Accessibility Conformance Report";
 
@@ -15,13 +16,16 @@
 
   const valid = validateOpenACR($evaluation, "openacr-0.1.0.json");
 
-  $: yamlDownload = `data:application/yaml;charset=utf-8,${encodeURIComponent(
+  const markdown = outputOpenACR($evaluation, '@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml', reportFilename + '.markdown');
+  console.log(markdown);
+
+  $: mdDownload = `data:text/markdown;charset=utf-8,${encodeURIComponent(
     yaml.dump($evaluation)
   )}`;
 </script>
 
 {#if valid.result }
-  <a href={yamlDownload} download="{reportFilename}.yaml" class="button">
-    Download Report (YAML)
+  <a href={mdDownload} download="{reportFilename}.markdown" class="button">
+    Download Report (Markdown)
   </a>
 {/if}
