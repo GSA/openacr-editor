@@ -1,15 +1,8 @@
 <script>
-  import { Link, navigate } from "svelte-navigator";
-  import ReportHeaderKey from "./ReportHeaderKey.svelte";
-  import ReportHeaderMultiValue from "./ReportHeaderMultiValue.svelte";
-  import ReportHeaderValue from "./ReportHeaderValue.svelte";
   import { evaluation } from "../../stores/evaluation.js";
   import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 
-  const title = "Accessibility Conformance Report";
-  $: nameProvided =
-    $evaluation["product"] &&
-    $evaluation["product"]["name"];
+  $evaluation.title = $evaluation['product']['name'] + " Accessibility Conformance Report";
 </script>
 
 <style>
@@ -25,8 +18,7 @@
 
 
 <h1>
-  {#if nameProvided}{$evaluation['product']['name']} {/if}
-  {title}
+  {$evaluation.title}
 </h1>
 
 Based on {catalog.title}
