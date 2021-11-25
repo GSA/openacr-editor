@@ -16,8 +16,17 @@
   import { cleanUp } from "../../utils/cleanUpReportHTML.js";
   import { createHTMLDownload } from "../../utils/createHTMLDownload.js";
 
-  const title = "Accessibility Conformance Report";
+  var title = "Accessibility Conformance Report";
   let htmlDownload, htmlDownloadTemplate, nameProvided;
+
+  var reportFilename = "report";
+  if ($evaluation['product']['name']) {
+    reportFilename = $evaluation['product']['name'].toLowerCase();
+    title = $evaluation['product']['name'] + " Accessibility Conformance Report";
+  }
+  if ($evaluation['product']['version']) {
+    reportFilename += "-" + $evaluation['product']['version'];
+  }
 
   onMount(() => {
     htmlDownload = createHTMLDownload(htmlDownloadTemplate, title);
@@ -30,41 +39,28 @@
   $: missingItems = getMissingItems($evaluation);
 </script>
 
-<a href={htmlDownload} download="report.html" class="button">
+<a href={htmlDownload} download="{reportFilename}.html" class="button">
   Download Report (HTML)
 </a>
 
 <div hidden use:cleanUp bind:this={htmlDownloadTemplate}>
   <style>
-    table,
-    td,
-    th {
-      border-color: #3b3b3b;
+    body {
+      padding-left: 35px;
     }
-    td:not(:last-child),
-    th {
-      padding: 1em;
-      vertical-align: top;
-      text-align: left;
+
+    .header-anchor {
+      margin-left: -1em;
+      visibility: hidden;
     }
-    td:not([class]):last-child {
-      padding: 0 1em;
+
+    :hover > .header-anchor {
+      visibility: visible;
     }
   </style>
-  <h1>
-    {#if nameProvided}{$evaluation['product']['name']} {/if}
-    {title}
-  </h1>
-  <ReportHeader />
-  <ReportSummary editing={false} />
-  <h2>Results</h2>
-  <h3>Summary</h3>
-  <ReportNumbers />
-  <ul>
-    {#each resultCategories as category}
-      <li>{getItemsFromCategory(items, category).length} {category}</li>
-    {/each}
-    <li>{missingItems.length} Not Checked</li>
-  </ul>
-  <ReportResultsTable />
+  <main>
+    <div class="grid-container">
+      <ReportHeader />
+    </div>
+  </main>
 </div>
