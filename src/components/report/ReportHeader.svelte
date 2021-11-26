@@ -1,6 +1,7 @@
 <script>
   import { evaluation } from "../../stores/evaluation.js";
   import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+  import { standardsIncluded } from "../../utils/getCatalogItems.js";
 
   $evaluation.title = $evaluation["product"]["name"] + " Accessibility Conformance Report";
 
@@ -100,7 +101,7 @@ This report covers the degree of conformance for the following accessibility sta
     {#each catalog.standards as standard }
       <tr>
         <td><a href="{standard.url}">{standard.label}</a></td>
-        <td>{standard.report_heading}</td>
+        <td>{@html standardsIncluded(standard.chapters)}</td>
       </tr>
     {/each}
   </tbody>
