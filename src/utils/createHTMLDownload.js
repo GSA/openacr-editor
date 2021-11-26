@@ -1,9 +1,10 @@
-export function createHTMLDownload(template, title) {
+export function createHTMLDownload(template, title, lang) {
   const htmlDocument = document.implementation.createHTMLDocument(title);
   let blob, download, metaViewport, metaCharSet, metaEdge;
 
-  htmlDocument.documentElement.setAttribute("lang", "en");
+  htmlDocument.documentElement.setAttribute("lang", lang);
   htmlDocument.body.innerHTML = template.innerHTML;
+  htmlDocument.body.setAttribute("id", "openACR");
   metaViewport = document.createElement("meta");
   metaViewport.setAttribute("name", "viewport");
   metaViewport.setAttribute("content", "width=device-width, initial-scale=1");

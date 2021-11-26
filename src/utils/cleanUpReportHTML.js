@@ -42,6 +42,8 @@ export function cleanUp(node) {
   });
 
   removeAttributeEls.forEach((el) => {
+    // el.removeAttribute('id');
+    // el.removeAttribute('class');
     el.removeAttribute("aria-labelledby");
   });
 }
