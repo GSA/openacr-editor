@@ -3,6 +3,7 @@
   import { evaluation } from "../../stores/evaluation.js";
 
   import ReportHeader from "./ReportHeader.svelte";
+  import ReportSummary from "./ReportSummary.svelte";
   import { cleanUp } from "../../utils/cleanUpReportHTML.js";
   import { createHTMLDownload } from "../../utils/createHTMLDownload.js";
   import { reportFilename } from "../../utils/reportFilename.js";
@@ -41,6 +42,7 @@
   <main>
     <div class="grid-container">
       <ReportHeader {download} />
+      <ReportSummary {download} />
     </div>
   </main>
   <footer class="usa-footer usa-footer usa-footer--slim">
