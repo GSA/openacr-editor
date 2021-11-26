@@ -12,8 +12,102 @@
   const licenseOutput = license($evaluation, "");
   let mdDownload, mdTemplate;
 
+  mdTemplate = `# ${$evaluation.title}
+Based on ${catalog.title}
+
+## Name of Product/Version
+${$evaluation["product"]["name"]} ${$evaluation["product"]["version"]}
+
+## Report Date
+${$evaluation.report_date}`;
+
+  if ($evaluation["product"]["description"]) {
+    mdTemplate += `
+## Product Description
+${$evaluation["product"]["description"]}`;
+  }
+
+  mdTemplate += `
+## Contact Information
+### Author Information
+- Name: ${$evaluation["author"]["name"]}
+- Company: ${$evaluation["author"]["company_name"]}
+- Address: ${$evaluation["author"]["address"]}
+- Email: ${$evaluation["author"]["email"]}
+- Phone: ${$evaluation["author"]["phone"]}
+- Website: ${$evaluation["author"]["website"]}
+### Vendor Information
+- Name: ${$evaluation["vendor"]["name"]}
+- Company: ${$evaluation["vendor"]["company_name"]}
+- Address: ${$evaluation["vendor"]["address"]}
+- Email: ${$evaluation["vendor"]["email"]}
+- Phone: ${$evaluation["vendor"]["phone"]}
+- Website: ${$evaluation["vendor"]["website"]}
+  `;
+
+  if ($evaluation["product"]["notes"]) {
+    mdTemplate += `
+## Notes
+${$evaluation["product"]["notes"]}`;
+  }
+
+  if ($evaluation["product"]["evaluation_methods_used"]) {
+    mdTemplate += `
+## Evaluation Methods Used
+${$evaluation["product"]["evaluation_methods_used"]}`;
+  }
+
+  mdTemplate += `
+## Applicable Standards/Guidelines
+This report covers the degree of conformance for the following accessibility standard/guidelines:
+
+| Standard/Guideline | Included In Report |
+| --- | --- |`;
+
+  catalog.standards.forEach(standard => {
+    mdTemplate += `
+| [${standard.label}](${standard.url}) | ${standardsIncluded(standard.chapters)} |`;
+  });
+
+  mdTemplate += `
+
+## Terms
+The terms used in the Conformance Level information are defined as follows:
+  `;
+
+  catalog.terms.forEach(term => {
+    mdTemplate += `
+- **${term.label}**: ${term.description}`;
+  });
+
+  if ($evaluation["product"]["legal_disclaimer"]) {
+    mdTemplate += `
+## Legal Disclaimer (${$evaluation["vendor"]["company_name"]})
+${$evaluation["product"]["legal_disclaimer"]}`;
+  }
+
+  if ($evaluation["product"]["repository"]) {
+    mdTemplate += `
+## Repository
+${$evaluation["product"]["repository"]}`;
+  }
+
+  if ($evaluation["product"]["feedback"]) {
+    mdTemplate += `
+## Feedback
+${$evaluation["product"]["feedback"]}`;
+  }
+
+  mdTemplate += `
+## Copyright
+
+[OpenACR](https://github.com/GSA/openacr) is a format maintained by the [GSA](https://gsa.gov/). The content is the responsibility of the author.
+
+This content is licensed under a ${licenseOutput}.
+  `;
+
   onMount(() => {
-    mdDownload = `data:text/markdown;charset=utf-8,${encodeURIComponent(mdTemplate.innerHTML)}`;
+    mdDownload = `data:text/markdown;charset=utf-8,${encodeURIComponent(mdTemplate)}`;
   });
 </script>
 
@@ -22,85 +116,3 @@
     Download Report (Markdown)
   </a>
 {/if}
-
-<div hidden bind:this={mdTemplate}>
-# {$evaluation.title}
-Based on {catalog.title}
-
-## Name of Product/Version
-{$evaluation["product"]["name"]} {#if $evaluation["product"]["version"]} {$evaluation["product"]["version"]}{/if}
-
-## Report Date
-{$evaluation.report_date}
-
-{#if $evaluation["product"]["description"]}
-## Product Description
-{$evaluation["product"]["description"]}
-{/if}
-
-## Contact Information
-{#if $evaluation["author"]}
-### Author Information
-{#if $evaluation["author"]["name"]}- Name: {$evaluation["author"]["name"]}{/if}
-{#if $evaluation["author"]["company_name"]}- Company: {$evaluation["author"]["company_name"]}{/if}
-{#if $evaluation["author"]["address"]}- Address: {$evaluation["author"]["address"]}{/if}
-{#if $evaluation["author"]["email"]}- Email: {$evaluation["author"]["email"]}{/if}
-{#if $evaluation["author"]["phone"]}- Phone: {$evaluation["author"]["phone"]}{/if}
-{#if $evaluation["author"]["website"]}- Website: {$evaluation["author"]["website"]}{/if}
-{/if}
-{#if $evaluation["vendor"]}
-### Vendor Information
-{#if $evaluation["vendor"]["name"]}- Name: {$evaluation["vendor"]["name"]}{/if}
-{#if $evaluation["vendor"]["company_name"]}- Company: {$evaluation["vendor"]["company_name"]}{/if}
-{#if $evaluation["vendor"]["address"]}- Address: {$evaluation["vendor"]["address"]}{/if}
-{#if $evaluation["vendor"]["email"]}- Email: {$evaluation["vendor"]["email"]}{/if}
-{#if $evaluation["vendor"]["phone"]}- Phone: {$evaluation["vendor"]["phone"]}{/if}
-{#if $evaluation["vendor"]["website"]}- Website: {$evaluation["vendor"]["website"]}{/if}
-{/if}
-
-{#if $evaluation["notes"]}
-## Notes
-{$evaluation["notes"]}
-{/if}
-
-{#if $evaluation["evaluation_methods_used"]}
-## Evaluation Methods Used
-{$evaluation["evaluation_methods_used"]}
-{/if}
-
-## Applicable Standards/Guidelines
-This report covers the degree of conformance for the following accessibility standard/guidelines:
-
-| Standard/Guideline | Included In Report |
-| --- | --- |
-{#each catalog.standards as standard}
-| [{standard.label}]({standard.url}) | {@html standardsIncluded(standard.chapters)} |
-{/each}
-
-## Terms
-The terms used in the Conformance Level information are defined as follows:
-{#each catalog.terms as term}
-- **{term.label}**: {term.description}
-{/each}
-
-{#if $evaluation["legal_disclaimer"]}
-## Legal Disclaimer{#if $evaluation["vendor"]["company_name"]} ({$evaluation["vendor"]["company_name"]}){/if}
-{$evaluation["legal_disclaimer"]}
-{/if}
-
-{#if $evaluation["repository"]}
-## Repository
-{$evaluation["repository"]}
-{/if}
-
-{#if $evaluation["feedback"]}
-## Feedback
-{$evaluation["feedback"]}
-{/if}
-
-## Copyright
-
-[OpenACR](https://github.com/GSA/openacr) is a format maintained by the [GSA](https://gsa.gov/). The content is the responsibility of the author.
-
-This content is licensed under a {licenseOutput}.
-</div>
