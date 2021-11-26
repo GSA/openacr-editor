@@ -36,6 +36,7 @@ ${$evaluation["product"]["description"]}`;
 - Email: ${$evaluation["author"]["email"]}
 - Phone: ${$evaluation["author"]["phone"]}
 - Website: ${$evaluation["author"]["website"]}
+
 ### Vendor Information
 - Name: ${$evaluation["vendor"]["name"]}
 - Company: ${$evaluation["vendor"]["company_name"]}
@@ -99,12 +100,12 @@ ${$evaluation["product"]["feedback"]}`;
   }
 
   mdTemplate += `
+
 ## Copyright
 
 [OpenACR](https://github.com/GSA/openacr) is a format maintained by the [GSA](https://gsa.gov/). The content is the responsibility of the author.
 
-This content is licensed under a ${licenseOutput}.
-  `;
+This content is licensed under a ${licenseOutput}.`;
 
   onMount(() => {
     mdDownload = `data:text/markdown;charset=utf-8,${encodeURIComponent(mdTemplate)}`;
