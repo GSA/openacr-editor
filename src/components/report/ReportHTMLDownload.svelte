@@ -6,13 +6,19 @@
   import ReportSummary from "./ReportSummary.svelte";
   import { cleanUp } from "../../utils/cleanUpReportHTML.js";
   import { createHTMLDownload } from "../../utils/createHTMLDownload.js";
+  import { validateOpenACR } from "@openacr/openacr/src/validateOpenACR.ts";
   import { reportFilename } from "../../utils/reportFilename.js";
   import { license } from "../../utils/license.js";
 
   var title = $evaluation.title;
   const filename = reportFilename($evaluation);
-  const licenseOutput = license($evaluation, "html");
-  let htmlDownload, htmlDownloadTemplate;
+  const valid = validateOpenACR($evaluation, "openacr-0.1.0.json");
+  let htmlDownload, htmlDownloadTemplate, licenseOutput;
+
+  if (valid.result) {
+    licenseOutput = license($evaluation, "html");
+  }
+
   let download = true;
 
   onMount(() => {
@@ -20,9 +26,11 @@
   });
 </script>
 
-<a href={htmlDownload} download="{filename}.html" class="button">
-  Download Report (HTML)
-</a>
+{#if valid.result }
+  <a href={htmlDownload} download="{filename}.html" class="button">
+    Download Report (HTML)
+  </a>
+{/if}
 
 <div hidden use:cleanUp bind:this={htmlDownloadTemplate}>
   <style>

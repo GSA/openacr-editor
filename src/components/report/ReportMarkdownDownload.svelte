@@ -9,8 +9,11 @@
 
   const filename = reportFilename($evaluation);
   const valid = validateOpenACR($evaluation, "openacr-0.1.0.json");
-  const licenseOutput = license($evaluation, "");
-  let mdDownload, mdTemplate;
+  let mdDownload, mdTemplate, licenseOutput;
+
+  if (valid.result) {
+    licenseOutput = license($evaluation, "html");
+  }
 
   mdTemplate = `# ${$evaluation.title}
 Based on ${catalog.title}
