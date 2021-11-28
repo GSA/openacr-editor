@@ -35,7 +35,7 @@
   },
   "browserslist": "> 0.25%, not dead",
   "dependencies": {
-    "@openacr/openacr": "^0.1.0",
+    "@openacr/openacr": "^0.3.0",
     "core-js": "3",
     "marked": "^0.8.2",
     "svelte-navigator": "^3.0.8"

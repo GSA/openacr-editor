@@ -1,51 +1,29 @@
 <script>
   import { evaluation } from "../../stores/evaluation.js";
-  import marked from "marked";
 
-  export let editing = false;
-  let section;
+  export let download = false;
 
-  function toggleEdit() {
-    editing = !editing;
-    section.focus();
-  }
+  const extraId = download ? "-download" : "-editor";
 </script>
 
-<style>
-  h2 {
-    display: flex;
-  }
-  div:focus {
-    outline: none;
-  }
-</style>
-
-<div bind:this={section} tabindex="-1">
-  <h2>Executive Summary</h2>
-
-  {#if editing}
-    <div class="field">
-      <label for={`evaluation-meta-edit-executiveSummary`}>
-        Executive Summary
-      </label>
-      <textarea
-        bind:value={$evaluation['meta']['executiveSummary']['value']}
-        id={`evaluation-meta-edit-executiveSummary`}
-        on:blur={() => evaluation.updateCache($evaluation)} />
-    </div>
-    <button type="button button-secondary" on:click={toggleEdit}>
-      Save
-      <span class="visuallyhidden">executive summary</span>
-    </button>
-  {:else}
-    {#if $evaluation['meta']['executiveSummary']['value']}
-      {@html marked($evaluation['meta']['executiveSummary']['value'])}
-    {:else}Not provided{/if}
-    <p>
-      <button type="button" class="button-secondary" on:click={toggleEdit}>
-        Edit
-        <span class="visuallyhidden">executive summary</span>
-      </button>
-    </p>
-  {/if}
-</div>
+{#if $evaluation["legal_disclaimer"]}
+  <h2 id="legal-disclaimer{extraId}">
+    <a href="#legal-disclaimer{extraId}" aria-hidden="true" class="header-anchor">#</a>
+    Legal Disclaimer{#if $evaluation["vendor"]["company_name"]} ({$evaluation["vendor"]["company_name"]}){/if}
+  </h2>
+  {$evaluation["legal_disclaimer"]}
+{/if}
+{#if $evaluation["repository"]}
+  <h2 id="repository{extraId}">
+    <a href="#repository{extraId}" aria-hidden="true" class="header-anchor">#</a>
+    Repository
+  </h2>
+  <a href="{$evaluation["repository"]}">{$evaluation["repository"]}</a>
+{/if}
+{#if $evaluation["feedback"]}
+  <h2 id="feedback{extraId}">
+    <a href="#feedback{extraId}" aria-hidden="true" class="header-anchor">#</a>
+    Feedback
+  </h2>
+  <a href="{$evaluation["feedback"]}">{$evaluation["feedback"]}</a>
+{/if}

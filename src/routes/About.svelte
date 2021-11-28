@@ -101,6 +101,62 @@
     on:blur={() => evaluation.updateCache($evaluation)} />
 </div>
 
+<h2>Vendor</h2>
+
+<div class="field">
+  <label for="evaluation-vendor-name">Name</label>
+  <input
+    type="text"
+    bind:value={$evaluation['vendor']['name']}
+    id="evaluation-vendor-name"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-vendor-company">Company Name</label>
+  <input
+    type="text"
+    bind:value={$evaluation['vendor']['company_name']}
+    id="evaluation-vendor-company"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-vendor-address">Address</label>
+  <input
+    type="text"
+    bind:value={$evaluation['vendor']['address']}
+    id="evaluation-vendor-address"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-vendor-email">Email</label>
+  <input
+    type="email"
+    bind:value={$evaluation['vendor']['email']}
+    id="evaluation-vendor-email"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-vendor-phone">Phone</label>
+  <input
+    type="tel"
+    bind:value={$evaluation['vendor']['phone']}
+    id="evaluation-vendor-phone"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
+<div class="field">
+  <label for="evaluation-vendor-website">Website (URL)</label>
+  <input
+    type="url"
+    bind:value={$evaluation['vendor']['website']}
+    id="evaluation-vendor-website"
+    on:blur={() => evaluation.updateCache($evaluation)} />
+</div>
+
 <h2>ACR Report Details</h2>
 
 <div class="field">

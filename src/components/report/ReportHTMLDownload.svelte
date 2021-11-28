@@ -3,68 +3,73 @@
   import { evaluation } from "../../stores/evaluation.js";
 
   import ReportHeader from "./ReportHeader.svelte";
-  import ReportNumbers from "./ReportNumbers.svelte";
   import ReportSummary from "./ReportSummary.svelte";
-  import ReportResultsTable from "./ReportResultsTable.svelte";
-
-  import {
-    resultCategories,
-    getEvaluatedItems,
-    getMissingItems,
-    getItemsFromCategory,
-  } from "../../utils/getEvaluatedItems.js";
   import { cleanUp } from "../../utils/cleanUpReportHTML.js";
   import { createHTMLDownload } from "../../utils/createHTMLDownload.js";
+  import { validateOpenACR } from "@openacr/openacr/src/validateOpenACR.ts";
+  import { reportFilename } from "../../utils/reportFilename.js";
+  import { license } from "../../utils/license.js";
 
-  const title = "Accessibility Conformance Report";
-  let htmlDownload, htmlDownloadTemplate, nameProvided;
+  var title = $evaluation.title;
+  const filename = reportFilename($evaluation);
+  const valid = validateOpenACR($evaluation, "openacr-0.1.0.json");
+  let htmlDownload, htmlDownloadTemplate, licenseOutput;
+
+  if (valid.result) {
+    licenseOutput = license($evaluation, "html");
+  }
+
+  let download = true;
 
   onMount(() => {
-    htmlDownload = createHTMLDownload(htmlDownloadTemplate, title);
+    htmlDownload = createHTMLDownload(htmlDownloadTemplate, title, "en");
   });
-  $: nameProvided =
-    $evaluation["product"] &&
-    $evaluation["product"]["name"];
-
-  $: items = getEvaluatedItems($evaluation);
-  $: missingItems = getMissingItems($evaluation);
 </script>
 
-<a href={htmlDownload} download="report.html" class="button">
-  Download Report (HTML)
-</a>
+{#if valid.result }
+  <a href={htmlDownload} download="{filename}.html" class="button">
+    Download Report (HTML)
+  </a>
+{/if}
 
 <div hidden use:cleanUp bind:this={htmlDownloadTemplate}>
   <style>
-    table,
-    td,
-    th {
-      border-color: #3b3b3b;
+    body#openACR {
+      padding-left: 35px;
     }
-    td:not(:last-child),
-    th {
-      padding: 1em;
-      vertical-align: top;
-      text-align: left;
+
+    .header-anchor {
+      margin-left: -1em;
+      visibility: hidden;
     }
-    td:not([class]):last-child {
-      padding: 0 1em;
+
+    :hover > .header-anchor {
+      visibility: visible;
     }
   </style>
-  <h1>
-    {#if nameProvided}{$evaluation['product']['name']} {/if}
-    {title}
-  </h1>
-  <ReportHeader />
-  <ReportSummary editing={false} />
-  <h2>Results</h2>
-  <h3>Summary</h3>
-  <ReportNumbers />
-  <ul>
-    {#each resultCategories as category}
-      <li>{getItemsFromCategory(items, category).length} {category}</li>
-    {/each}
-    <li>{missingItems.length} Not Checked</li>
-  </ul>
-  <ReportResultsTable />
+  <main>
+    <div class="grid-container">
+      <ReportHeader {download} />
+      <ReportSummary {download} />
+    </div>
+  </main>
+  <footer class="usa-footer usa-footer usa-footer--slim">
+    <div class="usa-footer__return-to-top">
+      <div class="grid-container">
+        <a href={"#"}>Return to top</a>
+      </div>
+    </div>
+    <div class="usa-footer__secondary-section">
+      <div class="grid-container">
+        <div class="grid-row grid-gap">
+          <div class="grid-col">
+            <a href="https://github.com/GSA/openacr">OpenACR</a> is a format maintained by the <a href="https://gsa.gov/">GSA</a>. The content is the responsibility of the author.
+          </div>
+          <div class="grid-col">
+            This content is licensed under a {@html licenseOutput}.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>

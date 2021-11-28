@@ -4,7 +4,7 @@ import { createCleanEvaluation } from "../utils/createCleanEvaluation.js";
 const storageName = "openacr_editor_store";
 
 // update this number whenever new things added to the data model to cachebust [remove this when stable]
-const DATA_MODEL = "17";
+const DATA_MODEL = "18";
 
 let fresh = true;
 
