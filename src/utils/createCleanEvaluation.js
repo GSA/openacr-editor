@@ -35,7 +35,7 @@ export function createCleanEvaluation() {
     repository: "",
     feedback: "",
     license: "GPL-2.0-or-later",
-    // ATAG will remove after OpenACR stuff has been added.
+    // TODO: ATAG will remove after OpenACR stuff has been added.
     evaluationData: {},
     meta: {},
   };
@@ -44,7 +44,7 @@ export function createCleanEvaluation() {
   const valid = validateOpenACR(cleanEvaluation, "openacr-0.1.0.json");
   console.log(valid);
 
-  // ATAG will remove after OpenACR stuff has been added.
+  // TODO: ATAG will remove after OpenACR stuff has been added.
   for (const principle of atag) {
     for (const guideline of principle.guidelines) {
       for (const successcriterion of guideline.successcriteria) {
