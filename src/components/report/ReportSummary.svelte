@@ -9,7 +9,7 @@
 {#if $evaluation["legal_disclaimer"]}
   <h2 id="legal-disclaimer{extraId}">
     <a href="#legal-disclaimer{extraId}" aria-hidden="true" class="header-anchor">#</a>
-    Legal Disclaimer{#if $evaluation["vendor"]["company_name"]} ({$evaluation["vendor"]["company_name"]}){/if}
+    Legal Disclaimer {#if $evaluation["vendor"]["company_name"]}({$evaluation["vendor"]["company_name"]}){/if}
   </h2>
   {$evaluation["legal_disclaimer"]}
 {/if}
