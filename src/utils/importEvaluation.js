@@ -19,7 +19,12 @@ export function importEvaluation(event) {
         var converted = yaml.load(event.target.result);
         if (!converted.vendor) {
           converted["vendor"] = {
+            name: "",
+            company_name: "",
+            address: "",
             email: "",
+            phone: "",
+            website: "",
           };
         }
         if (!converted.report_date) {
@@ -94,8 +99,8 @@ export function importEvaluation(event) {
         } else {
           alert("OpenACR loaded");
         }
-      } catch (e) {
-        alert("No data found or invalid import. Debug: " + e.message);
+      } catch {
+        alert("No data found or invalid import.");
       }
     };
 

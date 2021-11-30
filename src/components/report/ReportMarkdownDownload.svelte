@@ -84,22 +84,22 @@ The terms used in the Conformance Level information are defined as follows:
 - **${term.label}**: ${term.description}`;
   });
 
-  if ($evaluation["product"]["legal_disclaimer"]) {
+  if ($evaluation["legal_disclaimer"]) {
     mdTemplate += `
 ## Legal Disclaimer (${$evaluation["vendor"]["company_name"]})
-${$evaluation["product"]["legal_disclaimer"]}`;
+${$evaluation["legal_disclaimer"]}`;
   }
 
-  if ($evaluation["product"]["repository"]) {
+  if ($evaluation["repository"]) {
     mdTemplate += `
 ## Repository
-${$evaluation["product"]["repository"]}`;
+${$evaluation["repository"]}`;
   }
 
-  if ($evaluation["product"]["feedback"]) {
+  if ($evaluation["feedback"]) {
     mdTemplate += `
 ## Feedback
-${$evaluation["product"]["feedback"]}`;
+${$evaluation["feedback"]}`;
   }
 
   mdTemplate += `
