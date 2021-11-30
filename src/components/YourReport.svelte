@@ -30,7 +30,7 @@
   function clear() {
     if (
       window.confirm(
-        "This will clear the current evaluation and start a new one. Are you sure that's what you'd like to do?"
+        "This will clear the current OpenACR and start a new one. Are you sure that's what you'd like to do?"
       )
     ) {
       evaluation.clearCache();
@@ -139,7 +139,7 @@
         id="import-evaluation"
         on:change={importEvaluation}
         class="visuallyhidden your-report__import"
-        accept="application/json" />
+        accept="application/yaml" />
       <label
         for="import-evaluation"
         class="button button-secondary your-report__import-label">

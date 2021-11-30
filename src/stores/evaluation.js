@@ -45,7 +45,7 @@ export function getEvaluation() {
   } else {
     localStorage.setItem(`${storageName}-data-model`, DATA_MODEL);
     console.log(
-      "Removed evaluation data as it was created with a previous development version of ART."
+      "Removed data as it was created with a previous development version of OpenACR Editor."
     );
     return cleanEvaluation;
   }
