@@ -1,13 +1,14 @@
 <script>
-  import SuccessCriterion from "./SuccessCriterion.svelte";
+  import Component from "./Component.svelte";
   import LinkToGuidance from "./LinkToGuidance.svelte";
-  export let chapter_link;
+  export let chapterId;
+  export let chapterLink;
   export let id;
   export let alt_id;
   export let handle;
   export let components = [];
 
-  $: linkToImplementing = `${chapter_link}#${alt_id}`;
+  $: linkToImplementing = `${chapterLink}#${alt_id}`;
 </script>
 
 <style>
@@ -22,4 +23,9 @@
 <div {id} class="criteria">
   <h2>{id}: {handle}</h2>
   <LinkToGuidance href={linkToImplementing}>Implementing {id}</LinkToGuidance>
+  {#if components}
+    {#each components as c}
+      <Component chapterId={chapterId} criteria={id} component={c} />
+    {/each}
+  {/if}
 </div>

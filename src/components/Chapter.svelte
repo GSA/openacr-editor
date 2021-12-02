@@ -41,15 +41,17 @@
   </p>
 
   <div class="field">
-    <label for="evaluation-notes">Notes</label>
+    <label for="evaluation-chapter-notes">Notes</label>
     <textarea
       bind:value={$evaluation['chapters'][chapterId]['notes']}
-      id="evaluation-notes"
+      id="evaluation-chapter-notes"
+      cols="20"
+      rows="5"
       on:change={() => evaluation.updateCache($evaluation)} />
   </div>
 
   {#each currentChapter.criteria as criteria, i (criteria.id)}
-    <Criteria chapter_link={currentStandard.url} {...criteria} />
+    <Criteria chapterId={chapterId} chapterLink={currentStandard.url} {...criteria} />
   {/each}
 
   <Pager label="Previous/Next Chapter">
