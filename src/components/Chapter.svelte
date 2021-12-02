@@ -2,19 +2,23 @@
   import { onMount } from "svelte";
   import { useLocation } from "svelte-navigator";
   import Header from "./Header.svelte";
+  import Criteria from "./Criteria.svelte";
+  import LinkToGuidance from "./LinkToGuidance.svelte";
   import Pager from "./Pager.svelte";
   import PagerLink from "./PagerLink.svelte";
   import { currentPage } from "../stores/currentPage.js";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
-  import { chapters } from '@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml';
+  import { standards, chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import chapterNavs from "../data/chapterNavs";
+  import { evaluation } from "../stores/evaluation.js";
 
   export let chapterId = null;
   export let className = undefined;
 
   const location = useLocation();
   $: currentChapter = chapters.find( ({ id }) => id === chapterId);
-  $: currentChapterKey = chapters.findIndex( ({ id }) => id === chapterId)
+  $: currentChapterKey = chapters.findIndex( ({ id }) => id === chapterId);
+  $: currentStandard = standards.find( ({ chapters }) => chapters.includes(chapterId));
 
   onMount(() => {
     currentPage.update(currentPage => "Evaluation");
@@ -29,6 +33,24 @@
 
 <div class={className}>
   <Header>{currentChapter.label}</Header>
+
+  <p>
+    <LinkToGuidance href={currentStandard.url}>
+      {currentStandard.label}
+    </LinkToGuidance>
+  </p>
+
+  <div class="field">
+    <label for="evaluation-notes">Notes</label>
+    <textarea
+      bind:value={$evaluation['chapters'][chapterId]['notes']}
+      id="evaluation-notes"
+      on:change={() => evaluation.updateCache($evaluation)} />
+  </div>
+
+  {#each currentChapter.criteria as criteria, i (criteria.id)}
+    <Criteria chapter_link={currentStandard.url} {...criteria} />
+  {/each}
 
   <Pager label="Previous/Next Chapter">
     {#if chapterId === "success_criteria_level_a"}
