@@ -8,7 +8,7 @@
   import { currentPage } from "../stores/currentPage.js";
   import { showYourReport } from "../stores/showYourReport.js";
   import { importEvaluation } from "../utils/importEvaluation.js";
-  import { getEvaluatedItems } from "../utils/getEvaluatedItems.js";
+  import { getEvaluatedChapterCriteria, getChapterCriteria } from "../utils/getEvaluatedItems.js";
   import {
     getProgressPerPrinciple,
     principles,
@@ -51,11 +51,9 @@
   $: nameProvided =
     $evaluation["product"] &&
     $evaluation["product"]["name"];
-  $: evaluatedItems = getEvaluatedItems($evaluation);
   $: progressPerPrinciple = getProgressPerPrinciple($evaluation);
-  $: totalCriteria = Object.values($evaluation.evaluationData).filter(item =>
-    inConformanceTarget(item, $evaluation)
-  ).length;
+  $: evaluatedItems = getEvaluatedChapterCriteria($evaluation);
+  $: totalCriteria = getChapterCriteria();
 </script>
 
 <style>
@@ -158,7 +156,7 @@
         </ButtonShowHide>
       </h2>
       <ReportNumbers className="your-report__description" />
-      <ProgressBar percentage={100 / (totalCriteria / evaluatedItems.length)} />
+      <ProgressBar percentage={100 / (totalCriteria.length / evaluatedItems.length)} />
       <ul class="your-report__progress-by-principle">
         {#each principles as principle}
           <YourReportProgress
