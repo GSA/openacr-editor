@@ -1,11 +1,11 @@
 <script>
   import { evaluation } from "../../stores/evaluation.js";
-  import { getEvaluatedChapterCriteria, getChapterCriteria } from "../../utils/getEvaluatedItems.js";
+  import { getEvaluatedChapterCriteriaComponents, getChapterCriteriaComponents } from "../../utils/getEvaluatedItems.js";
 
   export let className = "";
 
-  $: items = getEvaluatedChapterCriteria($evaluation);
-  $: totalCriteria = getChapterCriteria();
+  $: items = getEvaluatedChapterCriteriaComponents($evaluation);
+  $: totalCriteria = getChapterCriteriaComponents();
 </script>
 
 <p class={className}>

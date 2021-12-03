@@ -1,6 +1,7 @@
 import atag from "../data/atag.js";
 import packageJson from "../../package.json";
 import { validateOpenACR } from "@openacr/openacr/src/validateOpenACR.ts";
+import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 
 const datestamp = new Date().toLocaleDateString();
 
@@ -35,6 +36,7 @@ export function createCleanEvaluation() {
     repository: "",
     feedback: "",
     license: "GPL-2.0-or-later",
+    chapters: {},
     // TODO: ATAG will remove after OpenACR stuff has been added.
     evaluationData: {},
     meta: {},
@@ -43,6 +45,32 @@ export function createCleanEvaluation() {
   // To do add validation of JSON against schema.
   const valid = validateOpenACR(cleanEvaluation, "openacr-0.1.0.json");
   console.log(valid);
+
+  for (const chapter of chapters) {
+    const criteria = [];
+    for (const chapterCriteria of chapter.criteria) {
+      const components = [];
+      for (const component of chapterCriteria.components) {
+        components.push({
+          name: component,
+          adherence: {
+            level: "not-evaluated",
+            notes: "",
+          },
+        });
+      }
+
+      criteria.push({
+        num: chapterCriteria.id,
+        components: components,
+      });
+    }
+
+    cleanEvaluation["chapters"][chapter.id] = {
+      notes: "",
+      criteria: criteria,
+    };
+  }
 
   // TODO: ATAG will remove after OpenACR stuff has been added.
   for (const principle of atag) {

@@ -8,30 +8,44 @@ export const resultCategories = [
   "Not applicable",
 ];
 
-export function getEvaluatedChapterCriteria(evaluation) {
-  if (evaluation) {
-    const criteria = [];
+export function getEvaluatedChapterCriteriaComponents(evaluation) {
+  if (
+    evaluation &&
+    evaluation.chapters &&
+    Object.keys(evaluation.chapters).length > 0
+  ) {
+    const components = [];
     chapters.forEach((chapter) => {
       if (evaluation.chapters[chapter.id].criteria) {
         evaluation.chapters[chapter.id].criteria.forEach((item) => {
-          criteria.push(item);
+          item.components.forEach((component) => {
+            if (
+              component["adherence"] &&
+              component["adherence"]["level"] &&
+              component["adherence"]["level"] != "not-evaluated"
+            ) {
+              components.push(component);
+            }
+          });
         });
       }
     });
-    return criteria;
+    return components;
   } else {
     return [];
   }
 }
 
-export function getChapterCriteria() {
-  const criteria = [];
+export function getChapterCriteriaComponents() {
+  const components = [];
   chapters.forEach((chapter) => {
     chapter.criteria.forEach((item) => {
-      criteria.push(item);
+      item.components.forEach((component) => {
+        components.push(component);
+      });
     });
   });
-  return criteria;
+  return components;
 }
 
 export function getEvaluatedItems(evaluation) {

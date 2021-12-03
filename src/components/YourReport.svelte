@@ -8,7 +8,7 @@
   import { currentPage } from "../stores/currentPage.js";
   import { showYourReport } from "../stores/showYourReport.js";
   import { importEvaluation } from "../utils/importEvaluation.js";
-  import { getEvaluatedChapterCriteria, getChapterCriteria } from "../utils/getEvaluatedItems.js";
+  import { getEvaluatedChapterCriteriaComponents, getChapterCriteriaComponents } from "../utils/getEvaluatedItems.js";
   import {
     getProgressPerPrinciple,
     principles,
@@ -52,8 +52,8 @@
     $evaluation["product"] &&
     $evaluation["product"]["name"];
   $: progressPerPrinciple = getProgressPerPrinciple($evaluation);
-  $: evaluatedItems = getEvaluatedChapterCriteria($evaluation);
-  $: totalCriteria = getChapterCriteria();
+  $: evaluatedItems = getEvaluatedChapterCriteriaComponents($evaluation);
+  $: totalCriteria = getChapterCriteriaComponents();
 </script>
 
 <style>
