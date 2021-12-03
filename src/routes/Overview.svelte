@@ -22,11 +22,14 @@
 
 <p>
   This web editor helps evaluators build Accessibility Conformance Reports in the <a href="https://github.com/gsa/openacr">OpenACR format</a>.
-  It is designed to help accessibility subject matter experts create machine-readable OpenACR documents. Authors will be buided in creating an 
+  It is designed to help accessibility subject matter experts create machine-readable OpenACR documents. Authors will be guided in creating an 
   accessible report for the digital product or service that they are documenting. Conformance for each requirement can be documented as required 
-  to generate a Section 508 report.
+  to generate a Section 508 report. 
 </p>
-
+<p>
+  <a on:click="{startNew}">Start new report</a> or open an existing one.
+</p>
+    
 <p>Tips for using this tool:</p>
 
 <ul>
@@ -61,11 +64,14 @@
     digital products and services to be compared. Moving to a highligh structured, self-validated document format will make this much simpler.
   </p>
   <p>
-  Many agencies face challenges in delivering accessible services to people with disabilities. Software vendors currently submit 
-  ACRs for their offerings. These ACRs document conformance of these products and services to Section 508 requirements. These claims are generally provided in a PDF format which is difficult to search. At best these ACR represent a static snapshot of accessibility when written. A modern ACR should show evidence of continuous adherence to accessibility requirements. It should also be at least validated to see it matches a baseline format.
+    Many organizations face challenges in delivering accessible services to people with disabilities. Software vendors currently submit 
+    ACRs for their offerings. These ACRs document conformance of these products and services. These claims are generally provided in a PDF 
+    format which is often inaccessible, not consistently structured, and difficult to search. A modern ACR will be validated to see it 
+    matches a baseline format.
   </p>
   <p>
-Responsible agencies often test these vendor conformance claims. The work of validating these claims should be easily shared back with the vendors. Finding and sharing up-to-date data should be easy.
+    Responsible organizations both review vendor conformance claims and do independent testing. Documenting these findings in a consistent format
+    will make it easier to provide feedback to vendors. Comparisons will make it easier to update reports. 
   </p>
   <p>
     For more information, see
@@ -87,15 +93,13 @@ Responsible agencies often test these vendor conformance claims. The work of val
     a level and type in a note about conformance.
   </p>
   <p>
-    A, AA, AAA is the
-    <strong>WCAG 2.0</strong> standards.
+    A, AA, AAA are for the <strong>WCAG 2</strong> guidelines.
   </p>
   <p>
-    FPC, Hardware, Software, Docs is the
-    <strong>Section 508</strong> standards.
+    FPC, Hardware, Software, Docs is the <strong>Section 508</strong> standards.
   </p>
   <p>
-    Links in this tool lead you to the relevant sections of the standards.
+    Links in this editor will open a new window that lead you to the relevant sections of the guidelines.
   </p>
 </details>
 
