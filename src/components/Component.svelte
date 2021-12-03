@@ -47,7 +47,7 @@
       <label for="evaluation-{criteria}-{component}-notes">Notes</label>
       <textarea
         bind:value={currentEvaluationComponent['adherence']['notes']}
-        id="evaluation--{criteria}-{component}-notes"
+        id="evaluation-{criteria}-{component}-notes"
         on:change={() => evaluation.updateCache($evaluation)} />
     </div>
   {:else}
