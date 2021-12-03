@@ -5,7 +5,6 @@
   import YourReport from "./components/YourReport.svelte";
   import Report from "./routes/Report.svelte";
   import Acknowledgements from "./routes/Acknowledgements.svelte";
-  import Principle from "./components/Principle.svelte";
   import Chapter from "./components/Chapter.svelte";
   import Nav from "./components/Nav.svelte";
   import NavItem from "./components/NavItem.svelte";
@@ -62,9 +61,6 @@
     </Route>
     <Route path="/chapter/:chapterId" let:params>
       <Chapter chapterId={params.chapterId} />
-    </Route>
-    <Route path="/principle/:id" let:params>
-      <Principle id={params.id - 1} />
     </Route>
     <Route path="/report">
       <Report />

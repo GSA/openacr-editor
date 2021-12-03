@@ -6,8 +6,6 @@
   export let criteria;
   export let component;
 
-  // console.log(chapterId + ", " + criteria + ", " + component);
-
   $: currentComponent = components.find( ({ id }) => id === component);
   $: currentEvaluationCriteria = ($evaluation['chapters'] && $evaluation['chapters'][chapterId]['criteria']) ? $evaluation['chapters'][chapterId]['criteria'].find( ({ num }) => num === criteria) : null;
   $: currentEvaluationComponent = (currentEvaluationCriteria) ? currentEvaluationCriteria.components.find( ({ name }) => name === component) : null;
