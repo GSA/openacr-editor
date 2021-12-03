@@ -4,11 +4,13 @@
 
   import ReportHeader from "./ReportHeader.svelte";
   import ReportSummary from "./ReportSummary.svelte";
+  import ReportChapters from "./ReportChapters.svelte";
   import { cleanUp } from "../../utils/cleanUpReportHTML.js";
   import { createHTMLDownload } from "../../utils/createHTMLDownload.js";
   import { validate } from "../../utils/validate.js";
   import { reportFilename } from "../../utils/reportFilename.js";
   import { license } from "../../utils/license.js";
+  import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 
   var title = $evaluation.title;
   const filename = reportFilename($evaluation);
@@ -50,6 +52,9 @@
   <main>
     <div class="grid-container">
       <ReportHeader {download} />
+      {#each standards as standard}
+        <ReportChapters {standard} {download} />
+      {/each}
       <ReportSummary {download} />
     </div>
   </main>

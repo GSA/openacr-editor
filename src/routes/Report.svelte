@@ -6,10 +6,11 @@
   import ReportHeader from "../components/report/ReportHeader.svelte";
   import ReportSummary from "../components/report/ReportSummary.svelte";
   import ReportValid from "../components/report/ReportValid.svelte";
-  import ReportResults from "../components/report/ReportResults.svelte";
+  import ReportChapters from "../components/report/ReportChapters.svelte";
   import ReportHTMLDownload from "../components/report/ReportHTMLDownload.svelte";
   import ReportYAMLDownload from "../components/report/ReportYAMLDownload.svelte";
   import ReportMarkdownDownload from "../components/report/ReportMarkdownDownload.svelte";
+  import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 
   import { currentPage } from "../stores/currentPage.js";
 
@@ -39,4 +40,7 @@
 
 <ReportValid />
 <ReportHeader />
+{#each standards as standard}
+  <ReportChapters {standard} />
+{/each}
 <ReportSummary />
