@@ -23,15 +23,6 @@
     position: relative;
     border-style: none;
   }
-  .result-row td:nth-child(2)::before {
-    content: "";
-    width: 0.5em;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    background-color: var(--line-grey);
-  }
   @media (min-width: 60em) {
     .result-row {
       border-bottom: 0;
@@ -43,7 +34,7 @@
   }
 </style>
 
-<tr class="result-row" id="{criteria.num}{extraId}">
+<tr class="result-row" id="{catalogCriteria.alt_id}{extraId}">
   <td>
     <a href="{standard.url}#{catalogCriteria.alt_id}">
       {criteria.num} {catalogCriteria.handle}

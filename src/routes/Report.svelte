@@ -9,7 +9,6 @@
   import ReportChapters from "../components/report/ReportChapters.svelte";
   import ReportHTMLDownload from "../components/report/ReportHTMLDownload.svelte";
   import ReportYAMLDownload from "../components/report/ReportYAMLDownload.svelte";
-  import ReportMarkdownDownload from "../components/report/ReportMarkdownDownload.svelte";
   import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 
   import { currentPage } from "../stores/currentPage.js";
@@ -27,7 +26,7 @@
 </script>
 
 <svelte:head>
-  <title>Report | ATAG Report Tool | W3C WAI</title>
+  <title>Report | OpenACR Editor | GSA</title>
 </svelte:head>
 
 <Header>Report</Header>
@@ -35,7 +34,6 @@
 <p>
   <ReportYAMLDownload />
   <ReportHTMLDownload />
-  <ReportMarkdownDownload />
 </p>
 
 <ReportValid />
