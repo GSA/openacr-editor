@@ -50,5 +50,9 @@
         id="evaluation--{criteria}-{component}-notes"
         on:change={() => evaluation.updateCache($evaluation)} />
     </div>
+  {:else}
+    <p>Could not find component '{component}' for critera '{criteria}' in '{chapterId}'.</p>
   {/if}
+{:else}
+  <p>Could not find component '{component}' for critera '{criteria}' in '{chapterId}'.</p>
 {/if}
