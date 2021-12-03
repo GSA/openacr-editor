@@ -8,12 +8,8 @@
   import { currentPage } from "../stores/currentPage.js";
   import { showYourReport } from "../stores/showYourReport.js";
   import { importEvaluation } from "../utils/importEvaluation.js";
-  import { getEvaluatedChapterCriteriaComponents, getChapterCriteriaComponents } from "../utils/getEvaluatedItems.js";
-  import {
-    getProgressPerPrinciple,
-    principles,
-  } from "../utils/getProgressPerPrinciple.js";
-  import { inConformanceTarget } from "../utils/inConformanceTarget.js";
+  import { getEvaluatedChapterCriteriaComponents, getChapterCriteriaComponents, getProgressPerChapter } from "../utils/getEvaluatedItems.js";
+  import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import vars from "../../config/__buildEnv__.json";
 
   let fresh, showButton, box;
@@ -51,7 +47,7 @@
   $: nameProvided =
     $evaluation["product"] &&
     $evaluation["product"]["name"];
-  $: progressPerPrinciple = getProgressPerPrinciple($evaluation);
+  $: progressPerChapter = getProgressPerChapter($evaluation);
   $: evaluatedItems = getEvaluatedChapterCriteriaComponents($evaluation);
   $: totalCriteria = getChapterCriteriaComponents();
 </script>
@@ -158,11 +154,11 @@
       <ReportNumbers className="your-report__description" />
       <ProgressBar percentage={100 / (totalCriteria.length / evaluatedItems.length)} />
       <ul class="your-report__progress-by-principle">
-        {#each principles as principle}
+        {#each chapters as chapter}
           <YourReportProgress
-            {principle}
-            done={progressPerPrinciple[principle]['evaluated']}
-            total={progressPerPrinciple[principle]['total']} />
+            {chapter}
+            done={progressPerChapter[chapter]['evaluated']}
+            total={progressPerChapter[chapter]['total']} />
         {/each}
       </ul>
       <button class="button" on:click={toOverview}>View Report</button>

@@ -8,6 +8,30 @@ export const resultCategories = [
   "Not applicable",
 ];
 
+export function getProgressPerChapter(evaluation) {
+  let progressPerChapter = {};
+
+  function getEvaluatedForChapter(chapter) {
+    return 0;
+  }
+
+  function getTotalForChapter(chapter) {
+    return 0;
+  }
+
+  chapters.forEach((chapter) => {
+    const total = getTotalForChapter(chapter);
+    const evaluated = getEvaluatedForChapter(chapter);
+
+    progressPerChapter[chapter] = {
+      evaluated: evaluated,
+      total: total,
+    };
+  });
+
+  return progressPerChapter;
+}
+
 export function getEvaluatedChapterCriteriaComponents(evaluation) {
   if (
     evaluation &&

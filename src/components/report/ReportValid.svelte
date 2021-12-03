@@ -1,10 +1,9 @@
 <script>
   import { evaluation } from "../../stores/evaluation.js";
-  import { validateOpenACR } from "@openacr/openacr/src/validateOpenACR.ts";
+  import { validate } from "../../utils/validate.js";
   import marked from "marked";
 
-  const valid = validateOpenACR($evaluation, "openacr-0.1.0.json");
-
+  const valid = validate($evaluation);
 </script>
 
 <style>
