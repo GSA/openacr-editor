@@ -34,8 +34,14 @@ export function importEvaluation(event) {
           converted["license"] = "GPL-2.0-or-later";
         }
 
-        // Initialize any missing components and criteria.
+        // Initialize any missing chapters, components, and criteria.
         for (const chapter of chapters) {
+          if (!converted["chapters"][chapter.id]) {
+            converted["chapters"][chapter.id] = {
+              notes: "",
+            };
+          }
+
           if (!converted["chapters"][chapter.id]["criteria"]) {
             converted["chapters"][chapter.id]["criteria"] = [];
           }
@@ -95,12 +101,10 @@ export function importEvaluation(event) {
             alert("OpenACR loaded");
           }
         } else {
-          alert(
-            "Import OpenACR is invalid. Validation message: " + valid.message
-          );
+          alert("Import OpenACR is invalid. Message: " + valid.message);
         }
-      } catch {
-        alert("No data found or invalid import.");
+      } catch (e) {
+        alert("No data found or invalid import. Message: " + e.message);
       }
     };
 
