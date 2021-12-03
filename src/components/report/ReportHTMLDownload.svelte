@@ -6,13 +6,13 @@
   import ReportSummary from "./ReportSummary.svelte";
   import { cleanUp } from "../../utils/cleanUpReportHTML.js";
   import { createHTMLDownload } from "../../utils/createHTMLDownload.js";
-  import { validateOpenACR } from "@openacr/openacr/src/validateOpenACR.ts";
+  import { validate } from "../../utils/validate.js";
   import { reportFilename } from "../../utils/reportFilename.js";
   import { license } from "../../utils/license.js";
 
   var title = $evaluation.title;
   const filename = reportFilename($evaluation);
-  const valid = validateOpenACR($evaluation, "openacr-0.1.0.json");
+  const valid = validate($evaluation);
   let htmlDownload, htmlDownloadTemplate, licenseOutput;
 
   if (valid.result) {

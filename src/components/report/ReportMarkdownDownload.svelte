@@ -2,13 +2,13 @@
   import { onMount } from "svelte";
   import { evaluation } from "../../stores/evaluation.js";
   import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
-  import { validateOpenACR } from "@openacr/openacr/src/validateOpenACR.ts";
+  import { validate } from "../../utils/validate.js";
   import { reportFilename } from "../../utils/reportFilename.js";
   import { license } from "../../utils/license.js";
   import { standardsIncluded } from "../../utils/getCatalogItems.js";
 
   const filename = reportFilename($evaluation);
-  const valid = validateOpenACR($evaluation, "openacr-0.1.0.json");
+  const valid = validate($evaluation);
   let mdDownload, mdTemplate, licenseOutput;
 
   if (valid.result) {

@@ -32,8 +32,8 @@
 <Header>Report</Header>
 
 <p>
-  <ReportHTMLDownload />
   <ReportYAMLDownload />
+  <ReportHTMLDownload />
   <ReportMarkdownDownload />
 </p>
 
