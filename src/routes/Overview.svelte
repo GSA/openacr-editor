@@ -22,20 +22,20 @@
 
 <p>
   This web editor helps evaluators build Accessibility Conformance Reports in the <a href="https://github.com/gsa/openacr">OpenACR format</a>.
-  It is designed to help accessibility subject matter experts create machine-readable OpenACR documents. Authors will be guided in creating an 
-  accessible report for the digital product or service that they are documenting. Conformance for each requirement can be documented as required 
-  to generate a Section 508 report. 
+  It is designed to help accessibility subject matter experts create machine-readable OpenACR documents. Authors will be guided in creating an
+  accessible report for the digital product or service that they are documenting. Conformance for each requirement can be documented as required
+  to generate a Section 508 report.
 </p>
 <p>
   <a on:click="{startNew}">Start new report</a> or open an existing one.
 </p>
-    
+
 <p>Tips for using this tool:</p>
 
 <ul>
   <li>
-    This editor saves the information you enter locally in your browser (not on our servers). To save or share your OpenACR report, you will 
-    need to save it to your computer. You will need the YAML file to submit your OpenACR and to edit this report in the future. 
+    This editor saves the information you enter locally in your browser (not on our servers). To save or share your OpenACR report, you will
+    need to save it to your computer. You will need the YAML file to submit your OpenACR and to edit this report in the future.
   </li>
   <li>
     As you use the editor, the
@@ -43,8 +43,8 @@
     page lists the success criteria that you have checked and not checked.
   </li>
   <li>
-    You can export your report as YAML (structured data) but also as HTML (web page) and Markdown (simple markup). Note: You will not be able 
-    to edit the report the future without the YAML file. 
+    You can export your report as YAML (structured data) but also as HTML (web page) and Markdown (simple markup). Note: You will not be able
+    to edit the report the future without the YAML file.
   </li>
   <li>
     You can add limited formatting to your report with <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>. This allows you to add
@@ -59,19 +59,19 @@
     <h2>About OpenACR</h2>
   </summary>
   <p>
-    OpenACR is a digital native Accessibility Conformance Report (ACR). The initial development is based on Section 508 requirements. 
-    There are many advantages in moving to a machine-readable format, but one of the biggest is that it allows accessibility claims of 
+    OpenACR is a digital native Accessibility Conformance Report (ACR). The initial development is based on Section 508 requirements.
+    There are many advantages in moving to a machine-readable format, but one of the biggest is that it allows accessibility claims of
     digital products and services to be compared. Moving to a highligh structured, self-validated document format will make this much simpler.
   </p>
   <p>
-    Many organizations face challenges in delivering accessible services to people with disabilities. Software vendors currently submit 
-    ACRs for their offerings. These ACRs document conformance of these products and services. These claims are generally provided in a PDF 
-    format which is often inaccessible, not consistently structured, and difficult to search. A modern ACR will be validated to see it 
+    Many organizations face challenges in delivering accessible services to people with disabilities. Software vendors currently submit
+    ACRs for their offerings. These ACRs document conformance of these products and services. These claims are generally provided in a PDF
+    format which is often inaccessible, not consistently structured, and difficult to search. A modern ACR will be validated to see it
     matches a baseline format.
   </p>
   <p>
     Responsible organizations both review vendor conformance claims and do independent testing. Documenting these findings in a consistent format
-    will make it easier to provide feedback to vendors. Comparisons will make it easier to update reports. 
+    will make it easier to provide feedback to vendors. Comparisons will make it easier to update reports.
   </p>
   <p>
     For more information, see
