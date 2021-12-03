@@ -21,30 +21,31 @@
 <Header>Overview</Header>
 
 <p>
-  This tool helps evaluators build Accessibility Conformance Reports in the OpenACR format.
-  It guides you through the OpenACR requirements, lets you record your software's current
-  conformance for each requirement, and generates a report.
+  This web editor helps evaluators build Accessibility Conformance Reports in the <a href="https://github.com/gsa/openacr">OpenACR format</a>.
+  It is designed to help accessibility subject matter experts create machine-readable OpenACR documents. Authors will be buided in creating an 
+  accessible report for the digital product or service that they are documenting. Conformance for each requirement can be documented as required 
+  to generate a Section 508 report.
 </p>
 
 <p>Tips for using this tool:</p>
 
 <ul>
   <li>
-    As you use the tool, the
+    This editor saves the information you enter locally in your browser (not on our servers). To save or share your OpenACR report, you will 
+    need to save it to your computer. You will need the YAML file to submit your OpenACR and to edit this report in the future. 
+  </li>
+  <li>
+    As you use the editor, the
     <Link to="report">Report</Link>
     page lists the success criteria that you have checked and not checked.
   </li>
   <li>
-    You can export your report as HTML (web page), Markdown and as YAML (structured data).
+    You can export your report as YAML (structured data) but also as HTML (web page) and Markdown (simple markup). Note: You will not be able 
+    to edit the report the future without the YAML file. 
   </li>
   <li>
-    The tool saves information you enter locally in your browser for backup (not
-    on our servers).
-  </li>
-  <li>
-    You can format your evaluation with
-    <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>,
-    so that you can use lists, links and code examples.
+    You can add limited formatting to your report with <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>. This allows you to add
+    lists, links and code examples.
   </li>
 </ul>
 
@@ -55,7 +56,16 @@
     <h2>About OpenACR</h2>
   </summary>
   <p>
-    To be added..
+    OpenACR is a digital native Accessibility Conformance Report (ACR). The initial development is based on Section 508 requirements. 
+    There are many advantages in moving to a machine-readable format, but one of the biggest is that it allows accessibility claims of 
+    digital products and services to be compared. Moving to a highligh structured, self-validated document format will make this much simpler.
+  </p>
+  <p>
+  Many agencies face challenges in delivering accessible services to people with disabilities. Software vendors currently submit 
+  ACRs for their offerings. These ACRs document conformance of these products and services to Section 508 requirements. These claims are generally provided in a PDF format which is difficult to search. At best these ACR represent a static snapshot of accessibility when written. A modern ACR should show evidence of continuous adherence to accessibility requirements. It should also be at least validated to see it matches a baseline format.
+  </p>
+  <p>
+Responsible agencies often test these vendor conformance claims. The work of validating these claims should be easily shared back with the vendors. Finding and sharing up-to-date data should be easy.
   </p>
   <p>
     For more information, see
