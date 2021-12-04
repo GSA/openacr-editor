@@ -36,7 +36,7 @@
 
 <tr class="result-row" id="{catalogCriteria.alt_id}{extraId}">
   <td>
-    <a href="{standard.url}#{catalogCriteria.alt_id}">
+    <a target="_blank" rel="noopener roreferrer" href="{standard.url}#{catalogCriteria.alt_id}">
       {criteria.num} {catalogCriteria.handle}
     </a>
   </td>

@@ -34,7 +34,7 @@
       View in Report
     </Link>
   </span>
-  <LinkToGuidance href={linkToImplementing}>Implementing {id}</LinkToGuidance>
+  <LinkToGuidance href={linkToImplementing}>Implementing {id}: {handle}</LinkToGuidance>
   {#if components}
     {#each components as c}
       <Component chapterId={chapterId} criteria={id} component={c} />
