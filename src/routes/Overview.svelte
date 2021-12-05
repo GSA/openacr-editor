@@ -26,9 +26,6 @@
   accessible report for the digital product or service that they are documenting. Conformance for each requirement can be documented as required
   to generate a Section 508 report.
 </p>
-<p>
-  <a on:click="{startNew}">Start new report</a> or open an existing one.
-</p>
 
 <p>Tips for using this tool:</p>
 
