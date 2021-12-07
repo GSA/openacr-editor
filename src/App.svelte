@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   import { Router, Route } from "svelte-navigator";
   import Overview from "./routes/Overview.svelte";
   import About from "./routes/About.svelte";
@@ -19,6 +20,19 @@
 
   function needsYourReport(pageName) {
     return pagesWithYourReport.indexOf(pageName) > -1;
+  }
+
+  onMount(() => {
+    window.addEventListener("input", setInteracted);
+  });
+
+  function setInteracted(){
+    window.removeEventListener("input", setInteracted);
+    window.onbeforeunload = closeEditorWarning;
+  }
+
+  function closeEditorWarning() {
+    return 'Are you sure?';
   }
 </script>
 
