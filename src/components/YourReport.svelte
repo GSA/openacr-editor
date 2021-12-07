@@ -3,7 +3,7 @@
   import ProgressBar from "./ProgressBar.svelte";
   import ButtonShowHide from "./ButtonShowHide.svelte";
   import ReportNumbers from "./report/ReportNumbers.svelte";
-  import { navigate, Router, Link } from "svelte-navigator";
+  import { navigate } from "svelte-navigator";
   import { evaluation } from "../stores/evaluation.js";
   import { currentPage } from "../stores/currentPage.js";
   import { showYourReport } from "../stores/showYourReport.js";
@@ -12,7 +12,7 @@
   import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import vars from "../../config/__buildEnv__.json";
 
-  let fresh, showButton, box;
+  let fresh, box;
 
   function startNew() {
     navigate(`${vars.pathPrefix}/about`, { replace: false });
@@ -24,6 +24,7 @@
   }
 
   function clear() {
+    window.onbeforeunload = null;
     if (
       window.confirm(
         "This will clear the current OpenACR and start a new one. Are you sure that's what you'd like to do?"

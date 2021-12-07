@@ -26,9 +26,11 @@
     window.addEventListener("input", setInteracted);
   });
 
-  function setInteracted(){
-    window.removeEventListener("input", setInteracted);
-    window.onbeforeunload = closeEditorWarning;
+  function setInteracted(e) {
+    if (e.target.type != "file") {
+      window.removeEventListener("input", setInteracted);
+      window.onbeforeunload = closeEditorWarning;
+    }
   }
 
   function closeEditorWarning() {
