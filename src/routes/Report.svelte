@@ -1,10 +1,11 @@
 <script>
   import { onMount } from "svelte";
-  import { Link, useLocation } from "svelte-navigator";
+  import { useLocation } from "svelte-navigator";
 
   import Header from "../components/Header.svelte";
   import ReportHeader from "../components/report/ReportHeader.svelte";
   import ReportSummary from "../components/report/ReportSummary.svelte";
+  import ReportLicense from "../components/report/ReportLicense.svelte";
   import ReportValid from "../components/report/ReportValid.svelte";
   import ReportChapters from "../components/report/ReportChapters.svelte";
   import ReportHTMLDownload from "../components/report/ReportHTMLDownload.svelte";
@@ -42,3 +43,8 @@
   <ReportChapters {standard} />
 {/each}
 <ReportSummary />
+<h2 id="license-editor">
+  <a href="#license-editor" aria-hidden="true" class="header-anchor">#</a>
+  License
+</h2>
+<ReportLicense />

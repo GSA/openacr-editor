@@ -5,21 +5,17 @@
   import ReportHeader from "./ReportHeader.svelte";
   import ReportSummary from "./ReportSummary.svelte";
   import ReportChapters from "./ReportChapters.svelte";
+  import ReportLicense from "./ReportLicense.svelte";
   import { cleanUp } from "../../utils/cleanUpReportHTML.js";
   import { createHTMLDownload } from "../../utils/createHTMLDownload.js";
   import { validate } from "../../utils/validate.js";
   import { reportFilename } from "../../utils/reportFilename.js";
-  import { license } from "../../utils/license.js";
   import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 
   var title = $evaluation.title;
   const filename = reportFilename($evaluation);
   const valid = validate($evaluation);
-  let htmlDownload, htmlDownloadTemplate, licenseOutput;
-
-  if (valid.result) {
-    licenseOutput = license($evaluation, "html");
-  }
+  let htmlDownload, htmlDownloadTemplate;
 
   let download = true;
 
@@ -71,7 +67,7 @@
             <a href="https://github.com/GSA/openacr">OpenACR</a> is a format maintained by the <a href="https://gsa.gov/">GSA</a>. The content is the responsibility of the author.
           </div>
           <div class="grid-col">
-            This content is licensed under a {@html licenseOutput}.
+            <ReportLicense />
           </div>
         </div>
       </div>
