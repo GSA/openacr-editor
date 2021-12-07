@@ -1,6 +1,8 @@
 export function honourFragmentIdLinks(routerLocation) {
   if (routerLocation.hash) {
-    const fragment = document.querySelector(routerLocation.hash);
+    const fragment = document.querySelector(
+      `[id='${routerLocation.hash.replace("#", "")}']`
+    );
 
     // explicitly move focus
     fragment.tabIndex = "-1";
