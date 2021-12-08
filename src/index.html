@@ -17,6 +17,47 @@
     <link rel="stylesheet" href="{{{ pathPrefix }}}/build/bundle.css" />
     <script defer src="{{{ pathPrefix }}}/build/bundle.js"></script>
     <style>
+      /* GSA/Section508 placeholder styling.
+       * Dark blue: #162E51
+       * Light blue: #1e6ad6
+       */
+      #site-header,
+      th {
+        background-color: #162e51;
+      }
+      summary > :first-child:before,
+      .box-h,
+      a,
+      a:focus,
+      a:hover,
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: #162e51;
+      }
+      summary > :first-child:before {
+        border-color: #162e51;
+      }
+      .button.button-secondary,
+      button.button-secondary {
+        background-color: var(--pure-white);
+        color: #162e51;
+      }
+      .button,
+      button {
+        background-color: #162e51;
+        border-color: #162e51;
+      }
+      .button:focus,
+      .button:hover,
+      button:focus,
+      button:hover {
+        background-color: #1e6ad6;
+        border-color: #1e6ad6;
+        color: var(--pure-white);
+      }
+      /* End placeholder styling. */
       :target {
         scroll-margin-top: 5rem;
       }
@@ -143,11 +184,13 @@
         <div class="box-i">
           <p>
             Please share your ideas, suggestions, or comments via e-mail to
-            <a href="mailto:opat@gsa.gov">opat@gsa.gov</a>
+            <a href="mailto:openacr@gsa.gov">openacr@gsa.gov</a>
             or via GitHub.
           </p>
           <div class="button-group">
-            <a href="mailto:opat@gsa.gov" class="button"><span>E-mail</span></a>
+            <a href="mailto:openacr@gsa.gov" class="button"
+              ><span>E-mail</span></a
+            >
             <a href="https://github.com/GSA/openacr-editor" class="button"
               ><span>Fork &amp; Edit on GitHub</span></a
             ><a

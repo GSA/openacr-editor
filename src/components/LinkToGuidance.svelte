@@ -8,6 +8,7 @@
     font-weight: normal;
     color: var(--dk-grey);
     border-color: var(--line-grey);
+    background-color: var(--pure-white);
     vertical-align: middle;
     margin: 2px 0;
   }

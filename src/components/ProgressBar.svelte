@@ -14,7 +14,7 @@
     top: 0;
     bottom: 0;
     left: 0;
-    background: var(--ocean);
+    background: #1e6ad6;
     transition: width 0.2s;
   }
 </style>
