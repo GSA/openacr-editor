@@ -6,6 +6,7 @@
   import { evaluation } from "../stores/evaluation.js";
   import { currentPage } from "../stores/currentPage.js";
   import spdxLicenseList from "spdx-license-list";
+  import Select from 'svelte-select';
 
   onMount(() => {
     currentPage.update(currentPage => "About");
@@ -14,8 +15,8 @@
   let spdxLicenses = [];
   for (const spdexLicenseListItem in spdxLicenseList) {
     spdxLicenses.push({
-      id: spdexLicenseListItem,
-      label: spdxLicenseList[spdexLicenseListItem].name
+      value: spdexLicenseListItem,
+      label: `${spdxLicenseList[spdexLicenseListItem].name} (${spdexLicenseListItem})`
     });
   }
   spdxLicenses.sort((a, b) => {
@@ -30,6 +31,16 @@
     }
     return 0;
   });
+
+  function handleLicenseSelect(e) {
+    $evaluation['license'] = e.detail.value;
+    evaluation.updateCache($evaluation);
+  }
+
+  function handleLicenseClear(e) {
+    $evaluation['license'] = "";
+    evaluation.updateCache($evaluation);
+  }
 </script>
 
 <svelte:head>
@@ -233,20 +244,10 @@
     on:blur={() => evaluation.updateCache($evaluation)} />
 </div>
 
-<label for="evaluation-license">
-  License:
-</label>
-<select
-  id="evaluation-license"
-  name="evaluation-license"
-  bind:value={$evaluation['license']}
-  on:blur={() => {
-    evaluation.updateCache($evaluation);
-  }}>
-  {#each spdxLicenses as spdxLicense}
-    <option name="option-evaluation-license-{spdxLicense.id}" value={spdxLicense.id}>{spdxLicense.label}</option>
-  {/each}
-</select>
+<div class="field">
+  <label for="evaluation-license">License</label>
+  <Select id="evaluation-license" inputStyles="border: 1px solid var(--grey);" items={spdxLicenses} value={$evaluation['license']} on:select={handleLicenseSelect} on:clear={handleLicenseClear} />
+</div>
 
 <!-- TODO add related ACR URLs as an array of values. -->
 
