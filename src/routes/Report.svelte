@@ -11,6 +11,7 @@
   import ReportHTMLDownload from "../components/report/ReportHTMLDownload.svelte";
   import ReportYAMLDownload from "../components/report/ReportYAMLDownload.svelte";
   import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+  import { evaluation } from "../stores/evaluation.js";
 
   import { currentPage } from "../stores/currentPage.js";
 
@@ -43,8 +44,10 @@
   <ReportChapters {standard} />
 {/each}
 <ReportSummary />
-<h2 id="license-editor">
-  <a href="#license-editor" aria-hidden="true" class="header-anchor">#</a>
-  License
-</h2>
-<ReportLicense />
+{#if $evaluation.license }
+  <h2 id="license-editor">
+    <a href="#license-editor" aria-hidden="true" class="header-anchor">#</a>
+    License
+  </h2>
+  <ReportLicense />
+{/if}
