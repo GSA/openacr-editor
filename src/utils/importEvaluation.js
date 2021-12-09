@@ -31,7 +31,7 @@ export function importEvaluation(event) {
           converted["report_date"] = datestamp;
         }
         if (!converted.license) {
-          converted["license"] = "GPL-2.0-or-later";
+          converted["license"] = "CC-BY-4.0";
         }
 
         // Initialize any missing chapters, components, and criteria.
