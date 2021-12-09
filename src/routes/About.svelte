@@ -5,10 +5,42 @@
   import PagerLink from "../components/PagerLink.svelte";
   import { evaluation } from "../stores/evaluation.js";
   import { currentPage } from "../stores/currentPage.js";
+  import spdxLicenseList from "spdx-license-list";
+  import Select from 'svelte-select';
 
   onMount(() => {
     currentPage.update(currentPage => "About");
   });
+
+  let spdxLicenses = [];
+  for (const spdexLicenseListItem in spdxLicenseList) {
+    spdxLicenses.push({
+      value: spdexLicenseListItem,
+      label: `${spdxLicenseList[spdexLicenseListItem].name} (${spdexLicenseListItem})`
+    });
+  }
+  spdxLicenses.sort((a, b) => {
+    let la = a.label.toLowerCase(),
+        lb = b.label.toLowerCase();
+
+    if (la < lb) {
+        return -1;
+    }
+    if (la > lb) {
+        return 1;
+    }
+    return 0;
+  });
+
+  function handleLicenseSelect(e) {
+    $evaluation['license'] = e.detail.value;
+    evaluation.updateCache($evaluation);
+  }
+
+  function handleLicenseClear(e) {
+    $evaluation['license'] = "";
+    evaluation.updateCache($evaluation);
+  }
 </script>
 
 <svelte:head>
@@ -214,11 +246,7 @@
 
 <div class="field">
   <label for="evaluation-license">License</label>
-  <input
-    type="text"
-    bind:value={$evaluation['license']}
-    id="evaluation-license"
-    on:blur={() => evaluation.updateCache($evaluation)} />
+  <Select id="evaluation-license" inputStyles="border: 1px solid var(--grey);" items={spdxLicenses} value={$evaluation['license']} on:select={handleLicenseSelect} on:clear={handleLicenseClear} />
 </div>
 
 <!-- TODO add related ACR URLs as an array of values. -->

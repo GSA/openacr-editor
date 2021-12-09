@@ -33,7 +33,7 @@ export function createCleanEvaluation() {
     legal_disclaimer: "",
     repository: "",
     feedback: "",
-    license: "GPL-2.0-or-later",
+    license: "CC-BY-4.0",
     chapters: {},
   };
 

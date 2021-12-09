@@ -11,11 +11,5 @@ export function license(evaluation, templateType) {
         spdxLicenseList[evaluation.license].url
       })`;
     }
-  } else {
-    if (templateType === "html") {
-      return `<a href="${spdxLicenseList["CC-BY-4.0"].url}">${spdxLicenseList["CC-BY-4.0"].name}</a>`;
-    } else {
-      return `[${spdxLicenseList["CC-BY-4.0"].name}](${spdxLicenseList["CC-BY-4.0"].url})`;
-    }
   }
 }
