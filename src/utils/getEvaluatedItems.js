@@ -1,12 +1,5 @@
 import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 
-export const resultCategories = [
-  "Passed",
-  "Failed",
-  "Cannot tell",
-  "Not applicable",
-];
-
 export function getProgressPerChapter(evaluation) {
   let progressPerChapter = {};
 
