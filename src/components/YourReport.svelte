@@ -158,8 +158,8 @@
         {#each chapters as chapter}
           <YourReportProgress
             {chapter}
-            done={progressPerChapter[chapter]['evaluated']}
-            total={progressPerChapter[chapter]['total']} />
+            done={progressPerChapter[chapter.id]['evaluated']}
+            total={progressPerChapter[chapter.id]['total']} />
         {/each}
       </ul>
       <button class="button" on:click={toOverview}>View Report</button>

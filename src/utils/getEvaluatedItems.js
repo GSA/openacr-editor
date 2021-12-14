@@ -1,4 +1,3 @@
-import { inConformanceTarget } from "./inConformanceTarget.js";
 import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 
 export const resultCategories = [
@@ -12,18 +11,38 @@ export function getProgressPerChapter(evaluation) {
   let progressPerChapter = {};
 
   function getEvaluatedForChapter(chapter) {
-    return 0;
+    const components = [];
+    if (evaluation.chapters[chapter.id].criteria) {
+      evaluation.chapters[chapter.id].criteria.forEach((item) => {
+        item.components.forEach((component) => {
+          if (
+            component["adherence"] &&
+            component["adherence"]["level"] &&
+            component["adherence"]["level"] != "not-evaluated"
+          ) {
+            components.push(component);
+          }
+        });
+      });
+    }
+    return components.length;
   }
 
   function getTotalForChapter(chapter) {
-    return 0;
+    const components = [];
+    chapter.criteria.forEach((item) => {
+      item.components.forEach((component) => {
+        components.push(component);
+      });
+    });
+    return components.length;
   }
 
   chapters.forEach((chapter) => {
     const total = getTotalForChapter(chapter);
     const evaluated = getEvaluatedForChapter(chapter);
 
-    progressPerChapter[chapter] = {
+    progressPerChapter[chapter.id] = {
       evaluated: evaluated,
       total: total,
     };
@@ -70,38 +89,4 @@ export function getChapterCriteriaComponents() {
     });
   });
   return components;
-}
-
-export function getEvaluatedItems(evaluation) {
-  if (
-    evaluation &&
-    evaluation.evaluationData &&
-    Object.keys(evaluation.evaluationData).length > 0
-  ) {
-    return Object.values(evaluation.evaluationData).filter(
-      (item) =>
-        item.result !== "Not checked" && inConformanceTarget(item, evaluation)
-    );
-  } else {
-    return [];
-  }
-}
-
-export function getMissingItems(evaluation) {
-  if (
-    evaluation &&
-    evaluation.evaluationData &&
-    Object.keys(evaluation.evaluationData).length > 0
-  ) {
-    return Object.values(evaluation.evaluationData).filter(
-      (item) =>
-        item.result === "Not checked" && inConformanceTarget(item, evaluation)
-    );
-  } else {
-    return [];
-  }
-}
-
-export function getItemsFromCategory(items, category) {
-  return items.filter((item) => item.result === category);
 }
