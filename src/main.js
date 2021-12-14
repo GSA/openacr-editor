@@ -1,8 +1,7 @@
 import App from "./App.svelte";
-import atag from "./data/atag.js";
 
 const app = new App({
-  target: document.getElementById("conformance-tool"),
+  target: document.getElementById("openacr-editor"),
 });
 
 export default app;

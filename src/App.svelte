@@ -6,6 +6,7 @@
   import YourReport from "./components/YourReport.svelte";
   import Report from "./routes/Report.svelte";
   import Acknowledgements from "./routes/Acknowledgements.svelte";
+  import Glossary from "./routes/Glossary.svelte";
   import Chapter from "./components/Chapter.svelte";
   import Nav from "./components/Nav.svelte";
   import NavItem from "./components/NavItem.svelte";
@@ -64,6 +65,7 @@
       </NavItem>
     {/each}
     <NavItem to="/report">Report</NavItem>
+    <NavItem to="/glossary">Glossary</NavItem>
   </Nav>
   <section
     class="app-content"
@@ -83,6 +85,9 @@
     </Route>
     <Route path="/acknowledgements">
       <Acknowledgements />
+    </Route>
+    <Route path="/glossary">
+      <Glossary />
     </Route>
   </section>
   {#if needsYourReport($currentPage)}
