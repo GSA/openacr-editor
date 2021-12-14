@@ -13,8 +13,9 @@
   }
 </style>
 
-{#if helpText[type][field].help}
+{#if helpText[type] &&
+     helpText[type][field]}
   <div class="help-text">
-    {helpText[type][field].help}
+    {helpText[type][field]}
   </div>
 {/if}

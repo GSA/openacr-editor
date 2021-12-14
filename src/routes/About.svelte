@@ -78,6 +78,7 @@
     bind:value={$evaluation['product']['description']}
     id="evaluation-product-description"
     on:change={() => evaluation.updateCache($evaluation)} />
+  <HelpText type="product" field="description" />
 </div>
 
 <h2>Author</h2>
@@ -89,6 +90,7 @@
     bind:value={$evaluation['author']['name']}
     id="evaluation-author-name"
     on:blur={() => evaluation.updateCache($evaluation)} />
+  <HelpText type="author" field="name" />
 </div>
 
 <div class="field">
@@ -98,6 +100,7 @@
     bind:value={$evaluation['author']['company_name']}
     id="evaluation-author-company"
     on:blur={() => evaluation.updateCache($evaluation)} />
+  <HelpText type="author" field="company_name" />
 </div>
 
 <div class="field">
@@ -107,6 +110,7 @@
     bind:value={$evaluation['author']['address']}
     id="evaluation-author-address"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="author" field="address" />
 </div>
 
 <div class="field">
@@ -116,6 +120,7 @@
     bind:value={$evaluation['author']['email']}
     id="evaluation-author-email"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="author" field="email" />
 </div>
 
 <div class="field">
@@ -125,6 +130,7 @@
     bind:value={$evaluation['author']['phone']}
     id="evaluation-author-phone"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="author" field="phone" />
 </div>
 
 <div class="field">
@@ -134,6 +140,7 @@
     bind:value={$evaluation['author']['website']}
     id="evaluation-author-website"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="author" field="website" />
 </div>
 
 <h2>Vendor</h2>
@@ -145,6 +152,7 @@
     bind:value={$evaluation['vendor']['name']}
     id="evaluation-vendor-name"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="vendor" field="name" />
 </div>
 
 <div class="field">
@@ -154,6 +162,7 @@
     bind:value={$evaluation['vendor']['company_name']}
     id="evaluation-vendor-company"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="vendor" field="company_name" />
 </div>
 
 <div class="field">
@@ -163,6 +172,7 @@
     bind:value={$evaluation['vendor']['address']}
     id="evaluation-vendor-address"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="vendor" field="address" />
 </div>
 
 <div class="field">
@@ -172,6 +182,7 @@
     bind:value={$evaluation['vendor']['email']}
     id="evaluation-vendor-email"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="vendor" field="email" />
 </div>
 
 <div class="field">
@@ -181,6 +192,7 @@
     bind:value={$evaluation['vendor']['phone']}
     id="evaluation-vendor-phone"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="vendor" field="phone" />
 </div>
 
 <div class="field">
@@ -190,6 +202,7 @@
     bind:value={$evaluation['vendor']['website']}
     id="evaluation-vendor-website"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="vendor" field="website" />
 </div>
 
 <h2>ACR Report Details</h2>
@@ -203,6 +216,7 @@
     bind:value={$evaluation['report_date']}
     id="evaluation-report-date"
     on:change={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="report" field="report_date" />
 </div>
 
 <div class="field">
@@ -211,6 +225,7 @@
     bind:value={$evaluation['notes']}
     id="evaluation-notes"
     on:change={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="report" field="notes" />
 </div>
 
 <div class="field">
@@ -219,6 +234,7 @@
     bind:value={$evaluation['evaluation_methods_used']}
     id="evaluation-evaluation-methods-used"
     on:change={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="report" field="evaluation_methods_used" />
 </div>
 
 <div class="field">
@@ -227,6 +243,7 @@
     bind:value={$evaluation['legal_disclaimer']}
     id="evaluation-legal-disclaimer"
     on:change={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="report" field="legal_disclaimer" />
 </div>
 
 <div class="field">
@@ -236,6 +253,7 @@
     bind:value={$evaluation['repository']}
     id="evaluation-repository"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="report" field="repository" />
 </div>
 
 <div class="field">
@@ -245,11 +263,13 @@
     bind:value={$evaluation['feedback']}
     id="evaluation-feedback"
     on:blur={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="report" field="feedback" />
 </div>
 
 <div class="field">
   <label for="evaluation-license">License</label>
   <Select id="evaluation-license" inputStyles="border: 1px solid var(--grey);" items={spdxLicenses} value={$evaluation['license']} on:select={handleLicenseSelect} on:clear={handleLicenseClear} />
+  <HelpText type="report" field="license" />
 </div>
 
 <!-- TODO add related ACR URLs as an array of values. -->

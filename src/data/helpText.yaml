@@ -1,5 +1,31 @@
 product:
-  name:
-    help: ""
-  version:
-    help: "Provide version if available."
+  name: ""
+  version: "Provide version if available."
+  description: ""
+author:
+  name: ""
+  company_name: ""
+  address: ""
+  email: ""
+  phone: ""
+  website: ""
+vendor:
+  name: ""
+  company_name: ""
+  address: ""
+  email: ""
+  phone: ""
+  website: ""
+report:
+  report_date: ""
+  notes: ""
+  evaluation_methods_used: ""
+  legal_disclaimer: ""
+  repository: ""
+  feedback: ""
+  license: ""
+chapter:
+  notes: ""
+components:
+  level: ""
+  notes: ""

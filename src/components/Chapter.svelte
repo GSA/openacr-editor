@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { useLocation } from "svelte-navigator";
   import Header from "./Header.svelte";
+  import HelpText from "../components/HelpText.svelte";
   import Criteria from "./Criteria.svelte";
   import LinkToGuidance from "./LinkToGuidance.svelte";
   import Pager from "./Pager.svelte";
@@ -48,6 +49,7 @@
       cols="20"
       rows="5"
       on:change={() => evaluation.updateCache($evaluation)} />
+      <HelpText type="chapters" field="notes" />
   </div>
 
   {#each currentChapter.criteria as criteria, i (criteria.id)}
