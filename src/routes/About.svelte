@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import Header from "../components/Header.svelte";
   import Pager from "../components/Pager.svelte";
+  import HelpText from "../components/HelpText.svelte";
   import PagerLink from "../components/PagerLink.svelte";
   import { evaluation } from "../stores/evaluation.js";
   import { currentPage } from "../stores/currentPage.js";
@@ -58,6 +59,7 @@
     bind:value={$evaluation['product']['name']}
     id="evaluation-product-name"
     on:blur={() => evaluation.updateCache($evaluation)} />
+  <HelpText type="product" field="name" />
 </div>
 
 <div class="field">
@@ -67,6 +69,7 @@
     bind:value={$evaluation['product']['version']}
     id="evaluation-product-version"
     on:blur={() => evaluation.updateCache($evaluation)} />
+  <HelpText type="product" field="version" />
 </div>
 
 <div class="field">

@@ -1,0 +1,5 @@
+product:
+  name:
+    help: ""
+  version:
+    help: "Provide version if available."
