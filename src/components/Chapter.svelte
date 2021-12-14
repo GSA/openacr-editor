@@ -49,7 +49,7 @@
       cols="20"
       rows="5"
       on:change={() => evaluation.updateCache($evaluation)} />
-      <HelpText type="chapters" field="notes" />
+    <HelpText type="chapters" field="notes" />
   </div>
 
   {#each currentChapter.criteria as criteria, i (criteria.id)}
