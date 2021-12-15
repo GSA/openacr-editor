@@ -34,6 +34,7 @@ export function createCleanEvaluation() {
     repository: "",
     feedback: "",
     license: "CC-BY-4.0",
+    related_openacrs: [],
     chapters: {},
   };
 

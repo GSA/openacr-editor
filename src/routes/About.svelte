@@ -47,16 +47,20 @@
   }
 
   function handleRelatedAdd() {
-    $evaluation['related_openacrs'].push({
+    const newRelatedOpenACR = {
       url: "",
       type: "primary"
-    });
+    };
+
+    $evaluation['related_openacrs'] = [...$evaluation['related_openacrs'], newRelatedOpenACR];
     evaluation.updateCache($evaluation);
   }
 
   function handleRelatedDelete(e) {
     if (window.confirm("Are you sure you would like to delete this related OpenACR?")) {
-      $evaluation['related_openacrs'].splice(e.detail, 1);
+      const newValue = $evaluation['related_openacrs'];
+      newValue.splice(e.detail, 1);
+      $evaluation['related_openacrs'] = newValue;
       evaluation.updateCache($evaluation);
     }
   }
@@ -295,7 +299,7 @@
 <p>{helpText["related_openacrs"]["intro"]}</p>
 
 {#each $evaluation['related_openacrs'] as related, index}
-  <Related id={index} count={index + 1} data={related} on:DELETE="{handleRelatedDelete}" />
+  <Related id={index} count={index + 1} on:DELETE="{handleRelatedDelete}" />
 {/each}
 
 <AddOther label="Add related OpenACR" on:ADD="{handleRelatedAdd}"></AddOther>

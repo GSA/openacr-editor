@@ -5,7 +5,6 @@
 
   export let id;
   export let count;
-  export let data;
 
   const dispatch = createEventDispatcher();
 
