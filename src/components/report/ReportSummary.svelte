@@ -27,3 +27,14 @@
   </h2>
   <a href="{$evaluation["feedback"]}">{$evaluation["feedback"]}</a>
 {/if}
+{#if $evaluation["related_openacrs"]}
+  <h2 id="related-openacrs{extraId}">
+    <a href="#related-openacrs{extraId}" aria-hidden="true" class="header-anchor">#</a>
+    Related OpenACRs
+  </h2>
+  <ul>
+    {#each $evaluation["related_openacrs"] as related}
+      <li><a href="{related.url}">{related.url} ({related.type})</a></li>
+    {/each}
+  </ul>
+{/if}

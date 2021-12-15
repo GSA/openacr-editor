@@ -8,6 +8,9 @@
   import { currentPage } from "../stores/currentPage.js";
   import spdxLicenseList from "spdx-license-list";
   import Select from 'svelte-select';
+  import helpText from "../data/helpText.yaml";
+  import Related from "../components/Related.svelte";
+  import AddOther from "../components/AddOther.svelte";
 
   onMount(() => {
     currentPage.update(currentPage => "About");
@@ -41,6 +44,21 @@
   function handleLicenseClear(e) {
     $evaluation['license'] = "";
     evaluation.updateCache($evaluation);
+  }
+
+  function handleRelatedAdd() {
+    $evaluation['related_openacrs'].push({
+      url: "",
+      type: "primary"
+    });
+    evaluation.updateCache($evaluation);
+  }
+
+  function handleRelatedDelete(e) {
+    if (window.confirm("Are you sure you would like to delete this related OpenACR?")) {
+      $evaluation['related_openacrs'].splice(e.detail, 1);
+      evaluation.updateCache($evaluation);
+    }
   }
 </script>
 
@@ -272,7 +290,15 @@
   <HelpText type="report" field="license" />
 </div>
 
-<!-- TODO add related ACR URLs as an array of values. -->
+<h2>Related OpenACRs</h2>
+
+<p>{helpText["related_openacrs"]["intro"]}</p>
+
+{#each $evaluation['related_openacrs'] as related, index}
+  <Related id={index} count={index + 1} data={related} on:DELETE="{handleRelatedDelete}" />
+{/each}
+
+<AddOther label="Add related OpenACR" on:ADD="{handleRelatedAdd}"></AddOther>
 
 <Pager label="Previous/Next Principle">
   <PagerLink to="/" direction="previous">Overview</PagerLink>
