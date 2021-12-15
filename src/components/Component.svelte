@@ -10,6 +10,8 @@
   $: currentComponent = components.find( ({ id }) => id === component);
   $: currentEvaluationCriteria = ($evaluation['chapters'] && $evaluation['chapters'][chapterId]['criteria']) ? $evaluation['chapters'][chapterId]['criteria'].find( ({ num }) => num === criteria) : null;
   $: currentEvaluationComponent = (currentEvaluationCriteria) ? currentEvaluationCriteria.components.find( ({ name }) => name === component) : null;
+  $: currentEvaluationCriteriaIndex = ($evaluation['chapters'] && $evaluation['chapters'][chapterId]['criteria']) ? $evaluation['chapters'][chapterId]['criteria'].findIndex( ({ num }) => num === criteria) : null;
+  $: currentEvaluationComponentIndex = (currentEvaluationCriteria) ? currentEvaluationCriteria.components.findIndex( ({ name }) => name === component) : null;
 </script>
 
 <style>
@@ -34,7 +36,7 @@
       <select
         id="evaluation-{criteria}-{component}-level"
         name="evaluation-{criteria}-{component}-level"
-        bind:value={currentEvaluationComponent['adherence']['level']}
+        bind:value={$evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['level']}
         on:blur={() => {
           evaluation.updateCache($evaluation);
         }}>
@@ -48,7 +50,7 @@
     <div class="field">
       <label for="evaluation-{criteria}-{component}-notes">Notes</label>
       <textarea
-        bind:value={currentEvaluationComponent['adherence']['notes']}
+        bind:value={$evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']}
         id="evaluation-{criteria}-{component}-notes"
         on:change={() => evaluation.updateCache($evaluation)} />
       <HelpText type="components" field="notes" />
