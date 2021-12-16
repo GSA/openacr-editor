@@ -11,6 +11,7 @@
   import helpText from "../data/helpText.yaml";
   import Related from "../components/Related.svelte";
   import AddOther from "../components/AddOther.svelte";
+  import FocusHeader from "../components/FocusHeader.svelte";
 
   onMount(() => {
     currentPage.update(currentPage => "About");
@@ -72,7 +73,7 @@
 
 <Header>About</Header>
 
-<h2>Product</h2>
+<FocusHeader id="product" level=2>Product</FocusHeader>
 
 <div class="field">
   <label for="evaluation-product-name">Name</label>
@@ -103,7 +104,7 @@
   <HelpText type="product" field="description" />
 </div>
 
-<h2>Author</h2>
+<FocusHeader id="author" level=2>Author</FocusHeader>
 
 <div class="field">
   <label for="evaluation-author-name">Name</label>
@@ -165,7 +166,7 @@
   <HelpText type="author" field="website" />
 </div>
 
-<h2>Vendor</h2>
+<FocusHeader id="vendor" level=2>Vendor</FocusHeader>
 
 <div class="field">
   <label for="evaluation-vendor-name">Name</label>
@@ -227,7 +228,7 @@
   <HelpText type="vendor" field="website" />
 </div>
 
-<h2>ACR Report Details</h2>
+<FocusHeader id="acr-report-details" level=2>ACR Report Details</FocusHeader>
 
 <div class="field">
   <label for="evaluation-report-date">
@@ -294,7 +295,7 @@
   <HelpText type="report" field="license" />
 </div>
 
-<h2>Related OpenACRs</h2>
+<FocusHeader id="related-openacrs" level=2>Related OpenACRs</FocusHeader>
 
 <p>{helpText["related_openacrs"]["intro"]}</p>
 

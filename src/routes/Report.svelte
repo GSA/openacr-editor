@@ -3,6 +3,7 @@
   import { useLocation } from "svelte-navigator";
 
   import Header from "../components/Header.svelte";
+  import FocusHeader from "../components/FocusHeader.svelte";
   import ReportHeader from "../components/report/ReportHeader.svelte";
   import ReportSummary from "../components/report/ReportSummary.svelte";
   import ReportLicense from "../components/report/ReportLicense.svelte";
@@ -45,9 +46,6 @@
 {/each}
 <ReportSummary />
 {#if $evaluation.license }
-  <h2 id="license-editor">
-    <a href="#license-editor" aria-hidden="true" class="header-anchor">#</a>
-    License
-  </h2>
+  <FocusHeader id="license" level=2>License</FocusHeader>
   <ReportLicense />
 {/if}

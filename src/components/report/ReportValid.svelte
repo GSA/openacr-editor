@@ -1,4 +1,5 @@
 <script>
+  import FocusHeader from "../FocusHeader.svelte";
   import { evaluation } from "../../stores/evaluation.js";
   import { validate } from "../../utils/validate.js";
   import marked from "marked";
@@ -7,16 +8,13 @@
 </script>
 
 <style>
-  h2 {
-    display: flex;
-  }
   div:focus {
     outline: none;
   }
 </style>
 
 <div>
-  <h2>Validation</h2>
+  <FocusHeader id="validation" level=2>Validation</FocusHeader>
 
   <p>{@html marked(valid.message)}</p>
 </div>
