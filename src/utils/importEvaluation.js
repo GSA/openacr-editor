@@ -33,6 +33,9 @@ export function importEvaluation(event) {
         if (!converted.license) {
           converted["license"] = "CC-BY-4.0";
         }
+        if (!converted.related_openacrs) {
+          converted["related_openacrs"] = [];
+        }
 
         // Initialize any missing chapters, components, and criteria.
         for (const chapter of chapters) {
