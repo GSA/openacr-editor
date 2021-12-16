@@ -29,3 +29,7 @@ chapter:
 components:
   level: ""
   notes: ""
+related_openacrs:
+  intro: "URLs to related OpenACRs. E.g. CKEditor is a library used by Drupal and both have OpenACRs."
+  url: ""
+  type: ""
