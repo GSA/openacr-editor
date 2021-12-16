@@ -16,7 +16,7 @@ vendor:
   phone: "Vendor phone number."
   website: "Website for the vendor or offering."
 report:
-  report_date: "Date last modified (DD/MM/YYYY)."
+  report_date: "Date last modified (MM/DD/YYYY)."
   notes: "Any comments that you would like to add for the report. This can include related projects."
   evaluation_methods_used: "Please describe in detail how this report was created. What tools and processes were used. How many and what type of pages were evaluated, along with anythng else which would provide context."
   legal_disclaimer: "Optional field for legal disclaimer. Please list license here if it is not released under an open license. "
