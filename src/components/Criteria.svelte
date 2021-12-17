@@ -1,5 +1,5 @@
 <script>
-  import FocusHeader from "./FocusHeader.svelte";
+  import HeaderWithAnchor from "./HeaderWithAnchor.svelte";
   import { Link } from "svelte-navigator";
   import Component from "./Component.svelte";
   import LinkToGuidance from "./LinkToGuidance.svelte";
@@ -26,7 +26,7 @@
 </style>
 
 <div {id} class="criteria">
-  <FocusHeader id="{id}" level=2>{id}: {handle}</FocusHeader>
+  <HeaderWithAnchor id="{id}" level=2>{id}: {handle}</HeaderWithAnchor>
   <span class="observation__meta">
     <Link to={`/report#${alt_id}-editor`}>
       View in Report

@@ -2,7 +2,7 @@
   import { evaluation } from "../../stores/evaluation.js";
   import { getCatalogChapter } from "../../utils/getCatalogItems.js";
   import ReportChapterTableResult from "./ReportChapterTableResult.svelte";
-  import FocusHeader from "../FocusHeader.svelte";
+  import HeaderWithAnchor from "../HeaderWithAnchor.svelte";
 
   export let standard;
   export let chapterId;
@@ -35,7 +35,7 @@
   }
 </style>
 
-<FocusHeader id={chapterId} level=3 {download}>{chapter.label}</FocusHeader>
+<HeaderWithAnchor id={chapterId} level=3 {download}>{chapter.label}</HeaderWithAnchor>
 
 {#if $evaluation['chapters'][chapterId]['notes']}
   Notes: {$evaluation['chapters'][chapterId]['notes']}

@@ -2,7 +2,7 @@
   import { evaluation } from "../stores/evaluation.js";
   import { components, terms } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import HelpText from "../components/HelpText.svelte";
-  import FocusHeader from "./FocusHeader.svelte";
+  import HeaderWithAnchor from "./HeaderWithAnchor.svelte";
 
   export let chapterId;
   export let criteria;
@@ -22,7 +22,7 @@
 </style>
 
 {#if currentComponent.label }
-  <FocusHeader id="{criteria}-{component}" level=3>{currentComponent.label}</FocusHeader>
+  <HeaderWithAnchor id="{criteria}-{component}" level=3>{currentComponent.label}</HeaderWithAnchor>
 {:else}
   <br/><br/>
 {/if}

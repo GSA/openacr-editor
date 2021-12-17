@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import Header from "../components/Header.svelte";
+  import DTWithAnchor from "../components/DTWithAnchor.svelte";
   import { currentPage } from "../stores/currentPage.js";
 
   onMount(() => {
@@ -19,50 +20,50 @@
 </p>
 
 <dl>
-  <dt>Accessibility</dt>
+  <DTWithAnchor id="accessibility">Accessibility</DTWithAnchor>
   <dd>The measure of a web page's usability by persons with one or more disabilities.</dd>
-  <dt>Accessibility Conformance Report (ACR)</dt>
+  <DTWithAnchor id="accessibility-conformance-report">Accessibility Conformance Report (ACR)</DTWithAnchor>
   <dd>A description how the offering will address all of the accessibility requirements outlined in the solicitation and the
     evaluation methods used to validate the findings.</dd>
-  <dt>Accessibility Maturity Model</dt>
+  <DTWithAnchor id="accessibility-maturity-model">Accessibility Maturity Model</DTWithAnchor>
   <dd>An assessment of an organization's understanding and capacity to address accessibility. This often includes ensuring that an
   organization includes people with disability in staff (including in positions of responsibility).</dd>
-  <dt>Accessibility Statement</dt>
+  <DTWithAnchor id="accessibility-statement">Accessibility Statement</DTWithAnchor>
   <dd>A written confirmation about an organization's concern and work on being more inclusive for people with disabilities.
   This usually provides information about accessibility goals and efforts to achieve them. Often there are links to ACRs if the
   organization sells products or services. </dd>
-  <dt>Accommodations</dt>
+  <DTWithAnchor id="accommodations">Accommodations</DTWithAnchor>
   <dd>The modification of a product or service so that an individual can perform job functions efficiently and safely. This is often needed
     if a product fails to meet Section 508 requirements. Accommodations after the fact are always more expensive than building an accessible solution.</dd>
-  <dt>Assistive technologies</dt>
+  <DTWithAnchor id="assistive-technologies">Assistive technologies</DTWithAnchor>
   <dd>Technology designed so people with disabilities have greater functional capabilities with computer-based systems.
     This could be software or hardware and often benefits a broader range of computer users.</dd>
-  <dt>Americans with Disabilities Act of 1990 (ADA)</dt>
+  <DTWithAnchor id="americans-with-disabilities-act-of-1990-ada">Americans with Disabilities Act of 1990 (ADA)</DTWithAnchor>
   <dd>A United States civil rights law that prohibits discrimination based on disability.</dd>
-  <dt>Automated Testing</dt>
+  <DTWithAnchor id="automated-testing">Automated Testing</DTWithAnchor>
   <dd>Software can now test for many accessibility barriers. This is becoming increasingly important piece of developing and maintaining software.
     No automated tools can check for all Section 508 requirements, and so automated testing is a necessary part of an effective
     testing strategy but insufficient on its own.</dd>
-  <dt>Barrier</dt>
+  <DTWithAnchor id="barrier">Barrier</DTWithAnchor>
   <dd>Includes anything physical, architectural, technological or attitudinal, anything that is based on information or
     communications or anything that is the result of a policy or a practice that hinders the full and equal participation
     in society of persons with an impairment, including a physical, mental, intellectual, cognitive, learning, communication or
     sensory impairment or a functional limitation.</dd>
-  <dt>Commercial off-the-shelf (COTS)</dt>
+  <DTWithAnchor id="commerical-off-the-shelf-cots">Commercial off-the-shelf (COTS)</DTWithAnchor>
   <dd>Software that can be purchased and implemented with little or no customization requirements.</dd>
-  <dt>Content management system (CMS)</dt>
+  <DTWithAnchor id="content-management-system-cms">Content management system (CMS)</DTWithAnchor>
   <dd>CMS is a software application used to oversee the operation of web information.
     Common CMS applications include software like WordPress and Drupal.</dd>
-  <dt>Customer Experience (CX) / Human Centred Design (HCD)</dt>
+  <DTWithAnchor id="customer-experiece-cx-human-centered-design-hcd">Customer Experience (CX) / Human Centred Design (HCD)</DTWithAnchor>
   <dd>The totality of cognitive, affective, sensory, and behavioral responses during all stages of the process. Effective CX and HCD also
     includes people with disabilities.</dd>
-  <dt>Disability</dt>
+  <DTWithAnchor id="disability">Disability</DTWithAnchor>
   <dd>Any impairment, including a physical, mental, intellectual, cognitive, learning, communication or sensory impairment — or a functional limitation —
     whether permanent, temporary or episodic in nature, or evident or not, that, in interaction with a barrier, hinders a person's
     full and equal participation in society. </dd>
-  <dt>Discoverability</dt>
+  <DTWithAnchor id="discoverability">Discoverability</DTWithAnchor>
   <dd>The ability of any feature to be found in the context in which it is needed.</dd>
-  <dt>European Harmonized Accessibility Standards (EN 301 549)</dt>
+  <DTWithAnchor id="european-harmonized-accessibility-standards-en-301-549">European Harmonized Accessibility Standards (EN 301 549)</DTWithAnchor>
   <dd>This is evolving to become the global standard for government policy.
     This is an evolving standard that roughly follows and extends the WCAG Guidelines.</dd>
   <dt>False positives</dt>

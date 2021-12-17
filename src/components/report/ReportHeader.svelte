@@ -1,6 +1,6 @@
 <script>
   import Header from "../Header.svelte";
-  import FocusHeader from "../FocusHeader.svelte";
+  import HeaderWithAnchor from "../HeaderWithAnchor.svelte";
   import { evaluation } from "../../stores/evaluation.js";
   import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { standardsIncluded } from "../../utils/getCatalogItems.js";
@@ -13,20 +13,20 @@
 <Header>{$evaluation.title}</Header>
 
 Based on {catalog.title}
-<FocusHeader id="name-of-product-version" level=2 {download}>Name of Product/Version</FocusHeader>
+<HeaderWithAnchor id="name-of-product-version" level=2 {download}>Name of Product/Version</HeaderWithAnchor>
 {$evaluation["product"]["name"]} {#if $evaluation["product"]["version"]} {$evaluation["product"]["version"]}{/if}
 
-<FocusHeader id="report-date" level=2 {download}>Report Date</FocusHeader>
+<HeaderWithAnchor id="report-date" level=2 {download}>Report Date</HeaderWithAnchor>
 {$evaluation.report_date}
 
 {#if $evaluation["product"]["description"]}
-  <FocusHeader id="product-description" level=2 {download}>Product Description</FocusHeader>
+  <HeaderWithAnchor id="product-description" level=2 {download}>Product Description</HeaderWithAnchor>
   {$evaluation["product"]["description"]}
 {/if}
 
-<FocusHeader id="contact-information" level=2 {download}>Contact Information</FocusHeader>
+<HeaderWithAnchor id="contact-information" level=2 {download}>Contact Information</HeaderWithAnchor>
 {#if $evaluation["author"]}
-  <FocusHeader id="author" level=3 {download}>Author Information</FocusHeader>
+  <HeaderWithAnchor id="author" level=3 {download}>Author Information</HeaderWithAnchor>
   <ul>
     {#if $evaluation["author"]["name"]}<li>Name: {$evaluation["author"]["name"]}</li>{/if}
     {#if $evaluation["author"]["company_name"]}<li>Company: {$evaluation["author"]["company_name"]}</li>{/if}
@@ -37,7 +37,7 @@ Based on {catalog.title}
   </ul>
 {/if}
 {#if $evaluation["vendor"]}
-  <FocusHeader id="vendor" level=3 {download}>Vendor Information</FocusHeader>
+  <HeaderWithAnchor id="vendor" level=3 {download}>Vendor Information</HeaderWithAnchor>
   <ul>
     {#if $evaluation["vendor"]["name"]}<li>Name: {$evaluation["vendor"]["name"]}</li>{/if}
     {#if $evaluation["vendor"]["company_name"]}<li>Company: {$evaluation["vendor"]["company_name"]}</li>{/if}
@@ -49,16 +49,16 @@ Based on {catalog.title}
 {/if}
 
 {#if $evaluation["notes"]}
-  <FocusHeader id="notes" level=2 {download}>Notes</FocusHeader>
+  <HeaderWithAnchor id="notes" level=2 {download}>Notes</HeaderWithAnchor>
   {$evaluation["notes"]}
 {/if}
 
 {#if $evaluation["evaluation_methods_used"]}
-  <FocusHeader id="evaluation-methods" level=2 {download}>Evaluation Methods Used</FocusHeader>
+  <HeaderWithAnchor id="evaluation-methods" level=2 {download}>Evaluation Methods Used</HeaderWithAnchor>
   {$evaluation["evaluation_methods_used"]}
 {/if}
 
-<FocusHeader id="applicable-standards-guidelines" level=2 {download}>Applicable Standards/Guidelines</FocusHeader>
+<HeaderWithAnchor id="applicable-standards-guidelines" level=2 {download}>Applicable Standards/Guidelines</HeaderWithAnchor>
 This report covers the degree of conformance for the following accessibility standard/guidelines:
 
 <table class="usa-table">
@@ -78,7 +78,7 @@ This report covers the degree of conformance for the following accessibility sta
   </tbody>
 </table>
 
-<FocusHeader id="terms" level=2 {download}>Terms</FocusHeader>
+<HeaderWithAnchor id="terms" level=2 {download}>Terms</HeaderWithAnchor>
 The terms used in the Conformance Level information are defined as follows:
 <ul>
 {#each catalog.terms as term}
