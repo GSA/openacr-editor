@@ -2,13 +2,13 @@
   import { evaluation } from "../../stores/evaluation.js";
   import { getCatalogChapter } from "../../utils/getCatalogItems.js";
   import ReportChapterTableResult from "./ReportChapterTableResult.svelte";
+  import HeaderWithAnchor from "../HeaderWithAnchor.svelte";
 
   export let standard;
   export let chapterId;
   export let download = false;
 
   $: chapter = getCatalogChapter(chapterId);
-  const extraId = download ? "-download" : "-editor";
 </script>
 
 <style>
@@ -35,10 +35,7 @@
   }
 </style>
 
-<h3 id="{chapterId}{extraId}">
-  <a href="#{chapterId}{extraId}" aria-hidden="true" class="header-anchor">#</a>
-  {chapter.label}
-</h3>
+<HeaderWithAnchor id={chapterId} level=3 {download}>{chapter.label}</HeaderWithAnchor>
 
 {#if $evaluation['chapters'][chapterId]['notes']}
   Notes: {$evaluation['chapters'][chapterId]['notes']}

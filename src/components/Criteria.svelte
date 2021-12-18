@@ -1,4 +1,5 @@
 <script>
+  import HeaderWithAnchor from "./HeaderWithAnchor.svelte";
   import { Link } from "svelte-navigator";
   import Component from "./Component.svelte";
   import LinkToGuidance from "./LinkToGuidance.svelte";
@@ -16,9 +17,6 @@
   .criteria {
     margin-bottom: 2em;
   }
-  .criteria h2 {
-    font-size: 1.125em;
-  }
   .observation__meta {
     margin-left: auto;
     font-size: smaller;
@@ -28,7 +26,7 @@
 </style>
 
 <div {id} class="criteria">
-  <h2>{id}: {handle}</h2>
+  <HeaderWithAnchor id="{id}" level=2>{id}: {handle}</HeaderWithAnchor>
   <span class="observation__meta">
     <Link to={`/report#${alt_id}-editor`}>
       View in Report

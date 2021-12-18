@@ -11,6 +11,7 @@
   import helpText from "../data/helpText.yaml";
   import Related from "../components/Related.svelte";
   import AddOther from "../components/AddOther.svelte";
+  import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
 
   onMount(() => {
     currentPage.update(currentPage => "About");
@@ -72,7 +73,7 @@
 
 <Header>About</Header>
 
-<h2>Product</h2>
+<HeaderWithAnchor id="product" level=2>Product</HeaderWithAnchor>
 
 <div class="field">
   <label for="evaluation-product-name">Name</label>
@@ -103,7 +104,7 @@
   <HelpText type="product" field="description" />
 </div>
 
-<h2>Author</h2>
+<HeaderWithAnchor id="author" level=2>Author</HeaderWithAnchor>
 
 <div class="field">
   <label for="evaluation-author-name">Name</label>
@@ -165,7 +166,7 @@
   <HelpText type="author" field="website" />
 </div>
 
-<h2>Vendor</h2>
+<HeaderWithAnchor id="vendor" level=2>Vendor</HeaderWithAnchor>
 
 <div class="field">
   <label for="evaluation-vendor-name">Name</label>
@@ -227,7 +228,7 @@
   <HelpText type="vendor" field="website" />
 </div>
 
-<h2>ACR Report Details</h2>
+<HeaderWithAnchor id="acr-report-details" level=2>ACR Report Details</HeaderWithAnchor>
 
 <div class="field">
   <label for="evaluation-report-date">
@@ -294,7 +295,7 @@
   <HelpText type="report" field="license" />
 </div>
 
-<h2>Related OpenACRs</h2>
+<HeaderWithAnchor id="related-openacrs" level=2>Related OpenACRs</HeaderWithAnchor>
 
 <p>{helpText["related_openacrs"]["intro"]}</p>
 

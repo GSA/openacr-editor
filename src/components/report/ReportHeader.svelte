@@ -1,4 +1,6 @@
 <script>
+  import Header from "../Header.svelte";
+  import HeaderWithAnchor from "../HeaderWithAnchor.svelte";
   import { evaluation } from "../../stores/evaluation.js";
   import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { standardsIncluded } from "../../utils/getCatalogItems.js";
@@ -6,44 +8,25 @@
   $evaluation.title = $evaluation["product"]["name"] + " Accessibility Conformance Report";
 
   export let download = false;
-
-  const extraId = download ? "-download" : "-editor";
 </script>
 
-<h1>
-  {$evaluation.title}
-</h1>
+<Header>{$evaluation.title}</Header>
 
 Based on {catalog.title}
-<h2 id="name-of-product-version{extraId}">
-  <a href="#name-of-product-version{extraId}" aria-hidden="true" class="header-anchor">#</a>
-  Name of Product/Version
-</h2>
+<HeaderWithAnchor id="name-of-product-version" level=2 {download}>Name of Product/Version</HeaderWithAnchor>
 {$evaluation["product"]["name"]} {#if $evaluation["product"]["version"]} {$evaluation["product"]["version"]}{/if}
 
-<h2 id="report-date{extraId}">
-  <a href="#report-date{extraId}" aria-hidden="true" class="header-anchor">#</a>
-  Report Date
-</h2>
+<HeaderWithAnchor id="report-date" level=2 {download}>Report Date</HeaderWithAnchor>
 {$evaluation.report_date}
 
 {#if $evaluation["product"]["description"]}
-  <h2 id="product-description{extraId}">
-    <a href="#product-description{extraId}" aria-hidden="true" class="header-anchor">#</a>
-    Product Description
-  </h2>
+  <HeaderWithAnchor id="product-description" level=2 {download}>Product Description</HeaderWithAnchor>
   {$evaluation["product"]["description"]}
 {/if}
 
-<h2 id="contact-information{extraId}">
-  <a href="#contact-information{extraId}" aria-hidden="true" class="header-anchor">#</a>
-  Contact Information
-</h2>
+<HeaderWithAnchor id="contact-information" level=2 {download}>Contact Information</HeaderWithAnchor>
 {#if $evaluation["author"]}
-  <h3 id="author{extraId}">
-    <a href="#author{extraId}" aria-hidden="true" class="header-anchor">#</a>
-    Author Information
-  </h3>
+  <HeaderWithAnchor id="author" level=3 {download}>Author Information</HeaderWithAnchor>
   <ul>
     {#if $evaluation["author"]["name"]}<li>Name: {$evaluation["author"]["name"]}</li>{/if}
     {#if $evaluation["author"]["company_name"]}<li>Company: {$evaluation["author"]["company_name"]}</li>{/if}
@@ -54,10 +37,7 @@ Based on {catalog.title}
   </ul>
 {/if}
 {#if $evaluation["vendor"]}
-  <h3 id="vendor{extraId}">
-    <a href="#vendor{extraId}" aria-hidden="true" class="header-anchor">#</a>
-    Vendor Information
-  </h3>
+  <HeaderWithAnchor id="vendor" level=3 {download}>Vendor Information</HeaderWithAnchor>
   <ul>
     {#if $evaluation["vendor"]["name"]}<li>Name: {$evaluation["vendor"]["name"]}</li>{/if}
     {#if $evaluation["vendor"]["company_name"]}<li>Company: {$evaluation["vendor"]["company_name"]}</li>{/if}
@@ -69,25 +49,16 @@ Based on {catalog.title}
 {/if}
 
 {#if $evaluation["notes"]}
-  <h2 id="notes{extraId}">
-    <a href="#notes{extraId}" aria-hidden="true" class="header-anchor">#</a>
-    Notes
-  </h2>
+  <HeaderWithAnchor id="notes" level=2 {download}>Notes</HeaderWithAnchor>
   {$evaluation["notes"]}
 {/if}
 
 {#if $evaluation["evaluation_methods_used"]}
-  <h2 id="evaluation-methods{extraId}">
-    <a href="#evaluation-methods{extraId}" aria-hidden="true" class="header-anchor">#</a>
-    Evaluation Methods Used
-  </h2>
+  <HeaderWithAnchor id="evaluation-methods" level=2 {download}>Evaluation Methods Used</HeaderWithAnchor>
   {$evaluation["evaluation_methods_used"]}
 {/if}
 
-<h2 id="applicable-standards-guidelines{extraId}">
-  <a href="#applicable-standards-guidelines{extraId}" aria-hidden="true" class="header-anchor">#</a>
-  Applicable Standards/Guidelines
-</h2>
+<HeaderWithAnchor id="applicable-standards-guidelines" level=2 {download}>Applicable Standards/Guidelines</HeaderWithAnchor>
 This report covers the degree of conformance for the following accessibility standard/guidelines:
 
 <table class="usa-table">
@@ -107,10 +78,7 @@ This report covers the degree of conformance for the following accessibility sta
   </tbody>
 </table>
 
-<h2 id="terms{extraId}">
-  <a href="#terms{extraId}" aria-hidden="true" class="header-anchor">#</a>
-  Terms
-</h2>
+<HeaderWithAnchor id="terms" level=2 {download}>Terms</HeaderWithAnchor>
 The terms used in the Conformance Level information are defined as follows:
 <ul>
 {#each catalog.terms as term}

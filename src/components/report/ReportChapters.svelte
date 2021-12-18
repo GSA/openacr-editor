@@ -1,16 +1,12 @@
 <script>
+  import HeaderWithAnchor from "../HeaderWithAnchor.svelte";
   import ReportChapter from "./ReportChapter.svelte";
 
   export let standard;
   export let download = false;
-
-  const extraId = download ? "-download" : "-editor";
 </script>
 
-<h2 id="{standard.id}{extraId}">
-  <a href="#{standard.id}{extraId}" aria-hidden="true" class="header-anchor">#</a>
-  {standard.report_heading}
-</h2>
+<HeaderWithAnchor id={standard.id} level=2 {download}>{standard.report_heading}</HeaderWithAnchor>
 
 {#each standard.chapters as standardChapter}
   <ReportChapter {standard} chapterId={standardChapter} {download} />
