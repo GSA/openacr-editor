@@ -9,7 +9,10 @@
     "http://localhost:10001/about",
     "http://localhost:10001/acknowledgements",
     "http://localhost:10001/glossary",
-    "http://localhost:10001/report",
+    {
+      "url": "http://localhost:10001/report",
+      "timeout": 50000
+    },
     "http://localhost:10001/chapter/success_criteria_level_a",
     "http://localhost:10001/chapter/success_criteria_level_aa",
     "http://localhost:10001/chapter/success_criteria_level_aaa",
