@@ -4,7 +4,9 @@ With this tool, people can generate Accessibility Conformance Report in the [Ope
 
 ## ATAG Report Tool (ART)
 
-This editor is based on the [W3C ATAG Report Tool (ART)](https://github.com/w3c/wai-atag-report-tool).
+This software includes material copied from or derived from [W3C ATAG Report Tool (ART)](https://github.com/w3c/wai-atag-report-tool) and Copyright © 2021 W3C® (MIT, ERCIM, Keio, Beihang).
+
+[W3C Software notice and license](https://www.w3.org/Consortium/Legal/copyright-software).
 
 ## Development
 
