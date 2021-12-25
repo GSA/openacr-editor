@@ -7,6 +7,7 @@
   import PagerLink from "../components/PagerLink.svelte";
   import { currentPage } from "../stores/currentPage.js";
   import { terms } from '@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml';
+  import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
 
   onMount(() => {
     currentPage.update((currentPage) => "Overview");
@@ -52,7 +53,7 @@
 
 <details>
   <summary>
-    <h2 id="about-openacr">About OpenACR</h2>
+    <HeaderWithAnchor id="about-openacr" level=2>About OpenACR</HeaderWithAnchor>
   </summary>
   <p>
     OpenACR is a digital native Accessibility Conformance Report (ACR). The initial development is based on Section 508 requirements.
@@ -79,7 +80,7 @@
 
 <details>
   <summary>
-    <h2 id="structure-of-this-tool">Structure of this Tool</h2>
+    <HeaderWithAnchor id="structure-of-this-tool" level=2>Structure of this Tool</HeaderWithAnchor>
   </summary>
   <p>
     Following the structure of OpenACR, this tool takes you through 7
@@ -101,7 +102,7 @@
 
 <details>
   <summary>
-    <h2 id="result-choices">Result Choices</h2>
+    <HeaderWithAnchor id="result-choices" level=2>Result Choices</HeaderWithAnchor>
   </summary>
   <p>
     As you go through and enter conformance for your software, you will select a "term" for
