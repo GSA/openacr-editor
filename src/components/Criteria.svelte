@@ -26,16 +26,20 @@
 </style>
 
 <div {id} class="criteria">
-  <HeaderWithAnchor id="{id}" level=2>{id}: {handle}</HeaderWithAnchor>
-  <span class="observation__meta">
-    <Link to={`/report#${alt_id}-editor`}>
-      View in Report
-    </Link>
-  </span>
-  <LinkToGuidance href={linkToImplementing}>Implementing {id}: {handle}</LinkToGuidance>
-  {#if components}
-    {#each components as c}
-      <Component chapterId={chapterId} criteria={id} component={c} />
-    {/each}
-  {/if}
+  <details>
+    <summary>
+      <HeaderWithAnchor id="{id}" level=2>{id}: {handle}</HeaderWithAnchor>
+    </summary>
+    <span class="observation__meta">
+      <Link to={`/report#${alt_id}-editor`}>
+        View in Report
+      </Link>
+    </span>
+    <LinkToGuidance href={linkToImplementing}>Implementing {id}: {handle}</LinkToGuidance>
+    {#if components}
+      {#each components as c}
+        <Component chapterId={chapterId} criteria={id} component={c} />
+      {/each}
+    {/if}
+  </details>
 </div>

@@ -12,6 +12,7 @@
   import { standards, chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import chapterNavs from "../data/chapterNavs";
   import { evaluation } from "../stores/evaluation.js";
+  import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
 
   export let chapterId = null;
   export let className = undefined;
@@ -51,6 +52,8 @@
       on:change={() => evaluation.updateCache($evaluation)} />
     <HelpText type="chapters" field="notes" />
   </div>
+
+  <ExpandCollapseAll />
 
   {#each currentChapter.criteria as criteria, i (criteria.id)}
     <Criteria chapterId={chapterId} chapterLink={currentStandard.url} {...criteria} />

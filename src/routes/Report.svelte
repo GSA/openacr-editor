@@ -1,7 +1,6 @@
 <script>
   import { onMount } from "svelte";
   import { useLocation } from "svelte-navigator";
-
   import Header from "../components/Header.svelte";
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
   import ReportHeader from "../components/report/ReportHeader.svelte";
@@ -13,15 +12,12 @@
   import ReportYAMLDownload from "../components/report/ReportYAMLDownload.svelte";
   import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { evaluation } from "../stores/evaluation.js";
-
   import { currentPage } from "../stores/currentPage.js";
-
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
 
   const location = useLocation();
 
   onMount(() => {
-    let fragment;
     currentPage.update(currentPage => "Report");
 
     honourFragmentIdLinks($location);

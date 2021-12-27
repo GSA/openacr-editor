@@ -4,6 +4,11 @@ export function honourFragmentIdLinks(routerLocation) {
       `[id='${routerLocation.hash.replace("#", "")}']`
     );
 
+    // if inside a collapsed section, open it.
+    if (fragment.parentElement.nodeName === "DETAILS") {
+      fragment.parentElement.setAttribute("open", true);
+    }
+
     // explicitly move focus
     fragment.tabIndex = "-1";
     fragment.focus();
@@ -14,7 +19,7 @@ export function honourFragmentIdLinks(routerLocation) {
       block: "center",
     });
 
-    // by setting location.hash explictly, we ensure :target
+    // by setting location.hash explicitly, we ensure :target
     // selectors in CSS will work as expected
     window.location.hash = routerLocation.hash;
   }
