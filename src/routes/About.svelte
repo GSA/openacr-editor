@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { useLocation } from "svelte-navigator";
   import Header from "../components/Header.svelte";
   import Pager from "../components/Pager.svelte";
   import HelpText from "../components/HelpText.svelte";
@@ -13,9 +14,14 @@
   import AddOther from "../components/AddOther.svelte";
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
+  import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
+
+  const location = useLocation();
 
   onMount(() => {
     currentPage.update(currentPage => "About");
+
+    honourFragmentIdLinks($location);
   });
 
   let spdxLicenses = [];

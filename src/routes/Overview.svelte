@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { Link } from "svelte-navigator";
+  import { Link, useLocation } from "svelte-navigator";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
   import Header from "../components/Header.svelte";
   import Pager from "../components/Pager.svelte";
@@ -8,9 +8,14 @@
   import { currentPage } from "../stores/currentPage.js";
   import { terms } from '@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml';
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
+  import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
+
+  const location = useLocation();
 
   onMount(() => {
     currentPage.update((currentPage) => "Overview");
+
+    honourFragmentIdLinks($location);
   });
 </script>
 

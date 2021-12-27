@@ -68,6 +68,7 @@
     <NavItem to="/glossary">Glossary</NavItem>
   </Nav>
   <section
+    id="content"
     class="app-content"
     class:app-content--wide={!needsYourReport($currentPage) || !$showYourReport}
     aria-label="Main content">

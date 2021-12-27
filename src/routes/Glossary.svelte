@@ -1,11 +1,17 @@
 <script>
   import { onMount } from "svelte";
+  import { useLocation } from "svelte-navigator";
   import Header from "../components/Header.svelte";
   import DTWithAnchor from "../components/DTWithAnchor.svelte";
   import { currentPage } from "../stores/currentPage.js";
+  import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
+
+  const location = useLocation();
 
   onMount(() => {
     currentPage.update(currentPage => "Glossary");
+
+    honourFragmentIdLinks($location);
   });
 </script>
 
