@@ -1,0 +1,40 @@
+name: OpenACR editor cypress testing
+
+on:
+  pull_request:
+
+jobs:
+  build-test:
+    name: Building app, run app and tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source.
+        uses: actions/checkout@v2
+
+      - name: Install dependencies.
+        run: npm ci
+
+      - name: Build app.
+        run: export NODE_ENV=development && npm run build
+
+      - name: Run app.
+        run: export NODE_ENV=development && npm run dev &
+
+      - name: Run tests
+        run: npm test
+
+      - name: Publish test results.
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: cypress/results/*.xml
+          check_name: "Cypress Test Results"
+
+      - name: Archive test results.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-results
+          path: cypress/results
+          retention-days: 2
