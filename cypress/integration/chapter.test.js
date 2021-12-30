@@ -9,7 +9,7 @@ describe("All chapters", () => {
       cy.get("#evaluation-chapter-notes").should("exist");
     });
 
-    it(`chapter ${chapter} has load without an error`, () => {
+    it(`chapter ${chapter} has loaded without errors`, () => {
       cy.visit(`/chapter/${chapter}`, {
         onBeforeLoad(win) {
           cy.stub(win.console, "error").as("consoleError");

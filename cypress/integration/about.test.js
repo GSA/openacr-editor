@@ -11,7 +11,7 @@ describe("About", () => {
     cy.get("button").contains("+ Expand All Sections").click();
   });
 
-  it("enter product name and see it reflect in the sidebar", () => {
+  it("enter product name and see it reflected in the sidebar", () => {
     cy.get("#evaluation-product-name").type("Drupal");
 
     cy.get("h2.your-report__heading").should("contain", "Report for Drupal");
@@ -33,7 +33,7 @@ describe("About", () => {
     cy.get(".clearSelect").click().get(".selectedItem").should("not.exist");
   });
 
-  it("add and remove related OpenACRs without errors", () => {
+  it("add and remove related OpenACRs", () => {
     cy.get("button")
       .contains("Add related OpenACR")
       .as("addRelatedOpenACR")
