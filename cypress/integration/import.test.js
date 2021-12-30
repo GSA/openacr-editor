@@ -91,6 +91,21 @@ describe("Import", () => {
         "contain",
         `${yamlExample.support_documentation_and_services} of 5`
       );
+
+      cy.visit("/report", {
+        onBeforeLoad(win) {
+          cy.stub(win.console, "error").as("consoleError");
+        },
+      })
+        .get(".validation")
+        .should("contain", "Valid!")
+        .get("h1")
+        .should(
+          "contain",
+          `${yamlExample.reportname} Accessibility Conformance Report`
+        );
+
+      cy.get("@consoleError").should("not.be.called");
     });
   });
 });

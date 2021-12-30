@@ -13,8 +13,8 @@
   }
 </style>
 
-<div>
+<div class="validation">
   <HeaderWithAnchor id="validation" level=2>Validation</HeaderWithAnchor>
 
-  <p>{@html marked(valid.message)}</p>
+  {@html marked(valid.message)}
 </div>
