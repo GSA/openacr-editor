@@ -35,6 +35,8 @@ describe("Import", () => {
 
       cy.visit("/");
 
+      cy.on("window:alert", cy.stub().as("alerted"));
+
       cy.get('input[type="file"]').then(function ($input) {
         const blob = Cypress.Blob.binaryStringToBlob(
           this.yamlFixture,
@@ -50,9 +52,12 @@ describe("Import", () => {
         $input[0].dispatchEvent(new Event("change", { bubbles: true }));
       });
 
-      cy.on("window:alert", (txt) => {
-        expect(txt).to.contain(`OpenACR "${yamlExample.reportname}" loaded`);
-      });
+      cy.get("@alerted")
+        .should("have.been.calledOnce")
+        .and(
+          "have.been.calledWith",
+          `OpenACR "${yamlExample.reportname}" loaded`
+        );
 
       cy.get("h2.your-report__heading").should(
         "contain",
@@ -107,5 +112,36 @@ describe("Import", () => {
 
       cy.get("@consoleError").should("not.be.called");
     });
+  });
+
+  it(`should reject invalid example`, () => {
+    const fileType = "application/x-yaml";
+    const yamlExample = {
+      filename: "invalid-basic.yaml",
+    };
+    cy.fixture(yamlExample.filename).as("yamlFixture");
+
+    cy.visit("/");
+
+    cy.on("window:alert", cy.stub().as("alerted"));
+
+    cy.get('input[type="file"]').then(function ($input) {
+      const blob = Cypress.Blob.binaryStringToBlob(this.yamlFixture, fileType);
+      const file = new File([blob], yamlExample.filename, { type: fileType });
+      const list = new DataTransfer();
+
+      list.items.add(file);
+      const myFileList = list.files;
+
+      $input[0].files = myFileList;
+      $input[0].dispatchEvent(new Event("change", { bubbles: true }));
+    });
+
+    cy.get("@alerted")
+      .should("have.been.calledOnce")
+      .and(
+        "have.been.calledWith",
+        "No data found or invalid import. Message: Cannot read properties of undefined (reading 'success_criteria_level_a')"
+      );
   });
 });
