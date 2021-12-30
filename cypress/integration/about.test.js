@@ -2,7 +2,12 @@
 
 describe("About", () => {
   before(() => {
-    cy.visit("/about");
+    cy.visit("/about", {
+      onBeforeLoad(win) {
+        cy.stub(win.console, "error").as("consoleError");
+      },
+    });
+    cy.get("@consoleError").should("not.be.called");
     cy.get("button").contains("+ Expand All Sections").click();
   });
 
