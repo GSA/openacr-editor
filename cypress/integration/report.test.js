@@ -88,6 +88,18 @@ describe("Report", () => {
     );
   });
 
+  it("should not show license header when license is cleared", () => {
+    cy.visit("/about");
+    cy.get("button").contains("+ Expand All Sections").click();
+    cy.get(".clearSelect").click();
+
+    cy.get("button").contains("View Report").click();
+
+    cy.get(".validation").should("contain", "Valid!");
+
+    cy.get("#content").should("not.contain", "License");
+  });
+
   it("should show entered related OpenACR", () => {
     cy.visit("/about");
     cy.get("button").contains("+ Expand All Sections").click();
