@@ -3,3 +3,4 @@ public/build
 /public/index.html
 .vscode
 cypress/results
+.nova
