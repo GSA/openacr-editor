@@ -10,6 +10,18 @@ describe("Report", () => {
     cy.get("@consoleError").should("not.be.called");
   });
 
+  it("should have default filename", () => {
+    cy.get("a")
+      .contains("Download Report (YAML)")
+      .invoke("attr", "download")
+      .should("contain", "report.yaml");
+
+    cy.get("a")
+      .contains("Download Report (HTML)")
+      .invoke("attr", "download")
+      .should("contain", "report.html");
+  });
+
   it("should show entered name and version", () => {
     cy.visit("/about");
     cy.get("button").contains("+ Expand All Sections").click();
@@ -21,12 +33,32 @@ describe("Report", () => {
     cy.get(".validation").should("contain", "Valid!");
 
     cy.get("#content").should("contain", "Drupal 9.1");
+
+    cy.get("a")
+      .contains("Download Report (YAML)")
+      .invoke("attr", "download")
+      .should("contain", "drupal-9.1.yaml");
+
+    cy.get("a")
+      .contains("Download Report (YAML)")
+      .invoke("attr", "href")
+      .should("include", "data:application/yaml");
+
+    cy.get("a")
+      .contains("Download Report (HTML)")
+      .invoke("attr", "download")
+      .should("contain", "drupal-9.1.html");
+
+    cy.get("a")
+      .contains("Download Report (HTML)")
+      .invoke("attr", "href")
+      .should("include", "blob:");
   });
 
   it("should show entered report date", () => {
     cy.visit("/about");
     cy.get("button").contains("+ Expand All Sections").click();
-    cy.get("#evaluation-report-date").type("12/31/2021");
+    cy.get("#evaluation-report-date").clear().type("12/31/2021");
 
     cy.get("button").contains("View Report").click();
 
