@@ -125,7 +125,7 @@ describe("Import", () => {
 
     cy.on("window:alert", cy.stub().as("alerted"));
 
-    cy.get('input[type="file"]').then(function ($input) {
+    cy.get("input[type='file']").then(function ($input) {
       const blob = Cypress.Blob.binaryStringToBlob(this.yamlFixture, fileType);
       const file = new File([blob], yamlExample.filename, { type: fileType });
       const list = new DataTransfer();
