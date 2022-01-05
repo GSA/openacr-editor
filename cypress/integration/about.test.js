@@ -17,6 +17,12 @@ describe("About", () => {
     cy.get("h2.your-report__heading").should("contain", "Report for Drupal");
   });
 
+  it("default report date is today and in local format", () => {
+    const today = new Date().toLocaleDateString();
+
+    cy.get("#evaluation-report-date").should("have.value", today);
+  });
+
   it("license dropdown is searchaeble", () => {
     cy.get("#evaluation-license")
       .type("creative commons")
