@@ -82,7 +82,7 @@
 
 <ExpandCollapseAll />
 
-<details>
+<details open>
   <summary>
     <HeaderWithAnchor id="product" level=2>Product</HeaderWithAnchor>
   </summary>
@@ -117,7 +117,7 @@
   </div>
 </details>
 
-<details>
+<details open>
   <summary>
     <HeaderWithAnchor id="author" level=2>Author</HeaderWithAnchor>
   </summary>
@@ -183,7 +183,7 @@
   </div>
 </details>
 
-<details>
+<details open>
   <summary>
     <HeaderWithAnchor id="vendor" level=2>Vendor</HeaderWithAnchor>
   </summary>
@@ -249,7 +249,7 @@
   </div>
 </details>
 
-<details>
+<details open>
   <summary>
     <HeaderWithAnchor id="acr-report-details" level=2>ACR Report Details</HeaderWithAnchor>
   </summary>
@@ -320,7 +320,7 @@
   </div>
 </details>
 
-<details>
+<details open>
   <summary>
     <HeaderWithAnchor id="related-openacrs" level=2>Related OpenACRs</HeaderWithAnchor>
   </summary>

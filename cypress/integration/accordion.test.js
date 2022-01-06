@@ -6,7 +6,6 @@ describe("Accordions", () => {
 
     cy.visit("/about#author-editor");
     cy.focused()
-      .click()
       .get(authorNameField)
       .should("be.visible")
       .focused()
@@ -15,18 +14,17 @@ describe("Accordions", () => {
       .should("not.be.visible");
   });
 
-  it("can all be expanded and collapsed", () => {
+  it("can all be collapsed and expanded", () => {
     cy.visit("/about");
-    cy.get("button")
-      .contains("+ Expand All Sections")
-      .click()
-      .get("details")
-      .should("have.attr", "open");
-
     cy.get("button")
       .contains("− Collapse All Sections")
       .click()
       .get("details")
       .should("not.have.attr", "open");
+    cy.get("button")
+      .contains("+ Expand All Sections")
+      .click()
+      .get("details")
+      .should("have.attr", "open");
   });
 });

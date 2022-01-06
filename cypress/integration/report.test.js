@@ -24,7 +24,6 @@ describe("Report", () => {
 
   it("should show entered name and version", () => {
     cy.visit("/about");
-    cy.get("button").contains("+ Expand All Sections").click();
     cy.get("#evaluation-product-name").type("Drupal");
     cy.get("#evaluation-product-version").type("9.1");
 
@@ -57,7 +56,6 @@ describe("Report", () => {
 
   it("should show entered report date", () => {
     cy.visit("/about");
-    cy.get("button").contains("+ Expand All Sections").click();
     cy.get("#evaluation-report-date").clear().type("12/31/2021");
 
     cy.get("button").contains("View Report").click();
@@ -69,7 +67,6 @@ describe("Report", () => {
 
   it("should show selected license", () => {
     cy.visit("/about");
-    cy.get("button").contains("+ Expand All Sections").click();
     cy.get("#evaluation-license")
       .type("creative commons")
       .get(".listContainer")
@@ -90,7 +87,6 @@ describe("Report", () => {
 
   it("should not show license header when license is cleared", () => {
     cy.visit("/about");
-    cy.get("button").contains("+ Expand All Sections").click();
     cy.get(".clearSelect").click();
 
     cy.get("button").contains("View Report").click();
@@ -102,7 +98,6 @@ describe("Report", () => {
 
   it("should show entered related OpenACR", () => {
     cy.visit("/about");
-    cy.get("button").contains("+ Expand All Sections").click();
 
     cy.get("button")
       .contains("Add related OpenACR")
