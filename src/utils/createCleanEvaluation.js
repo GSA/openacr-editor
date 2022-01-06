@@ -46,7 +46,7 @@ export function createCleanEvaluation() {
         components.push({
           name: component,
           adherence: {
-            level: "not-evaluated",
+            level: "",
             notes: "",
           },
         });

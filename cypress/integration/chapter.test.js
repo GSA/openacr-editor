@@ -36,7 +36,23 @@ describe("Chapter", () => {
 
     cy.get(progressBarA).should("contain", "1 of 100");
 
+    cy.get(nonTextContentWebComponentLevelField).select("Partially Supports");
+
+    cy.get(progressBarA).should("contain", "1 of 100");
+
+    cy.get(nonTextContentWebComponentLevelField).select("Does Not Support");
+
+    cy.get(progressBarA).should("contain", "1 of 100");
+
+    cy.get(nonTextContentWebComponentLevelField).select("Not Applicable");
+
+    cy.get(progressBarA).should("contain", "1 of 100");
+
     cy.get(nonTextContentWebComponentLevelField).select("Not Evaluated");
+
+    cy.get(progressBarA).should("contain", "1 of 100");
+
+    cy.get(nonTextContentWebComponentLevelField).select("");
 
     cy.get(progressBarA).should("contain", "0 of 100");
   });

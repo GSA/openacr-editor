@@ -5,10 +5,10 @@ describe("Import", () => {
     {
       filename: "drupal-9.yaml",
       reportname: "Drupal",
-      total: 183,
+      total: 184,
       success_criteria_level_a: 100,
       success_criteria_level_aa: 48,
-      success_criteria_level_aaa: 22,
+      success_criteria_level_aaa: 23,
       functional_performance_criteria: 9,
       hardware: 0,
       software: 0,

@@ -41,6 +41,7 @@
         on:blur={() => {
           evaluation.updateCache($evaluation);
         }}>
+        <option name="option-evaluation-{criteria}-{component}-level-none" value="">- Select -</option>
         {#each terms as term}
           <option name="option-evaluation-{criteria}-{component}-level-{term.id}" value={term.id}>{term.label}</option>
         {/each}
