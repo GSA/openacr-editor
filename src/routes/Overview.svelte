@@ -45,7 +45,7 @@
     page lists the success criteria that you have checked and not checked.
   </li>
   <li>
-    You can export your report as YAML (structured data) but also as HTML (web page) and Markdown (simple markup). Note: You will not be able
+    You can export your report as YAML (structured data) but also as HTML (web page). Note: You will not be able
     to edit the report the future without the YAML file.
   </li>
   <li>

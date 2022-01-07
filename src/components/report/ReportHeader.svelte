@@ -4,6 +4,7 @@
   import { evaluation } from "../../stores/evaluation.js";
   import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { standardsIncluded } from "../../utils/getCatalogItems.js";
+  import marked from 'marked';
 
   $evaluation.title = $evaluation["product"]["name"] + " Accessibility Conformance Report";
 
@@ -21,7 +22,7 @@ Based on {catalog.title}
 
 {#if $evaluation["product"]["description"]}
   <HeaderWithAnchor id="product-description" level=2 {download}>Product Description</HeaderWithAnchor>
-  {$evaluation["product"]["description"]}
+  {@html marked($evaluation["product"]["description"])}
 {/if}
 
 <HeaderWithAnchor id="contact-information" level=2 {download}>Contact Information</HeaderWithAnchor>
@@ -50,12 +51,12 @@ Based on {catalog.title}
 
 {#if $evaluation["notes"]}
   <HeaderWithAnchor id="notes" level=2 {download}>Notes</HeaderWithAnchor>
-  {$evaluation["notes"]}
+  {@html marked($evaluation["notes"])}
 {/if}
 
 {#if $evaluation["evaluation_methods_used"]}
   <HeaderWithAnchor id="evaluation-methods" level=2 {download}>Evaluation Methods Used</HeaderWithAnchor>
-  {$evaluation["evaluation_methods_used"]}
+  {@html marked($evaluation["evaluation_methods_used"])}
 {/if}
 
 <HeaderWithAnchor id="applicable-standards-guidelines" level=2 {download}>Applicable Standards/Guidelines</HeaderWithAnchor>

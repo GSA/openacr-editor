@@ -50,7 +50,7 @@
     </div>
 
     <div class="field">
-      <label for="evaluation-{criteria}-{component}-notes">Notes</label>
+      <label for="evaluation-{criteria}-{component}-notes">Remarks and Explanations</label>
       <textarea
         bind:value={$evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']}
         id="evaluation-{criteria}-{component}-notes"

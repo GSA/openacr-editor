@@ -24,7 +24,6 @@ describe("Report", () => {
 
   it("should show entered name and version", () => {
     cy.visit("/about");
-    cy.get("button").contains("+ Expand All Sections").click();
     cy.get("#evaluation-product-name").type("Drupal");
     cy.get("#evaluation-product-version").type("9.1");
 
@@ -57,7 +56,6 @@ describe("Report", () => {
 
   it("should show entered report date", () => {
     cy.visit("/about");
-    cy.get("button").contains("+ Expand All Sections").click();
     cy.get("#evaluation-report-date").clear().type("12/31/2021");
 
     cy.get("button").contains("View Report").click();
@@ -69,7 +67,6 @@ describe("Report", () => {
 
   it("should show selected license", () => {
     cy.visit("/about");
-    cy.get("button").contains("+ Expand All Sections").click();
     cy.get("#evaluation-license")
       .type("creative commons")
       .get(".listContainer")
@@ -90,7 +87,6 @@ describe("Report", () => {
 
   it("should not show license header when license is cleared", () => {
     cy.visit("/about");
-    cy.get("button").contains("+ Expand All Sections").click();
     cy.get(".clearSelect").click();
 
     cy.get("button").contains("View Report").click();
@@ -102,7 +98,6 @@ describe("Report", () => {
 
   it("should show entered related OpenACR", () => {
     cy.visit("/about");
-    cy.get("button").contains("+ Expand All Sections").click();
 
     cy.get("button")
       .contains("Add related OpenACR")
@@ -124,7 +119,7 @@ describe("Report", () => {
     );
   });
 
-  it("should show entered level and notes for component", () => {
+  it("should show entered level and notes for a criteria", () => {
     cy.visit("/chapter/success_criteria_level_a");
     cy.get("button").contains("+ Expand All Sections").click();
 
@@ -140,5 +135,24 @@ describe("Report", () => {
       .should("be.focused")
       .should("contain", "Web: Supports")
       .should("contain", "Web: Does support non-text content.");
+  });
+
+  it("should render markdown in notes columns for a criteria", () => {
+    cy.visit("/chapter/success_criteria_level_a");
+    cy.get("button").contains("+ Expand All Sections").click();
+
+    cy.get("textarea[id='evaluation-1.1.1-web-notes']").clear();
+
+    cy.get("textarea[id='evaluation-1.1.1-web-notes']").type(
+      "[Drupal 8](https://www.drupal.org/) requires alt text for images by default."
+    );
+
+    cy.get("a[href='/report#text-equiv-all-editor']").click();
+
+    cy.get(
+      "#success_criteria_level_a-editor + table tbody tr td:nth-child(3) a"
+    )
+      .should("have.attr", "href")
+      .and("contains", "https://www.drupal.org/");
   });
 });

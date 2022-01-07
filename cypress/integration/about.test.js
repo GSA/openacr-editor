@@ -8,7 +8,6 @@ describe("About", () => {
       },
     });
     cy.get("@consoleError").should("not.be.called");
-    cy.get("button").contains("+ Expand All Sections").click();
   });
 
   it("enter product name and see it reflected in the sidebar", () => {
