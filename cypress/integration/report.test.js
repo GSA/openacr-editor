@@ -119,7 +119,7 @@ describe("Report", () => {
     );
   });
 
-  it("should show entered level and notes for component", () => {
+  it("should show entered level and notes for a criteria", () => {
     cy.visit("/chapter/success_criteria_level_a");
     cy.get("button").contains("+ Expand All Sections").click();
 
@@ -137,7 +137,7 @@ describe("Report", () => {
       .should("contain", "Web: Does support non-text content.");
   });
 
-  it("should render markdown in notes for component", () => {
+  it("should render markdown in notes columns for a criteria", () => {
     cy.visit("/chapter/success_criteria_level_a");
     cy.get("button").contains("+ Expand All Sections").click();
 
