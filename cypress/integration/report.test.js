@@ -136,4 +136,23 @@ describe("Report", () => {
       .should("contain", "Web: Supports")
       .should("contain", "Web: Does support non-text content.");
   });
+
+  it("should render markdown in notes for component", () => {
+    cy.visit("/chapter/success_criteria_level_a");
+    cy.get("button").contains("+ Expand All Sections").click();
+
+    cy.get("textarea[id='evaluation-1.1.1-web-notes']").clear();
+
+    cy.get("textarea[id='evaluation-1.1.1-web-notes']").type(
+      "[Drupal 8](https://www.drupal.org/) requires alt text for images by default."
+    );
+
+    cy.get("a[href='/report#text-equiv-all-editor']").click();
+
+    cy.get(
+      "#success_criteria_level_a-editor + table tbody tr td:nth-child(3) a"
+    )
+      .should("have.attr", "href")
+      .and("contains", "https://www.drupal.org/");
+  });
 });
