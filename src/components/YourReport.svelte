@@ -100,7 +100,7 @@
     outline-color: var(--w3c-blue);
   }
   .your-report__progress-by-principle {
-    columns: 2;
+    columns: 1;
     column-gap: 1.5em;
     margin: 2.25em 0 1.75em 0;
     padding: 0;

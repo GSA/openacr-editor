@@ -66,7 +66,7 @@ export function importEvaluation(event) {
                   currentEvaluationCriteria["components"].push({
                     name: component,
                     adherence: {
-                      level: "not-evaluated",
+                      level: "",
                       notes: "",
                     },
                   });
@@ -78,7 +78,7 @@ export function importEvaluation(event) {
                 components.push({
                   name: component,
                   adherence: {
-                    level: "not-evaluated",
+                    level: "",
                     notes: "",
                   },
                 });

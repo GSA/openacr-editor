@@ -11,7 +11,7 @@ export function getProgressPerChapter(evaluation) {
           if (
             component["adherence"] &&
             component["adherence"]["level"] &&
-            component["adherence"]["level"] != "not-evaluated"
+            component["adherence"]["level"] != ""
           ) {
             components.push(component);
           }
@@ -58,7 +58,7 @@ export function getEvaluatedChapterCriteriaComponents(evaluation) {
             if (
               component["adherence"] &&
               component["adherence"]["level"] &&
-              component["adherence"]["level"] != "not-evaluated"
+              component["adherence"]["level"] != ""
             ) {
               components.push(component);
             }
