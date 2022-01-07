@@ -13,11 +13,31 @@
   $: currentEvaluationComponent = (currentEvaluationCriteria) ? currentEvaluationCriteria.components.find( ({ name }) => name === component) : null;
   $: currentEvaluationCriteriaIndex = ($evaluation['chapters'] && $evaluation['chapters'][chapterId]['criteria']) ? $evaluation['chapters'][chapterId]['criteria'].findIndex( ({ num }) => num === criteria) : null;
   $: currentEvaluationComponentIndex = (currentEvaluationCriteria) ? currentEvaluationCriteria.components.findIndex( ({ name }) => name === component) : null;
+  $: notesCharCount = ($evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']) ? $evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes'].length : 0;
 </script>
 
 <style>
   select {
     display: block;
+  }
+  .notes-count {
+    font-style: italic;
+  }
+  .notes-count.notes-good {
+    color: green;
+  }
+  .notes-count.notes-good::after {
+    content: '\2713';
+    display: inline-block;
+    padding: 0 6px 0 0;
+  }
+  .notes-count.notes-need-more {
+    color: orange;
+  }
+  .notes-count.notes-need-more::after {
+    content: '\2192';
+    display: inline-block;
+    padding: 0 6px 0 0;
   }
 </style>
 
@@ -51,6 +71,11 @@
 
     <div class="field">
       <label for="evaluation-{criteria}-{component}-notes">Remarks and Explanations</label>
+      {#if notesCharCount > 50}
+        <span class="notes-count notes-good">Good&nbsp;</span>
+      {:else if notesCharCount > 0}
+        <span class="notes-count notes-need-more">Longer description may be helpful&nbsp;</span>
+      {/if}
       <textarea
         bind:value={$evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']}
         id="evaluation-{criteria}-{component}-notes"
