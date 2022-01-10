@@ -60,13 +60,15 @@ describe("Chapter", () => {
   it("type notes and should see a message after adding 1 character, then a different message after more than 50 characters, and no message for 0 characters", () => {
     const nonTextContentWebComponentNotesField =
       "textarea[id='evaluation-1.1.1-web-notes']";
-    const notesCountSpan = ".notes-count";
+    const notesMessageSpan = ".notes-message";
 
     cy.get(nonTextContentWebComponentNotesField).type(
       "Drupal 8 requires alt text for images by default."
     );
 
-    cy.get(notesCountSpan).should(
+    cy.get(nonTextContentWebComponentNotesField).blur();
+
+    cy.get(notesMessageSpan).should(
       "contain",
       "Longer description may be helpful"
     );
@@ -75,10 +77,10 @@ describe("Chapter", () => {
       " And requires captions for videos."
     );
 
-    cy.get(notesCountSpan).should("contain", "Good");
+    cy.get(nonTextContentWebComponentNotesField).blur();
+
+    cy.get(notesMessageSpan).should("contain", "Good");
 
     cy.get(nonTextContentWebComponentNotesField).clear();
-
-    cy.get(notesCountSpan).should("not.exist");
   });
 });

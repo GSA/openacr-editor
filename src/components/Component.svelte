@@ -14,28 +14,38 @@
   $: currentEvaluationCriteriaIndex = ($evaluation['chapters'] && $evaluation['chapters'][chapterId]['criteria']) ? $evaluation['chapters'][chapterId]['criteria'].findIndex( ({ num }) => num === criteria) : null;
   $: currentEvaluationComponentIndex = (currentEvaluationCriteria) ? currentEvaluationCriteria.components.findIndex( ({ name }) => name === component) : null;
   $: notesCharCount = ($evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']) ? $evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes'].length : 0;
+
+  function showNotesMessageAndSave(e) {
+    const messageBox = document.getElementById(`evaluation-${criteria}-${component}-notes-message`);
+    if (notesCharCount > 50) {
+      messageBox.innerHTML = "<span class='notes-good'>Good&nbsp;</span>";
+    } else {
+      messageBox.innerHTML = "<span class='notes-need-more'>Longer description may be helpful&nbsp;</span>";
+    }
+    evaluation.updateCache($evaluation);
+  }
 </script>
 
 <style>
   select {
     display: block;
   }
-  .notes-count {
+  .notes-message {
     font-style: italic;
   }
-  .notes-count.notes-good {
+  .notes-message > :global(.notes-good) {
     color: green;
   }
-  .notes-count.notes-good::after {
+  .notes-message > :global(.notes-good::after) {
     content: '\2713';
     display: inline-block;
     padding: 0 6px 0 0;
   }
   /* Color .text-accent-warm-darker from USWDS */
-  .notes-count.notes-need-more {
+  .notes-message > :global(.notes-need-more) {
     color: #775540;
   }
-  .notes-count.notes-need-more::after {
+  .notes-message > :global(.notes-need-more::after) {
     content: '\2192';
     display: inline-block;
     padding: 0 6px 0 0;
@@ -72,15 +82,12 @@
 
     <div class="field">
       <label for="evaluation-{criteria}-{component}-notes">Remarks and Explanations</label>
-      {#if notesCharCount > 50}
-        <span class="notes-count notes-good">Good&nbsp;</span>
-      {:else if notesCharCount > 0}
-        <span class="notes-count notes-need-more">Longer description may be helpful&nbsp;</span>
-      {/if}
+      <div id="evaluation-{criteria}-{component}-notes-message" class="notes-message" aria-live="polite"></div>
       <textarea
         bind:value={$evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']}
         id="evaluation-{criteria}-{component}-notes"
-        on:change={() => evaluation.updateCache($evaluation)} />
+        on:change={showNotesMessageAndSave}
+        aria-describedby="evaluation-{criteria}-{component}-notes-message" />
       <HelpText type="components" field="notes" />
     </div>
   {:else}
