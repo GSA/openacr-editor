@@ -107,7 +107,7 @@
 
 <details>
   <summary>
-    <HeaderWithAnchor id="result-choices" level=2>Result Choices</HeaderWithAnchor>
+    <HeaderWithAnchor id="result-choices" level=2>Result choices</HeaderWithAnchor>
   </summary>
   <p>
     As you go through and enter conformance for your software, you will select a "term" for
