@@ -85,7 +85,7 @@
 
 <details>
   <summary>
-    <HeaderWithAnchor id="structure-of-this-tool" level=2>Structure of this Tool</HeaderWithAnchor>
+    <HeaderWithAnchor id="structure-of-this-tool" level=2>Structure of this tool</HeaderWithAnchor>
   </summary>
   <p>
     Following the structure of OpenACR, this tool takes you through 7
@@ -107,7 +107,7 @@
 
 <details>
   <summary>
-    <HeaderWithAnchor id="result-choices" level=2>Result Choices</HeaderWithAnchor>
+    <HeaderWithAnchor id="result-choices" level=2>Result choices</HeaderWithAnchor>
   </summary>
   <p>
     As you go through and enter conformance for your software, you will select a "term" for
