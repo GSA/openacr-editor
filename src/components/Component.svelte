@@ -31,8 +31,9 @@
     display: inline-block;
     padding: 0 6px 0 0;
   }
+  /* Color .text-accent-warm-darker from USWDS */
   .notes-count.notes-need-more {
-    color: orange;
+    color: #775540;
   }
   .notes-count.notes-need-more::after {
     content: '\2192';
@@ -72,9 +73,9 @@
     <div class="field">
       <label for="evaluation-{criteria}-{component}-notes">Remarks and Explanations</label>
       {#if notesCharCount > 50}
-        <span class="notes-count notes-good">Good&nbsp;</span>
+        <span class="notes-count notes-good" aria-live="polite">Good&nbsp;</span>
       {:else if notesCharCount > 0}
-        <span class="notes-count notes-need-more">Longer description may be helpful&nbsp;</span>
+        <span class="notes-count notes-need-more" aria-live="polite">Longer description may be helpful&nbsp;</span>
       {/if}
       <textarea
         bind:value={$evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']}
