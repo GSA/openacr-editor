@@ -73,9 +73,9 @@
     <div class="field">
       <label for="evaluation-{criteria}-{component}-notes">Remarks and Explanations</label>
       {#if notesCharCount > 50}
-        <span class="notes-count notes-good" aria-live="polite">Good&nbsp;</span>
+        <span class="notes-count notes-good">Good&nbsp;</span>
       {:else if notesCharCount > 0}
-        <span class="notes-count notes-need-more" aria-live="polite">Longer description may be helpful&nbsp;</span>
+        <span class="notes-count notes-need-more">Longer description may be helpful&nbsp;</span>
       {/if}
       <textarea
         bind:value={$evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']}
