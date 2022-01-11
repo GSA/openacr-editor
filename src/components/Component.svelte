@@ -15,14 +15,15 @@
   $: currentEvaluationComponentIndex = (currentEvaluationCriteria) ? currentEvaluationCriteria.components.findIndex( ({ name }) => name === component) : null;
   $: notesCharCount = ($evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']) ? $evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes'].length : 0;
 
-  function showNotesMessageAndSave(e) {
+  function showNotesMessage(e) {
     const messageBox = document.getElementById(`evaluation-${criteria}-${component}-notes-message`);
     if (notesCharCount > 50) {
       messageBox.innerHTML = "<span class='notes-good'>Good&nbsp;</span>";
-    } else {
+    } else if (notesCharCount > 1) {
       messageBox.innerHTML = "<span class='notes-need-more'>Longer description may be helpful&nbsp;</span>";
+    } else {
+      messageBox.innerHTML = "";
     }
-    evaluation.updateCache($evaluation);
   }
 </script>
 
@@ -86,7 +87,8 @@
       <textarea
         bind:value={$evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']}
         id="evaluation-{criteria}-{component}-notes"
-        on:change={showNotesMessageAndSave}
+        on:change={() => evaluation.updateCache($evaluation)}
+        on:keyup={showNotesMessage}
         aria-describedby="evaluation-{criteria}-{component}-notes-message" />
       <HelpText type="components" field="notes" />
     </div>

@@ -66,8 +66,6 @@ describe("Chapter", () => {
       "Drupal 8 requires alt text for images by default."
     );
 
-    cy.get(nonTextContentWebComponentNotesField).blur();
-
     cy.get(notesMessageSpan).should(
       "contain",
       "Longer description may be helpful"
@@ -77,10 +75,10 @@ describe("Chapter", () => {
       " And requires captions for videos."
     );
 
-    cy.get(nonTextContentWebComponentNotesField).blur();
-
     cy.get(notesMessageSpan).should("contain", "Good");
 
     cy.get(nonTextContentWebComponentNotesField).clear();
+
+    cy.get(notesMessageSpan).should("be.empty");
   });
 });
