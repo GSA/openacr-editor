@@ -20,8 +20,8 @@
   let download = true;
 
   onMount(() => {
-     const htmlBlob = createHTMLDownload(htmlDownloadTemplate, title, "en");
-     htmlDownload = URL.createObjectURL(htmlBlob);
+    const htmlBlob = createHTMLDownload(htmlDownloadTemplate, title, "en");
+    htmlDownload = URL.createObjectURL(htmlBlob);
   });
 </script>
 

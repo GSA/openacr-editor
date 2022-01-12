@@ -24,6 +24,7 @@
 
   onMount(() => {
     htmlDownload = createHTMLDownload(htmlDownloadTemplate, title, "en");
+    zip.file('README.txt', '');
     zip.file(`${filename}.html`, htmlDownload);
     zip.file(`${filename}.yaml`, yaml.dump($evaluation));
     zip.generateAsync({type:"base64"}).then(function (base64) {
