@@ -1,6 +1,6 @@
 export function createHTMLDownload(template, title, lang) {
   const htmlDocument = document.implementation.createHTMLDocument(title);
-  let blob, download, metaViewport, metaCharSet, metaEdge;
+  let blob, metaViewport, metaCharSet, metaEdge;
 
   htmlDocument.documentElement.setAttribute("lang", lang);
   htmlDocument.body.innerHTML = template.innerHTML;
@@ -23,7 +23,6 @@ export function createHTMLDownload(template, title, lang) {
       type: "text/html",
     }
   );
-  download = URL.createObjectURL(blob);
 
-  return download;
+  return blob;
 }

@@ -11,23 +11,30 @@
   import { validate } from "../../utils/validate.js";
   import { reportFilename } from "../../utils/reportFilename.js";
   import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+  import yaml from "js-yaml";
+  import JSZip from "jszip";
 
   var title = $evaluation.title;
   const filename = reportFilename($evaluation);
   const valid = validate($evaluation);
-  let htmlDownload, htmlDownloadTemplate;
+  let zipDownload, htmlDownload, htmlDownloadTemplate;
 
   let download = true;
+  let zip = new JSZip();
 
   onMount(() => {
-     const htmlBlob = createHTMLDownload(htmlDownloadTemplate, title, "en");
-     htmlDownload = URL.createObjectURL(htmlBlob);
+    htmlDownload = createHTMLDownload(htmlDownloadTemplate, title, "en");
+    zip.file(`${filename}.html`, htmlDownload);
+    zip.file(`${filename}.yaml`, yaml.dump($evaluation));
+    zip.generateAsync({type:"base64"}).then(function (base64) {
+      zipDownload = `data:application/zip;base64,${base64}`;
+    });
   });
 </script>
 
 {#if valid.result }
-  <a href={htmlDownload} download="{filename}.html" class="button">
-    Download Report (HTML)
+  <a href={zipDownload} download="{filename}.zip" class="button">
+    Download Report (YAML & HTML)
   </a>
 {/if}
 
