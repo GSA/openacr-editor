@@ -7,6 +7,5 @@
     "mochaFile": "cypress/results/junit.[hash].xml",
     "toConsole": false
   },
-  "screenshotsFolder": "cypress/results/screenshots",
-  "nodeVersion": "bundled"
+  "screenshotsFolder": "cypress/results/screenshots"
 }

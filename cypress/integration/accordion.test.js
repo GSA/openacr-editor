@@ -2,16 +2,16 @@
 
 describe("Accordions", () => {
   it("can be expanded and collapsed", () => {
-    const authorNameField = "#evaluation-author-name";
-
     cy.visit("/about#author-editor");
     cy.focused()
-      .get(authorNameField)
-      .should("be.visible")
+      .parent()
+      .parent()
+      .should("have.attr", "open")
       .focused()
       .click()
-      .get(authorNameField)
-      .should("not.be.visible");
+      .parent()
+      .parent()
+      .should("not.have.attr", "open");
   });
 
   it("can all be collapsed and expanded", () => {

@@ -8,7 +8,7 @@
   import ReportLicense from "../components/report/ReportLicense.svelte";
   import ReportValid from "../components/report/ReportValid.svelte";
   import ReportChapters from "../components/report/ReportChapters.svelte";
-  import ReportHTMLDownload from "../components/report/ReportHTMLDownload.svelte";
+  import ReportZipDownload from "../components/report/ReportZipDownload.svelte";
   import ReportYAMLDownload from "../components/report/ReportYAMLDownload.svelte";
   import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { evaluation } from "../stores/evaluation.js";
@@ -31,8 +31,8 @@
 <Header>Report</Header>
 
 <p>
+  <ReportZipDownload />
   <ReportYAMLDownload />
-  <ReportHTMLDownload />
 </p>
 
 <ReportValid />

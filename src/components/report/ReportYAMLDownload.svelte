@@ -13,7 +13,7 @@
 </script>
 
 {#if valid.result }
-  <a href={yamlDownload} download="{filename}.yaml" class="button">
+  <a href={yamlDownload} download="{filename}.yaml" class="button button-secondary">
     Download Report (YAML)
   </a>
 {/if}
