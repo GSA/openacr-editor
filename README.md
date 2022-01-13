@@ -21,7 +21,7 @@ This may take a while the first time, but it only needs to be done once.
 Then, to build the app with [Rollup](https://rollupjs.org), and serve it on a local dev server, run:
 
 ```bash
-npm run dev
+export NODE_ENV=development; npm run dev
 ```
 
 Navigate to [localhost:10001](http://localhost:10001). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
