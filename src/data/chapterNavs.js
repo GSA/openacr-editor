@@ -5,7 +5,7 @@ const chapterNavs = {
   functional_performance_criteria: "FPC",
   hardware: "Hardware",
   software: "Software",
-  support_documentation_and_services: "Docs",
+  support_documentation_and_services: "Documentation",
 };
 
 export default chapterNavs;
