@@ -24,7 +24,7 @@
 
   onMount(() => {
     htmlDownload = createHTMLDownload(htmlDownloadTemplate, title, "en");
-    zip.file('README.txt', 'If you need to gather feedback from other people in your organization, please send the zipped file (HTML and YAML) to your collaborators. Collaborators can view the report by opening the HTML file with any web browser. If they would like to make changes to the report, they should go to OpenACR Editor and upload the YAML file to make edits to the content of the report. Do not edit the HTML file directly, it is just for viewing the report.\n\nIf your report is final and you\'re ready to submit the report to an agency in response to an Request for Proposal (RFP), please attach the YAML file to your proposal.');
+    zip.file('README.txt', 'If you need to gather feedback from other people in your organization, please send the zipped file (HTML and YAML) to your collaborators. Collaborators can view the report by opening the HTML file with any web browser. If they would like to make changes to the report, they should go to OpenACR Editor and upload the YAML file to make edits to the content of the report. Do not edit the HTML file directly, it is just for viewing the report.\n\nIf your report is final and you\'re ready to submit the report to an agency in response to a Request for Proposal (RFP), please attach the YAML file to your proposal.');
     zip.file(`${filename}.html`, htmlDownload);
     zip.file(`${filename}.yaml`, yaml.dump($evaluation));
     zip.generateAsync({type:"base64"}).then(function (base64) {
