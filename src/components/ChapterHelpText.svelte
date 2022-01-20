@@ -4,5 +4,5 @@
 </script>
 
 {#if chapterHelpText[chapterId]}
-    <p>{chapterHelpText[chapterId]}</p>
+    <p>{@html chapterHelpText[chapterId]}</p>
 {/if}
