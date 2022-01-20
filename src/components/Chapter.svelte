@@ -11,6 +11,7 @@
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
   import { standards, chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import chapterNavs from "../data/chapterNavs";
+  import ChapterHelpText from "../components/ChapterHelpText.svelte";
   import { evaluation } from "../stores/evaluation.js";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
 
@@ -41,6 +42,8 @@
       {currentStandard.label}
     </LinkToGuidance>
   </p>
+
+  <ChapterHelpText chapterId={currentChapter.id} />
 
   <div class="field">
     <label for="evaluation-chapter-notes">Notes</label>

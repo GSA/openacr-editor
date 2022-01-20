@@ -7,6 +7,7 @@
   import PagerLink from "../components/PagerLink.svelte";
   import { evaluation } from "../stores/evaluation.js";
   import { currentPage } from "../stores/currentPage.js";
+  import ChapterHelpText from "../components/ChapterHelpText.svelte";
   import spdxLicenseList from "spdx-license-list";
   import Select from 'svelte-select';
   import helpText from "../data/helpText.yaml";
@@ -79,6 +80,10 @@
 </svelte:head>
 
 <Header>About</Header>
+
+<ChapterHelpText
+  chapterId="about"
+  />
 
 <ExpandCollapseAll />
 
