@@ -18,7 +18,7 @@
     "eslint": "^7.2.0",
     "eslint-plugin-svelte3": "^2.7.3",
     "mustache": "^4.0.1",
-    "pa11y-ci": "^2.4.2",
+    "pa11y-ci": "^3.0.1",
     "prettier": "2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
     "replace-string": "^3.1.0",
@@ -39,7 +39,7 @@
   },
   "browserslist": "> 0.25%, not dead",
   "dependencies": {
-    "@openacr/openacr": "^0.3.1",
+    "@openacr/openacr": "^0.3.2",
     "core-js": "3",
     "jszip": "^3.7.1",
     "marked": "^0.8.2",
