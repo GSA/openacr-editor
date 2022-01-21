@@ -10,7 +10,6 @@
   import { currentPage } from "../stores/currentPage.js";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
   import { standards, chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
-  import chapterNavs from "../data/chapterNavs";
   import ChapterHelpText from "../components/ChapterHelpText.svelte";
   import { evaluation } from "../stores/evaluation.js";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
@@ -68,12 +67,12 @@
     {/if}
     {#if currentChapterKey > 0}
       <PagerLink to={`/chapter/${chapters[currentChapterKey - 1].id}`} direction="previous">
-        {chapterNavs[chapters[currentChapterKey - 1].id]}
+        {chapters[currentChapterKey - 1].short_label}
       </PagerLink>
     {/if}
     {#if currentChapterKey + 1 < chapters.length}
       <PagerLink to={`/chapter/${chapters[currentChapterKey + 1].id}`} direction="next">
-        {chapterNavs[chapters[currentChapterKey + 1].id]}
+        {chapters[currentChapterKey + 1].short_label}
       </PagerLink>
     {/if}
     {#if currentChapterKey + 1 === chapters.length}
