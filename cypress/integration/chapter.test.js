@@ -9,6 +9,11 @@ describe("All chapters", () => {
       cy.get("#evaluation-chapter-notes").should("exist");
     });
 
+    it(`chapter ${chapter} has introductory help text`, () => {
+      cy.visit(`/chapter/${chapter}`);
+      cy.get(".chapter-help-text").should("exist");
+    });
+
     it(`chapter ${chapter} has loaded without errors`, () => {
       cy.visit(`/chapter/${chapter}`, {
         onBeforeLoad(win) {
