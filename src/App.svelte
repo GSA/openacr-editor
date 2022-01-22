@@ -13,7 +13,6 @@
   import { currentPage } from "./stores/currentPage.js";
   import { showYourReport } from "./stores/showYourReport.js";
   import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
-  import chapterNavs from "./data/chapterNavs";
   import vars from "../config/__buildEnv__.json";
   export let url = "";
 
@@ -60,7 +59,7 @@
     <NavItem to="/about">About</NavItem>
     {#each chapters as chapter}
       <NavItem to="chapter/{chapter.id}">
-        {chapterNavs[chapter.id]}
+        {chapter.short_label}
         <span class="visuallyhidden">: {chapter.label}</span>
       </NavItem>
     {/each}

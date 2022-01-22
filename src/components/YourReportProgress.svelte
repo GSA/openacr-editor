@@ -1,7 +1,6 @@
 <script>
   import ProgressBar from "./ProgressBar.svelte";
   import vars from "../../config/__buildEnv__.json";
-  import chapterNavs from "../data/chapterNavs";
 
   export let chapter;
   export let done;
@@ -37,7 +36,7 @@
 <li class="progress">
   <div class="progress__principle">
     <a href={`${vars.pathPrefix}/chapter/${chapter.id}`} class="principle__name">
-      <span>{chapterNavs[chapter.id]}</span>
+      <span>{chapter.short_label}</span>
     </a>
     <span class="progress__part">{done} of {total}</span>
   </div>

@@ -1,9 +1,17 @@
 /// <reference types="Cypress" />
 
-import chapterNavs from "../../src/data/chapterNavs";
+const chapters = [
+  "success_criteria_level_a",
+  "success_criteria_level_aa",
+  "success_criteria_level_aaa",
+  "functional_performance_criteria",
+  "hardware",
+  "software",
+  "support_documentation_and_services",
+];
 
 describe("All chapters", () => {
-  Object.keys(chapterNavs).forEach((chapter) => {
+  chapters.forEach((chapter) => {
     it(`chapter ${chapter} has a notes field`, () => {
       cy.visit(`/chapter/${chapter}`);
       cy.get("#evaluation-chapter-notes").should("exist");
