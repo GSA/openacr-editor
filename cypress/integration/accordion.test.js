@@ -1,6 +1,14 @@
 /// <reference types="Cypress" />
 
 describe("Accordions", () => {
+  it("clicking anchor link, opens accordion", () => {
+    cy.visit("/chapter/success_criteria_level_a");
+    cy.get(
+      '.chapter-help-text a[href="#1.1.1-electronic-docs-editor"]'
+    ).click();
+    cy.get('[id="1.1.1-electronic-docs-editor"]').should("be.visible");
+  });
+
   it("can be expanded and collapsed", () => {
     cy.visit("/about#author-editor");
     cy.focused()
