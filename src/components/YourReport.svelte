@@ -50,7 +50,7 @@
     $evaluation["product"]["name"];
   $: progressPerChapter = getProgressPerChapter($evaluation);
   $: evaluatedItems = getEvaluatedChapterCriteriaComponents($evaluation);
-  $: totalCriteria = getChapterCriteriaComponents();
+  $: totalCriteria = getChapterCriteriaComponents($evaluation);
 </script>
 
 <style>
@@ -156,10 +156,12 @@
       <ProgressBar percentage={100 / (totalCriteria.length / evaluatedItems.length)} />
       <ul class="your-report__progress-by-principle">
         {#each chapters as chapter}
-          <YourReportProgress
-            {chapter}
-            done={progressPerChapter[chapter.id]['evaluated']}
-            total={progressPerChapter[chapter.id]['total']} />
+          {#if !$evaluation.chapters[chapter.id].disabled}
+            <YourReportProgress
+              {chapter}
+              done={progressPerChapter[chapter.id]['evaluated']}
+              total={progressPerChapter[chapter.id]['total']} />
+          {/if}
         {/each}
       </ul>
       <button class="button" on:click={toOverview}>View Report</button>

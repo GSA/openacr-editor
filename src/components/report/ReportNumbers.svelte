@@ -5,7 +5,7 @@
   export let className = "";
 
   $: items = getEvaluatedChapterCriteriaComponents($evaluation);
-  $: totalCriteria = getChapterCriteriaComponents();
+  $: totalCriteria = getChapterCriteriaComponents($evaluation);
 </script>
 
 <p class={className}>
