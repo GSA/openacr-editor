@@ -32,3 +32,5 @@ related_openacrs:
   intro: "URLs to related OpenACRs. E.g. CKEditor is a library used by Drupal and both have OpenACRs."
   url: ""
   type: ""
+disabled_sections:
+  intro: "Select which sections of the OpenACR you want disable."

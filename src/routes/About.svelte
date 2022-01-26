@@ -16,6 +16,8 @@
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
+  import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+  import { disabledSections } from "../stores/disabledSections.js";
 
   const location = useLocation();
 
@@ -337,6 +339,29 @@
   {/each}
 
   <AddOther label="Add related OpenACR" on:ADD="{handleRelatedAdd}"></AddOther>
+</details>
+
+<details open>
+  <summary>
+    <HeaderWithAnchor id="disable-sections" level=2>Disable Sections</HeaderWithAnchor>
+  </summary>
+
+  <p>{helpText["disabled_sections"]["intro"]}</p>
+
+  {#each chapters as chapter}
+    <div class="field">
+      <label>
+        <input
+          type="checkbox"
+          value={chapter.id}
+          bind:checked="{$disabledSections[chapter.id]}"
+          id="evaluation-disable-section-{chapter.id}"
+          on:change={() => disabledSections.updateCache($disabledSections)} />
+
+        {chapter.short_label}
+      </label>
+    </div>
+  {/each}
 </details>
 
 <Pager label="Previous/Next Principle">
