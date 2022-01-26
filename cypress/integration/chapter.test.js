@@ -102,36 +102,37 @@ describe("Chapter", () => {
 });
 
 describe("Disabled chapter", () => {
-  before(() => {
+  const disableHardwareCheckbox = "#evaluation-disabled-chapter-hardware";
+  const levelSelect = "select[name='evaluation-402.2.1-none-level']";
+  const notesField = "textarea[id='evaluation-402.2.1-none-notes']";
+  const reportLink = "a[href='/report#402.2.1-editor']";
+
+  beforeEach(() => {
     cy.visit("/about");
 
-    cy.get("#evaluation-disabled-chapter-hardware").check();
+    cy.get(disableHardwareCheckbox).check();
 
     cy.visit("/chapter/hardware");
     cy.get("button").contains("+ Expand All Sections").click();
   });
 
-  it("diabled is checked and fields are disabled", () => {
-    cy.get("#evaluation-disabled-chapter-hardware").should("be.checked");
+  it("diabled is checked, fields are disabled, view in report link is removed", () => {
+    cy.get(disableHardwareCheckbox).should("be.checked");
 
-    cy.get("select[name='evaluation-402.2.1-none-level']").should(
-      "be.disabled"
-    );
+    cy.get(levelSelect).should("be.disabled");
 
-    cy.get("textarea[id='evaluation-402.2.1-none-notes']").should(
-      "be.disabled"
-    );
+    cy.get(notesField).should("be.disabled");
+
+    cy.get(reportLink).should("not.exist");
   });
 
-  it("uncheck diabled and fields are reenabled", () => {
-    cy.get("#evaluation-disabled-chapter-hardware").uncheck();
+  it("uncheck diabled, fields are reenabled, view in report link is available", () => {
+    cy.get(disableHardwareCheckbox).uncheck();
 
-    cy.get("select[name='evaluation-402.2.1-none-level']").should(
-      "not.be.disabled"
-    );
+    cy.get(levelSelect).should("not.be.disabled");
 
-    cy.get("textarea[id='evaluation-402.2.1-none-notes']").should(
-      "not.be.disabled"
-    );
+    cy.get(notesField).should("not.be.disabled");
+
+    cy.get(reportLink).should("exist");
   });
 });
