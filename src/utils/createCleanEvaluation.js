@@ -60,6 +60,7 @@ export function createCleanEvaluation() {
 
     cleanEvaluation["chapters"][chapter.id] = {
       notes: "",
+      disabled: false,
       criteria: criteria,
     };
   }

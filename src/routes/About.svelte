@@ -17,7 +17,6 @@
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
   import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
-  import { disabledSections } from "../stores/disabledSections.js";
 
   const location = useLocation();
 
@@ -343,10 +342,10 @@
 
 <details open>
   <summary>
-    <HeaderWithAnchor id="disable-sections" level=2>Disable Sections</HeaderWithAnchor>
+    <HeaderWithAnchor id="disabled-chapters" level=2>Disabled Chapters/Tables</HeaderWithAnchor>
   </summary>
 
-  <p>{helpText["disabled_sections"]["intro"]}</p>
+  <p>{helpText["disabled_chapters"]["intro"]}</p>
 
   {#each chapters as chapter}
     <div class="field">
@@ -354,12 +353,13 @@
         <input
           type="checkbox"
           value={chapter.id}
-          bind:checked="{$disabledSections[chapter.id]}"
-          id="evaluation-disable-section-{chapter.id}"
-          on:change={() => disabledSections.updateCache($disabledSections)} />
+          bind:checked="{$evaluation['chapters'][chapter.id]['disabled']}"
+          id="evaluation-disabled-chapter-{chapter.id}"
+          on:change={() => evaluation.updateCache($evaluation)} />
 
         {chapter.label}
       </label>
+      <HelpText type="disabled_chapters" field="{chapter.id}" />
     </div>
   {/each}
 </details>

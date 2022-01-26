@@ -32,5 +32,12 @@ related_openacrs:
   intro: "URLs to related OpenACRs. E.g. CKEditor is a library used by Drupal and both have OpenACRs."
   url: ""
   type: ""
-disabled_sections:
-  intro: "Select which sections of the OpenACR you want disable."
+disabled_chapters:
+  intro: "Select which chapters/tables of the OpenACR you want to disable. They can be reenabled at any time. Fields on those chapters/tables will also be disabled except for notes. The table will also be removed from the report and HTML but the data will still be available in the YAML format."
+  success_criteria_level_a: ""
+  success_criteria_level_aa: ""
+  success_criteria_level_aaa: ""
+  functional_performance_criteria: ""
+  hardware: ""
+  software: ""
+  support_documentation_and_services: ""
