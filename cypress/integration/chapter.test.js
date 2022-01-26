@@ -116,7 +116,7 @@ describe("Disabled chapter", () => {
     cy.get("button").contains("+ Expand All Sections").click();
   });
 
-  it("diabled is checked, fields are disabled, view in report link is removed", () => {
+  it("disabled is checked, fields are disabled, view in report link is removed", () => {
     cy.get(disableHardwareCheckbox).should("be.checked");
 
     cy.get(levelSelect).should("be.disabled");
@@ -126,7 +126,7 @@ describe("Disabled chapter", () => {
     cy.get(reportLink).should("not.exist");
   });
 
-  it("uncheck diabled, fields are reenabled, view in report link is available", () => {
+  it("uncheck disabled, fields are reenabled, view in report link is available", () => {
     cy.get(disableHardwareCheckbox).uncheck();
 
     cy.get(levelSelect).should("not.be.disabled");

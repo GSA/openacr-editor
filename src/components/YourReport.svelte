@@ -118,7 +118,8 @@
   class="your-report"
   class:your-report--expanded={$showYourReport === true}
   bind:this={box}
-  tabindex="-1">
+  tabindex="-1"
+  aria-live="polite">
   {#if $showYourReport === true}
     {#if fresh && $currentPage === 'Overview'}
       <h2 class="your-report__heading">

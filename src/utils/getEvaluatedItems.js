@@ -52,7 +52,10 @@ export function getEvaluatedChapterCriteriaComponents(evaluation) {
   ) {
     const components = [];
     chapters.forEach((chapter) => {
-      if (evaluation.chapters[chapter.id].criteria) {
+      if (
+        evaluation.chapters[chapter.id].criteria &&
+        !evaluation.chapters[chapter.id].disabled
+      ) {
         evaluation.chapters[chapter.id].criteria.forEach((item) => {
           item.components.forEach((component) => {
             if (
