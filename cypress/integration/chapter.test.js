@@ -17,6 +17,11 @@ describe("All chapters", () => {
       cy.get("#evaluation-chapter-notes").should("exist");
     });
 
+    it(`chapter ${chapter} has a disabled checkbox field`, () => {
+      cy.visit(`/chapter/${chapter}`);
+      cy.get("input[id*='evaluation-disabled-chapter-']").should("exist");
+    });
+
     it(`chapter ${chapter} has introductory help text`, () => {
       cy.visit(`/chapter/${chapter}`);
       cy.get(".chapter-help-text").should("exist");
@@ -93,5 +98,40 @@ describe("Chapter", () => {
     cy.get(nonTextContentWebComponentNotesField).clear();
 
     cy.get(notesMessageSpan).should("be.empty");
+  });
+});
+
+describe("Disabled chapter", () => {
+  before(() => {
+    cy.visit("/about");
+
+    cy.get("#evaluation-disabled-chapter-hardware").check();
+
+    cy.visit("/chapter/hardware");
+    cy.get("button").contains("+ Expand All Sections").click();
+  });
+
+  it("diabled is checked and fields are disabled", () => {
+    cy.get("#evaluation-disabled-chapter-hardware").should("be.checked");
+
+    cy.get("select[name='evaluation-402.2.1-none-level']").should(
+      "be.disabled"
+    );
+
+    cy.get("textarea[id='evaluation-402.2.1-none-notes']").should(
+      "be.disabled"
+    );
+  });
+
+  it("uncheck diabled and fields are reenabled", () => {
+    cy.get("#evaluation-disabled-chapter-hardware").uncheck();
+
+    cy.get("select[name='evaluation-402.2.1-none-level']").should(
+      "not.be.disabled"
+    );
+
+    cy.get("textarea[id='evaluation-402.2.1-none-notes']").should(
+      "not.be.disabled"
+    );
   });
 });

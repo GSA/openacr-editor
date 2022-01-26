@@ -63,4 +63,23 @@ describe("About", () => {
       .get(".Related__Contents")
       .should("not.contain", "Related OpenACR 2");
   });
+
+  it("disabling a chapter should remove the progress bar, update the total count", () => {
+    cy.get("#evaluation-disabled-chapter-hardware").check();
+
+    cy.get("#evaluation-disabled-chapter-software").check();
+
+    cy.get(
+      ".progress__principle a[href$='/chapter/hardware'] + .progress__part"
+    ).should("not.exist");
+
+    cy.get(
+      ".progress__principle a[href$='/chapter/software'] + .progress__part"
+    ).should("not.exist");
+
+    cy.get(".your-report__description").should(
+      "contain",
+      `Reported on\n  0\n  of\n  258\n  Total Criteria.`
+    );
+  });
 });
