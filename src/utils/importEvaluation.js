@@ -42,6 +42,7 @@ export function importEvaluation(event) {
           if (!converted["chapters"][chapter.id]) {
             converted["chapters"][chapter.id] = {
               notes: "",
+              disabled: false,
             };
           }
 

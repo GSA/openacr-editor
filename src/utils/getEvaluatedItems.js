@@ -52,7 +52,10 @@ export function getEvaluatedChapterCriteriaComponents(evaluation) {
   ) {
     const components = [];
     chapters.forEach((chapter) => {
-      if (evaluation.chapters[chapter.id].criteria) {
+      if (
+        evaluation.chapters[chapter.id].criteria &&
+        !evaluation.chapters[chapter.id].disabled
+      ) {
         evaluation.chapters[chapter.id].criteria.forEach((item) => {
           item.components.forEach((component) => {
             if (
@@ -72,14 +75,16 @@ export function getEvaluatedChapterCriteriaComponents(evaluation) {
   }
 }
 
-export function getChapterCriteriaComponents() {
+export function getChapterCriteriaComponents(evaluation) {
   const components = [];
   chapters.forEach((chapter) => {
-    chapter.criteria.forEach((item) => {
-      item.components.forEach((component) => {
-        components.push(component);
+    if (!evaluation.chapters[chapter.id].disabled) {
+      chapter.criteria.forEach((item) => {
+        item.components.forEach((component) => {
+          components.push(component);
+        });
       });
-    });
+    }
   });
   return components;
 }

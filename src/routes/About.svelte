@@ -16,6 +16,7 @@
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
+  import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 
   const location = useLocation();
 
@@ -337,6 +338,30 @@
   {/each}
 
   <AddOther label="Add related OpenACR" on:ADD="{handleRelatedAdd}"></AddOther>
+</details>
+
+<details open>
+  <summary>
+    <HeaderWithAnchor id="disabled-chapters" level=2>Disabled Chapters/Tables</HeaderWithAnchor>
+  </summary>
+
+  <p>{helpText["disabled_chapters"]["intro"]}</p>
+
+  {#each chapters as chapter}
+    <div class="field">
+      <label>
+        <input
+          type="checkbox"
+          value={chapter.id}
+          bind:checked="{$evaluation['chapters'][chapter.id]['disabled']}"
+          id="evaluation-disabled-chapter-{chapter.id}"
+          on:change={() => evaluation.updateCache($evaluation)} />
+
+        {chapter.label}
+      </label>
+      <HelpText type="disabled_chapters" field="{chapter.id}" />
+    </div>
+  {/each}
 </details>
 
 <Pager label="Previous/Next Principle">

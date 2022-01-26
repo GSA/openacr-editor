@@ -9,8 +9,10 @@
   export let alt_id;
   export let handle;
   export let components = [];
+  import { evaluation } from "../stores/evaluation.js";
 
   $: linkToImplementing = `${chapterLink}#${alt_id}`;
+  $: disabled = ($evaluation['chapters'][chapterId]['disabled']) ? 'disabled' : '';
 </script>
 
 <style>
@@ -30,11 +32,13 @@
     <summary>
       <HeaderWithAnchor id="{id}" level=2>{id}: {handle}</HeaderWithAnchor>
     </summary>
-    <span class="observation__meta">
-      <Link to={`/report#${alt_id}-editor`}>
-        View in Report
-      </Link>
-    </span>
+    {#if !disabled}
+      <span class="observation__meta">
+        <Link to={`/report#${alt_id}-editor`}>
+          View in Report
+        </Link>
+      </span>
+    {/if}
     <LinkToGuidance href={linkToImplementing}>Implementing {id}: {handle}</LinkToGuidance>
     {#if components}
       {#each components as c}

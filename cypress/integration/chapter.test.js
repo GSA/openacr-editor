@@ -17,6 +17,11 @@ describe("All chapters", () => {
       cy.get("#evaluation-chapter-notes").should("exist");
     });
 
+    it(`chapter ${chapter} has a disabled checkbox field`, () => {
+      cy.visit(`/chapter/${chapter}`);
+      cy.get("input[id*='evaluation-disabled-chapter-']").should("exist");
+    });
+
     it(`chapter ${chapter} has introductory help text`, () => {
       cy.visit(`/chapter/${chapter}`);
       cy.get(".chapter-help-text").should("exist");
@@ -93,5 +98,41 @@ describe("Chapter", () => {
     cy.get(nonTextContentWebComponentNotesField).clear();
 
     cy.get(notesMessageSpan).should("be.empty");
+  });
+});
+
+describe("Disabled chapter", () => {
+  const disableHardwareCheckbox = "#evaluation-disabled-chapter-hardware";
+  const levelSelect = "select[name='evaluation-402.2.1-none-level']";
+  const notesField = "textarea[id='evaluation-402.2.1-none-notes']";
+  const reportLink = "a[href='/report#402.2.1-editor']";
+
+  beforeEach(() => {
+    cy.visit("/about");
+
+    cy.get(disableHardwareCheckbox).check();
+
+    cy.visit("/chapter/hardware");
+    cy.get("button").contains("+ Expand All Sections").click();
+  });
+
+  it("disabled is checked, fields are disabled, view in report link is removed", () => {
+    cy.get(disableHardwareCheckbox).should("be.checked");
+
+    cy.get(levelSelect).should("be.disabled");
+
+    cy.get(notesField).should("be.disabled");
+
+    cy.get(reportLink).should("not.exist");
+  });
+
+  it("uncheck disabled, fields are reenabled, view in report link is available", () => {
+    cy.get(disableHardwareCheckbox).uncheck();
+
+    cy.get(levelSelect).should("not.be.disabled");
+
+    cy.get(notesField).should("not.be.disabled");
+
+    cy.get(reportLink).should("exist");
   });
 });

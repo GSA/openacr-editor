@@ -14,6 +14,7 @@
   $: currentEvaluationCriteriaIndex = ($evaluation['chapters'] && $evaluation['chapters'][chapterId]['criteria']) ? $evaluation['chapters'][chapterId]['criteria'].findIndex( ({ num }) => num === criteria) : null;
   $: currentEvaluationComponentIndex = (currentEvaluationCriteria) ? currentEvaluationCriteria.components.findIndex( ({ name }) => name === component) : null;
   $: notesCharCount = ($evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes']) ? $evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['notes'].length : 0;
+  $: disabled = ($evaluation['chapters'][chapterId]['disabled']) ? 'disabled' : '';
 
   function showNotesMessage(e) {
     const messageBox = document.getElementById(`evaluation-${criteria}-${component}-notes-message`);
@@ -72,7 +73,9 @@
         bind:value={$evaluation['chapters'][chapterId]['criteria'][currentEvaluationCriteriaIndex]['components'][currentEvaluationComponentIndex]['adherence']['level']}
         on:blur={() => {
           evaluation.updateCache($evaluation);
-        }}>
+        }}
+        {disabled}
+        >
         <option name="option-evaluation-{criteria}-{component}-level-none" value="">- Select -</option>
         {#each terms as term}
           <option name="option-evaluation-{criteria}-{component}-level-{term.id}" value={term.id}>{term.label}</option>
@@ -89,7 +92,7 @@
         id="evaluation-{criteria}-{component}-notes"
         on:change={() => evaluation.updateCache($evaluation)}
         on:keyup={showNotesMessage}
-        aria-describedby="evaluation-{criteria}-{component}-notes-message" />
+        aria-describedby="evaluation-{criteria}-{component}-notes-message" {disabled}/>
       <HelpText type="components" field="notes" />
     </div>
   {:else}

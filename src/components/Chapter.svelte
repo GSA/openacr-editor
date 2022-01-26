@@ -55,6 +55,20 @@
     <HelpText type="chapters" field="notes" />
   </div>
 
+  <div class="field">
+    <label>
+      <input
+        type="checkbox"
+        value={chapterId}
+        bind:checked="{$evaluation['chapters'][chapterId]['disabled']}"
+        id="evaluation-disabled-chapter-{chapterId}"
+        on:change={() => evaluation.updateCache($evaluation)} />
+
+      Disabled?
+    </label>
+    <HelpText type="disabled_chapters" field="{chapterId}" />
+  </div>
+
   <ExpandCollapseAll />
 
   {#each currentChapter.criteria as criteria, i (criteria.id)}
