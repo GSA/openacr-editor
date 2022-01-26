@@ -358,7 +358,7 @@
           id="evaluation-disable-section-{chapter.id}"
           on:change={() => disabledSections.updateCache($disabledSections)} />
 
-        {chapter.short_label}
+        {chapter.label}
       </label>
     </div>
   {/each}
