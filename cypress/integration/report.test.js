@@ -155,4 +155,15 @@ describe("Report", () => {
       .should("have.attr", "href")
       .and("contains", "https://www.drupal.org/");
   });
+
+  it("should not display table for disabled chapter but should for enabled chapter", () => {
+    cy.visit("/chapter/hardware");
+    cy.get("#evaluation-disabled-chapter-hardware").check();
+
+    cy.get("button").contains("View Report").click();
+
+    cy.get("#hardware-editor + table").should("not.exist");
+
+    cy.get("#software-editor + table").should("exist");
+  });
 });
