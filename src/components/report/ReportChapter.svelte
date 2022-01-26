@@ -42,7 +42,7 @@
   Notes: {@html marked($evaluation['chapters'][chapterId]['notes'])}
 {/if}
 
-{#if $evaluation['chapters'][chapterId]['criteria']}
+{#if $evaluation['chapters'][chapterId]['criteria'] && !$evaluation['chapters'][chapterId]['disabled'] }
   <table class="usa-table">
     <thead>
     <tr>
