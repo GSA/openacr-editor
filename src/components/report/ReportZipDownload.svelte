@@ -35,7 +35,7 @@
 
 {#if valid.result }
   <a href={zipDownload} download="{filename}.zip" class="button" style="text-align: center;">
-    Download Report (YAML & HTML)<br/>.zip
+    Download Report<br/>(YAML & HTML) .zip
   </a>
 {/if}
 
