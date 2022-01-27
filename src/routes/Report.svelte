@@ -30,10 +30,20 @@
 
 <Header>Report</Header>
 
+<HeaderWithAnchor id="download" level=2>Download</HeaderWithAnchor>
+
 <p>
   <ReportZipDownload />
   <ReportYAMLDownload />
 </p>
+
+<ol>
+  <li>Download the YAML only file.</li>
+  <li>Right click anywhere on this page and select Save As.</li>
+    <li>Choose a location where you want to save your HTML file.</li>
+      <li>Share the HTML file or folder and the YAML file you previously downloaded with your collaborators.</li>
+        <li>Let your collaborators know that they can view the HTML version of the file and can make edits by going to the OpenACR editor and uploading the YAML file. When they have completed their edits, they must to send you the YAML file but the HTML file is optional.</li>
+</ol>
 
 <ReportValid />
 <ReportHeader />
