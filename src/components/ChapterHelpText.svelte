@@ -21,13 +21,13 @@
         href="#1.1.1-electronic-docs-editor"
         on:click={() => openFirstAccordion()}>Documentation</a
       >,
+      <a href="#1.1.1-software-editor" on:click={() => openFirstAccordion()}
+        >Software</a
+      >
+      and
       <a
         href="#1.1.1-authoring-tool-editor"
         on:click={() => openFirstAccordion()}>Authoring</a
-      >
-      and
-      <a href="#1.1.1-software-editor" on:click={() => openFirstAccordion()}
-        >Software</a
       >. Fill out as appropriate.
     {:else if chapterId === "success_criteria_level_aa"}
       Provide information about how your website or web application fails to
@@ -36,13 +36,13 @@
         href="#1.2.4-electronic-docs-editor"
         on:click={() => openFirstAccordion()}>Documentation</a
       >,
+      <a href="#1.2.4-software-editor" on:click={() => openFirstAccordion()}
+        >Software</a
+      >
+      and
       <a
         href="#1.2.4-authoring-tool-editor"
         on:click={() => openFirstAccordion()}>Authoring</a
-      >
-      and
-      <a href="#1.2.4-software-editor" on:click={() => openFirstAccordion()}
-        >Software</a
       >. Fill out as appropriate.
     {:else if chapterId === "success_criteria_level_aaa"}
       This section is optional. Consider providing information about Level AAA
