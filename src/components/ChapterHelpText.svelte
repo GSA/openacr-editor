@@ -1,4 +1,5 @@
 <script>
+  import { link } from "svelte-navigator";
   export let chapterId;
 
   function openFirstAccordion() {
@@ -63,7 +64,7 @@
       If your software product is a web application or is rendered through a web
       browser, do not fill out this section. Fill out <a
         href="success_criteria_level_a"
-        on:click={() => (window.onbeforeunload = null)}>Tables 1, 2, and 3</a
+        use:link>Tables 1, 2, and 3</a
       >. Fill out this section if your software product is not web-based.
       Desktop applications are a common example of software which is not
       web-based. Software which uses internet communication but is not used via
