@@ -34,8 +34,8 @@
 </script>
 
 {#if valid.result }
-  <a href={zipDownload} download="{filename}.zip" class="button">
-    Download Report (YAML & HTML)
+  <a id="download-zip" href={zipDownload} download="{filename}.zip" class="button" style="text-align: center;">
+    Download Report<br/>(YAML & HTML) .zip
   </a>
 {/if}
 
