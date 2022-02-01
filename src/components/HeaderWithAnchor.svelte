@@ -37,7 +37,7 @@
       position:relative;
       opacity: 1;
       left: 0;
-      vertical-align: top
+      vertical-align: top;
     }
   }
   a.header-anchor {
@@ -54,7 +54,10 @@
   a.header-anchor:focus,a.header-anchor:hover {
     text-decoration: underline;
     font-size: large;
-    opacity: 1
+    opacity: 1;
+  }
+  summary>h3:first-child:before {
+    line-height: 1.2;
   }
 </style>
 

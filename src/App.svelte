@@ -65,6 +65,7 @@
     {/each}
     <NavItem to="/report">Report</NavItem>
     <NavItem to="/glossary">Glossary</NavItem>
+    <NavItem to="/acknowledgements">Acknowledgements</NavItem>
   </Nav>
   <section
     id="content"
