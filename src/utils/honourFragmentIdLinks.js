@@ -6,7 +6,7 @@ export function honourFragmentIdLinks(routerLocation) {
 
     // if inside a collapsed section, open it.
     if (fragment.parentElement.nodeName === "DETAILS") {
-      fragment.parentElement.setAttribute("open", true);
+      fragment.parentElement.setAttribute("open", "");
     }
 
     // explicitly move focus
