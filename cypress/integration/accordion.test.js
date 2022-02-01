@@ -36,6 +36,8 @@ describe("Accordions", () => {
       .click()
       .get("details")
       .should("not.have.attr", "open");
+    cy.get("button.collapse").should("is.disabled");
     cy.get("button.expand").click().get("details").should("have.attr", "open");
+    cy.get("button.expand").should("is.disabled");
   });
 });
