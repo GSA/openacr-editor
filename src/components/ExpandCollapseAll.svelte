@@ -23,10 +23,10 @@
   };
 
   let initButtonStatus = function() {
-    let triggers = document.querySelectorAll("details summary");
+    let details = document.querySelectorAll("details");
 
-    for (var i = 0, length = triggers.length; i < length; i++) {
-      triggers[i].addEventListener("click", function() {
+    for (var i = 0, length = details.length; i < length; i++) {
+      details[i].addEventListener("toggle", function() {
         setTimeout(setButtonStatus, 100);
       });
     }
