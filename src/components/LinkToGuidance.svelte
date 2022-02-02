@@ -1,4 +1,6 @@
 <script>
+  import vars from "../../config/__buildEnv__.json";
+
   export let href;
 </script>
 
@@ -47,4 +49,12 @@
   <span>
     <slot />
   </span>
+  <span class="visuallyhidden">(opens in a new window)</span>
+  &nbsp;
+  <svg
+    focusable="false"
+    aria-hidden="true"
+    class="icon-link">
+    <use xlink:href={`${vars.pathPrefix}/images/icons.svg#icon-external-link`} />
+  </svg>
 </a>

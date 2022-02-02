@@ -56,7 +56,7 @@
   <slot />
   <a href="#{id}{extraId}" class="header-anchor" aria-labelledby="{id}{extraId}">
     <span class="anchor-icon" aria-hidden="true">
-        <svg
+      <svg
         focusable="false"
         aria-hidden="true"
         class="icon-link">
