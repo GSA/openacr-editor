@@ -20,7 +20,7 @@
   .link-to-guidance svg {
     margin-right: 0.25em;
   }
-  .link-to-guidance::after {
+  .link-to-guidance:after {
     margin-top: 0;
   }
 </style>

@@ -69,6 +69,9 @@
         border-color: #1e6ad6;
         color: var(--pure-white);
       }
+      a.button:after {
+        margin-top: 0;
+      }
       /* End placeholder styling. */
       :target {
         scroll-margin-top: 5rem;
@@ -215,15 +218,22 @@
             or via GitHub.
           </p>
           <div class="button-group">
-            <a href="mailto:openacr@gsa.gov" class="button"
-              ><span>E-mail</span></a
+            <a href="mailto:openacr@gsa.gov" class="button" target="_blank"
+              ><span>E-mail</span>
+              <span class="visuallyhidden">(opens in a new window)</span></a
             >
-            <a href="https://github.com/GSA/openacr-editor" class="button"
-              ><span>Fork &amp; Edit on GitHub</span></a
+            <a
+              href="https://github.com/GSA/openacr-editor"
+              class="button"
+              target="_blank"
+              ><span>Fork &amp; Edit on GitHub</span>
+              <span class="visuallyhidden">(opens in a new window)</span></a
             ><a
               href="https://github.com/GSA/openacr-editor/issues/new"
               class="button"
-              ><span>New GitHub Issue</span></a
+              target="_blank"
+              ><span>New GitHub Issue</span>
+              <span class="visuallyhidden">(opens in a new window)</span></a
             >
           </div>
         </div>
