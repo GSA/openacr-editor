@@ -32,9 +32,11 @@ Based on {catalog.title}
     {#if $evaluation["author"]["name"]}<li>Name: {$evaluation["author"]["name"]}</li>{/if}
     {#if $evaluation["author"]["company_name"]}<li>Company: {$evaluation["author"]["company_name"]}</li>{/if}
     {#if $evaluation["author"]["address"]}<li>Address: {$evaluation["author"]["address"]}</li>{/if}
-    {#if $evaluation["author"]["email"]}<li>Email: <a href="mailto:{$evaluation['author']['email']}">{$evaluation["author"]["email"]}</a></li>{/if}
+    {#if $evaluation["author"]["email"]}<li>Email: <a href="mailto:{$evaluation['author']['email']}" target="_blank">{$evaluation["author"]["email"]}
+      <span class="visuallyhidden">(opens in a new window)</span></a></li>{/if}
     {#if $evaluation["author"]["phone"]}<li>Phone: {$evaluation["author"]["phone"]}</li>{/if}
-    {#if $evaluation["author"]["website"]}<li>Website: <a href="{$evaluation['author']['website']}">{$evaluation["author"]["website"]}</a></li>{/if}
+    {#if $evaluation["author"]["website"]}<li>Website: <a href="{$evaluation['author']['website']}" target="_blank">{$evaluation["author"]["website"]}
+      <span class="visuallyhidden">(opens in a new window)</span></a></li>{/if}
   </ul>
 {/if}
 {#if $evaluation["vendor"]}
@@ -43,9 +45,11 @@ Based on {catalog.title}
     {#if $evaluation["vendor"]["name"]}<li>Name: {$evaluation["vendor"]["name"]}</li>{/if}
     {#if $evaluation["vendor"]["company_name"]}<li>Company: {$evaluation["vendor"]["company_name"]}</li>{/if}
     {#if $evaluation["vendor"]["address"]}<li>Address: {$evaluation["vendor"]["address"]}</li>{/if}
-    {#if $evaluation["vendor"]["email"]}<li>Email: <a href="mailto:{$evaluation['vendor']['email']}">{$evaluation["vendor"]["email"]}</a></li>{/if}
+    {#if $evaluation["vendor"]["email"]}<li>Email: <a href="mailto:{$evaluation['vendor']['email']}" target="_blank">{$evaluation["vendor"]["email"]}
+      <span class="visuallyhidden">(opens in a new window)</span></a></li>{/if}
     {#if $evaluation["vendor"]["phone"]}<li>Phone: {$evaluation["vendor"]["phone"]}</li>{/if}
-    {#if $evaluation["vendor"]["website"]}<li>Website: <a href="{$evaluation['vendor']['website']}">{$evaluation["vendor"]["website"]}</a></li>{/if}
+    {#if $evaluation["vendor"]["website"]}<li>Website: <a href="{$evaluation['vendor']['website']}" target="_blank">{$evaluation["vendor"]["website"]}
+      <span class="visuallyhidden">(opens in a new window)</span></a></li>{/if}
   </ul>
 {/if}
 
@@ -72,7 +76,8 @@ This report covers the degree of conformance for the following accessibility sta
   <tbody>
     {#each catalog.standards as standard }
       <tr>
-        <td><a href="{standard.url}">{standard.label}</a></td>
+        <td><a href="{standard.url}" target="_blank">{standard.label}
+          <span class="visuallyhidden">(opens in a new window)</span></a></td>
         <td>{@html standardsIncluded(standard.chapters)}</td>
       </tr>
     {/each}
