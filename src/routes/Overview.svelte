@@ -1,5 +1,4 @@
 <script>
-  import vars from "../../config/__buildEnv__.json";
   import { onMount } from "svelte";
   import { Link, useLocation } from "svelte-navigator";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
@@ -28,13 +27,7 @@
 
 <p>
   This web editor helps evaluators build Accessibility Conformance Reports in the <a href="https://github.com/gsa/openacr" target="_blank">OpenACR format
-    <span class="visuallyhidden">(opens in a new window)</span>
-    <svg
-      focusable="false"
-      aria-hidden="true"
-      class="icon-link">
-      <use xlink:href={`${vars.pathPrefix}/images/icons.svg#icon-external-link`} />
-    </svg></a>.
+    <span class="visuallyhidden">(opens in a new window)</span></a>.
   It is designed to help accessibility subject matter experts create machine-readable OpenACR documents. Authors will be guided in creating an
   accessible report for the digital product or service that they are documenting. Conformance for each requirement can be documented as required
   to generate a Section 508 report.
@@ -58,13 +51,7 @@
   </li>
   <li>
     You can add limited formatting to your report with <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank">Markdown
-      <span class="visuallyhidden">(opens in a new window)</span>
-      <svg
-        focusable="false"
-        aria-hidden="true"
-        class="icon-link">
-        <use xlink:href={`${vars.pathPrefix}/images/icons.svg#icon-external-link`} />
-      </svg></a>. This allows you to add
+      <span class="visuallyhidden">(opens in a new window)</span></a>. This allows you to add
     lists, links and code examples.
   </li>
 </ul>
@@ -91,17 +78,8 @@
     will make it easier to provide feedback to vendors. Comparisons will make it easier to update reports.
   </p>
   <p>
-    For more information, see
-    <a href="https://github.com/GSA/openacr" target="_blank">
-      OpenACR
-      <span class="visuallyhidden">(opens in a new window)</span>
-      <svg
-        focusable="false"
-        aria-hidden="true"
-        class="icon-link">
-        <use xlink:href={`${vars.pathPrefix}/images/icons.svg#icon-external-link`} />
-      </svg>
-    </a>.
+    For more information, see <a href="https://github.com/GSA/openacr" target="_blank">OpenACR
+      <span class="visuallyhidden">(opens in a new window)</span></a>.
   </p>
 </details>
 

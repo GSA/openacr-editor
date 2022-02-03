@@ -1,6 +1,4 @@
 <script>
-  import vars from "../../config/__buildEnv__.json";
-
   export let href;
 </script>
 
@@ -22,13 +20,16 @@
   .link-to-guidance svg {
     margin-right: 0.25em;
   }
+  .link-to-guidance::after {
+    margin-top: 0;
+  }
 </style>
 
 <a
   {href}
   class="link-to-guidance button button-small button-secondary"
   target="_blank"
-  rel="noopener roreferrer">
+  rel="noopener noreferrer">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="14"
@@ -50,11 +51,4 @@
     <slot />
   </span>
   <span class="visuallyhidden">(opens in a new window)</span>
-  &nbsp;
-  <svg
-    focusable="false"
-    aria-hidden="true"
-    class="icon-link">
-    <use xlink:href={`${vars.pathPrefix}/images/icons.svg#icon-external-link`} />
-  </svg>
 </a>
