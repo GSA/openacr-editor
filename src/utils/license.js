@@ -5,8 +5,9 @@ export function license(evaluation, templateType) {
     if (templateType === "html") {
       return `<a href="${
         spdxLicenseList[evaluation.license].url
-      }" target="_blank">${spdxLicenseList[evaluation.license].name}
-      <span class="visuallyhidden">(opens in a new window)</span></a>`;
+      }" target="_blank">${
+        spdxLicenseList[evaluation.license].name
+      } <span class="visuallyhidden">(opens in a new window or tab)</span></a>`;
     } else {
       return `[${spdxLicenseList[evaluation.license].name}](${
         spdxLicenseList[evaluation.license].url

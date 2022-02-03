@@ -74,8 +74,8 @@ describe("Report", () => {
     cy.get(".validation").should("contain", "Valid!");
 
     cy.get("#content").should(
-      "contain",
-      "This content is licensed under a Creative Commons Attribution Share Alike 4.0 International."
+      "contain.text",
+      "This content is licensed under a Creative Commons Attribution Share Alike 4.0 International"
     );
   });
 
