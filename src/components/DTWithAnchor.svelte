@@ -60,7 +60,7 @@
         focusable="false"
         aria-hidden="true"
         class="icon-link">
-        <use xlink:href={`${vars.pathPrefix}/images/icons.svg#link`} />
+        <use href={`${vars.pathPrefix}/images/icons.svg#link`} />
       </svg>
     </span>
     <span class="visuallyhidden">Anchor link</span>
