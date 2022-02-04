@@ -42,7 +42,8 @@
     "@openacr/openacr": "^0.3.3",
     "core-js": "3",
     "jszip": "^3.7.1",
-    "marked": "^0.8.2",
+    "marked": "^4.0.12",
+    "sanitize-html": "^2.7.0",
     "svelte-navigator": "^3.0.8"
   },
   "scripts": {

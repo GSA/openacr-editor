@@ -150,6 +150,39 @@ describe("Report", () => {
       .and("contains", "https://www.drupal.org/");
   });
 
+  it("should sanitize XSS example in notes for a chapter", () => {
+    cy.visit("/chapter/success_criteria_level_aa");
+
+    cy.get("textarea[id='evaluation-chapter-notes']").clear();
+
+    cy.get("textarea[id='evaluation-chapter-notes']").type(
+      "<b onclick=\"alert('Woof!')\">click me!</b>"
+    );
+
+    cy.get("button").contains("View Report").click();
+
+    cy.get("#success_criteria_level_aa-editor + p b").should(
+      "not.have.attr",
+      "onclick"
+    );
+  });
+
+  it("should render HTML in notes for a chapter", () => {
+    cy.visit("/chapter/success_criteria_level_aaa");
+
+    cy.get("textarea[id='evaluation-chapter-notes']").clear();
+
+    cy.get("textarea[id='evaluation-chapter-notes']").type(
+      "Where possible the <a href='https://www.drupal.org/'>Drupal</a> community strives to exceed AA compliance."
+    );
+
+    cy.get("button").contains("View Report").click();
+
+    cy.get("#success_criteria_level_aaa-editor + p a")
+      .should("have.attr", "href")
+      .and("contains", "https://www.drupal.org/");
+  });
+
   it("should not display table for disabled chapter but should for enabled chapter", () => {
     cy.visit("/chapter/hardware");
     cy.get("#evaluation-disabled-chapter-hardware").check();

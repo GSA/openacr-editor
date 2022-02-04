@@ -2,6 +2,7 @@
   import { evaluation } from "../../stores/evaluation.js";
   import { validate } from "../../utils/validate.js";
   import { license } from "../../utils/license.js";
+
   let licenseOutput;
   const valid = validate($evaluation);
 
