@@ -22,7 +22,7 @@
 <Header>Acknowledgements</Header>
 
 <p>
-  The OpenACR Editor was developed by <a href="https://civicactions.com/">CivicActions</a> and <a href="https://www.gsa.gov/">U.S. General Services Administration (GSA)</a>
+  The OpenACR Editor was developed by <a href="https://civicactions.com/" target="_blank">CivicActions <span class="visuallyhidden">(opens in a new window or tab)</span></a> and <a href="https://www.gsa.gov/" target="_blank">U.S. General Services Administration (GSA) <span class="visuallyhidden">(opens in a new window or tab)</span></a>
 </p>
 
 <HeaderWithAnchor id="project-team" level=2>Project Team</HeaderWithAnchor>

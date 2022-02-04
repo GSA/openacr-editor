@@ -20,13 +20,16 @@
   .link-to-guidance svg {
     margin-right: 0.25em;
   }
+  .link-to-guidance:after {
+    margin-top: 0;
+  }
 </style>
 
 <a
   {href}
   class="link-to-guidance button button-small button-secondary"
   target="_blank"
-  rel="noopener roreferrer">
+  rel="noopener noreferrer">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="14"
@@ -46,5 +49,5 @@
   </svg>
   <span>
     <slot />
-  </span>
+  </span> <span class="visuallyhidden">(opens in a new window or tab)</span>
 </a>
