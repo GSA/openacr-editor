@@ -2,7 +2,7 @@
   import HeaderWithAnchor from "../HeaderWithAnchor.svelte";
   import { evaluation } from "../../stores/evaluation.js";
   import { validate } from "../../utils/validate.js";
-  import marked from "marked";
+  import { sanitizeMarkdown } from "../../utils/sanitizeMarkdown.js";
 
   const valid = validate($evaluation);
 </script>
@@ -16,5 +16,5 @@
 <div class="validation">
   <HeaderWithAnchor id="validation" level=2>Validation</HeaderWithAnchor>
 
-  {@html marked(valid.message)}
+  {@html sanitizeMarkdown(valid.message)}
 </div>

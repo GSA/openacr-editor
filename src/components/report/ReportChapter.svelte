@@ -3,7 +3,7 @@
   import { getCatalogChapter } from "../../utils/getCatalogItems.js";
   import ReportChapterTableResult from "./ReportChapterTableResult.svelte";
   import HeaderWithAnchor from "../HeaderWithAnchor.svelte";
-  import marked from 'marked';
+  import { sanitizeMarkdown } from "../../utils/sanitizeMarkdown.js";
 
   export let standard;
   export let chapterId;
@@ -39,7 +39,7 @@
 <HeaderWithAnchor id={chapterId} level=3 {download}>{chapter.label}</HeaderWithAnchor>
 
 {#if $evaluation['chapters'][chapterId]['notes']}
-  Notes: {@html marked($evaluation['chapters'][chapterId]['notes'])}
+  Notes: {@html sanitizeMarkdown($evaluation['chapters'][chapterId]['notes'])}
 {/if}
 
 {#if $evaluation['chapters'][chapterId]['criteria'] && !$evaluation['chapters'][chapterId]['disabled'] }

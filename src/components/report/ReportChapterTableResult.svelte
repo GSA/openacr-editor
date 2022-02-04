@@ -1,6 +1,6 @@
 <script>
   import { catalogChapterCriteria, catalogComponentLabel, levelLabel } from "../../utils/getCatalogItems.js";
-  import marked from 'marked';
+  import { sanitizeMarkdown } from "../../utils/sanitizeMarkdown.js";
 
   export let standard;
   export let chapterId;
@@ -57,7 +57,7 @@
       <ul>
         {#each criteria.components as component}
         {#if component.adherence.notes}
-          <li>{@html catalogComponentLabel(component.name, "html")}{@html marked(component.adherence.notes)}</li>
+          <li>{@html catalogComponentLabel(component.name, "html")}{@html sanitizeMarkdown(component.adherence.notes)}</li>
           {/if}
         {/each}
       </ul>

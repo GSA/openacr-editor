@@ -1,7 +1,7 @@
 <script>
   import HeaderWithAnchor from "../HeaderWithAnchor.svelte";
   import { evaluation } from "../../stores/evaluation.js";
-  import marked from 'marked';
+  import { sanitizeMarkdown } from "../../utils/sanitizeMarkdown.js";
 
   export let download = false;
 </script>
@@ -10,7 +10,7 @@
   <HeaderWithAnchor id="legal-disclaimer" level=2 {download}>
     Legal Disclaimer {#if $evaluation["vendor"]["company_name"]}({$evaluation["vendor"]["company_name"]}){/if}
   </HeaderWithAnchor>
-  {@html marked($evaluation["legal_disclaimer"])}
+  {@html sanitizeMarkdown($evaluation["legal_disclaimer"])}
 {/if}
 {#if $evaluation["repository"]}
   <HeaderWithAnchor id="repository" level=2 {download}>Repository</HeaderWithAnchor>
