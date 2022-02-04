@@ -2,7 +2,6 @@
   import { evaluation } from "../../stores/evaluation.js";
   import { validate } from "../../utils/validate.js";
   import { license } from "../../utils/license.js";
-  import sanitizeHtml from "sanitize-html";
 
   let licenseOutput;
   const valid = validate($evaluation);
@@ -13,5 +12,5 @@
 </script>
 
 {#if licenseOutput}
-This content is licensed under a {@html sanitizeHtml(licenseOutput)}.
+This content is licensed under a {@html licenseOutput}.
 {/if}

@@ -1,4 +1,5 @@
 import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+import sanitizeHtml from "sanitize-html";
 
 export function getCatalogChapter(chapterId) {
   for (const chapter of catalog.chapters) {
@@ -14,7 +15,7 @@ export function standardsIncluded(standardChapters) {
     const catalogChapter = getCatalogChapter(standardChapter);
     result.push(`<li>${catalogChapter.label}</li>`);
   }
-  return `<ul>${result.join("")}</ul>`;
+  return sanitizeHtml(`<ul>${result.join("")}</ul>`);
 }
 
 export function catalogChapterCriteria(chapterId, criteriaNum) {
@@ -32,7 +33,7 @@ export function catalogComponentLabel(componentId, templateType) {
       if (component.id === componentId) {
         if (component.label != "") {
           if (templateType === "html") {
-            return `<strong>${component.label}</strong>: `;
+            return sanitizeHtml(`<strong>${component.label}</strong>: `);
           } else {
             return `**${component.label}**: `;
           }

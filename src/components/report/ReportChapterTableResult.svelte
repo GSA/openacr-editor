@@ -1,7 +1,6 @@
 <script>
   import { catalogChapterCriteria, catalogComponentLabel, levelLabel } from "../../utils/getCatalogItems.js";
   import { sanitizeMarkdown } from "../../utils/sanitizeMarkdown.js";
-  import sanitizeHtml from "sanitize-html";
 
   export let standard;
   export let chapterId;
@@ -47,7 +46,7 @@
       <ul>
         {#each criteria.components as component}
           {#if component.adherence.level}
-            <li>{@html sanitizeHtml(catalogComponentLabel(component.name, "html"))}<p>{levelLabel(component.adherence.level)}</p></li>
+            <li>{@html catalogComponentLabel(component.name, "html")}<p>{levelLabel(component.adherence.level)}</p></li>
           {/if}
         {/each}
       </ul>
@@ -58,7 +57,7 @@
       <ul>
         {#each criteria.components as component}
         {#if component.adherence.notes}
-          <li>{@html sanitizeHtml(catalogComponentLabel(component.name, "html"))}{@html sanitizeMarkdown(component.adherence.notes)}</li>
+          <li>{@html catalogComponentLabel(component.name, "html")}{@html sanitizeMarkdown(component.adherence.notes)}</li>
           {/if}
         {/each}
       </ul>
