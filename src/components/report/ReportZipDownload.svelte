@@ -13,9 +13,11 @@
   import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import yaml from "js-yaml";
   import JSZip from "jszip";
+  import { sanitizeEvaluation } from "../../utils/sanitizeEvaluation.js";
 
   var title = $evaluation.title;
   const filename = reportFilename($evaluation);
+  const sanitizedEvaluation = sanitizeEvaluation($evaluation);
   const valid = validate($evaluation);
   let zipDownload, htmlDownload, htmlDownloadTemplate;
 
@@ -26,7 +28,7 @@
     htmlDownload = createHTMLDownload(htmlDownloadTemplate, title, "en");
     zip.file('README.txt', 'If you need to gather feedback from other people in your organization, please send the zipped file (HTML and YAML) to your collaborators. Collaborators can view the report by opening the HTML file with any web browser. If they would like to make changes to the report, they should go to OpenACR Editor and upload the YAML file to make edits to the content of the report. Do not edit the HTML file directly, it is just for viewing the report.\n\nIf your report is final and you\'re ready to submit the report to an agency in response to a Request for Proposal (RFP), please attach the YAML file to your proposal.');
     zip.file(`${filename}.html`, htmlDownload);
-    zip.file(`${filename}.yaml`, yaml.dump($evaluation));
+    zip.file(`${filename}.yaml`, yaml.dump(sanitizedEvaluation));
     zip.generateAsync({type:"base64"}).then(function (base64) {
       zipDownload = `data:application/zip;base64,${base64}`;
     });

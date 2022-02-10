@@ -3,12 +3,14 @@
   import yaml from "js-yaml";
   import { validate } from "../../utils/validate.js";
   import { reportFilename } from "../../utils/reportFilename.js";
+  import { sanitizeEvaluation } from "../../utils/sanitizeEvaluation.js";
 
   const filename = reportFilename($evaluation);
-  const valid = validate($evaluation);
+  const sanitizedEvaluation = sanitizeEvaluation($evaluation);
+  const valid = validate(sanitizedEvaluation);
 
   $: yamlDownload = `data:application/yaml;charset=utf-8,${encodeURIComponent(
-    yaml.dump($evaluation)
+    yaml.dump(sanitizedEvaluation)
   )}`;
 </script>
 
