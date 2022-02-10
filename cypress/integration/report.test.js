@@ -27,7 +27,7 @@ describe("Report", () => {
 
     cy.get("button").contains("View Report").click();
 
-    cy.get(".validation").should("contain", "Valid!");
+    cy.get(".usa-alert").should("contain", "Valid Report");
 
     cy.get("#content").should("contain", "Drupal 9.1");
 
@@ -54,7 +54,7 @@ describe("Report", () => {
 
     cy.get("button").contains("View Report").click();
 
-    cy.get(".validation").should("contain", "Valid!");
+    cy.get(".usa-alert").should("contain", "Valid Report");
 
     cy.get("#content").should("contain", "12/31/2021");
   });
@@ -71,7 +71,7 @@ describe("Report", () => {
 
     cy.get("button").contains("View Report").click();
 
-    cy.get(".validation").should("contain", "Valid!");
+    cy.get(".usa-alert").should("contain", "Valid Report");
 
     cy.get("#content").should(
       "contain.text",
@@ -85,7 +85,7 @@ describe("Report", () => {
 
     cy.get("button").contains("View Report").click();
 
-    cy.get(".validation").should("contain", "Valid!");
+    cy.get(".usa-alert").should("contain", "Valid Report");
 
     cy.get("#content").should("not.contain", "License");
   });
@@ -105,7 +105,7 @@ describe("Report", () => {
 
     cy.get("button").contains("View Report").click();
 
-    cy.get(".validation").should("contain", "Valid!");
+    cy.get(".usa-alert").should("contain", "Valid Report");
 
     cy.get("#content").should(
       "contain",

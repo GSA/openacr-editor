@@ -33,6 +33,10 @@
       label: `${spdxLicenseList[spdexLicenseListItem].name} (${spdexLicenseListItem})`
     });
   }
+  spdxLicenses.push({
+    value: 'Invalid',
+    label: 'Invalid License'
+  });
   spdxLicenses.sort((a, b) => {
     let la = a.label.toLowerCase(),
         lb = b.label.toLowerCase();

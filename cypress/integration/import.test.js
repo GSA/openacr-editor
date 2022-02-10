@@ -102,8 +102,8 @@ describe("Import", () => {
           cy.stub(win.console, "error").as("consoleError");
         },
       })
-        .get(".validation")
-        .should("contain", "Valid!")
+        .get(".usa-alert")
+        .should("contain", "Valid Report")
         .get("h1")
         .should(
           "contain",
