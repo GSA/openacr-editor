@@ -30,5 +30,3 @@
   <li><strong>GSA</strong>: Syed Azeem, Karl Hebenstreit, Andrew Neilson, Joseph Novak, Charles Popelka, Richard Speidel, Sean Zerges.</li>
   <li><strong>CivicActions</strong>: Owen Barton, Melinda Burgess, Danita Delce, Mike Gifford, Marlena Medford, Daniel Mundra, Jacqueline Quintanilla, Farooq Zakhilwal.</li>
 </ul>
-
-<HeaderWithAnchor id="major-contributors" level=2>Major Contributors</HeaderWithAnchor>
