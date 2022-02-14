@@ -2,9 +2,9 @@
 
 With this tool, people can generate Accessibility Conformance Report in the [OpenACR](https://github.com/GSA/openacr) format.
 
-## ATAG Report Tool (ART)
+## W3C Web Accessibility Initiative (WAI) Reporting Tools
 
-This software includes material copied from or derived from [W3C ATAG Report Tool (ART)](https://github.com/w3c/wai-atag-report-tool) and Copyright © 2021 W3C® (MIT, ERCIM, Keio, Beihang).
+This software includes builds on the work from the WAI's [ATAG Report Tool (ART)](https://github.com/w3c/wai-atag-report-tool) and [WCAG-EM Report Tool](https://github.com/w3c/wai-wcag-em-report-tool/). Copyright © 2021 W3C® (MIT, ERCIM, Keio, Beihang).
 
 [W3C Software notice and license](https://www.w3.org/Consortium/Legal/copyright-software).
 
