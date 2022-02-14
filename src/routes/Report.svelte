@@ -28,7 +28,7 @@
   <title>Report | OpenACR Editor | GSA</title>
 </svelte:head>
 
-<Header>Report</Header>
+<ReportValid />
 
 <HeaderWithAnchor id="download" level=2>Download</HeaderWithAnchor>
 
@@ -52,7 +52,6 @@
   </ol>
 </details>
 
-<ReportValid />
 <ReportHeader />
 {#each standards as standard}
   <ReportChapters {standard} />
