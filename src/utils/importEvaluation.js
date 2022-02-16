@@ -30,6 +30,12 @@ export function importEvaluation(event) {
         if (!converted.report_date) {
           converted["report_date"] = datestamp;
         }
+        converted["last_modified_date"] = datestamp;
+        if (!converted.version) {
+          converted["version"] = 1;
+        } else {
+          converted["version"] = converted["version"] + 1;
+        }
         if (!converted.license) {
           converted["license"] = "CC-BY-4.0";
         }

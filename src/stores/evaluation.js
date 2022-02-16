@@ -4,12 +4,13 @@ import { createCleanEvaluation } from "../utils/createCleanEvaluation.js";
 const storageName = "openacr_editor_store";
 
 // update this number whenever new things added to the data model to cachebust [remove this when stable]
-const DATA_MODEL = "22";
+const DATA_MODEL = "23";
 
 let fresh = true;
 
 export function updateCache(evaluation) {
   try {
+    evaluation["last_modified_date"] = new Date().toLocaleDateString();
     const serialisedEvaluation = JSON.stringify(evaluation);
     localStorage.setItem(storageName, serialisedEvaluation);
 

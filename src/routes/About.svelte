@@ -17,6 +17,7 @@
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
   import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+  import { reportFilename } from "../utils/reportFilename.js";
 
   const location = useLocation();
 
@@ -78,7 +79,16 @@
       evaluation.updateCache($evaluation);
     }
   }
+
+  $: versionPrefix = reportFilename($evaluation);
 </script>
+
+<style>
+  #evaluation-version {
+    display: inline-block;
+    width: unset;
+  }
+</style>
 
 <svelte:head>
   <title>About | OpenACR Editor | GSA</title>
@@ -274,6 +284,33 @@
       id="evaluation-report-date"
       on:change={() => evaluation.updateCache($evaluation)} />
     <HelpText type="report" field="report_date" />
+  </div>
+
+  <div class="field">
+    <label for="evaluation-last-modified-date">
+      Last Modified Date
+    </label>
+    <input
+      type="text"
+      readonly
+      bind:value={$evaluation['last_modified_date']}
+      id="evaluation-last-modified-date"
+      on:change={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="report" field="last_modified_date" />
+  </div>
+
+  <div class="field">
+    <label for="evaluation-version">
+      Version
+    </label>
+    <span class="version-prefix">{versionPrefix}-</span>
+    <input
+      type="integer"
+      readonly
+      bind:value={$evaluation['version']}
+      id="evaluation-version"
+      on:change={() => evaluation.updateCache($evaluation)} />
+    <HelpText type="report" field="version" />
   </div>
 
   <div class="field">
