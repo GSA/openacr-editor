@@ -8,9 +8,11 @@ const DATA_MODEL = "23";
 
 let fresh = true;
 
-export function updateCache(evaluation) {
+export function updateCache(evaluation, imported = false) {
   try {
-    evaluation["last_modified_date"] = new Date().toLocaleDateString();
+    if (!imported) {
+      evaluation["last_modified_date"] = new Date().toLocaleDateString();
+    }
     const serialisedEvaluation = JSON.stringify(evaluation);
     localStorage.setItem(storageName, serialisedEvaluation);
 

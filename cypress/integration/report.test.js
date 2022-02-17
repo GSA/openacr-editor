@@ -59,6 +59,17 @@ describe("Report", () => {
     cy.get("#content").should("contain", "12/31/2021");
   });
 
+  it("should show last modified date as today", () => {
+    cy.visit("/about");
+    const today = new Date().toLocaleDateString();
+
+    cy.get("button").contains("View Report").click();
+
+    cy.get(".usa-alert").should("contain", "Valid Report");
+
+    cy.get("#content").should("contain", today);
+  });
+
   it("should show selected license", () => {
     cy.visit("/about");
     cy.get("#evaluation-license")

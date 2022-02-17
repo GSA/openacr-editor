@@ -30,7 +30,9 @@ export function importEvaluation(event) {
         if (!converted.report_date) {
           converted["report_date"] = datestamp;
         }
-        converted["last_modified_date"] = datestamp;
+        if (!converted.last_modified_date) {
+          converted["last_modified_date"] = datestamp;
+        }
         if (!converted.version) {
           converted["version"] = 1;
         } else {
@@ -102,7 +104,7 @@ export function importEvaluation(event) {
 
         if (valid.result) {
           evaluation.update((evaluation) => converted);
-          evaluation.updateCache(converted);
+          evaluation.updateCache(converted, true);
           location.reload();
 
           if (converted.product.name) {

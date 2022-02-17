@@ -297,9 +297,8 @@
     <input
       type="text"
       readonly
-      bind:value={$evaluation['last_modified_date']}
-      id="evaluation-last-modified-date"
-      on:change={() => evaluation.updateCache($evaluation)} />
+      value={$evaluation['last_modified_date']}
+      id="evaluation-last-modified-date" />
     <HelpText type="report" field="last_modified_date" />
   </div>
 
@@ -309,11 +308,10 @@
     </label>
     <span class="version-prefix">{versionPrefix}-</span>
     <input
-      type="integer"
+      type="number"
       readonly
-      bind:value={$evaluation['version']}
-      id="evaluation-version"
-      on:change={() => evaluation.updateCache($evaluation)} />
+      value={$evaluation['version']}
+      id="evaluation-version" />
     <HelpText type="report" field="version" />
   </div>
 
