@@ -13,11 +13,11 @@ describe("Report", () => {
   it("should have default filename", () => {
     cy.get("a[id='download-zip']")
       .invoke("attr", "download")
-      .should("contain", "report.zip");
+      .should("contain", "report-1.zip");
 
     cy.get("a[id='download-yaml']")
       .invoke("attr", "download")
-      .should("contain", "report.yaml");
+      .should("contain", "report-1.yaml");
   });
 
   it("should show entered name and version", () => {
@@ -33,7 +33,7 @@ describe("Report", () => {
 
     cy.get("a[id='download-zip']")
       .invoke("attr", "download")
-      .should("contain", "drupal-9.1.zip");
+      .should("contain", "drupal-9.1-1.zip");
 
     cy.get("a[id='download-zip']")
       .invoke("attr", "href")
@@ -41,7 +41,7 @@ describe("Report", () => {
 
     cy.get("a[id='download-yaml']")
       .invoke("attr", "download")
-      .should("contain", "drupal-9.1.yaml");
+      .should("contain", "drupal-9.1-1.yaml");
 
     cy.get("a[id='download-yaml']")
       .invoke("attr", "href")

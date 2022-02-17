@@ -1,9 +1,12 @@
 /// <reference types="Cypress" />
 
 describe("Import", () => {
+  const today = new Date().toLocaleDateString();
   const yamlExamples = [
     {
       filename: "drupal-9.yaml",
+      reportDate: "8/31/2021",
+      version: "drupal-9.1-1",
       reportname: "Drupal",
       total: 184,
       success_criteria_level_a: 100,
@@ -16,6 +19,8 @@ describe("Import", () => {
     },
     {
       filename: "govready-0.9.yaml",
+      reportDate: today,
+      version: "govready-0.9.1.36-1",
       reportname: "GovReady",
       total: 160,
       success_criteria_level_a: 100,
@@ -108,7 +113,11 @@ describe("Import", () => {
         .should(
           "contain",
           `${yamlExample.reportname} Accessibility Conformance Report`
-        );
+        )
+        .get('[id="report-date-editor"] + ul')
+        .should("contain", `Report Date: ${yamlExample.reportDate}`)
+        .should("contain", `Last Modified Date: ${today}`)
+        .should("contain", `Version: ${yamlExample.version}`);
 
       cy.get("@consoleError").should("not.be.called");
     });
