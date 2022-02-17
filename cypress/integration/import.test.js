@@ -6,7 +6,7 @@ describe("Import", () => {
     {
       filename: "drupal-9.yaml",
       reportDate: "8/31/2021",
-      version: "drupal-9.1-1",
+      version: "drupal-9.1-13",
       reportname: "Drupal",
       total: 184,
       success_criteria_level_a: 100,
@@ -114,6 +114,12 @@ describe("Import", () => {
           "contain",
           `${yamlExample.reportname} Accessibility Conformance Report`
         )
+        .get("a[id='download-zip']")
+        .invoke("attr", "download")
+        .should("contain", `${yamlExample.version}.zip`)
+        .get("a[id='download-yaml']")
+        .invoke("attr", "download")
+        .should("contain", `${yamlExample.version}.yaml`)
         .get('[id="report-date-editor"] + ul')
         .should("contain", `Report Date: ${yamlExample.reportDate}`)
         .should("contain", `Last Modified Date: ${today}`)

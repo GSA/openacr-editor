@@ -39,7 +39,7 @@
   },
   "browserslist": "> 0.25%, not dead",
   "dependencies": {
-    "@openacr/openacr": "^0.3.3",
+    "@openacr/openacr": "^0.3.4",
     "core-js": "3",
     "jszip": "^3.7.1",
     "marked": "^4.0.12",

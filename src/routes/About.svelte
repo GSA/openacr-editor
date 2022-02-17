@@ -88,6 +88,10 @@
     display: inline-block;
     width: unset;
   }
+  input[readonly]:focus,
+  input[readonly] {
+    background-color: lightgrey !important;
+  }
 </style>
 
 <svelte:head>
