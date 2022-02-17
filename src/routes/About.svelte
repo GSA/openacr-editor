@@ -80,7 +80,7 @@
     }
   }
 
-  $: versionPrefix = reportFilename($evaluation);
+  $: versionPrefix = reportFilename($evaluation, false);
 </script>
 
 <style>

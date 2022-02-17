@@ -5,6 +5,7 @@
   import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { standardsIncluded } from "../../utils/getCatalogItems.js";
   import { sanitizeMarkdown } from "../../utils/sanitizeMarkdown.js";
+  import { reportFilename } from "../../utils/reportFilename.js";
 
   $evaluation.title = $evaluation["product"]["name"] + " Accessibility Conformance Report";
 
@@ -17,8 +18,12 @@ Based on {catalog.title}
 <HeaderWithAnchor id="name-of-product-version" level=2 {download}>Name of Product/Version</HeaderWithAnchor>
 {$evaluation["product"]["name"]} {#if $evaluation["product"]["version"]} {$evaluation["product"]["version"]}{/if}
 
-<HeaderWithAnchor id="report-date" level=2 {download}>Report Date</HeaderWithAnchor>
-{$evaluation.report_date}
+<HeaderWithAnchor id="report-date" level=2 {download}>Report Dates and Version</HeaderWithAnchor>
+<ul>
+  <li>Report Date: {$evaluation.report_date}</li>
+  <li>Last Modified Date: {$evaluation.last_modified_date}</li>
+  <li>Version: {reportFilename($evaluation)}</li>
+</ul>
 
 {#if $evaluation["product"]["description"]}
   <HeaderWithAnchor id="product-description" level=2 {download}>Product Description</HeaderWithAnchor>
