@@ -1,9 +1,13 @@
 /// <reference types="Cypress" />
 
 describe("Import", () => {
+  const today = new Date().toLocaleDateString();
   const yamlExamples = [
     {
       filename: "drupal-9.yaml",
+      reportDate: "8/31/2021",
+      lastModifiedDate: "11/16/2021",
+      version: "drupal-9.1-13",
       reportname: "Drupal",
       total: 184,
       success_criteria_level_a: 100,
@@ -16,6 +20,9 @@ describe("Import", () => {
     },
     {
       filename: "govready-0.9.yaml",
+      reportDate: today,
+      lastModifiedDate: today,
+      version: "govready-0.9.1.36-1",
       reportname: "GovReady",
       total: 160,
       success_criteria_level_a: 100,
@@ -108,10 +115,63 @@ describe("Import", () => {
         .should(
           "contain",
           `${yamlExample.reportname} Accessibility Conformance Report`
-        );
+        )
+        .get("a[id='download-zip']")
+        .invoke("attr", "download")
+        .should("contain", `${yamlExample.version}.zip`)
+        .get("a[id='download-yaml']")
+        .invoke("attr", "download")
+        .should("contain", `${yamlExample.version}.yaml`)
+        .get('[id="report-date-editor"] + ul')
+        .should("contain", `Report Date: ${yamlExample.reportDate}`)
+        .should(
+          "contain",
+          `Last Modified Date: ${yamlExample.lastModifiedDate}`
+        )
+        .should("contain", `Version: ${yamlExample.version}`);
 
       cy.get("@consoleError").should("not.be.called");
     });
+  });
+
+  it(`should change last modified date on change`, () => {
+    const fileType = "application/x-yaml";
+    const yamlExample = yamlExamples[0];
+    cy.fixture(yamlExample.filename).as("yamlFixture");
+
+    cy.visit("/");
+
+    cy.on("window:alert", cy.stub().as("alerted"));
+
+    cy.get("input[type='file']").then(function ($input) {
+      const blob = Cypress.Blob.binaryStringToBlob(this.yamlFixture, fileType);
+      const file = new File([blob], yamlExample.filename, { type: fileType });
+      const list = new DataTransfer();
+
+      list.items.add(file);
+      const myFileList = list.files;
+
+      $input[0].files = myFileList;
+      $input[0].dispatchEvent(new Event("change", { bubbles: true }));
+    });
+
+    cy.get("@alerted")
+      .should("have.been.calledOnce")
+      .and(
+        "have.been.calledWith",
+        `OpenACR "${yamlExample.reportname}" loaded`
+      );
+
+    cy.visit("/about")
+      .get("#evaluation-vendor-name")
+      .type("CivicActions")
+      .get("button")
+      .contains("View Report")
+      .click()
+      .get(".usa-alert")
+      .should("contain", "Valid Report")
+      .get("#content")
+      .should("contain", today);
   });
 
   it(`should reject invalid example`, () => {

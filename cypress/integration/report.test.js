@@ -13,11 +13,11 @@ describe("Report", () => {
   it("should have default filename", () => {
     cy.get("a[id='download-zip']")
       .invoke("attr", "download")
-      .should("contain", "report.zip");
+      .should("contain", "report-1.zip");
 
     cy.get("a[id='download-yaml']")
       .invoke("attr", "download")
-      .should("contain", "report.yaml");
+      .should("contain", "report-1.yaml");
   });
 
   it("should show entered name and version", () => {
@@ -33,7 +33,7 @@ describe("Report", () => {
 
     cy.get("a[id='download-zip']")
       .invoke("attr", "download")
-      .should("contain", "drupal-9.1.zip");
+      .should("contain", "drupal-9.1-1.zip");
 
     cy.get("a[id='download-zip']")
       .invoke("attr", "href")
@@ -41,7 +41,7 @@ describe("Report", () => {
 
     cy.get("a[id='download-yaml']")
       .invoke("attr", "download")
-      .should("contain", "drupal-9.1.yaml");
+      .should("contain", "drupal-9.1-1.yaml");
 
     cy.get("a[id='download-yaml']")
       .invoke("attr", "href")
@@ -57,6 +57,17 @@ describe("Report", () => {
     cy.get(".usa-alert").should("contain", "Valid Report");
 
     cy.get("#content").should("contain", "12/31/2021");
+  });
+
+  it("should show last modified date as today", () => {
+    cy.visit("/about");
+    const today = new Date().toLocaleDateString();
+
+    cy.get("button").contains("View Report").click();
+
+    cy.get(".usa-alert").should("contain", "Valid Report");
+
+    cy.get("#content").should("contain", today);
   });
 
   it("should show selected license", () => {

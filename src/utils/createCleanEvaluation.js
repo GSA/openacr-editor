@@ -28,6 +28,8 @@ export function createCleanEvaluation() {
       website: "",
     },
     report_date: datestamp,
+    last_modified_date: datestamp,
+    version: 1,
     notes: "",
     evaluation_methods_used: "",
     legal_disclaimer: "",
