@@ -9,10 +9,11 @@
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
   import { evaluation } from "../stores/evaluation.js";
-  import { getCatalog } from "../utils/getCatalogs.js";
+  import { getCatalog, getListOfCatalogs } from "../utils/getCatalogs.js";
 
   const location = useLocation();
   let catalog = getCatalog($evaluation.catalog);
+  let catalogChoices = getListOfCatalogs();
 
   onMount(() => {
     currentPage.update((currentPage) => "Overview");
@@ -57,6 +58,29 @@
 </ul>
 
 <ExpandCollapseAll />
+
+<details open>
+  <summary>
+    <HeaderWithAnchor id="select-catalog" level=2>Select catalog</HeaderWithAnchor>
+  </summary>
+  <p>
+    Select which catalog will you be using for this OpenACR.
+  </p>
+  {#each catalogChoices as catalogChoice}
+    <div class="field">
+      <label>
+        <input
+          type="radio"
+          value={catalogChoice.catalog}
+          bind:group="{$evaluation['catalog']}"
+          id="evaluation-catalog-{catalogChoice.catalog}"
+          on:change={() => evaluation.updateCache($evaluation)} />
+
+        {catalogChoice.title}
+      </label>
+    </div>
+  {/each}
+</details>
 
 <details>
   <summary>

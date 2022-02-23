@@ -36,6 +36,7 @@
   }
 </style>
 
+{#if catalogCriteria }
 <tr class="result-row" id="{catalogCriteria.alt_id}{extraId}">
   <td>
     <a href="{standard.url}#{catalogCriteria.alt_id}" target="_blank">
@@ -65,3 +66,4 @@
     {/if}
   </td>
 </tr>
+{/if}

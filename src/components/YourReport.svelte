@@ -13,7 +13,6 @@
   import vars from "../../config/__buildEnv__.json";
 
   let fresh, box;
-  let catalog = getCatalog($evaluation.catalog);
 
   function startNew() {
     navigate(`${vars.pathPrefix}/about`, { replace: false });
@@ -52,6 +51,7 @@
   $: progressPerChapter = getProgressPerChapter($evaluation);
   $: evaluatedItems = getEvaluatedChapterCriteriaComponents($evaluation);
   $: totalCriteria = getChapterCriteriaComponents($evaluation);
+  $: catalog = getCatalog($evaluation.catalog);
 </script>
 
 <style>

@@ -18,7 +18,6 @@
   export let url = "";
 
   const pagesWithYourReport = ["Overview", "About", "Evaluation"];
-  let catalog = getCatalog($evaluation.catalog);
 
   function needsYourReport(pageName) {
     return pagesWithYourReport.indexOf(pageName) > -1;
@@ -38,6 +37,7 @@
   function closeEditorWarning() {
     return 'Are you sure?';
   }
+  $: catalog = getCatalog($evaluation.catalog);
 </script>
 
 <style>
