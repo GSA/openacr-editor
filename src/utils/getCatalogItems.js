@@ -1,7 +1,8 @@
-import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 import sanitizeHtml from "sanitize-html";
+import { getCatalog } from "../utils/getCatalogs.js";
 
-export function getCatalogChapter(chapterId) {
+export function getCatalogChapter(catalogName, chapterId) {
+  let catalog = getCatalog(catalogName);
   for (const chapter of catalog.chapters) {
     if (chapter.id === chapterId) {
       return chapter;
@@ -9,17 +10,17 @@ export function getCatalogChapter(chapterId) {
   }
 }
 
-export function standardsIncluded(standardChapters) {
+export function standardsIncluded(catalogName, standardChapters) {
   const result = [];
   for (const standardChapter of standardChapters) {
-    const catalogChapter = getCatalogChapter(standardChapter);
+    const catalogChapter = getCatalogChapter(catalogName, standardChapter);
     result.push(`<li>${catalogChapter.label}</li>`);
   }
   return sanitizeHtml(`<ul>${result.join("")}</ul>`);
 }
 
-export function catalogChapterCriteria(chapterId, criteriaNum) {
-  const catalogChapter = getCatalogChapter(chapterId);
+export function catalogChapterCriteria(catalogName, chapterId, criteriaNum) {
+  const catalogChapter = getCatalogChapter(catalogName, chapterId);
   for (const catalogChapterCriteria of catalogChapter.criteria) {
     if (catalogChapterCriteria.id === criteriaNum) {
       return catalogChapterCriteria;
@@ -27,7 +28,8 @@ export function catalogChapterCriteria(chapterId, criteriaNum) {
   }
 }
 
-export function catalogComponentLabel(componentId, templateType) {
+export function catalogComponentLabel(catalogName, componentId, templateType) {
+  let catalog = getCatalog(catalogName);
   if (catalog.components) {
     for (const component of catalog.components) {
       if (component.id === componentId) {
@@ -44,7 +46,8 @@ export function catalogComponentLabel(componentId, templateType) {
   return "";
 }
 
-export function levelLabel(level) {
+export function levelLabel(catalogName, level) {
+  let catalog = getCatalog(catalogName);
   if (catalog.terms) {
     for (const terms of catalog.terms) {
       if (terms.id === level) {

@@ -1,11 +1,12 @@
 import { evaluation } from "../stores/evaluation.js";
 import { validate } from "../utils/validate.js";
-import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 import yaml from "js-yaml";
+import { getDefaultCatalogName, getCatalog } from "../utils/getCatalogs.js";
 
 export function importEvaluation(event) {
   var files = event.target.files;
   const datestamp = new Date().toLocaleDateString();
+  const defaultCatalogName = getDefaultCatalogName();
 
   for (var i = 0, file; (file = files[i]); i++) {
     if (!file.type.match("application/x-yaml")) {
@@ -44,9 +45,13 @@ export function importEvaluation(event) {
         if (!converted.related_openacrs) {
           converted["related_openacrs"] = [];
         }
+        if (!converted.catalog) {
+          converted["catalog"] = defaultCatalogName;
+        }
 
         // Initialize any missing chapters, components, and criteria.
-        for (const chapter of chapters) {
+        let catalog = getCatalog(converted.catalog);
+        for (const chapter of catalog.chapters) {
           if (!converted["chapters"][chapter.id]) {
             converted["chapters"][chapter.id] = {
               notes: "",

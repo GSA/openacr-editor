@@ -9,10 +9,11 @@
   import { showYourReport } from "../stores/showYourReport.js";
   import { importEvaluation } from "../utils/importEvaluation.js";
   import { getEvaluatedChapterCriteriaComponents, getChapterCriteriaComponents, getProgressPerChapter } from "../utils/getEvaluatedItems.js";
-  import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+  import { getCatalog } from "../utils/getCatalogs.js";
   import vars from "../../config/__buildEnv__.json";
 
   let fresh, box;
+  let catalog = getCatalog($evaluation.catalog);
 
   function startNew() {
     navigate(`${vars.pathPrefix}/about`, { replace: false });
@@ -156,7 +157,7 @@
       <ReportNumbers className="your-report__description" />
       <ProgressBar percentage={100 / (totalCriteria.length / evaluatedItems.length)} />
       <ul class="your-report__progress-by-principle">
-        {#each chapters as chapter}
+        {#each catalog.chapters as chapter}
           {#if !$evaluation.chapters[chapter.id].disabled}
             <YourReportProgress
               {chapter}

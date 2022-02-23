@@ -1,14 +1,15 @@
 <script>
   import { onMount } from "svelte";
   import { evaluation } from "../../stores/evaluation.js";
-  import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { validate } from "../../utils/validate.js";
   import { reportFilename } from "../../utils/reportFilename.js";
   import { license } from "../../utils/license.js";
   import { standardsIncluded } from "../../utils/getCatalogItems.js";
+  import { getCatalog } from "../../utils/getCatalogs.js";
 
   const filename = reportFilename($evaluation);
   const valid = validate($evaluation);
+  let catalog = getCatalog($evaluation.catalog);
   let mdDownload, mdTemplate, licenseOutput;
 
   if (valid.result) {
@@ -70,7 +71,7 @@ This report covers the degree of conformance for the following accessibility sta
 
   catalog.standards.forEach(standard => {
     mdTemplate += `
-| [${standard.label}](${standard.url}) | ${standardsIncluded(standard.chapters)} |`;
+| [${standard.label}](${standard.url}) | ${standardsIncluded($evaluation.catalog, standard.chapters)} |`;
   });
 
   mdTemplate += `

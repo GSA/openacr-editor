@@ -1,4 +1,4 @@
-import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+import { getCatalog } from "../utils/getCatalogs.js";
 
 export function getProgressPerChapter(evaluation) {
   let progressPerChapter = {};
@@ -31,7 +31,8 @@ export function getProgressPerChapter(evaluation) {
     return components.length;
   }
 
-  chapters.forEach((chapter) => {
+  let catalog = getCatalog(evaluation.catalog);
+  catalog.chapters.forEach((chapter) => {
     const total = getTotalForChapter(chapter);
     const evaluated = getEvaluatedForChapter(chapter);
 
@@ -50,8 +51,9 @@ export function getEvaluatedChapterCriteriaComponents(evaluation) {
     evaluation.chapters &&
     Object.keys(evaluation.chapters).length > 0
   ) {
+    let catalog = getCatalog(evaluation.catalog);
     const components = [];
-    chapters.forEach((chapter) => {
+    catalog.chapters.forEach((chapter) => {
       if (
         evaluation.chapters[chapter.id].criteria &&
         !evaluation.chapters[chapter.id].disabled
@@ -76,8 +78,9 @@ export function getEvaluatedChapterCriteriaComponents(evaluation) {
 }
 
 export function getChapterCriteriaComponents(evaluation) {
+  let catalog = getCatalog(evaluation.catalog);
   const components = [];
-  chapters.forEach((chapter) => {
+  catalog.chapters.forEach((chapter) => {
     if (!evaluation.chapters[chapter.id].disabled) {
       chapter.criteria.forEach((item) => {
         item.components.forEach((component) => {

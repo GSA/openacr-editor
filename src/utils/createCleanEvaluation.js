@@ -1,7 +1,8 @@
 import { validate } from "../utils/validate.js";
-import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+import { getDefaultCatalogName, getCatalog } from "../utils/getCatalogs.js";
 
 const datestamp = new Date().toLocaleDateString();
+const defaultCatalogName = getDefaultCatalogName();
 
 export function createCleanEvaluation() {
   const cleanEvaluation = {
@@ -37,10 +38,12 @@ export function createCleanEvaluation() {
     feedback: "",
     license: "CC-BY-4.0",
     related_openacrs: [],
+    catalog: defaultCatalogName,
     chapters: {},
   };
 
-  for (const chapter of chapters) {
+  let catalog = getCatalog(defaultCatalogName);
+  for (const chapter of catalog.chapters) {
     const criteria = [];
     for (const chapterCriteria of chapter.criteria) {
       const components = [];

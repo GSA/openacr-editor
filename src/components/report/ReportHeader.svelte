@@ -2,14 +2,15 @@
   import Header from "../Header.svelte";
   import HeaderWithAnchor from "../HeaderWithAnchor.svelte";
   import { evaluation } from "../../stores/evaluation.js";
-  import catalog from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { standardsIncluded } from "../../utils/getCatalogItems.js";
   import { sanitizeMarkdown } from "../../utils/sanitizeMarkdown.js";
   import { reportFilename } from "../../utils/reportFilename.js";
+  import { getCatalog } from "../../utils/getCatalogs.js";
 
   $evaluation.title = $evaluation["product"]["name"] + " Accessibility Conformance Report";
 
   export let download = false;
+  let catalog = getCatalog($evaluation.catalog);
 </script>
 
 <Header>{$evaluation.title}</Header>
@@ -78,7 +79,7 @@ This report covers the degree of conformance for the following accessibility sta
     {#each catalog.standards as standard }
       <tr>
         <td><a href="{standard.url}" target="_blank">{standard.label} <span class="visuallyhidden">(opens in a new window or tab)</span></a></td>
-        <td>{@html standardsIncluded(standard.chapters)}</td>
+        <td>{@html standardsIncluded($evaluation.catalog, standard.chapters)}</td>
       </tr>
     {/each}
   </tbody>

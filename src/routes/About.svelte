@@ -16,10 +16,11 @@
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
-  import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { reportFilename } from "../utils/reportFilename.js";
+  import { getCatalog } from "../utils/getCatalogs.js";
 
   const location = useLocation();
+  let catalog = getCatalog($evaluation.catalog);
 
   onMount(() => {
     currentPage.update(currentPage => "About");
@@ -390,7 +391,7 @@
 
   <p>{helpText["disabled_chapters"]["intro"]}</p>
 
-  {#each chapters as chapter}
+  {#each catalog.chapters as chapter}
     <div class="field">
       <label>
         <input

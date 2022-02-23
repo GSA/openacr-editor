@@ -12,11 +12,13 @@
   import NavItem from "./components/NavItem.svelte";
   import { currentPage } from "./stores/currentPage.js";
   import { showYourReport } from "./stores/showYourReport.js";
-  import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+  import { evaluation } from "./stores/evaluation.js";
+  import { getCatalog } from "./utils/getCatalogs.js";
   import vars from "../config/__buildEnv__.json";
   export let url = "";
 
   const pagesWithYourReport = ["Overview", "About", "Evaluation"];
+  let catalog = getCatalog($evaluation.catalog);
 
   function needsYourReport(pageName) {
     return pagesWithYourReport.indexOf(pageName) > -1;
@@ -57,7 +59,7 @@
   <Nav>
     <NavItem to="/">Overview</NavItem>
     <NavItem to="/about">About</NavItem>
-    {#each chapters as chapter}
+    {#each catalog.chapters as chapter}
       <NavItem to="chapter/{chapter.id}">
         {chapter.short_label}
         <span class="visuallyhidden">: {chapter.label}</span>

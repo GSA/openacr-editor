@@ -10,11 +10,12 @@
   import { createHTMLDownload } from "../../utils/createHTMLDownload.js";
   import { validate } from "../../utils/validate.js";
   import { reportFilename } from "../../utils/reportFilename.js";
-  import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+  import { getCatalog } from "../../utils/getCatalogs.js";
 
   var title = $evaluation.title;
   const filename = reportFilename($evaluation);
   const valid = validate($evaluation);
+  let catalog = getCatalog($evaluation.catalog);
   let htmlDownload, htmlDownloadTemplate;
 
   let download = true;
@@ -114,7 +115,7 @@
   <main>
     <div class="grid-container">
       <ReportHeader {download} />
-      {#each standards as standard}
+      {#each catalog.standards as standard}
         <ReportChapters {standard} {download} />
       {/each}
       <ReportSummary {download} />
