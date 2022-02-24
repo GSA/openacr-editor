@@ -10,6 +10,7 @@
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
   import { evaluation } from "../stores/evaluation.js";
   import { getCatalog, getListOfCatalogs } from "../utils/getCatalogs.js";
+  import { updateEvaluation } from "../utils/updateEvaluation.js";
 
   const location = useLocation();
   let catalog = getCatalog($evaluation.catalog);
@@ -20,6 +21,16 @@
 
     honourFragmentIdLinks($location);
   });
+
+  function updateCatalog(e) {
+    if (
+      window.confirm(
+        "This may removed fields that are not in the selected catalog. Are you sure that's what you'd like to do?"
+      )
+    ) {
+      updateEvaluation(e.target.value, $evaluation);
+    }
+  }
 </script>
 
 <svelte:head>
@@ -74,7 +85,7 @@
           value={catalogChoice.catalog}
           bind:group="{$evaluation['catalog']}"
           id="evaluation-catalog-{catalogChoice.catalog}"
-          on:change={() => evaluation.updateCache($evaluation)} />
+          on:change={updateCatalog} />
 
         {catalogChoice.title}
       </label>
