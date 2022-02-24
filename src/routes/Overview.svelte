@@ -25,7 +25,7 @@
   function updateCatalog(e) {
     if (
       window.confirm(
-        "This may removed fields that are not in the selected catalog. Are you sure that's what you'd like to do?"
+        "This may remove criteria that are not in the selected catalog. Are you sure that's what you'd like to do?"
       )
     ) {
       updateEvaluation(e.target.value, $evaluation);
@@ -75,7 +75,7 @@
     <HeaderWithAnchor id="select-catalog" level=2>Select catalog</HeaderWithAnchor>
   </summary>
   <p>
-    Select which catalog will you be using for this OpenACR.
+    Select which catalog you will be using for the OpenACR.
   </p>
   {#each catalogChoices as catalogChoice}
     <div class="field">
