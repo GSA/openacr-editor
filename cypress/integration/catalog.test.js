@@ -36,10 +36,12 @@ describe("Catalogs", () => {
     });
   });
 
-  it(`toggle catalog and confirm WCAG 2.1 criteria appears and disappears`, () => {
+  it(`toggle catalog and confirm a WCAG 2.1 criteria appears and disappears`, () => {
     const wcag21Criteria = "2.1.4";
+
     cy.visit("/");
 
+    // Switch to WCAG 2.1 catalog.
     cy.get(`input[value="${catalogs[1]}"]`).check();
 
     cy.visit(`/chapter/${chapters[0]}`);
@@ -55,6 +57,7 @@ describe("Catalogs", () => {
 
     cy.visit("/");
 
+    // Switch back to WCAG 2.0 508 catalog.
     cy.get(`input[value="${catalogs[0]}"]`).check();
 
     cy.visit(`/chapter/${chapters[0]}`);
