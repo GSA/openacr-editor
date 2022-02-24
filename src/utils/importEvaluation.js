@@ -1,7 +1,8 @@
 import { evaluation } from "../stores/evaluation.js";
 import { validate } from "../utils/validate.js";
 import yaml from "js-yaml";
-import { getDefaultCatalogName, getCatalog } from "../utils/getCatalogs.js";
+import { getDefaultCatalogName } from "./getCatalogs.js";
+import { initializeMissingChapters } from "./updateEvaluation.js";
 
 export function importEvaluation(event) {
   var files = event.target.files;
@@ -50,61 +51,7 @@ export function importEvaluation(event) {
         }
 
         // Initialize any missing chapters, components, and criteria.
-        let catalog = getCatalog(converted.catalog);
-        for (const chapter of catalog.chapters) {
-          if (!converted["chapters"][chapter.id]) {
-            converted["chapters"][chapter.id] = {
-              notes: "",
-              disabled: false,
-            };
-          }
-
-          if (!converted["chapters"][chapter.id]["criteria"]) {
-            converted["chapters"][chapter.id]["criteria"] = [];
-          }
-
-          for (const chapterCriteria of chapter.criteria) {
-            let currentEvaluationCriteria =
-              converted["chapters"] &&
-              converted["chapters"][chapter.id]["criteria"]
-                ? converted["chapters"][chapter.id]["criteria"].find(
-                    ({ num }) => num === chapterCriteria.id
-                  )
-                : null;
-            if (currentEvaluationCriteria) {
-              for (const component of chapterCriteria.components) {
-                let currentEvaluationComponent = currentEvaluationCriteria[
-                  "components"
-                ].find(({ name }) => name === component);
-                if (!currentEvaluationComponent) {
-                  currentEvaluationCriteria["components"].push({
-                    name: component,
-                    adherence: {
-                      level: "",
-                      notes: "",
-                    },
-                  });
-                }
-              }
-            } else {
-              const components = [];
-              for (const component of chapterCriteria.components) {
-                components.push({
-                  name: component,
-                  adherence: {
-                    level: "",
-                    notes: "",
-                  },
-                });
-              }
-              converted["chapters"][chapter.id]["criteria"].push({
-                num: chapterCriteria.id,
-                components: components,
-              });
-            }
-          }
-        }
-
+        converted = initializeMissingChapters(converted.catalog, converted);
         const valid = validate(converted);
 
         if (valid.result) {
