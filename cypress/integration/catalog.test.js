@@ -14,7 +14,7 @@ const chapters = [
 describe("Catalogs", () => {
   catalogs.forEach((catalog) => {
     it(`select catalog ${catalog} and load WCAG chapters and report without errors`, () => {
-      cy.visit("/");
+      cy.visit("/about");
 
       cy.get(`input[value="${catalog}"]`).check();
 
@@ -39,7 +39,7 @@ describe("Catalogs", () => {
   it(`toggle catalog and confirm a WCAG 2.1 criteria appears and disappears`, () => {
     const wcag21Criteria = "2.1.4";
 
-    cy.visit("/");
+    cy.visit("/about");
 
     // Switch to WCAG 2.1 catalog.
     cy.get(`input[value="${catalogs[1]}"]`).check();
@@ -55,7 +55,7 @@ describe("Catalogs", () => {
       wcag21Criteria
     );
 
-    cy.visit("/");
+    cy.visit("/about");
 
     // Switch back to WCAG 2.0 508 catalog.
     cy.get(`input[value="${catalogs[0]}"]`).check();

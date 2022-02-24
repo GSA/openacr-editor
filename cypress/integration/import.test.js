@@ -203,7 +203,9 @@ describe("Import", () => {
       );
 
     // Switch to WCAG 2.1 508 catalog.
-    cy.visit("/").get(`input[value="2.4-edition-wcag-2.1-508-en"]`).check();
+    cy.visit("/about")
+      .get(`input[value="2.4-edition-wcag-2.1-508-en"]`)
+      .check();
 
     cy.get("@alerted")
       .should("have.been.calledTwice")
@@ -221,7 +223,9 @@ describe("Import", () => {
       .should("contain", "VPAT® 2.4 WCAG 2.1 and Revised Section 508 Edition");
 
     // Switch back to WCAG 2.0 508 catalog.
-    cy.visit("/").get(`input[value="2.4-edition-wcag-2.0-508-en"]`).check();
+    cy.visit("/about")
+      .get(`input[value="2.4-edition-wcag-2.0-508-en"]`)
+      .check();
 
     cy.get("@alerted")
       .should("have.been.calledThrice")

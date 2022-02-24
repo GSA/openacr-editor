@@ -96,8 +96,19 @@ export function initializeMissingChapters(catalogName, converted) {
         });
       }
     }
+    converted["chapters"][chapter.id].criteria.sort(sortCriteria);
   }
   return converted;
+}
+
+function sortCriteria(firstCriteria, secondCriteria) {
+  if (firstCriteria.num < secondCriteria.num) {
+    return -1;
+  }
+  if (firstCriteria.num > secondCriteria.num) {
+    return 1;
+  }
+  return 0;
 }
 
 function removeCriteria(chapterId, criteria, converted) {

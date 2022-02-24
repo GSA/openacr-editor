@@ -43,3 +43,5 @@ disabled_chapters:
   hardware: ""
   software: ""
   support_documentation_and_services: ""
+catalog:
+  intro: "Select which catalog you will be using for the OpenACR."
