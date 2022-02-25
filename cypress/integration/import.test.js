@@ -301,7 +301,7 @@ describe("Import", () => {
       .should("have.been.calledOnce")
       .and(
         "have.been.calledWith",
-        "The uploaded file has type plain/text which is invalid. Please use one of these types: 'application/x-yaml', 'application/yaml', 'text/yaml'."
+        `The uploaded file ${textExample.filename} has type ${fileType} which is invalid. Please use one of these types: 'application/x-yaml', 'application/yaml', 'text/yaml'.`
       );
   });
 });

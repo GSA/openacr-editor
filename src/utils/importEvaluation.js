@@ -18,7 +18,7 @@ export function importEvaluation(event) {
       )
     ) {
       alert(
-        `The uploaded file has type ${file.type} which is invalid. Please use one of these types: 'application/x-yaml', 'application/yaml', 'text/yaml'.`
+        `The uploaded file ${file.name} has type ${file.type} which is invalid. Please use one of these types: 'application/x-yaml', 'application/yaml', 'text/yaml'.`
       );
       return;
     }
