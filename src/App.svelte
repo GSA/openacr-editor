@@ -12,7 +12,8 @@
   import NavItem from "./components/NavItem.svelte";
   import { currentPage } from "./stores/currentPage.js";
   import { showYourReport } from "./stores/showYourReport.js";
-  import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+  import { evaluation } from "./stores/evaluation.js";
+  import { getCatalog } from "./utils/getCatalogs.js";
   import vars from "../config/__buildEnv__.json";
   export let url = "";
 
@@ -36,6 +37,7 @@
   function closeEditorWarning() {
     return 'Are you sure?';
   }
+  $: catalog = getCatalog($evaluation.catalog);
 </script>
 
 <style>
@@ -57,7 +59,7 @@
   <Nav>
     <NavItem to="/">Overview</NavItem>
     <NavItem to="/about">About</NavItem>
-    {#each chapters as chapter}
+    {#each catalog.chapters as chapter}
       <NavItem to="chapter/{chapter.id}">
         {chapter.short_label}
         <span class="visuallyhidden">: {chapter.label}</span>

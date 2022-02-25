@@ -1,7 +1,6 @@
 <script>
   import { onMount } from "svelte";
   import { useLocation } from "svelte-navigator";
-  import Header from "../components/Header.svelte";
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
   import ReportHeader from "../components/report/ReportHeader.svelte";
   import ReportSummary from "../components/report/ReportSummary.svelte";
@@ -10,12 +9,13 @@
   import ReportChapters from "../components/report/ReportChapters.svelte";
   import ReportZipDownload from "../components/report/ReportZipDownload.svelte";
   import ReportYAMLDownload from "../components/report/ReportYAMLDownload.svelte";
-  import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { evaluation } from "../stores/evaluation.js";
   import { currentPage } from "../stores/currentPage.js";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
+  import { getCatalog } from "../utils/getCatalogs.js";
 
   const location = useLocation();
+  let catalog = getCatalog($evaluation.catalog);
 
   onMount(() => {
     currentPage.update(currentPage => "Report");
@@ -53,7 +53,7 @@
 </details>
 
 <ReportHeader />
-{#each standards as standard}
+{#each catalog.standards as standard}
   <ReportChapters {standard} />
 {/each}
 <ReportSummary />

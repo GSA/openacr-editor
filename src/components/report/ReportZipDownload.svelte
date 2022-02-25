@@ -1,7 +1,6 @@
 <script>
   import { onMount } from "svelte";
   import { evaluation } from "../../stores/evaluation.js";
-
   import ReportHeader from "./ReportHeader.svelte";
   import ReportSummary from "./ReportSummary.svelte";
   import ReportChapters from "./ReportChapters.svelte";
@@ -10,15 +9,16 @@
   import { createHTMLDownload } from "../../utils/createHTMLDownload.js";
   import { validate } from "../../utils/validate.js";
   import { reportFilename } from "../../utils/reportFilename.js";
-  import { standards } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import yaml from "js-yaml";
   import JSZip from "jszip";
   import { sanitizeEvaluation } from "../../utils/sanitizeEvaluation.js";
+  import { getCatalog } from "../../utils/getCatalogs.js";
 
   var title = $evaluation.title;
   const filename = reportFilename($evaluation);
   const sanitizedEvaluation = sanitizeEvaluation($evaluation);
   const valid = validate($evaluation);
+  let catalog = getCatalog($evaluation.catalog);
   let zipDownload, htmlDownload, htmlDownloadTemplate;
 
   let download = true;
@@ -124,7 +124,7 @@
   <main>
     <div class="grid-container">
       <ReportHeader {download} />
-      {#each standards as standard}
+      {#each catalog.standards as standard}
         <ReportChapters {standard} {download} />
       {/each}
       <ReportSummary {download} />

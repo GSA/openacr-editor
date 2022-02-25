@@ -6,11 +6,13 @@
   import Pager from "../components/Pager.svelte";
   import PagerLink from "../components/PagerLink.svelte";
   import { currentPage } from "../stores/currentPage.js";
-  import { terms } from '@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml';
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
+  import { evaluation } from "../stores/evaluation.js";
+  import { getCatalog } from "../utils/getCatalogs.js";
 
   const location = useLocation();
+  let catalog = getCatalog($evaluation.catalog);
 
   onMount(() => {
     currentPage.update((currentPage) => "Overview");
@@ -111,7 +113,7 @@
     each component. Here is the legend of what those selections mean:
   </p>
   <dl>
-    {#each terms as term}
+    {#each catalog.terms as term}
       <dt>{term.label}</dt>
       <dd>{term.description}</dd>
     {/each}

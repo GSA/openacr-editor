@@ -1,11 +1,13 @@
 import { evaluation } from "../stores/evaluation.js";
 import { validate } from "../utils/validate.js";
-import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
 import yaml from "js-yaml";
+import { getDefaultCatalogName } from "./getCatalogs.js";
+import { initializeMissingChapters } from "./updateEvaluation.js";
 
 export function importEvaluation(event) {
   var files = event.target.files;
   const datestamp = new Date().toLocaleDateString();
+  const defaultCatalogName = getDefaultCatalogName();
 
   for (var i = 0, file; (file = files[i]); i++) {
     if (!file.type.match("application/x-yaml")) {
@@ -44,62 +46,12 @@ export function importEvaluation(event) {
         if (!converted.related_openacrs) {
           converted["related_openacrs"] = [];
         }
-
-        // Initialize any missing chapters, components, and criteria.
-        for (const chapter of chapters) {
-          if (!converted["chapters"][chapter.id]) {
-            converted["chapters"][chapter.id] = {
-              notes: "",
-              disabled: false,
-            };
-          }
-
-          if (!converted["chapters"][chapter.id]["criteria"]) {
-            converted["chapters"][chapter.id]["criteria"] = [];
-          }
-
-          for (const chapterCriteria of chapter.criteria) {
-            let currentEvaluationCriteria =
-              converted["chapters"] &&
-              converted["chapters"][chapter.id]["criteria"]
-                ? converted["chapters"][chapter.id]["criteria"].find(
-                    ({ num }) => num === chapterCriteria.id
-                  )
-                : null;
-            if (currentEvaluationCriteria) {
-              for (const component of chapterCriteria.components) {
-                let currentEvaluationComponent = currentEvaluationCriteria[
-                  "components"
-                ].find(({ name }) => name === component);
-                if (!currentEvaluationComponent) {
-                  currentEvaluationCriteria["components"].push({
-                    name: component,
-                    adherence: {
-                      level: "",
-                      notes: "",
-                    },
-                  });
-                }
-              }
-            } else {
-              const components = [];
-              for (const component of chapterCriteria.components) {
-                components.push({
-                  name: component,
-                  adherence: {
-                    level: "",
-                    notes: "",
-                  },
-                });
-              }
-              converted["chapters"][chapter.id]["criteria"].push({
-                num: chapterCriteria.id,
-                components: components,
-              });
-            }
-          }
+        if (!converted.catalog) {
+          converted["catalog"] = defaultCatalogName;
         }
 
+        // Initialize any missing chapters, components, and criteria.
+        converted = initializeMissingChapters(converted.catalog, converted);
         const valid = validate(converted);
 
         if (valid.result) {

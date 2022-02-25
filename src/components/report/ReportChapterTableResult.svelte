@@ -2,12 +2,13 @@
   import { catalogChapterCriteria, catalogComponentLabel, levelLabel } from "../../utils/getCatalogItems.js";
   import { sanitizeMarkdown } from "../../utils/sanitizeMarkdown.js";
 
+  export let catalogName;
   export let standard;
   export let chapterId;
   export let criteria;
   export let download = false;
 
-  $: catalogCriteria = catalogChapterCriteria(chapterId, criteria.num);
+  $: catalogCriteria = catalogChapterCriteria(catalogName, chapterId, criteria.num);
   const extraId = download ? "-download" : "-editor";
 </script>
 
@@ -35,6 +36,7 @@
   }
 </style>
 
+{#if catalogCriteria }
 <tr class="result-row" id="{catalogCriteria.alt_id}{extraId}">
   <td>
     <a href="{standard.url}#{catalogCriteria.alt_id}" target="_blank">
@@ -46,7 +48,7 @@
       <ul>
         {#each criteria.components as component}
           {#if component.adherence.level}
-            <li>{@html catalogComponentLabel(component.name, "html")}<p>{levelLabel(component.adherence.level)}</p></li>
+            <li>{@html catalogComponentLabel(catalogName, component.name, "html")}<p>{levelLabel(catalogName, component.adherence.level)}</p></li>
           {/if}
         {/each}
       </ul>
@@ -57,10 +59,11 @@
       <ul>
         {#each criteria.components as component}
         {#if component.adherence.notes}
-          <li>{@html catalogComponentLabel(component.name, "html")}{@html sanitizeMarkdown(component.adherence.notes)}</li>
+          <li>{@html catalogComponentLabel(catalogName, component.name, "html")}{@html sanitizeMarkdown(component.adherence.notes)}</li>
           {/if}
         {/each}
       </ul>
     {/if}
   </td>
 </tr>
+{/if}

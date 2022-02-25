@@ -1,8 +1,9 @@
 import sanitizeHtml from "sanitize-html";
-import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
+import { getCatalog } from "../utils/getCatalogs.js";
 
 export function sanitizeEvaluation(evaluation) {
-  for (const chapter of chapters) {
+  let catalog = getCatalog(evaluation.catalog);
+  for (const chapter of catalog.chapters) {
     for (
       let chapterCriteriaIndex = 0;
       chapterCriteriaIndex <

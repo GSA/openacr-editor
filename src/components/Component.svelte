@@ -1,12 +1,15 @@
 <script>
   import { evaluation } from "../stores/evaluation.js";
-  import { components, terms } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import HelpText from "../components/HelpText.svelte";
   import HeaderWithAnchor from "./HeaderWithAnchor.svelte";
+  import { getCatalog } from "../utils/getCatalogs.js";
 
   export let chapterId;
   export let criteria;
   export let component;
+  let catalog = getCatalog($evaluation.catalog);
+  let components = catalog.components;
+  let terms = catalog.terms;
 
   $: currentComponent = components.find( ({ id }) => id === component);
   $: currentEvaluationCriteria = ($evaluation['chapters'] && $evaluation['chapters'][chapterId]['criteria']) ? $evaluation['chapters'][chapterId]['criteria'].find( ({ num }) => num === criteria) : null;

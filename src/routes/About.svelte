@@ -16,10 +16,13 @@
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
-  import { chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import { reportFilename } from "../utils/reportFilename.js";
+  import { getCatalog, getListOfCatalogs } from "../utils/getCatalogs.js";
+  import { updateEvaluation } from "../utils/updateEvaluation.js";
 
   const location = useLocation();
+  let catalog = getCatalog($evaluation.catalog);
+  let catalogChoices = getListOfCatalogs();
 
   onMount(() => {
     currentPage.update(currentPage => "About");
@@ -80,6 +83,16 @@
     }
   }
 
+  function updateCatalog(e) {
+    if (
+      window.confirm(
+        "This may remove criteria that are not in the selected catalog. Are you sure that's what you'd like to do?"
+      )
+    ) {
+      updateEvaluation(e.target.value, $evaluation);
+    }
+  }
+
   $: versionPrefix = reportFilename($evaluation, false);
 </script>
 
@@ -105,6 +118,27 @@
   />
 
 <ExpandCollapseAll />
+
+<details open>
+  <summary>
+    <HeaderWithAnchor id="select-catalog" level=2>Select catalog</HeaderWithAnchor>
+  </summary>
+  <p>{helpText["catalog"]["intro"]}</p>
+  {#each catalogChoices as catalogChoice}
+    <div class="field">
+      <label>
+        <input
+          type="radio"
+          value={catalogChoice.catalog}
+          bind:group="{$evaluation['catalog']}"
+          id="evaluation-catalog-{catalogChoice.catalog}"
+          on:change={updateCatalog} />
+
+        {catalogChoice.title}
+      </label>
+    </div>
+  {/each}
+</details>
 
 <details open>
   <summary>
@@ -390,7 +424,7 @@
 
   <p>{helpText["disabled_chapters"]["intro"]}</p>
 
-  {#each chapters as chapter}
+  {#each catalog.chapters as chapter}
     <div class="field">
       <label>
         <input

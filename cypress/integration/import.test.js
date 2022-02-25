@@ -174,6 +174,75 @@ describe("Import", () => {
       .should("contain", today);
   });
 
+  it(`can toggle catalog and still be valid`, () => {
+    const fileType = "application/x-yaml";
+    const yamlExample = yamlExamples[0];
+    cy.fixture(yamlExample.filename).as("yamlFixture");
+
+    cy.visit("/");
+
+    cy.on("window:alert", cy.stub().as("alerted"));
+
+    cy.get("input[type='file']").then(function ($input) {
+      const blob = Cypress.Blob.binaryStringToBlob(this.yamlFixture, fileType);
+      const file = new File([blob], yamlExample.filename, { type: fileType });
+      const list = new DataTransfer();
+
+      list.items.add(file);
+      const myFileList = list.files;
+
+      $input[0].files = myFileList;
+      $input[0].dispatchEvent(new Event("change", { bubbles: true }));
+    });
+
+    cy.get("@alerted")
+      .should("have.been.calledOnce")
+      .and(
+        "have.been.calledWith",
+        `OpenACR "${yamlExample.reportname}" loaded`
+      );
+
+    // Switch to WCAG 2.1 508 catalog.
+    cy.visit("/about")
+      .get(`input[value="2.4-edition-wcag-2.1-508-en"]`)
+      .check();
+
+    cy.get("@alerted")
+      .should("have.been.calledTwice")
+      .and(
+        "have.been.calledWith",
+        "OpenACR passed validation when switching catalog."
+      );
+
+    cy.get("button")
+      .contains("View Report")
+      .click()
+      .get(".usa-alert")
+      .should("contain", "Valid Report")
+      .get("#content")
+      .should("contain", "VPAT® 2.4 WCAG 2.1 and Revised Section 508 Edition");
+
+    // Switch back to WCAG 2.0 508 catalog.
+    cy.visit("/about")
+      .get(`input[value="2.4-edition-wcag-2.0-508-en"]`)
+      .check();
+
+    cy.get("@alerted")
+      .should("have.been.calledThrice")
+      .and(
+        "have.been.calledWith",
+        "OpenACR passed validation when switching catalog."
+      );
+
+    cy.get("button")
+      .contains("View Report")
+      .click()
+      .get(".usa-alert")
+      .should("contain", "Valid Report")
+      .get("#content")
+      .should("contain", "VPAT® 2.4 Revised Section 508 Edition");
+  });
+
   it(`should reject invalid example`, () => {
     const fileType = "application/x-yaml";
     const yamlExample = {

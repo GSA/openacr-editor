@@ -9,13 +9,16 @@
   import PagerLink from "./PagerLink.svelte";
   import { currentPage } from "../stores/currentPage.js";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
-  import { standards, chapters } from "@openacr/openacr/catalog/2.4-edition-wcag-2.0-508-en.yaml";
   import ChapterHelpText from "../components/ChapterHelpText.svelte";
   import { evaluation } from "../stores/evaluation.js";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
+  import { getCatalog } from "../utils/getCatalogs.js";
 
   export let chapterId = null;
   export let className = undefined;
+  let catalog = getCatalog($evaluation.catalog);
+  let standards = catalog.standards;
+  let chapters = catalog.chapters;
 
   const location = useLocation();
   $: currentChapter = chapters.find( ({ id }) => id === chapterId);

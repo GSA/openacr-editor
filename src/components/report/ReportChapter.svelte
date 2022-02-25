@@ -8,8 +8,9 @@
   export let standard;
   export let chapterId;
   export let download = false;
+  let catalogName = $evaluation.catalog;
 
-  $: chapter = getCatalogChapter(chapterId);
+  $: chapter = getCatalogChapter(catalogName, chapterId);
 </script>
 
 <style>
@@ -53,7 +54,7 @@
     </thead>
     <tbody>
       {#each $evaluation['chapters'][chapterId]['criteria'] as criteria}
-        <ReportChapterTableResult {standard} {chapterId} {criteria} {download} />
+        <ReportChapterTableResult {catalogName} {standard} {chapterId} {criteria} {download} />
       {/each}
     </tbody>
   </table>
