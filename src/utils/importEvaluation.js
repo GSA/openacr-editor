@@ -10,7 +10,16 @@ export function importEvaluation(event) {
   const defaultCatalogName = getDefaultCatalogName();
 
   for (var i = 0, file; (file = files[i]); i++) {
-    if (!file.type.match("application/x-yaml")) {
+    if (
+      !(
+        file.type.match("application/x-yaml") ||
+        file.type.match("application/yaml") ||
+        file.type.match("text/yaml")
+      )
+    ) {
+      alert(
+        `The uploaded file has type ${file.type} which is invalid. Please use one of these types: 'application/x-yaml', 'application/yaml', 'text/yaml'.`
+      );
       return;
     }
 

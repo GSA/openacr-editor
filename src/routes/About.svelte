@@ -86,7 +86,7 @@
   function updateCatalog(e) {
     if (
       window.confirm(
-        "This may remove criteria that are not in the selected catalog. Are you sure that's what you'd like to do?"
+        "This may remove any entered criteria from your ACR that are not in the selected catalog. Download a copy of the report if you have not already. Are you sure that's what you'd like to do?"
       )
     ) {
       updateEvaluation(e.target.value, $evaluation);
