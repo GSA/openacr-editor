@@ -273,4 +273,35 @@ describe("Import", () => {
         "No data found or invalid import. Message: Cannot read properties of undefined (reading 'success_criteria_level_a')"
       );
   });
+
+  it(`should reject non YAML file upload`, () => {
+    const fileType = "plain/text";
+    const textExample = {
+      filename: "invalid.txt",
+    };
+    cy.fixture(textExample.filename).as("txtFixture");
+
+    cy.visit("/");
+
+    cy.on("window:alert", cy.stub().as("alerted"));
+
+    cy.get("input[type='file']").then(function ($input) {
+      const blob = Cypress.Blob.binaryStringToBlob(this.txtFixture, fileType);
+      const file = new File([blob], textExample.filename, { type: fileType });
+      const list = new DataTransfer();
+
+      list.items.add(file);
+      const myFileList = list.files;
+
+      $input[0].files = myFileList;
+      $input[0].dispatchEvent(new Event("change", { bubbles: true }));
+    });
+
+    cy.get("@alerted")
+      .should("have.been.calledOnce")
+      .and(
+        "have.been.calledWith",
+        `The uploaded file ${textExample.filename} has type ${fileType} which is invalid. Please use one of these types: 'application/x-yaml', 'application/yaml', 'text/yaml'.`
+      );
+  });
 });
