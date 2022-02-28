@@ -13,7 +13,7 @@ export function getCatalog(catalogName) {
   } else if (catalogName == wcag21508catalogName) {
     return wcag21508catalog;
   }
-  return null;
+  return wcag20508catalog;
 }
 
 export function getListOfCatalogs() {
