@@ -86,7 +86,7 @@
   function updateCatalog(e) {
     if (
       window.confirm(
-        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog. Please download your report before switching catalogs to avoid losing information. Are you sure that's what you'd like to do?"
+        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog. Please download your report before switching catalogs to avoid losing information. Select cancel to download your report from the Report page before proceeding. Are you sure that's what you'd like to do?"
       )
     ) {
       updateEvaluation(e.target.value, $evaluation);
