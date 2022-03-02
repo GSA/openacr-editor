@@ -1,22 +1,28 @@
 /// <reference types="Cypress" />
 
-const catalogs = [
-  "2.4-edition-wcag-2.0-508-en",
-  "2.4-edition-wcag-2.1-en",
-  "2.4-edition-wcag-2.1-508-en",
-];
+const catalogs = ["2.4-edition-wcag-2.1-en", "2.4-edition-wcag-2.1-508-en"];
 const chapters = [
   "success_criteria_level_a",
   "success_criteria_level_aa",
   "success_criteria_level_aaa",
 ];
+const wcag21Criteria = "2.1.4";
 
 describe("Catalogs", () => {
   catalogs.forEach((catalog) => {
     it(`select catalog ${catalog} and load WCAG chapters and report without errors`, () => {
       cy.visit("/about");
 
+      cy.get("button").contains("Confirm").should("be.disabled");
+
       cy.get(`input[value="${catalog}"]`).check();
+
+      cy.get("p").should(
+        "contain",
+        "Report type change is not saved till you confirm."
+      );
+
+      cy.get("button").contains("Confirm").click();
 
       chapters.forEach((chapter) => {
         cy.visit(`/chapter/${chapter}`, {
@@ -36,15 +42,15 @@ describe("Catalogs", () => {
     });
   });
 
-  it(`toggle catalog and confirm a WCAG 2.1 criteria appears and disappears`, () => {
-    const wcag21Criteria = "2.1.4";
-
+  it("toggle catalog and confirm a WCAG 2.1 criteria appears and disappears", () => {
     cy.visit("/about");
 
     // Switch to WCAG 2.1 catalog.
-    cy.get(`input[value="${catalogs[1]}"]`).check();
+    cy.get(`input[value="2.4-edition-wcag-2.1-en"]`).check();
 
-    cy.visit(`/chapter/${chapters[0]}`);
+    cy.get("button").contains("Confirm").click();
+
+    cy.visit("/chapter/success_criteria_level_a");
 
     cy.get(`div[id="${wcag21Criteria}"]`).should("exist");
 
@@ -58,9 +64,52 @@ describe("Catalogs", () => {
     cy.visit("/about");
 
     // Switch back to WCAG 2.0 508 catalog.
-    cy.get(`input[value="${catalogs[0]}"]`).check();
+    cy.get(`input[value="2.4-edition-wcag-2.0-508-en"]`).check();
 
-    cy.visit(`/chapter/${chapters[0]}`);
+    cy.get("button").contains("Confirm").click();
+
+    cy.visit("/chapter/success_criteria_level_a");
+
+    cy.get(`div[id="${wcag21Criteria}"]`).should("not.exist");
+
+    cy.get("button").contains("View Report").click();
+
+    cy.get("#success_criteria_level_a-editor + table tbody tr").should(
+      "not.contain",
+      wcag21Criteria
+    );
+  });
+
+  it("toggle catalog and confirm dialog message", () => {
+    cy.visit("/about");
+
+    cy.on("window:confirm", cy.stub().as("confirmation"));
+
+    // Switch to WCAG 2.1 catalog.
+    cy.get(`input[value="2.4-edition-wcag-2.1-en"]`).check();
+
+    cy.get("button").contains("Confirm").click();
+
+    cy.get("@confirmation")
+      .should("have.been.calledOnce")
+      .and(
+        "have.been.calledWith",
+        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog. Please download your report before switching catalogs to avoid losing information. Select cancel to download your report from the Report page before proceeding. Are you sure that's what you'd like to do?"
+      );
+  });
+
+  it("toggle catalog and cancel confirmation", () => {
+    cy.visit("/about");
+
+    // Cancel the confirmation of toggling the catalog.
+    cy.on("window:confirm", () => false);
+
+    // Switch to WCAG 2.1 catalog.
+    cy.get(`input[value="2.4-edition-wcag-2.1-en"]`).check();
+
+    cy.get("button").contains("Confirm").click();
+
+    cy.visit("/chapter/success_criteria_level_a");
 
     cy.get(`div[id="${wcag21Criteria}"]`).should("not.exist");
 

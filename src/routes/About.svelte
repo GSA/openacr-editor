@@ -23,6 +23,7 @@
   const location = useLocation();
   let catalog = getCatalog($evaluation.catalog);
   let catalogChoices = getListOfCatalogs();
+  let selectedCatalog = $evaluation.catalog;
 
   onMount(() => {
     currentPage.update(currentPage => "About");
@@ -84,12 +85,17 @@
   }
 
   function updateCatalog(e) {
+    selectedCatalog = e.target.value;
+  }
+
+  function confirmCatalogChange(e) {
     if (
       window.confirm(
         "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog. Please download your report before switching catalogs to avoid losing information. Select cancel to download your report from the Report page before proceeding. Are you sure that's what you'd like to do?"
       )
     ) {
-      updateEvaluation(e.target.value, $evaluation);
+      $evaluation['catalog'] = selectedCatalog;
+      updateEvaluation(selectedCatalog, $evaluation);
     }
   }
 
@@ -130,7 +136,7 @@
         <input
           type="radio"
           value={catalogChoice.catalog}
-          bind:group="{$evaluation['catalog']}"
+          bind:group="{selectedCatalog}"
           id="evaluation-catalog-{catalogChoice.catalog}"
           on:change={updateCatalog} />
 
@@ -139,6 +145,11 @@
       <HelpText type="catalog" field="{catalogChoice.catalog}" />
     </div>
   {/each}
+
+  {#if $evaluation['catalog'] !== selectedCatalog }
+    <p><em>Report type change is not saved till you confirm.</em></p>
+  {/if}
+  <button class="button" on:click={confirmCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog}>Confirm</button>
 </details>
 
 <details open>

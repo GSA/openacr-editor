@@ -207,6 +207,8 @@ describe("Import", () => {
       .get(`input[value="2.4-edition-wcag-2.1-508-en"]`)
       .check();
 
+    cy.get("button").contains("Confirm").click();
+
     cy.get("@alerted")
       .should("have.been.calledTwice")
       .and(
@@ -226,6 +228,8 @@ describe("Import", () => {
     cy.visit("/about")
       .get(`input[value="2.4-edition-wcag-2.0-508-en"]`)
       .check();
+
+    cy.get("button").contains("Confirm").click();
 
     cy.get("@alerted")
       .should("have.been.calledThrice")
