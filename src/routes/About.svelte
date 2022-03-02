@@ -86,7 +86,7 @@
   function updateCatalog(e) {
     if (
       window.confirm(
-        "This may remove any entered criteria from your ACR that are not in the selected catalog. Download a copy of the report if you have not already. Are you sure that's what you'd like to do?"
+        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog. Please download your report before switching catalogs to avoid losing information. Are you sure that's what you'd like to do?"
       )
     ) {
       updateEvaluation(e.target.value, $evaluation);
@@ -121,7 +121,7 @@
 
 <details open>
   <summary>
-    <HeaderWithAnchor id="select-catalog" level=2>Select catalog</HeaderWithAnchor>
+    <HeaderWithAnchor id="select-catalog" level=2>Select report type (and catalog)</HeaderWithAnchor>
   </summary>
   <p>{helpText["catalog"]["intro"]}</p>
   {#each catalogChoices as catalogChoice}
@@ -136,6 +136,7 @@
 
         {catalogChoice.title}
       </label>
+      <HelpText type="catalog" field="{catalogChoice.catalog}" />
     </div>
   {/each}
 </details>
