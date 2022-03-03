@@ -99,6 +99,10 @@
     }
   }
 
+  function resetCatalogChange() {
+    selectedCatalog = $evaluation['catalog'];
+  }
+
   $: versionPrefix = reportFilename($evaluation, false);
 </script>
 
@@ -150,6 +154,7 @@
     <p><em>Report type change is not saved till you confirm.</em></p>
   {/if}
   <button class="button" on:click={confirmCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog}>Confirm</button>
+  <button class="button" on:click={resetCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog}>Reset</button>
 </details>
 
 <details open>

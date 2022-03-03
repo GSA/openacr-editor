@@ -10,7 +10,7 @@ const wcag21Criteria = "2.1.4";
 
 describe("Catalogs", () => {
   catalogs.forEach((catalog) => {
-    it(`select catalog ${catalog} and load WCAG chapters and report without errors`, () => {
+    it(`select catalog ${catalog}, confirm and can load WCAG chapters and report without errors`, () => {
       cy.visit("/about");
 
       cy.get("button").contains("Confirm").should("be.disabled");
@@ -42,11 +42,11 @@ describe("Catalogs", () => {
     });
   });
 
-  it("toggle catalog and confirm a WCAG 2.1 criteria appears and disappears", () => {
+  it("toggle catalog, confirm and check for WCAG 2.1 criteria appearing and disappearing", () => {
     cy.visit("/about");
 
     // Switch to WCAG 2.1 catalog.
-    cy.get(`input[value="2.4-edition-wcag-2.1-en"]`).check();
+    cy.get("input[value='2.4-edition-wcag-2.1-en']").check();
 
     cy.get("button").contains("Confirm").click();
 
@@ -64,7 +64,7 @@ describe("Catalogs", () => {
     cy.visit("/about");
 
     // Switch back to WCAG 2.0 508 catalog.
-    cy.get(`input[value="2.4-edition-wcag-2.0-508-en"]`).check();
+    cy.get("input[value='2.4-edition-wcag-2.0-508-en']").check();
 
     cy.get("button").contains("Confirm").click();
 
@@ -80,13 +80,13 @@ describe("Catalogs", () => {
     );
   });
 
-  it("toggle catalog and confirm dialog message", () => {
+  it("toggle catalog, click confirm and see a confirmation dialog", () => {
     cy.visit("/about");
 
     cy.on("window:confirm", cy.stub().as("confirmation"));
 
     // Switch to WCAG 2.1 catalog.
-    cy.get(`input[value="2.4-edition-wcag-2.1-en"]`).check();
+    cy.get("input[value='2.4-edition-wcag-2.1-en']").check();
 
     cy.get("button").contains("Confirm").click();
 
@@ -98,6 +98,17 @@ describe("Catalogs", () => {
       );
   });
 
+  it("toggle catalog and reset it", () => {
+    cy.visit("/about");
+
+    // Switch to WCAG 2.1 catalog.
+    cy.get("input[value='2.4-edition-wcag-2.1-en']").check();
+
+    cy.get("button").contains("Reset").click();
+
+    cy.get(`input[value="2.4-edition-wcag-2.0-508-en"]`).should("be.checked");
+  });
+
   it("toggle catalog and cancel confirmation", () => {
     cy.visit("/about");
 
@@ -105,7 +116,7 @@ describe("Catalogs", () => {
     cy.on("window:confirm", () => false);
 
     // Switch to WCAG 2.1 catalog.
-    cy.get(`input[value="2.4-edition-wcag-2.1-en"]`).check();
+    cy.get("input[value='2.4-edition-wcag-2.1-en']").check();
 
     cy.get("button").contains("Confirm").click();
 
