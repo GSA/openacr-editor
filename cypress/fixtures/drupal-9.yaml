@@ -22,6 +22,7 @@ license: GPL-2.0-or-later
 related_openacrs:
   - url: https://ckeditor.com/docs/ckeditor4/latest/guide/dev_section508.html
     type: secondary
+catalog: "2.4-edition-wcag-2.0-508-en"
 chapters:
   success_criteria_level_a:
     notes: "Drupal doesn't make a strong distinction between the front-end & back-end accessibility. Many administration interfaces can be exposed to users in a more interactive site. Generally this report focuses the Conformance Level / Remarks and Explainations so that Web comments are about elements that are typically public, while Authoring Tool is typically for authors and administrators. The goal of the authoring interface is to support ATAG 2.0 AA (Part A and B). The Drupal community strives to beek up with the latest WCAG recommendation."

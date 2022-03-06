@@ -79,7 +79,7 @@ describe("About", () => {
 
     cy.get(".your-report__description").should(
       "contain",
-      `Reported on\n  0\n  of\n  258\n  Total Criteria.`
+      `Reported on\n  0\n  of\n  326\n  Total Criteria.`
     );
   });
 });

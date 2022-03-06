@@ -25,6 +25,7 @@ evaluation_methods_used: >
   Testing was done through a combination of manual and automated testing. We leveraged automated tools WebAim's WAVE Toolbar and Microsoft's Accessibility Insights. Accessibility Insights leverages Deque's open source Axe accessibility engine. Manual testing was done using keyboard interactions and Apple's VoiceOver. Chrome v84 was used as the browser for all tests. Unique patterns were identified and tested to see where barriers might exist. Extensive testing of the site's functionality has been done based on this.
 legal_disclaimer: >
   The information herein is provided in good faith based on the analysis of the web application at the time of the review and does not represent a legally-binding claim. Please contact us to report any accessibility errors or conformance claim errors for re-evaluation and correction, if necessary.
+catalog: "2.4-edition-wcag-2.0-508-en"
 chapters:
   success_criteria_level_a:
     notes: "GovReady-Q is a web application and an authoring tool. As such the Software & Authoring Tool Notes are all included within the Web for the 'Conformance Level' and 'Remarks and Explanations'. There are some elements here that clearly fail WCAG 2.0 A."

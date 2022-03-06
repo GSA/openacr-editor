@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-const catalogs = ["2.4-edition-wcag-2.1-en", "2.4-edition-wcag-2.1-508-en"];
+const catalogs = ["2.4-edition-wcag-2.1-en", "2.4-edition-wcag-2.0-508-en"];
 const chapters = [
   "success_criteria_level_a",
   "success_criteria_level_aa",
@@ -94,7 +94,7 @@ describe("Catalogs", () => {
       .should("have.been.calledOnce")
       .and(
         "have.been.calledWith",
-        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog. Please download your report before switching catalogs to avoid losing information. Select cancel to download your report from the Report page before proceeding. Are you sure that's what you'd like to do?"
+        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog. Please download your report before switching catalogs to avoid losing information. Select cancel to download your report from the Report page before proceeding.\n\nAre you sure that's what you'd like to do?"
       );
   });
 
@@ -106,7 +106,7 @@ describe("Catalogs", () => {
 
     cy.get("button").contains("Reset").click();
 
-    cy.get(`input[value="2.4-edition-wcag-2.0-508-en"]`).should("be.checked");
+    cy.get(`input[value="2.4-edition-wcag-2.1-508-en"]`).should("be.checked");
   });
 
   it("toggle catalog and cancel confirmation", () => {
@@ -120,15 +120,11 @@ describe("Catalogs", () => {
 
     cy.get("button").contains("Confirm").click();
 
-    cy.visit("/chapter/success_criteria_level_a");
-
-    cy.get(`div[id="${wcag21Criteria}"]`).should("not.exist");
-
     cy.get("button").contains("View Report").click();
 
-    cy.get("#success_criteria_level_a-editor + table tbody tr").should(
-      "not.contain",
-      wcag21Criteria
+    cy.get("#content").should(
+      "contain",
+      "Based on VPAT® 2.4 WCAG 2.1 and Revised Section 508 Edition"
     );
   });
 });
