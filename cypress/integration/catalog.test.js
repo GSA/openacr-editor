@@ -13,16 +13,16 @@ describe("Catalogs", () => {
     it(`select catalog ${catalog}, confirm and can load WCAG chapters and report without errors`, () => {
       cy.visit("/about");
 
-      cy.get("button").contains("Confirm").should("be.disabled");
+      cy.get("button").contains("Switch Catalogs").should("be.disabled");
 
       cy.get(`input[value="${catalog}"]`).check();
 
       cy.get("p").should(
         "contain",
-        "Report type change is not saved till you confirm."
+        "Select Switch Catalogs to save your new selection."
       );
 
-      cy.get("button").contains("Confirm").click();
+      cy.get("button").contains("Switch Catalogs").click();
 
       chapters.forEach((chapter) => {
         cy.visit(`/chapter/${chapter}`, {
@@ -48,7 +48,7 @@ describe("Catalogs", () => {
     // Switch to WCAG 2.1 catalog.
     cy.get("input[value='2.4-edition-wcag-2.1-en']").check();
 
-    cy.get("button").contains("Confirm").click();
+    cy.get("button").contains("Switch Catalogs").click();
 
     cy.visit("/chapter/success_criteria_level_a");
 
@@ -66,7 +66,7 @@ describe("Catalogs", () => {
     // Switch back to WCAG 2.0 508 catalog.
     cy.get("input[value='2.4-edition-wcag-2.0-508-en']").check();
 
-    cy.get("button").contains("Confirm").click();
+    cy.get("button").contains("Switch Catalogs").click();
 
     cy.visit("/chapter/success_criteria_level_a");
 
@@ -88,13 +88,13 @@ describe("Catalogs", () => {
     // Switch to WCAG 2.1 catalog.
     cy.get("input[value='2.4-edition-wcag-2.1-en']").check();
 
-    cy.get("button").contains("Confirm").click();
+    cy.get("button").contains("Switch Catalogs").click();
 
     cy.get("@confirmation")
       .should("have.been.calledOnce")
       .and(
         "have.been.calledWith",
-        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog. Please download your report before switching catalogs to avoid losing information. Select cancel to download your report from the Report page before proceeding.\n\nAre you sure that's what you'd like to do?"
+        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog.\n\nPlease download your report before switching catalogs to avoid losing information. Select Cancel to save before switching."
       );
   });
 
@@ -118,7 +118,7 @@ describe("Catalogs", () => {
     // Switch to WCAG 2.1 catalog.
     cy.get("input[value='2.4-edition-wcag-2.1-en']").check();
 
-    cy.get("button").contains("Confirm").click();
+    cy.get("button").contains("Switch Catalogs").click();
 
     cy.get("button").contains("View Report").click();
 

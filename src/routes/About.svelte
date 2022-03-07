@@ -91,7 +91,7 @@
   function confirmCatalogChange(e) {
     if (
       window.confirm(
-        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog. Please download your report before switching catalogs to avoid losing information. Select cancel to download your report from the Report page before proceeding.\n\nAre you sure that's what you'd like to do?"
+        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog.\n\nPlease download your report before switching catalogs to avoid losing information. Select Cancel to save before switching."
       )
     ) {
       $evaluation['catalog'] = selectedCatalog;
@@ -131,7 +131,7 @@
 
 <details open>
   <summary>
-    <HeaderWithAnchor id="select-catalog" level=2>Select report type (and catalog)</HeaderWithAnchor>
+    <HeaderWithAnchor id="select-catalog" level=2>Select report type and catalog</HeaderWithAnchor>
   </summary>
   <p>{helpText["catalog"]["intro"]}</p>
   {#each catalogChoices as catalogChoice}
@@ -151,9 +151,9 @@
   {/each}
 
   {#if $evaluation['catalog'] !== selectedCatalog }
-    <p><em>Report type change is not saved till you confirm.</em></p>
+    <p><em>Select Switch Catalogs to save your new selection.</em></p>
   {/if}
-  <button class="button" on:click={confirmCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog}>Confirm</button>
+  <button class="button" on:click={confirmCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog}>Switch Catalogs</button>
   <button class="button" on:click={resetCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog}>Reset</button>
 </details>
 

@@ -207,7 +207,7 @@ describe("Import", () => {
       .get(`input[value="2.4-edition-wcag-2.1-508-en"]`)
       .check();
 
-    cy.get("button").contains("Confirm").click();
+    cy.get("button").contains("Switch Catalogs").click();
 
     cy.get("@alerted")
       .should("have.been.calledTwice")
@@ -229,7 +229,7 @@ describe("Import", () => {
       .get(`input[value="2.4-edition-wcag-2.0-508-en"]`)
       .check();
 
-    cy.get("button").contains("Confirm").click();
+    cy.get("button").contains("Switch Catalogs").click();
 
     cy.get("@alerted")
       .should("have.been.calledThrice")
