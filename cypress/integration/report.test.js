@@ -134,7 +134,7 @@ describe("Report", () => {
       "Does support non-text content."
     );
 
-    cy.get("a[href='/report#text-equiv-all-editor']").click();
+    cy.get("a[href='/report#non-text-content-editor']").click();
 
     cy.get("#success_criteria_level_a-editor + table tbody tr")
       .should("be.focused")
@@ -152,7 +152,7 @@ describe("Report", () => {
       "[Drupal 8](https://www.drupal.org/) requires alt text for images by default."
     );
 
-    cy.get("a[href='/report#text-equiv-all-editor']").click();
+    cy.get("a[href='/report#non-text-content-editor']").click();
 
     cy.get(
       "#success_criteria_level_a-editor + table tbody tr td:nth-child(3) a"

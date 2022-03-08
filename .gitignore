@@ -4,3 +4,4 @@ public/build
 .vscode
 cypress/results
 .nova
+.DS_Store

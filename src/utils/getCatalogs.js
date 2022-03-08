@@ -20,19 +20,19 @@ export function getListOfCatalogs() {
   return [
     {
       catalog: wcag20508catalogName,
-      title: `${wcag20508catalog.title} (WCAG 2.0)`,
+      title: "VPAT® 2.4 508: Revised Section 508 Edition (WCAG 2.0)",
     },
     {
       catalog: wcag21508catalogName,
-      title: `${wcag21508catalog.title}`,
+      title: "VPAT® 2.4 508 + WCAG: Revised Section 508 Edition (WCAG 2.1)",
     },
     {
       catalog: wcag21catalogName,
-      title: `${wcag21catalog.title} (WCAG 2.1)`,
+      title: "VPAT® 2.4 WCAG: WCAG 2.1",
     },
   ];
 }
 
 export function getDefaultCatalogName() {
-  return wcag20508catalogName;
+  return wcag21508catalogName;
 }

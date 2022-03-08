@@ -23,6 +23,7 @@
   const location = useLocation();
   let catalog = getCatalog($evaluation.catalog);
   let catalogChoices = getListOfCatalogs();
+  let selectedCatalog = $evaluation.catalog;
 
   onMount(() => {
     currentPage.update(currentPage => "About");
@@ -84,13 +85,22 @@
   }
 
   function updateCatalog(e) {
+    selectedCatalog = e.target.value;
+  }
+
+  function confirmCatalogChange(e) {
     if (
       window.confirm(
-        "This may remove any entered criteria from your ACR that are not in the selected catalog. Download a copy of the report if you have not already. Are you sure that's what you'd like to do?"
+        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog.\n\nPlease download your report before switching catalogs to avoid losing information. Select Cancel to save before switching."
       )
     ) {
-      updateEvaluation(e.target.value, $evaluation);
+      $evaluation['catalog'] = selectedCatalog;
+      updateEvaluation(selectedCatalog, $evaluation);
     }
+  }
+
+  function resetCatalogChange() {
+    selectedCatalog = $evaluation['catalog'];
   }
 
   $: versionPrefix = reportFilename($evaluation, false);
@@ -121,7 +131,7 @@
 
 <details open>
   <summary>
-    <HeaderWithAnchor id="select-catalog" level=2>Select catalog</HeaderWithAnchor>
+    <HeaderWithAnchor id="select-catalog" level=2>Select report type and catalog</HeaderWithAnchor>
   </summary>
   <p>{helpText["catalog"]["intro"]}</p>
   {#each catalogChoices as catalogChoice}
@@ -130,14 +140,21 @@
         <input
           type="radio"
           value={catalogChoice.catalog}
-          bind:group="{$evaluation['catalog']}"
+          bind:group="{selectedCatalog}"
           id="evaluation-catalog-{catalogChoice.catalog}"
           on:change={updateCatalog} />
 
         {catalogChoice.title}
       </label>
+      <HelpText type="catalog" field="{catalogChoice.catalog}" />
     </div>
   {/each}
+
+  {#if $evaluation['catalog'] !== selectedCatalog }
+    <p><em>Select Switch Catalogs to save your new selection.</em></p>
+  {/if}
+  <button class="button" on:click={confirmCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog}>Switch Catalogs</button>
+  <button class="button" on:click={resetCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog}>Reset</button>
 </details>
 
 <details open>

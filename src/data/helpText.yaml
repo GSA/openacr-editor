@@ -44,4 +44,7 @@ disabled_chapters:
   software: ""
   support_documentation_and_services: ""
 catalog:
-  intro: "Select which catalog you will be using for the OpenACR."
+  intro: "Select which catalog you want to use for this OpenACR."
+  2.4-edition-wcag-2.0-508-en: "These are the minimum standards required for Section 508 conformance in the United States of America."
+  2.4-edition-wcag-2.1-en: "This is a web-specific ACR that follows the global best practices for web accessibility."
+  2.4-edition-wcag-2.1-508-en: "This is the current best practice standard in the United States of America."

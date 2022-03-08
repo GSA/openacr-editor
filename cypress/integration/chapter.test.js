@@ -52,27 +52,27 @@ describe("Chapter", () => {
 
     cy.get(nonTextContentWebComponentLevelField).select("Supports");
 
-    cy.get(progressBarA).should("contain", "1 of 100");
+    cy.get(progressBarA).should("contain", "1 of 120");
 
     cy.get(nonTextContentWebComponentLevelField).select("Partially Supports");
 
-    cy.get(progressBarA).should("contain", "1 of 100");
+    cy.get(progressBarA).should("contain", "1 of 120");
 
     cy.get(nonTextContentWebComponentLevelField).select("Does Not Support");
 
-    cy.get(progressBarA).should("contain", "1 of 100");
+    cy.get(progressBarA).should("contain", "1 of 120");
 
     cy.get(nonTextContentWebComponentLevelField).select("Not Applicable");
 
-    cy.get(progressBarA).should("contain", "1 of 100");
+    cy.get(progressBarA).should("contain", "1 of 120");
 
     cy.get(nonTextContentWebComponentLevelField).select("Not Evaluated");
 
-    cy.get(progressBarA).should("contain", "1 of 100");
+    cy.get(progressBarA).should("contain", "1 of 120");
 
     cy.get(nonTextContentWebComponentLevelField).select("");
 
-    cy.get(progressBarA).should("contain", "0 of 100");
+    cy.get(progressBarA).should("contain", "0 of 120");
   });
 
   it("type notes and should see a message after adding 1 character, then a different message after more than 50 characters, and no message for 0 characters", () => {
