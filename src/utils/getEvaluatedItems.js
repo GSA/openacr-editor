@@ -4,7 +4,10 @@ export function getProgressPerChapter(evaluation) {
   let progressPerChapter = {};
 
   function getEvaluatedForChapter(chapter) {
-    const components = [];
+    const components_with_terms = {};
+    terms.forEach((term) => {
+      components_with_terms[term.id] = 0;
+    });
     if (evaluation.chapters[chapter.id].criteria) {
       evaluation.chapters[chapter.id].criteria.forEach((item) => {
         item.components.forEach((component) => {
@@ -13,12 +16,12 @@ export function getProgressPerChapter(evaluation) {
             component["adherence"]["level"] &&
             component["adherence"]["level"] != ""
           ) {
-            components.push(component);
+            components_with_terms[component["adherence"]["level"]]++;
           }
         });
       });
     }
-    return components.length;
+    return components_with_terms;
   }
 
   function getTotalForChapter(chapter) {
@@ -32,11 +35,17 @@ export function getProgressPerChapter(evaluation) {
   }
 
   let catalog = getCatalog(evaluation.catalog);
+  const terms = catalog.terms;
   catalog.chapters.forEach((chapter) => {
     const total = getTotalForChapter(chapter);
-    const evaluated = getEvaluatedForChapter(chapter);
+    const evaluated_by_term = getEvaluatedForChapter(chapter);
+    let evaluated = 0;
+    terms.forEach((term) => {
+      evaluated += evaluated_by_term[term.id];
+    });
 
     progressPerChapter[chapter.id] = {
+      evaluated_by_term: evaluated_by_term,
       evaluated: evaluated,
       total: total,
     };

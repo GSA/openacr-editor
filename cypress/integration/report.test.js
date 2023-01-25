@@ -136,7 +136,7 @@ describe("Report", () => {
 
     cy.get("a[href='/report#non-text-content-editor']").click();
 
-    cy.get("#success_criteria_level_a-editor + table tbody tr")
+    cy.get("#success_criteria_level_a-summary + table tbody tr")
       .should("be.focused")
       .should("contain", "Web: Supports")
       .should("contain", "Web: Does support non-text content.");
@@ -155,7 +155,7 @@ describe("Report", () => {
     cy.get("a[href='/report#non-text-content-editor']").click();
 
     cy.get(
-      "#success_criteria_level_a-editor + table tbody tr td:nth-child(3) a"
+      "#success_criteria_level_a-summary + table tbody tr td:nth-child(3) a"
     )
       .should("have.attr", "href")
       .and("contains", "https://www.drupal.org/");
@@ -202,6 +202,6 @@ describe("Report", () => {
 
     cy.get("#hardware-editor + table").should("not.exist");
 
-    cy.get("#software-editor + table").should("exist");
+    cy.get("#software-summary + table").should("exist");
   });
 });

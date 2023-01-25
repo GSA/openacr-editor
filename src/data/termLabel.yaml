@@ -1,0 +1,4 @@
+supports: "supported"
+partially-supports: "partially supported"
+does-not-support: "not supported"
+not-applicable: "not applicable"

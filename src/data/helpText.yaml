@@ -20,7 +20,7 @@ report:
   last_modified_date: "Last modified date is a read-only field that is automatically updated."
   version: "Version is a read-only field that is automatically updated when report is uploaded."
   notes: "Any comments that you would like to add for the report. This can include related projects."
-  evaluation_methods_used: "Please describe in detail how this report was created. What tools and processes were used. How many and what type of pages were evaluated, along with anythng else which would provide context."
+  evaluation_methods_used: "Please describe in detail how this report was created. What tools and processes were used. How many and what type of pages were evaluated, along with anything else which would provide context."
   legal_disclaimer: "Optional field for legal disclaimer. Please list license here if it is not released under an open license. "
   repository: "URL for the git repository that contains the ACR."
   feedback: "Details about feedback from author."

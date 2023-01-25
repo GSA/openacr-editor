@@ -4,13 +4,19 @@
   import ReportChapterTableResult from "./ReportChapterTableResult.svelte";
   import HeaderWithAnchor from "../HeaderWithAnchor.svelte";
   import { sanitizeMarkdown } from "../../utils/sanitizeMarkdown.js";
+  import { getProgressPerChapter } from "../../utils/getEvaluatedItems.js";
+  import { getCatalog } from "../../utils/getCatalogs.js";
+  import termLabel from "../../data/termLabel.yaml";
 
   export let standard;
   export let chapterId;
   export let download = false;
   let catalogName = $evaluation.catalog;
+  let catalog = getCatalog($evaluation.catalog);
+  let terms = catalog.terms;
 
   $: chapter = getCatalogChapter(catalogName, chapterId);
+  $: progressPerChapter = getProgressPerChapter($evaluation);
 </script>
 
 <style>
@@ -44,6 +50,19 @@
 {/if}
 
 {#if $evaluation['chapters'][chapterId]['criteria'] && !$evaluation['chapters'][chapterId]['disabled'] }
+  <div id="{chapterId}-summary">
+    <p>
+      Conformance to the {$evaluation['chapters'][chapterId]['criteria'].length} criteria listed below is distributed as follows:
+    </p>
+    <ul>
+      {#each terms as term}
+        {#if termLabel[term.id]}
+          <li>{progressPerChapter[chapterId]['evaluated_by_term'][term.id]} {termLabel[term.id]}</li>
+        {/if}
+      {/each}
+    </ul>
+  </div>
+
   <table class="usa-table">
     <thead>
     <tr>
