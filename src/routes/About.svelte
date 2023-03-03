@@ -376,7 +376,7 @@
   </div>
 
   <div class="field">
-    <label for="evaluation-evaluation-methods-used">Evaluation Methods Used</label>
+    <label for="evaluation-evaluation-methods-used">Evaluation Methods</label>
     <textarea
       bind:value={$evaluation['evaluation_methods_used']}
       id="evaluation-evaluation-methods-used"

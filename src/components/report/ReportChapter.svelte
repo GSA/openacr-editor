@@ -46,7 +46,9 @@
 <HeaderWithAnchor id={chapterId} level=3 {download}>{chapter.label}</HeaderWithAnchor>
 
 {#if $evaluation['chapters'][chapterId]['notes']}
-  Notes: {@html sanitizeMarkdown($evaluation['chapters'][chapterId]['notes'])}
+  <div id="{chapterId}-notes" class="chapter-notes-section">
+    Notes: {@html sanitizeMarkdown($evaluation['chapters'][chapterId]['notes'])}
+  </div>
 {/if}
 
 {#if $evaluation['chapters'][chapterId]['criteria'] && !$evaluation['chapters'][chapterId]['disabled'] }
