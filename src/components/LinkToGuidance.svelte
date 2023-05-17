@@ -49,5 +49,5 @@
   </svg>
   <span>
     <slot />
-  </span> <span class="visuallyhidden">(opens in a new window or tab)</span>
+  </span><span class="visuallyhidden"> (opens in a new window or tab)</span>
 </a>

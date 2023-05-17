@@ -150,7 +150,7 @@
       <div class="grid-container">
         <div class="grid-row grid-gap">
           <div class="grid-col">
-            <a href="https://github.com/GSA/openacr" target="_blank">OpenACR <span class="visuallyhidden">(opens in a new window or tab)</span></a> is a format maintained by the <a href="https://gsa.gov/" target="_blank">GSA <span class="visuallyhidden">(opens in a new window or tab)</span></a>. The content is the responsibility of the author.
+            <a href="https://github.com/GSA/openacr" target="_blank">OpenACR<span class="visuallyhidden"> (opens in a new window or tab)</span></a> is a format maintained by the <a href="https://gsa.gov/" target="_blank">GSA<span class="visuallyhidden"> (opens in a new window or tab)</span></a>. The content is the responsibility of the author.
           </div>
           <div class="grid-col">
             <ReportLicense />
