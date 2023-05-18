@@ -245,7 +245,21 @@ describe("Report", () => {
 
     cy.get("button").contains("View Report").click();
 
+    cy.get(".applicable-standards-guidelines-table").should(
+      "not.contain",
+      "Chapter 4: Hardware"
+    );
+
+    cy.get("#hardware-editor").should("not.exist");
+
     cy.get("#hardware-editor + table").should("not.exist");
+
+    cy.get(".applicable-standards-guidelines-table").should(
+      "contain",
+      "Chapter 5: Software"
+    );
+
+    cy.get("#software-summary").should("exist");
 
     cy.get("#software-summary + table").should("exist");
   });

@@ -97,7 +97,7 @@
       {#each catalog.standards as standard }
         <tr>
           <td><a href="{standard.url}" target="_blank">{standard.label}<span class="visuallyhidden"> (opens in a new window or tab)</span></a></td>
-          <td>{@html standardsIncluded($evaluation.catalog, standard.chapters)}</td>
+          <td>{@html standardsIncluded($evaluation.catalog, standard.chapters, $evaluation.chapters)}</td>
         </tr>
       {/each}
     </tbody>

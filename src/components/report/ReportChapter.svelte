@@ -43,7 +43,9 @@
   }
 </style>
 
-<HeaderWithAnchor id={chapterId} level=3 {download}>{chapter.label}</HeaderWithAnchor>
+{#if !$evaluation['chapters'][chapterId]['disabled'] || $evaluation['chapters'][chapterId]['notes']}
+  <HeaderWithAnchor id={chapterId} level=3 {download}>{chapter.label}</HeaderWithAnchor>
+{/if}
 
 {#if $evaluation['chapters'][chapterId]['notes']}
   <div id="{chapterId}-notes" class="chapter-notes-section">
