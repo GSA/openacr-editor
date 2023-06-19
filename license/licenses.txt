@@ -524,7 +524,7 @@
 │  ├─ repository: https://github.com/GSA/openacr-editor
 │  ├─ path:
 │  └─ licenseFile: LICENSE.md
-├─ @openacr/openacr@0.3.5
+├─ @openacr/openacr@0.3.7
 │  ├─ licenses: CC0-1.0
 │  ├─ repository: https://github.com/GSA/openacr
 │  ├─ path: node_modules/@openacr/openacr
@@ -595,7 +595,7 @@
 │  ├─ repository: https://github.com/DefinitelyTyped/DefinitelyTyped.git
 │  ├─ path: node_modules/@types/resolve
 │  └─ licenseFile: node_modules/@types/resolve/LICENSE
-├─ @types/sinonjs__fake-timers@6.0.4
+├─ @types/sinonjs__fake-timers@8.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 │  ├─ path: node_modules/@types/sinonjs__fake-timers
@@ -971,7 +971,7 @@
 │  ├─ url: sindresorhus.com
 │  ├─ path: node_modules/callsites
 │  └─ licenseFile: node_modules/callsites/license
-├─ caniuse-lite@1.0.30001299
+├─ caniuse-lite@1.0.30001462
 │  ├─ licenses: CC-BY-4.0
 │  ├─ repository: https://github.com/browserslist/caniuse-lite
 │  ├─ publisher: Ben Briggs
@@ -1280,7 +1280,7 @@
 │  ├─ url: http://feedic.com
 │  ├─ path: node_modules/css-what
 │  └─ licenseFile: node_modules/css-what/LICENSE
-├─ cypress@9.2.1
+├─ cypress@9.7.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/cypress-io/cypress
 │  ├─ path: node_modules/cypress
@@ -1373,6 +1373,13 @@
 │  ├─ email: me@feedic.com
 │  ├─ path: node_modules/dom-serializer
 │  └─ licenseFile: node_modules/dom-serializer/LICENSE
+├─ dom-serializer@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/cheeriojs/dom-serializer
+│  ├─ publisher: Felix Boehm
+│  ├─ email: me@feedic.com
+│  ├─ path: node_modules/@openacr/openacr/node_modules/dom-serializer
+│  └─ licenseFile: node_modules/@openacr/openacr/node_modules/dom-serializer/LICENSE
 ├─ domelementtype@2.2.0
 │  ├─ licenses: BSD-2-Clause
 │  ├─ repository: https://github.com/fb55/domelementtype
@@ -1380,6 +1387,13 @@
 │  ├─ email: me@feedic.com
 │  ├─ path: node_modules/domelementtype
 │  └─ licenseFile: node_modules/domelementtype/LICENSE
+├─ domelementtype@2.3.0
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/fb55/domelementtype
+│  ├─ publisher: Felix Boehm
+│  ├─ email: me@feedic.com
+│  ├─ path: node_modules/@openacr/openacr/node_modules/domelementtype
+│  └─ licenseFile: node_modules/@openacr/openacr/node_modules/domelementtype/LICENSE
 ├─ domhandler@4.2.2
 │  ├─ licenses: BSD-2-Clause
 │  ├─ repository: https://github.com/fb55/domhandler
@@ -1387,6 +1401,13 @@
 │  ├─ email: me@feedic.com
 │  ├─ path: node_modules/domhandler
 │  └─ licenseFile: node_modules/domhandler/LICENSE
+├─ domhandler@5.0.3
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/fb55/domhandler
+│  ├─ publisher: Felix Boehm
+│  ├─ email: me@feedic.com
+│  ├─ path: node_modules/@openacr/openacr/node_modules/domhandler
+│  └─ licenseFile: node_modules/@openacr/openacr/node_modules/domhandler/LICENSE
 ├─ domready@1.0.8
 │  ├─ licenses: MIT*
 │  ├─ repository: https://github.com/ded/domready
@@ -1402,6 +1423,13 @@
 │  ├─ email: me@feedic.com
 │  ├─ path: node_modules/domutils
 │  └─ licenseFile: node_modules/domutils/LICENSE
+├─ domutils@3.1.0
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/fb55/domutils
+│  ├─ publisher: Felix Boehm
+│  ├─ email: me@feedic.com
+│  ├─ path: node_modules/@openacr/openacr/node_modules/domutils
+│  └─ licenseFile: node_modules/@openacr/openacr/node_modules/domutils/LICENSE
 ├─ ecc-jsbn@0.1.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/quartzjer/ecc-jsbn
@@ -1452,6 +1480,13 @@
 │  ├─ email: me@feedic.com
 │  ├─ path: node_modules/entities
 │  └─ licenseFile: node_modules/entities/LICENSE
+├─ entities@4.5.0
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/fb55/entities
+│  ├─ publisher: Felix Boehm
+│  ├─ email: me@feedic.com
+│  ├─ path: node_modules/@openacr/openacr/node_modules/entities
+│  └─ licenseFile: node_modules/@openacr/openacr/node_modules/entities/LICENSE
 ├─ envinfo@7.8.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/tabrindle/envinfo
@@ -1480,8 +1515,8 @@
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: https://sindresorhus.com
-│  ├─ path: node_modules/sanitize-html/node_modules/escape-string-regexp
-│  └─ licenseFile: node_modules/sanitize-html/node_modules/escape-string-regexp/license
+│  ├─ path: node_modules/@openacr/openacr/node_modules/escape-string-regexp
+│  └─ licenseFile: node_modules/@openacr/openacr/node_modules/escape-string-regexp/license
 ├─ eslint-plugin-svelte3@2.7.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sveltejs/eslint-plugin-svelte3
@@ -1935,6 +1970,13 @@
 │  ├─ email: me@feedic.com
 │  ├─ path: node_modules/htmlparser2
 │  └─ licenseFile: node_modules/htmlparser2/LICENSE
+├─ htmlparser2@8.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/fb55/htmlparser2
+│  ├─ publisher: Felix Boehm
+│  ├─ email: me@feedic.com
+│  ├─ path: node_modules/@openacr/openacr/node_modules/htmlparser2
+│  └─ licenseFile: node_modules/@openacr/openacr/node_modules/htmlparser2/LICENSE
 ├─ http-signature@1.3.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/joyent/node-http-signature
@@ -2461,6 +2503,12 @@
 │  ├─ publisher: Christopher Jeffrey
 │  ├─ path: node_modules/marked
 │  └─ licenseFile: node_modules/marked/LICENSE.md
+├─ marked@4.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/markedjs/marked
+│  ├─ publisher: Christopher Jeffrey
+│  ├─ path: node_modules/@openacr/openacr/node_modules/marked
+│  └─ licenseFile: node_modules/@openacr/openacr/node_modules/marked/LICENSE.md
 ├─ matches-selector@1.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/ForbesLindesay/matches-selector
@@ -2507,9 +2555,9 @@
 │  ├─ url: http://blog.izs.me
 │  ├─ path: node_modules/minimatch
 │  └─ licenseFile: node_modules/minimatch/LICENSE
-├─ minimist@1.2.5
+├─ minimist@1.2.8
 │  ├─ licenses: MIT
-│  ├─ repository: https://github.com/substack/minimist
+│  ├─ repository: https://github.com/minimistjs/minimist
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
@@ -2993,13 +3041,6 @@
 │  ├─ email: mathiasbuus@gmail.com
 │  ├─ path: node_modules/pump
 │  └─ licenseFile: node_modules/pump/LICENSE
-├─ punycode@1.3.2
-│  ├─ licenses: MIT
-│  ├─ repository: https://github.com/bestiejs/punycode.js
-│  ├─ publisher: Mathias Bynens
-│  ├─ url: https://mathiasbynens.be/
-│  ├─ path: node_modules/url/node_modules/punycode
-│  └─ licenseFile: node_modules/url/node_modules/punycode/LICENSE-MIT.txt
 ├─ punycode@2.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/bestiejs/punycode.js
@@ -3018,13 +3059,6 @@
 │  ├─ repository: https://github.com/ljharb/qs
 │  ├─ path: node_modules/qs
 │  └─ licenseFile: node_modules/qs/LICENSE
-├─ querystring@0.2.0
-│  ├─ licenses: MIT
-│  ├─ repository: https://github.com/Gozala/querystring
-│  ├─ publisher: Irakli Gozalishvili
-│  ├─ email: rfobic@gmail.com
-│  ├─ path: node_modules/querystring
-│  └─ licenseFile: node_modules/querystring/License.md
 ├─ randombytes@2.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/randombytes
@@ -3315,6 +3349,12 @@
 │  ├─ url: https://github.com/ChALkeR
 │  ├─ path: node_modules/safer-buffer
 │  └─ licenseFile: node_modules/safer-buffer/LICENSE
+├─ sanitize-html@2.10.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/apostrophecms/sanitize-html
+│  ├─ publisher: Apostrophe Technologies, Inc.
+│  ├─ path: node_modules/@openacr/openacr/node_modules/sanitize-html
+│  └─ licenseFile: node_modules/@openacr/openacr/node_modules/sanitize-html/LICENSE
 ├─ sanitize-html@2.7.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/apostrophecms/sanitize-html
@@ -3853,11 +3893,6 @@
 │  ├─ email: gary.court@gmail.com
 │  ├─ path: node_modules/uri-js
 │  └─ licenseFile: node_modules/uri-js/README.md
-├─ url@0.11.0
-│  ├─ licenses: MIT
-│  ├─ repository: https://github.com/defunctzombie/node-url
-│  ├─ path: node_modules/url
-│  └─ licenseFile: node_modules/url/LICENSE
 ├─ uswds@2.12.2
 │  ├─ licenses: MIT*
 │  ├─ repository: https://github.com/uswds/uswds
