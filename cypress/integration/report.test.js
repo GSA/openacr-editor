@@ -124,7 +124,7 @@ describe("Report", () => {
     );
   });
 
-  it("should show entered level and notes for a criteria", () => {
+  it("should show entered single level and notes for a criteria without label", () => {
     cy.visit("/chapter/success_criteria_level_a");
     cy.get("button").contains("+ Expand All Sections").click();
 
@@ -136,10 +136,55 @@ describe("Report", () => {
 
     cy.get("a[href='/report#non-text-content-editor']").click();
 
-    cy.get("#success_criteria_level_a-editor + table tbody tr")
+    cy.get("#success_criteria_level_a-summary + table tbody tr")
       .should("be.focused")
       .should("contain", "Web: Supports")
       .should("contain", "Web: Does support non-text content.");
+
+    cy.get(
+      "#success_criteria_level_a-summary + table tbody tr td:nth-child(2) ul li span"
+    ).should("be.hidden");
+
+    cy.get(
+      "#success_criteria_level_a-summary + table tbody tr td:nth-child(3) ul li span"
+    ).should("be.hidden");
+  });
+
+  it("should show entered multiple level and notes for a criteria with labels", () => {
+    cy.visit("/chapter/success_criteria_level_a");
+    cy.get("button").contains("+ Expand All Sections").click();
+
+    cy.get("select[name='evaluation-1.1.1-web-level']").select("Supports");
+
+    cy.get("textarea[id='evaluation-1.1.1-web-notes']").type(
+      "Does support non-text content."
+    );
+
+    cy.get("select[name='evaluation-1.1.1-electronic-docs-level']").select(
+      "Partially Supports"
+    );
+
+    cy.get("textarea[id='evaluation-1.1.1-electronic-docs-notes']").type(
+      "Partially supports non-text content."
+    );
+
+    cy.get("a[href='/report#non-text-content-editor']").click();
+
+    cy.get("#success_criteria_level_a-summary + table tbody tr")
+      .should("be.focused")
+      .should("contain", "Electronic Documents: Partially Supports")
+      .should(
+        "contain",
+        "Electronic Documents: Partially supports non-text content."
+      );
+
+    cy.get(
+      "#success_criteria_level_a-summary + table tbody tr td:nth-child(2) ul li span"
+    ).should("be.visible");
+
+    cy.get(
+      "#success_criteria_level_a-summary + table tbody tr td:nth-child(3) ul li span"
+    ).should("be.visible");
   });
 
   it("should render markdown in notes columns for a criteria", () => {
@@ -155,7 +200,7 @@ describe("Report", () => {
     cy.get("a[href='/report#non-text-content-editor']").click();
 
     cy.get(
-      "#success_criteria_level_a-editor + table tbody tr td:nth-child(3) a"
+      "#success_criteria_level_a-summary + table tbody tr td:nth-child(3) a"
     )
       .should("have.attr", "href")
       .and("contains", "https://www.drupal.org/");
@@ -172,7 +217,7 @@ describe("Report", () => {
 
     cy.get("button").contains("View Report").click();
 
-    cy.get("#success_criteria_level_aa-editor + p b").should(
+    cy.get("#success_criteria_level_aa-editor + div p b").should(
       "not.have.attr",
       "onclick"
     );
@@ -189,7 +234,7 @@ describe("Report", () => {
 
     cy.get("button").contains("View Report").click();
 
-    cy.get("#success_criteria_level_aaa-editor + p a")
+    cy.get("#success_criteria_level_aaa-editor + div p a")
       .should("have.attr", "href")
       .and("contains", "https://www.drupal.org/");
   });
@@ -200,8 +245,22 @@ describe("Report", () => {
 
     cy.get("button").contains("View Report").click();
 
+    cy.get(".applicable-standards-guidelines-table").should(
+      "not.contain",
+      "Chapter 4: Hardware"
+    );
+
+    cy.get("#hardware-editor").should("not.exist");
+
     cy.get("#hardware-editor + table").should("not.exist");
 
-    cy.get("#software-editor + table").should("exist");
+    cy.get(".applicable-standards-guidelines-table").should(
+      "contain",
+      "Chapter 5: Software"
+    );
+
+    cy.get("#software-summary").should("exist");
+
+    cy.get("#software-summary + table").should("exist");
   });
 });

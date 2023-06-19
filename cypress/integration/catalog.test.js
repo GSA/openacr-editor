@@ -56,7 +56,7 @@ describe("Catalogs", () => {
 
     cy.get("button").contains("View Report").click();
 
-    cy.get("#success_criteria_level_a-editor + table tbody tr").should(
+    cy.get("#success_criteria_level_a-summary + table tbody tr").should(
       "contain",
       wcag21Criteria
     );
@@ -74,7 +74,7 @@ describe("Catalogs", () => {
 
     cy.get("button").contains("View Report").click();
 
-    cy.get("#success_criteria_level_a-editor + table tbody tr").should(
+    cy.get("#success_criteria_level_a-summary + table tbody tr").should(
       "not.contain",
       wcag21Criteria
     );

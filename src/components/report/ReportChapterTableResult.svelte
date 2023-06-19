@@ -10,6 +10,14 @@
 
   $: catalogCriteria = catalogChapterCriteria(catalogName, chapterId, criteria.num);
   const extraId = download ? "-download" : "-editor";
+  let levelCount = 0;
+  if (criteria.components) {
+    criteria.components.forEach((component) => {
+      if (component.adherence.level) {
+        levelCount = levelCount + 1;
+      }
+    });
+  }
 </script>
 
 <style>
@@ -40,15 +48,15 @@
 <tr class="result-row" id="{catalogCriteria.alt_id}{extraId}">
   <td>
     <a href="{standard.url}#{catalogCriteria.alt_id}" target="_blank">
-      {criteria.num} {catalogCriteria.handle} <span class="visuallyhidden">(opens in a new window or tab)</span>
+      {criteria.num} {catalogCriteria.handle}<span class="visuallyhidden"> (opens in a new window or tab)</span>
     </a>
   </td>
   <td>
     {#if criteria.components}
-      <ul>
+      <ul class="component-level-count-{levelCount}">
         {#each criteria.components as component}
           {#if component.adherence.level}
-            <li>{@html catalogComponentLabel(catalogName, component.name, "html")}<p>{levelLabel(catalogName, component.adherence.level)}</p></li>
+            <li><span class="component-level-label">{@html catalogComponentLabel(catalogName, component.name, "html")}</span><p>{levelLabel(catalogName, component.adherence.level)}</p></li>
           {/if}
         {/each}
       </ul>
@@ -56,10 +64,10 @@
   </td>
   <td>
     {#if criteria.components}
-      <ul>
+      <ul class="component-level-count-{levelCount}">
         {#each criteria.components as component}
         {#if component.adherence.notes}
-          <li>{@html catalogComponentLabel(catalogName, component.name, "html")}{@html sanitizeMarkdown(component.adherence.notes)}</li>
+          <li><span class="component-level-label">{@html catalogComponentLabel(catalogName, component.name, "html")}</span>{@html sanitizeMarkdown(component.adherence.notes)}</li>
           {/if}
         {/each}
       </ul>

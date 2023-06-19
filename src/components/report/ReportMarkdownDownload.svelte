@@ -58,7 +58,7 @@ ${$evaluation["product"]["notes"]}`;
 
   if ($evaluation["product"]["evaluation_methods_used"]) {
     mdTemplate += `
-## Evaluation Methods Used
+## Evaluation Methods
 ${$evaluation["product"]["evaluation_methods_used"]}`;
   }
 

@@ -99,8 +99,8 @@
       <HelpText type="components" field="notes" />
     </div>
   {:else}
-    <p>Could not find component '{component}' for critera '{criteria}' in '{chapterId}'.</p>
+    <p>Could not find component '{component}' for criteria '{criteria}' in '{chapterId}'.</p>
   {/if}
 {:else}
-  <p>Could not find component '{component}' for critera '{criteria}' in '{chapterId}'.</p>
+  <p>Could not find component '{component}' for criteria '{criteria}' in '{chapterId}'.</p>
 {/if}
