@@ -35,12 +35,17 @@
   .button-showhide svg:last-child {
     margin: 0 -0.25em 0 0.25em;
   }
+  	.usa-button--base{
+	color:black;
+	background-color: transparent;
+	border:1px solid #ddd;
+	}
 </style>
 
 {#if expanded}
   <button
     type="button"
-    class="button-secondary button-small button-showhide"
+   class="usa-button usa-button--base padding-05 font-sans-xs"
     on:click={handleClick}>
     <span>
       <slot />
@@ -63,7 +68,7 @@
 {:else}
   <button
     type="button"
-    class="button-secondary button-small button-showhide"
+    class="usa-button usa-button--base padding-05 font-sans-xs"
     on:click={handleClick}>
     <svg
       aria-hidden="true"

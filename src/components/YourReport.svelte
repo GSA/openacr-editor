@@ -109,28 +109,38 @@
   :global(.your-report__description) {
     margin-bottom: 0.5em;
   }
-  button,
-  input {
-    margin-bottom: 4px;
-  }
+  .right {
+    background-color: #efefef;
+    padding:1rem;
+    position:sticky;
+	border:1px solid #ddd;
+    }
+    .usa-button-secondary{
+	background-color:#162e51;
+	}
+	
+	.usa-button--outline{
+	box-shadow: inset 0 0 0 2px #162e51;
+    color: #162e51;
+	}
+	
 </style>
 
 <div
-  class="your-report"
-  class:your-report--expanded={$showYourReport === true}
+  class="right"
   bind:this={box}
   tabindex="-1"
   aria-live="polite">
   {#if $showYourReport === true}
     {#if fresh && $currentPage === 'Overview'}
-      <h2 class="your-report__heading">
+      <h2 class="font-sans-xs margin-top-0 display-flex" style="border-bottom:1px solid #ddd">
         Your report
         <ButtonShowHide expanded={true} on:toggle={toggleYourReport}>
           Hide
         </ButtonShowHide>
       </h2>
       <p>No report started.</p>
-      <button class="button" on:click={startNew}>Start new report</button>
+      <button class="usa-button usa-button-secondary font-sans-3xs" on:click={startNew}>Start new report</button>
       <input
         type="file"
         id="import-evaluation"
@@ -139,7 +149,7 @@
         accept="application/yaml" />
       <label
         for="import-evaluation"
-        class="button button-secondary your-report__import-label">
+        class="usa-button usa-button--outline border-0 bg-white margin-top-1 font-sans-3xs">
         Open report
       </label>
     {:else}
@@ -166,9 +176,9 @@
           {/if}
         {/each}
       </ul>
-      <button class="button" on:click={toOverview}>View Report</button>
+      <button class="usa-button usa-button-secondary" on:click={toOverview}>View Report</button>
       {#if $currentPage === 'Overview'}
-        <button type="button" class="button button-secondary" on:click={clear}>
+        <button type="button" class="usa-button usa-button-secondary" on:click={clear}>
           New Report
         </button>
       {/if}

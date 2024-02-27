@@ -4,6 +4,6 @@
   }
 </style>
 
-<h1>
+<h1 class="font-sans-xl text-normal margin-top-0">
   <slot />
 </h1>

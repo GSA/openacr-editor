@@ -38,15 +38,22 @@
   });
 </script>
 
+<style>
+	.usa-button--outline{
+	box-shadow: inset 0 0 0 2px #162e51;
+	color: #162e51;
+	}
+</style>
+
 <div class="excol-all">
   <button
-    class="expand button button-secondary button-small"
+    class="usa-button usa-button--outline border-0 bg-white margin-top-1 font-sans-3xs"
     disabled={!someCollapsed}
     on:click={expandAll}>
     + Expand All Sections
   </button>
   <button
-    class="collapse button button-secondary button-small"
+    class="usa-button usa-button--outline border-0 bg-white margin-top-1 font-sans-3xs"
     disabled={!someExpanded}
     on:click={collapseAll}>
     − Collapse All Sections

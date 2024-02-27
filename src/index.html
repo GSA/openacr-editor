@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta property="og:title" content="OpenACR Editor" />
     <meta name="author" content="U.S. General Services Administration (GSA)" />
-    <meta
-      property="og:description"
-      content="Tool to help generate Accessibility Conformance Report in the OpenACR format."
-    />
+    <meta property="og:description"
+          content="Tool to help generate Accessibility Conformance Report in the OpenACR format." />
     <title>OpenACR Editor</title>
-    <link
-      rel="stylesheet"
-      href="https://w3.org/WAI/assets/css/style.css?1573220675560713000"
-    />
-    <link rel="stylesheet" href="{{{ pathPrefix }}}/build/bundle.css" />
     <script defer src="{{{ pathPrefix }}}/build/bundle.js"></script>
+    <script defer src="{{{ pathPrefix }}}/build/uswds.min.js"></script>
+    <link rel='stylesheet' href='{{{ pathPrefix }}}/build/uswds.css'>
+
+    <script>
+        if (global === undefined) {
+            var global = window;
+        }
+    </script>
     <style>
       /* GSA/Section508 placeholder styling.
        * Dark blue: #162E51
        * Light blue: #1e6ad6
        */
-      #site-header,
-      th {
-        background-color: #162e51;
-      }
       summary > :first-child:before,
       .box-h,
       a,
@@ -76,68 +73,29 @@
       :target {
         scroll-margin-top: 5rem;
       }
-      @media (min-width: 60em) {
-        .default-grid {
-          display: -ms-grid;
-          display: grid;
-          -ms-grid-columns: minmax(16px, 1fr) (minmax(0, 50px)) [2]
-            (minmax(0, 110px)) [6] minmax(16px, 1fr);
-          grid-template-columns:
-            [complete-start] minmax(16px, 1fr) [navigation-start] repeat(
-              2,
-              minmax(0, 50px)
-            )
-            [navigation-end content-start] repeat(6, minmax(0, 110px))
-            [content-end] minmax(16px, 1fr)
-            [complete-end];
-        }
         #openacr-editor {
           padding: 0;
         }
-      }
-      main {
-        display: block;
-        padding: 2em 0;
-        background-image: linear-gradient(#d0e1f1 0, #d0e1f1 48px, #fff 48px);
-      }
-      .nav__item {
-        list-style: none;
-        margin: 0;
-        text-decoration: none;
-      }
-      .nav__item a {
-        display: block;
-        font-size: 0.85em;
-        padding: 1em;
-        text-decoration: none;
-        background-color: #d0e1f1; /* cloudy-subtle */
-        color: inherit;
-        white-space: nowrap;
-        transition-duration: 0.1s;
-        border-bottom: 1px solid transparent;
-      }
-      .nav__item .active {
-        background-color: #fff; /* body-bg */
-        border-bottom: 1px solid #fff;
-      }
-      .nav__item a:focus {
-        outline-offset: -0.5em;
-      }
-      .tool-header {
-        -ms-grid-column: 2;
-        -ms-grid-column-span: 8;
-        -ms-grid-row: 1;
-        grid-column: 2 / 10;
-        display: flex;
-        align-items: center;
-        width: 100%;
-      }
+
+        .tool-header {
+            -ms-grid-column: 2;
+            -ms-grid-column-span: 8;
+            -ms-grid-row: 1;
+            grid-column: 2 / 10;
+            padding-left: 8.5rem;
+            padding-right:8.5rem;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background-color:#162e51
+        }
       .tool-header a {
         text-decoration: none;
       }
       .tool-header-name {
         font-size: 1.125em;
         white-space: nowrap;
+        color:white;
       }
       @media (min-width: 60em) {
         .tool-header-name {
@@ -164,35 +122,65 @@
           height: 2em;
         }
       }
+        .visuallyhidden {
+            border: 0;
+            clip: rect(0 0 0 0);
+            -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+            white-space: nowrap;
+        }
+
+        .usa-nav__primary .usa-nav__primary-item .usa-current {
+            background-color: #fff !important;
+            border-bottom: 4px solid #fff !important;
+        }
+        .usa-nav__primary .usa-nav__primary-item:hover {
+            background: #e5f1fc;
+            text-decoration: underline;
+            text-decoration-color: #eed009 !important;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 2px;
+        }
+
+        .usa-header--extended .usa-nav__primary-item > .usa-current::after, .usa-header--extended .usa-nav__primary-item > .usa-nav__link:hover::after {
+            background-color: transparent;
+        }
+
+        @media (min-width: 64em) {
+            .usa-header--extended .usa-nav {
+                border-top: none;
+                padding: 0px;
+            }
+        }
+        .usa-nav__primary .usa-nav__primary-item a{
+            font-weight:normal;
+            color:black;
+        }
+        .usa-nav__primary > .usa-nav__primary-item{
+            font-size:0.85rem;
+        }
+        .padding {
+            padding-left: 8.5rem;
+            padding-right: 8.5rem;
+        }  
     </style>
-  </head>
+</head>
   <body>
-    <a href="#content" class="visuallyhidden focusable skip-link">
+    <a href="#content" class="usa-skipnav">
       Skip to main content
     </a>
-    <header id="site-header" class="default-grid with-gap">
-      <div class="tool-header">
-        <a href="{{{ pathPrefix }}}/">
-          <span class="tool-header-name">OpenACR Editor</span>
-        </a>
-        <div class="tool-header-logo">
-          <a href="https://www.gsa.gov/">
-            <img
-              alt="GSA"
-              src="{{{ pathPrefix }}}/images/gsa.png"
-              width="32"
-              height="32"
-            />
-          </a>
-        </div>
-      </div>
-    </header>
     <main>
-      <div id="openacr-editor" class="default-grid leftcol">
+      <div id="openacr-editor">
         <!-- app 'renders' here -->
       </div>
     </main>
-    <div class="default-grid">
+    <div class="padding">
       <aside
         class="box box-icon box-space-above"
         id="helpimprove"
@@ -240,7 +228,7 @@
     </div>
     <footer
       id="wai-site-footer"
-      class="page-footer default-grid"
+      class="padding"
       aria-label="Page"
     >
       <div

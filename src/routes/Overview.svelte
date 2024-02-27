@@ -59,9 +59,10 @@
 <ExpandCollapseAll />
 
 <details>
-  <summary>
+  <summary class="usa-accordion__button" aria-expanded="false" aria-controls="about-openacr">
     <HeaderWithAnchor id="about-openacr" level=2>About OpenACR</HeaderWithAnchor>
   </summary>
+	<div id="about-openacr" class="usa-accordion__content">
   <p>
     OpenACR is a digital native Accessibility Conformance Report (ACR). The initial development is based on Section 508 requirements.
     There are many advantages in moving to a machine-readable format, but one of the biggest is that it allows accessibility claims of
@@ -80,12 +81,14 @@
   <p>
     For more information, see <a href="https://github.com/GSA/openacr" target="_blank">OpenACR <span class="visuallyhidden">(opens in a new window or tab)</span></a>.
   </p>
+	</div>
 </details>
 
 <details>
-  <summary>
+  <summary class="usa-accordion__button" aria-expanded="false" aria-controls="structure">
     <HeaderWithAnchor id="structure-of-this-tool" level=2>Structure of this tool</HeaderWithAnchor>
   </summary>
+	<div id="structure" class="usa-accordion__content">
   <p>
     Following the structure of OpenACR, this tool takes you through 7
     <strong>tables/chapters</strong>. Each table/chapter has a number of
@@ -102,12 +105,14 @@
   <p>
     Links in this editor will open a new window that lead you to the relevant sections of the guidelines.
   </p>
+		</div>
 </details>
 
 <details>
-  <summary>
+  <summary class="usa-accordion__button" aria-expanded="false" aria-controls="terms">
     <HeaderWithAnchor id="terms" level=2>Terms</HeaderWithAnchor>
   </summary>
+	<div id="structure" class="usa-accordion__content">
   <p>
     As you go through and enter conformance for your software, you will select a "term" for
     each component. Here is the legend of what those selections mean:
