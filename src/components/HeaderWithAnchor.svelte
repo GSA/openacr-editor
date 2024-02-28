@@ -30,6 +30,7 @@
     width: 28px;
     height: 28px;
     opacity: .3;
+	margin:5px;
   }
   @media all and (max-width: 63.99em) {
     h2 a.header-anchor,
@@ -62,7 +63,7 @@
 </style>
 
 {#if level == 2}
-  <h2 id="{id}{extraId}">
+  <h2 id="{id}{extraId}" class="font-sans-lg">
     <slot />
     <a href="#{id}{extraId}" class="header-anchor" aria-labelledby="{id}{extraId}">
       <span class="anchor-icon" aria-hidden="true">
@@ -79,7 +80,7 @@
 {/if}
 
 {#if level == 3}
-  <h3 id="{id}{extraId}">
+  <h3 id="{id}{extraId}" class="font-sans-md">
     <slot />
     <a href="#{id}{extraId}" class="header-anchor" aria-labelledby="{id}{extraId}">
       <span class="anchor-icon" aria-hidden="true">

@@ -7,29 +7,23 @@
 </script>
 
 <style>
-  .pager--item-text-direction {
-    text-transform: capitalize;
-  }
+	.li{
+	list-style:none;
+	margin:0;
+	display:flex;
+	flex:0 1 50%;
+	text-transform: capitalize;
+	}
 </style>
 
-<li class={`pager--item ${direction}`}>
-  <Link {to}>
-    {#if direction === 'previous'}
-      <svg
-        focusable="false"
-        aria-hidden="true"
-        class="icon-arrow-right pager--item-icon">
-        <use href={`${vars.pathPrefix}/images/icons.svg#icon-arrow-left`} />
-      </svg>
+<li class={`li ${direction}`}>
+  <Link {to} class="display-flex">
+	  {#if direction === 'previous'}
+	  <i class="fa fa-arrow-left"></i>
     {:else if direction === 'next'}
-      <svg
-        focusable="false"
-        aria-hidden="true"
-        class="icon-arrow-right pager--item-icon">
-        <use href={`${vars.pathPrefix}/images/icons.svg#icon-arrow-right`} />
-      </svg>
+      <i class="fa fa-arrow-right"></i>
     {/if}
-    <span class="pager--item-text">
+    <span style="display:flex;width:100%;flex-direction:column;margin-left:10px;margin-top:-10px">
       <span class="pager--item-text-direction">
         {`${direction.toLowerCase()}:`}
       </span>

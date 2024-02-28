@@ -15,13 +15,13 @@
     isActive = relativeHref === location.pathname;
 
     if (isActive) {
-      return { class: "active" };
+      return { class: "usa-current" };
     }
     return {};
   }
 </script>
 
-<li class="nav__item">
+<li class="usa-nav__primary-item">
   <Link {to} {getProps}>
     <slot />
   </Link>
