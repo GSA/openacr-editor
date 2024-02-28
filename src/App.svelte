@@ -51,7 +51,7 @@
   .padding{
 	padding-left: 8.5rem;
 	padding-right:8.5rem;
-  }  
+  }
   .wide{
   }
 
@@ -71,7 +71,7 @@
 				</a>
 			</div>
 		</div>
-		
+
 	<div class="div">
 	<Nav>
 		<NavItem to="/">Overview</NavItem>
@@ -119,5 +119,5 @@
 			</aside>
 		</div>
 	</div>
-	
+
 </Router>

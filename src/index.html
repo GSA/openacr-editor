@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta property="og:title" content="OpenACR Editor" />
     <meta name="author" content="U.S. General Services Administration (GSA)" />
-    <meta property="og:description"
-          content="Tool to help generate Accessibility Conformance Report in the OpenACR format." />
+    <meta
+      property="og:description"
+      content="Tool to help generate Accessibility Conformance Report in the OpenACR format."
+    />
     <title>OpenACR Editor</title>
     <script defer src="{{{ pathPrefix }}}/build/bundle.js"></script>
     <script defer src="{{{ pathPrefix }}}/build/uswds.min.js"></script>
-    <link rel='stylesheet' href='{{{ pathPrefix }}}/build/uswds.css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{{ pathPrefix }}}/build/uswds.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
     <script>
-        if (global === undefined) {
-            var global = window;
-        }
+      if (global === undefined) {
+        var global = window;
+      }
     </script>
     <style>
       /* GSA/Section508 placeholder styling.
@@ -74,29 +79,29 @@
       :target {
         scroll-margin-top: 5rem;
       }
-        #openacr-editor {
-          padding: 0;
-        }
+      #openacr-editor {
+        padding: 0;
+      }
 
-        .tool-header {
-            -ms-grid-column: 2;
-            -ms-grid-column-span: 8;
-            -ms-grid-row: 1;
-            grid-column: 2 / 10;
-            padding-left: 8.5rem;
-            padding-right:8.5rem;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            background-color:#162e51
-        }
+      .tool-header {
+        -ms-grid-column: 2;
+        -ms-grid-column-span: 8;
+        -ms-grid-row: 1;
+        grid-column: 2 / 10;
+        padding-left: 8.5rem;
+        padding-right: 8.5rem;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: #162e51;
+      }
       .tool-header a {
         text-decoration: none;
       }
       .tool-header-name {
         font-size: 1.125em;
         white-space: nowrap;
-        color:white;
+        color: white;
       }
       @media (min-width: 60em) {
         .tool-header-name {
@@ -123,143 +128,198 @@
           height: 2em;
         }
       }
-        .visuallyhidden {
-            border: 0;
-            clip: rect(0 0 0 0);
-            -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
-            height: 1px;
-            margin: -1px;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-            width: 1px;
-            white-space: nowrap;
-        }
+      .visuallyhidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        -webkit-clip-path: inset(50%);
+        clip-path: inset(50%);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+      }
 
-        .usa-nav__primary .usa-nav__primary-item .usa-current {
-            background-color: #fff !important;
-            border-bottom: 4px solid #fff !important;
-        }
-        .usa-nav__primary .usa-nav__primary-item:hover {
-            background: #e5f1fc;
-            text-decoration: underline;
-            text-decoration-color: #eed009 !important;
-            text-underline-offset: 6px;
-            text-decoration-thickness: 2px;
-        }
+      .usa-nav__primary .usa-nav__primary-item .usa-current {
+        background-color: #fff !important;
+        border-bottom: 4px solid #fff !important;
+      }
+      .usa-nav__primary .usa-nav__primary-item:hover {
+        background: #e5f1fc;
+        text-decoration: underline;
+        text-decoration-color: #eed009 !important;
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
+      }
 
-        .usa-header--extended .usa-nav__primary-item > .usa-current::after, .usa-header--extended .usa-nav__primary-item > .usa-nav__link:hover::after {
-            background-color: transparent;
-        }
+      .usa-header--extended .usa-nav__primary-item > .usa-current::after,
+      .usa-header--extended
+        .usa-nav__primary-item
+        > .usa-nav__link:hover::after {
+        background-color: transparent;
+      }
 
-        @media (min-width: 64em) {
-            .usa-header--extended .usa-nav {
-                border-top: none;
-                padding: 0px;
-            }
+      @media (min-width: 64em) {
+        .usa-header--extended .usa-nav {
+          border-top: none;
+          padding: 0px;
         }
-        .usa-nav__primary .usa-nav__primary-item a{
-            font-weight:normal;
-            color:black;
-        }
-        .usa-nav__primary > .usa-nav__primary-item{
-            font-size:0.85rem;
-        }
-        .padding {
-            padding-left: 8.5rem;
-            padding-right: 8.5rem;
-        }
-        .usa-button-secondary {
-            background-color: #162e51;
-        }
-        .summary {
-            list-style: none;
-            display: block;
-            color: #162e51;
-            font-weight:bold;
-            border-bottom:1px solid #ddd;
-        }
+      }
+      .usa-nav__primary .usa-nav__primary-item a {
+        font-weight: normal;
+        color: black;
+      }
+      .usa-nav__primary > .usa-nav__primary-item {
+        font-size: 0.85rem;
+      }
+      .padding {
+        padding-left: 8.5rem;
+        padding-right: 8.5rem;
+      }
+      .usa-button-secondary {
+        background-color: #162e51;
+      }
+      .summary {
+        list-style: none;
+        display: block;
+        color: #162e51;
+        font-weight: bold;
+        border-bottom: 1px solid #ddd;
+      }
     </style>
-</head>
-<body>
-    <a href="#content" class="usa-skipnav">
-        Skip to main content
-    </a>
+  </head>
+  <body>
+    <a href="#content" class="usa-skipnav"> Skip to main content </a>
     <main>
-        <div id="openacr-editor">
-            <!-- app 'renders' here -->
-        </div>
+      <div id="openacr-editor">
+        <!-- app 'renders' here -->
+      </div>
     </main>
     <div class="grid-container font-sans-sm line-height-sans-5 padding-left-2">
-        <div class="grid-row">
-            <div class="desktop:grid-col-9 usa-prose padding-right-2" style="border:1px solid #ddd;">
-                <div style="background-color: #efefef;height:40px" class="margin-top-neg-2">
-                    <h2 class="font-sans-md margin-left-205">
-                        <i class="fa fa-comments"></i>
-                        Help improve this page
-                    </h2>
-                </div>
-                <div class="margin-205">
-                    <p> Please share your ideas, suggestions, or comments via e-mail to <a href="mailto:openacr@gsa.gov">openacr@gsa.gov</a> or via GitHub.</p>
-                    <div class="display-flex">
-                        <a href="mailto:openacr@gsa.gov" class="usa-button usa-button-secondary font-sans-3xs border-0 padding-1 width-full" target="_blank">
-                            <span>E-mail</span>
-                            <span class="visuallyhidden">(opens in a new window or tab)</span>
-                        </a>
-                        <a href="https://github.com/GSA/openacr-editor"
-                           class="usa-button usa-button-secondary font-sans-3xs border-0 padding-1 width-full"
-                           target="_blank">
-                            <span>Fork &amp; Edit on GitHub</span>
-                            <span class="visuallyhidden">(opens in a new window or tab)</span>
-                        </a>
-                        <a href="https://github.com/GSA/openacr-editor/issues/new"
-                           class="usa-button usa-button-secondary font-sans-3xs border-0 padding-1 width-full"
-                           target="_blank">
-                            <span>New GitHub Issue</span>
-                            <span class="visuallyhidden">(opens in a new window or tab)</span>
-                        </a>
-                    </div>
-                </div>
+      <div class="grid-row">
+        <div
+          class="desktop:grid-col-9 usa-prose padding-right-2"
+          style="border: 1px solid #ddd"
+        >
+          <div
+            style="background-color: #efefef; height: 40px"
+            class="margin-top-neg-2"
+          >
+            <h2 class="font-sans-md margin-left-205">
+              <i class="fa fa-comments"></i>
+              Help improve this page
+            </h2>
+          </div>
+          <div class="margin-205">
+            <p>
+              Please share your ideas, suggestions, or comments via e-mail to
+              <a href="mailto:openacr@gsa.gov">openacr@gsa.gov</a> or via
+              GitHub.
+            </p>
+            <div class="display-flex">
+              <a
+                href="mailto:openacr@gsa.gov"
+                class="
+                  usa-button usa-button-secondary
+                  font-sans-3xs
+                  border-0
+                  padding-1
+                  width-full
+                "
+                target="_blank"
+              >
+                <span>E-mail</span>
+                <span class="visuallyhidden"
+                  >(opens in a new window or tab)</span
+                >
+              </a>
+              <a
+                href="https://github.com/GSA/openacr-editor"
+                class="
+                  usa-button usa-button-secondary
+                  font-sans-3xs
+                  border-0
+                  padding-1
+                  width-full
+                "
+                target="_blank"
+              >
+                <span>Fork &amp; Edit on GitHub</span>
+                <span class="visuallyhidden"
+                  >(opens in a new window or tab)</span
+                >
+              </a>
+              <a
+                href="https://github.com/GSA/openacr-editor/issues/new"
+                class="
+                  usa-button usa-button-secondary
+                  font-sans-3xs
+                  border-0
+                  padding-1
+                  width-full
+                "
+                target="_blank"
+              >
+                <span>New GitHub Issue</span>
+                <span class="visuallyhidden"
+                  >(opens in a new window or tab)</span
+                >
+              </a>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
-    <div style="background-color:#ddd">
-        <footer class="grid-container font-sans-sm line-height-sans-5" aria-label="Footer">
-            <div class="margin-top-4">
-                <p><a href="#">Return to top</a></p>
-                <p><strong>Date:</strong> Published December 2021.</p>
-                <p><strong>Version:</strong> v0.1.0</p>
-                <p>
-                    <a href="https://github.com/GSA/openacr" target="_blank">
-                        OpenACR
-                        <span class="visuallyhidden">(opens in a new window or tab)</span>
-                    </a>
-                    is a format maintained by the
-                    <a href="https://gsa.gov/" target="_blank">
-                        U.S. General Services Administration (GSA)
-                        <span class="visuallyhidden">(opens in a new window or tab)</span>
-                    </a>. The content is the responsibility of the author.
-                </p>
-                <p>
-                    This software includes material copied from or derived from
-                    <a href="https://github.com/w3c/wai-atag-report-tool" target="_blank">
-                        W3C ATAG Report Tool (ART)
-                        <span class="visuallyhidden">(opens in a new window or tab)</span>
-                    </a>
-                    and Copyright © 2021 W3C® (MIT, ERCIM, Keio, Beihang).
-                    <a href="https://www.w3.org/Consortium/Legal/copyright-software"
-                       target="_blank">
-                        W3C Software notice and license
-                        <span class="visuallyhidden">(opens in a new window or tab)</span>
-                    </a>.
-                </p>
-            </div>
-        </footer>
+    <div style="background-color: #ddd">
+      <footer
+        class="grid-container font-sans-sm line-height-sans-5"
+        aria-label="Footer"
+      >
+        <div class="margin-top-4">
+          <p><a href="#">Return to top</a></p>
+          <p><strong>Date:</strong> Published December 2021.</p>
+          <p><strong>Version:</strong> v0.1.0</p>
+          <p>
+            <a href="https://github.com/GSA/openacr" target="_blank">
+              OpenACR
+              <span class="visuallyhidden">(opens in a new window or tab)</span>
+            </a>
+            is a format maintained by the
+            <a href="https://gsa.gov/" target="_blank">
+              U.S. General Services Administration (GSA)
+              <span class="visuallyhidden"
+                >(opens in a new window or tab)</span
+              > </a
+            >. The content is the responsibility of the author.
+          </p>
+          <p>
+            This software includes material copied from or derived from
+            <a
+              href="https://github.com/w3c/wai-atag-report-tool"
+              target="_blank"
+            >
+              W3C ATAG Report Tool (ART)
+              <span class="visuallyhidden">(opens in a new window or tab)</span>
+            </a>
+            and Copyright © 2021 W3C® (MIT, ERCIM, Keio, Beihang).
+            <a
+              href="https://www.w3.org/Consortium/Legal/copyright-software"
+              target="_blank"
+            >
+              W3C Software notice and license
+              <span class="visuallyhidden"
+                >(opens in a new window or tab)</span
+              > </a
+            >.
+          </p>
+        </div>
+      </footer>
     </div>
 
     <!-- Analytics code -->
     <!-- End Analytics Code -->
-</body>
+  </body>
 </html>

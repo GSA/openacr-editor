@@ -119,12 +119,12 @@
     .usa-button-secondary{
 	background-color:#162e51;
 	}
-	
+
 	.usa-button--outline{
 	box-shadow: inset 0 0 0 2px #162e51;
     color: #162e51;
 	}
-	
+
 </style>
 
 <div
