@@ -52,6 +52,8 @@
 	padding-left: 8.5rem;
 	padding-right:8.5rem;
   }  
+  .wide{
+  }
 
 </style>
 
@@ -86,12 +88,10 @@
 	</Nav>
 	</div>
 	</header>
-	<div class="grid-container font-sans-sm line-height-sans-5">
+	<div class="grid-container font-sans-sm line-height-sans-5 padding-left-2">
 		<div class="grid-row">
-			<div class="desktop:grid-col-9 usa-prose">
-				<section id="content" class="usa-graphic_list usa-section clearfix padding-y-2"
-	  class:app-content--wide={!needsYourReport($currentPage) || !$showYourReport}
-	  aria-label="Main content">
+			<div class="desktop:grid-col-9 usa-prose" class:wide={!needsYourReport($currentPage) || !$showYourReport}>
+				<section id="content" class="usa-graphic_list usa-section clearfix padding-y-2 padding-right-2" aria-label="Main content">
 		<Route path="/">
 			<Overview />
 		</Route>

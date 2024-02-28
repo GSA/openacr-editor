@@ -8,7 +8,7 @@
   $: totalCriteria = getChapterCriteriaComponents($evaluation);
 </script>
 
-<p class={className}>
+<p class={className}  style="border-top:1px solid #ddd">
   Reported on
   <strong>{items.length}</strong>
   of

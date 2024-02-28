@@ -58,37 +58,42 @@
 
 <ExpandCollapseAll />
 
-<details>
-  <summary class="usa-accordion__button" aria-expanded="false" aria-controls="about-openacr">
-    <HeaderWithAnchor id="about-openacr" level=2>About OpenACR</HeaderWithAnchor>
+<details class="margin-y-6">
+  <summary class="summary">
+    <HeaderWithAnchor id="about-openacr" level=2></HeaderWithAnchor>
+	  <img alt="plus accordion" src="/images/plus.svg" width="15" height="15" class="margin-left-2" /><span class="margin-left-2 font-sans-lg">About OpenACR</span>
   </summary>
-	<div id="about-openacr" class="usa-accordion__content">
-  <p>
-    OpenACR is a digital native Accessibility Conformance Report (ACR). The initial development is based on Section 508 requirements.
-    There are many advantages in moving to a machine-readable format, but one of the biggest is that it allows accessibility claims of
-    digital products and services to be compared. Moving to a highligh structured, self-validated document format will make this much simpler.
-  </p>
-  <p>
-    Many organizations face challenges in delivering accessible services to people with disabilities. Software vendors currently submit
-    ACRs for their offerings. These ACRs document conformance of these products and services. These claims are generally provided in a PDF
-    format which is often inaccessible, not consistently structured, and difficult to search. A modern ACR will be validated to see it
-    matches a baseline format.
-  </p>
-  <p>
-    Responsible organizations both review vendor conformance claims and do independent testing. Documenting these findings in a consistent format
-    will make it easier to provide feedback to vendors. Comparisons will make it easier to update reports.
-  </p>
-  <p>
-    For more information, see <a href="https://github.com/GSA/openacr" target="_blank">OpenACR <span class="visuallyhidden">(opens in a new window or tab)</span></a>.
-  </p>
+	<div class="margin-left-5">
+		<p>
+			OpenACR is a digital native Accessibility Conformance Report (ACR). The initial development is based on Section 508 requirements.
+			There are many advantages in moving to a machine-readable format, but one of the biggest is that it allows accessibility claims of
+			digital products and services to be compared. Moving to a highligh structured, self-validated document format will make this much simpler.
+		</p>
+		<p>
+			Many organizations face challenges in delivering accessible services to people with disabilities. Software vendors currently submit
+			ACRs for their offerings. These ACRs document conformance of these products and services. These claims are generally provided in a PDF
+			format which is often inaccessible, not consistently structured, and difficult to search. A modern ACR will be validated to see it
+			matches a baseline format.
+		</p>
+		<p>
+			Responsible organizations both review vendor conformance claims and do independent testing. Documenting these findings in a consistent format
+			will make it easier to provide feedback to vendors. Comparisons will make it easier to update reports.
+		</p>
+		<p>
+			For more information, see <a href="https://github.com/GSA/openacr" target="_blank">
+				OpenACR <span class="visuallyhidden">(opens in a new window or tab)</span>
+			</a>.
+		</p>
 	</div>
 </details>
 
-<details>
-  <summary class="usa-accordion__button" aria-expanded="false" aria-controls="structure">
-    <HeaderWithAnchor id="structure-of-this-tool" level=2>Structure of this tool</HeaderWithAnchor>
+<details class="margin-y-6">
+  <summary class="summary">
+    <HeaderWithAnchor id="structure-of-this-tool" level=2></HeaderWithAnchor>
+	<img alt="plus accordion" src="/images/plus.svg" width="15" height="15" class="margin-left-2" />
+	  <span class="margin-left-2 font-sans-lg">Structure of this tool</span>
   </summary>
-	<div id="structure" class="usa-accordion__content">
+	<div class="margin-left-5">
   <p>
     Following the structure of OpenACR, this tool takes you through 7
     <strong>tables/chapters</strong>. Each table/chapter has a number of
@@ -105,14 +110,16 @@
   <p>
     Links in this editor will open a new window that lead you to the relevant sections of the guidelines.
   </p>
-		</div>
+	</div>
 </details>
 
-<details>
-  <summary class="usa-accordion__button" aria-expanded="false" aria-controls="terms">
-    <HeaderWithAnchor id="terms" level=2>Terms</HeaderWithAnchor>
+<details class="margin-y-6">
+  <summary class="summary">
+    <HeaderWithAnchor id="terms" level=2></HeaderWithAnchor>
+	  <img alt="plus accordion" src="/images/plus.svg" width="15" height="15" class="margin-left-2" />
+	  <span class="margin-left-2 font-sans-lg">Terms</span>
   </summary>
-	<div id="structure" class="usa-accordion__content">
+	<div class="margin-left-5">
   <p>
     As you go through and enter conformance for your software, you will select a "term" for
     each component. Here is the legend of what those selections mean:
@@ -123,6 +130,7 @@
       <dd>{term.description}</dd>
     {/each}
   </dl>
+	</div>
 </details>
 
 <Pager label="Previous/Next Principle">

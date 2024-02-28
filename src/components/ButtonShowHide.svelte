@@ -45,46 +45,20 @@
 {#if expanded}
   <button
     type="button"
-   class="usa-button usa-button--base padding-05 font-sans-xs"
+   class="usa-button usa-button--base padding-05 font-sans-3xs margin-left-auto display-flex"
     on:click={handleClick}>
-    <span>
+    <span class=" margin-top-2px">
       <slot />
     </span>
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6" />
-    </svg>
+	  <img alt="arrow-right" src="/images/angle-right-solid.svg" width="15" height="15"/>
   </button>
 {:else}
   <button
     type="button"
-    class="usa-button usa-button--base padding-05 font-sans-xs"
+    class="usa-button usa-button--base padding-05 font-sans-3xs display-flex"
     on:click={handleClick}>
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6" />
-    </svg>
-    <span>
+	  <img alt="arrow-left" src="/images/angle-left-solid.svg" width="15" height="15"/>
+	  <span class=" margin-top-2px">
       <slot />
     </span>
   </button>

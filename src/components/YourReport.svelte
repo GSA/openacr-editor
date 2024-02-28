@@ -114,6 +114,7 @@
     padding:1rem;
     position:sticky;
 	border:1px solid #ddd;
+	top:1em;
     }
     .usa-button-secondary{
 	background-color:#162e51;
@@ -127,19 +128,19 @@
 </style>
 
 <div
-  class="right"
+  class:right={$showYourReport === true}
   bind:this={box}
   tabindex="-1"
   aria-live="polite">
   {#if $showYourReport === true}
     {#if fresh && $currentPage === 'Overview'}
-      <h2 class="font-sans-xs margin-top-0 display-flex" style="border-bottom:1px solid #ddd">
+      <h2 class="font-sans-xs margin-top-0 display-flex">
         Your report
         <ButtonShowHide expanded={true} on:toggle={toggleYourReport}>
           Hide
         </ButtonShowHide>
       </h2>
-      <p>No report started.</p>
+      <p  style="border-top:1px solid #ddd" class="margin-top-neg-1">No report started.</p>
       <button class="usa-button usa-button-secondary font-sans-3xs" on:click={startNew}>Start new report</button>
       <input
         type="file"
@@ -164,7 +165,7 @@
           Hide
         </ButtonShowHide>
       </h2>
-      <ReportNumbers className="your-report__description" />
+      <ReportNumbers className="margin-top-1" />
       <ProgressBar percentage={100 / (totalCriteria.length / evaluatedItems.length)} />
       <ul class="your-report__progress-by-principle">
         {#each catalog.chapters as chapter}
@@ -176,9 +177,9 @@
           {/if}
         {/each}
       </ul>
-      <button class="usa-button usa-button-secondary" on:click={toOverview}>View Report</button>
+      <button class="usa-button usa-button-secondary font-sans-3xs" on:click={toOverview}>View Report</button>
       {#if $currentPage === 'Overview'}
-        <button type="button" class="usa-button usa-button-secondary" on:click={clear}>
+        <button type="button" class="usa-button usa-button--outline border-0 bg-white margin-top-1 font-sans-3xs" on:click={clear}>
           New Report
         </button>
       {/if}
