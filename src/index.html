@@ -1,33 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta property="og:title" content="OpenACR Editor" />
     <meta name="author" content="U.S. General Services Administration (GSA)" />
-    <meta
-      property="og:description"
-      content="Tool to help generate Accessibility Conformance Report in the OpenACR format."
-    />
+    <meta property="og:description"
+          content="Tool to help generate Accessibility Conformance Report in the OpenACR format." />
     <title>OpenACR Editor</title>
-    <link
-        rel="stylesheet"
-        href="https://federalist-7a132a2e-6307-4cd0-9f82-e30e871d214a.sites.pages.cloud.gov/preview/gsa/section508.gov/feature/ECASOGP-11018/assets/css/external-blocks.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://w3.org/WAI/assets/css/style.css?1573220675560713000"
-    />
+    <link rel="stylesheet"
+          href="https://federalist-7a132a2e-6307-4cd0-9f82-e30e871d214a.sites.pages.cloud.gov/preview/gsa/section508.gov/feature/ECASOGP-11018/assets/css/external-blocks.css"/>
+    <link rel="stylesheet"
+          href="https://w3.org/WAI/assets/css/style.css?1573220675560713000" />
     <link rel="stylesheet" href="{{{ pathPrefix }}}/build/bundle.css" />
     <script defer src="{{{ pathPrefix }}}/build/bundle.js"></script>
-    <script
-      defer
-      src="https://federalist-7a132a2e-6307-4cd0-9f82-e30e871d214a.sites.pages.cloud.gov/preview/gsa/section508.gov/feature/ECASOGP-11018/assets/js/external-508-blocks.js"
-    ></script>
-    <script
-      defer
-      src="https://federalist-7a132a2e-6307-4cd0-9f82-e30e871d214a.sites.pages.cloud.gov/preview/gsa/section508.gov/feature/ECASOGP-11018/assets/js/uswds.min.js"
-    ></script>
+    <script defer
+            src="https://federalist-7a132a2e-6307-4cd0-9f82-e30e871d214a.sites.pages.cloud.gov/preview/gsa/section508.gov/feature/ECASOGP-11018/assets/js/external-508-blocks.js"></script>
+    <script defer
+            src="https://federalist-7a132a2e-6307-4cd0-9f82-e30e871d214a.sites.pages.cloud.gov/preview/gsa/section508.gov/feature/ECASOGP-11018/assets/js/uswds.min.js"></script>
+
     <style>
       /* GSA/Section508 placeholder styling.
        * Dark blue: #162E51
@@ -176,8 +167,39 @@
           height: 2em;
         }
       }
+        body {
+            background-color:white;
+        }
+        @media (max-width: 60em) {
+            .img{
+                margin-left:8px;
+            }
+
+            .footer-help {
+                border: 1px solid #71767a;
+                border-radius: 0.5rem;
+                display: grid;
+                padding-right: 20px;
+                padding-bottom: 15px;
+                padding-left:20px;
+            }
+        }
+        @media (min-width: 60em) {
+            .div-help {
+                padding-left: 8rem !important;
+            }
+            .footer-help {
+                border: 1px solid #71767a;
+                border-radius: 0.5rem;
+                width: 1000px;
+                display: grid;
+                padding-right: 100px;
+                padding-bottom: 15px;
+            }
+        }
+
     </style>
-  </head>
+</head>
   <body>
     <a href="#content" class="visuallyhidden focusable skip-link">
       Skip to main content
@@ -186,7 +208,10 @@
     <header id="site-header" class="default-grid with-gap">
       <div class="tool-header">
         <a href="{{{ pathPrefix }}}/">
-          <span class="tool-header-name">OpenACR Editor</span>
+            <img alt="GSA"
+                 src="{{{ pathPrefix }}}/images/Accessibility Conformance Report (ACR) A4 Small.png"
+                 width="100"
+                 height="50"  style="background-color:white;margin-top:3px" class="img"/>
         </a>
         <div class="tool-header-logo">
           <a href="https://www.gsa.gov/">
@@ -205,56 +230,49 @@
         <!-- app 'renders' here -->
       </div>
     </main>
-    <div class="default-grid">
-      <aside
-        class="box box-icon box-space-above"
-        id="helpimprove"
-        style="-ms-grid-column: 2; -ms-grid-column-span: 8; grid-column: 2 / 8"
-      >
-        <header class="box-h box-h-icon box-h-space-above box-h-icon">
-          <svg focusable="false" aria-hidden="true" class="icon-comments">
-            <use href="{{{ pathPrefix }}}/images/icons.svg#icon-comments"></use>
-          </svg>
-          <h2>Help improve this page</h2>
-        </header>
-        <div class="box-i">
-          <p>
-            Please share your ideas, suggestions, or comments via e-mail to
-            <a href="mailto:openacr@gsa.gov">openacr@gsa.gov</a>
-            or via GitHub.
-          </p>
-          <div class="button-group">
-            <a href="mailto:openacr@gsa.gov" class="button" target="_blank"
-              ><span>E-mail</span>
-              <span class="visuallyhidden"
-                >(opens in a new window or tab)</span
-              ></a
-            >
-            <a
-              href="https://github.com/GSA/openacr-editor"
-              class="button"
-              target="_blank"
-              ><span>Fork &amp; Edit on GitHub</span>
-              <span class="visuallyhidden"
-                >(opens in a new window or tab)</span
-              ></a
-            ><a
-              href="https://github.com/GSA/openacr-editor/issues/new"
-              class="button"
-              target="_blank"
-              ><span>New GitHub Issue</span>
-              <span class="visuallyhidden"
-                >(opens in a new window or tab)</span
-              ></a
-            >
-          </div>
+
+    <div class="default-grid div-help">
+        <div class="footer-help">
+            <aside class="box box-icon"
+                   id="helpimprove"
+                   style="-ms-grid-column: 3; -ms-grid-column-span: 9; grid-column: 6/10">
+                <header class="box-h box-h-icon box-h-icon">
+                    <svg focusable="false" aria-hidden="true" class="icon-comments">
+                        <use href="{{{ pathPrefix }}}/images/icons.svg#icon-comments"></use>
+                    </svg>
+                    <h2>Help improve this page</h2>
+                </header>
+                <div class="box-i">
+                    <p>
+                        Please share your ideas, suggestions, or comments via e-mail to
+                        <a href="mailto:openacr@gsa.gov">openacr@gsa.gov</a>
+                        or via GitHub.
+                    </p>
+                    <div class="button-group">
+                        <a href="mailto:openacr@gsa.gov" class="button" target="_blank">
+                            <span>E-mail</span>
+                            <span class="visuallyhidden">(opens in a new window or tab)</span>
+                        </a>
+                        <a href="https://github.com/GSA/openacr-editor"
+                           class="button"
+                           target="_blank">
+                            <span>Fork &amp; Edit on GitHub</span>
+                            <span class="visuallyhidden">(opens in a new window or tab)</span>
+                        </a><a href="https://github.com/GSA/openacr-editor/issues/new"
+                               class="button"
+                               target="_blank">
+                            <span>New GitHub Issue</span>
+                            <span class="visuallyhidden">(opens in a new window or tab)</span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
         </div>
-      </aside>
     </div>
     <footer
       id="wai-site-footer"
       class="page-footer default-grid"
-      aria-label="Page"
+      aria-label="Page" style="border-bottom: 1px solid var(--line-grey)"
     >
       <div
         class="inner"
