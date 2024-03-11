@@ -194,10 +194,24 @@
           padding-left: 20px;
         }
       }
-      @media (min-width: 60em) {
+      @media (min-width: 60em) and (max-width: 100em) {
         .div-help {
           padding-left: 8rem !important;
         }
+        .footer-help {
+          border: 1px solid #71767a;
+          border-radius: 0.5rem;
+          width: 1000px;
+          display: grid;
+          padding-right: 100px;
+          padding-bottom: 15px;
+        }
+      }
+      @media (min-width: 100em) {
+        .div-help {
+          padding-left: 28rem !important;
+        }
+
         .footer-help {
           border: 1px solid #71767a;
           border-radius: 0.5rem;
