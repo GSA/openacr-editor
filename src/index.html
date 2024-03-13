@@ -28,7 +28,6 @@
       defer
       src="https://federalist-7a132a2e-6307-4cd0-9f82-e30e871d214a.sites.pages.cloud.gov/preview/gsa/section508.gov/feature/ECASOGP-11018/assets/js/uswds.min.js"
     ></script>
-
     <style>
       /* GSA/Section508 placeholder styling.
        * Dark blue: #162E51
@@ -184,52 +183,23 @@
         .img {
           margin-left: 8px;
         }
-
         .inner {
           padding-top: 20px;
           padding-bottom: 20px;
-        }
-
-        .footer-help {
-          border: 1px solid #71767a;
-          border-radius: 0.5rem;
-          display: grid;
-          padding-right: 20px;
-          padding-bottom: 15px;
-          padding-left: 20px;
-        }
-      }
-      @media (min-width: 60em) and (max-width: 100em) {
-        .div-help {
-          padding-left: 8rem !important;
-        }
-        .footer-help {
-          border: 1px solid #71767a;
-          border-radius: 0.5rem;
-          width: 1000px;
-          display: grid;
-          padding-right: 100px;
-          padding-bottom: 15px;
-        }
-      }
-      @media (min-width: 100em) {
-        .div-help {
-          padding-left: 28rem !important;
-        }
-
-        .footer-help {
-          border: 1px solid #71767a;
-          border-radius: 0.5rem;
-          width: 1000px;
-          display: grid;
-          padding-right: 100px;
-          padding-bottom: 15px;
         }
       }
       .nav {
         position: sticky;
         top: 0;
         z-index: 2;
+      }
+      .box {
+        border: solid 1px #71767a;
+        border-radius: 0.5rem;
+      }
+      .box-h {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
       }
     </style>
   </head>
@@ -268,57 +238,49 @@
       </div>
     </main>
 
-    <div class="default-grid div-help">
-      <div class="footer-help">
-        <aside
-          class="box box-icon"
-          id="helpimprove"
-          style="-ms-grid-column: 3; -ms-grid-column-span: 9; grid-column: 6/10"
-        >
-          <header class="box-h box-h-icon box-h-icon">
-            <svg focusable="false" aria-hidden="true" class="icon-comments">
-              <use
-                href="{{{ pathPrefix }}}/images/icons.svg#icon-comments"
-              ></use>
-            </svg>
-            <h2>Help improve this page</h2>
-          </header>
-          <div class="box-i">
-            <p>
-              Please share your ideas, suggestions, or comments via e-mail to
-              <a href="mailto:openacr@gsa.gov">openacr@gsa.gov</a>
-              or via GitHub.
-            </p>
-            <div class="button-group">
-              <a href="mailto:openacr@gsa.gov" class="button" target="_blank">
-                <span>E-mail</span>
-                <span class="visuallyhidden"
-                  >(opens in a new window or tab)</span
-                >
-              </a>
-              <a
-                href="https://github.com/GSA/openacr-editor"
-                class="button"
-                target="_blank"
-              >
-                <span>Fork &amp; Edit on GitHub</span>
-                <span class="visuallyhidden"
-                  >(opens in a new window or tab)</span
-                > </a
-              ><a
-                href="https://github.com/GSA/openacr-editor/issues/new"
-                class="button"
-                target="_blank"
-              >
-                <span>New GitHub Issue</span>
-                <span class="visuallyhidden"
-                  >(opens in a new window or tab)</span
-                >
-              </a>
-            </div>
+    <div class="default-grid">
+      <aside
+        class="box box-icon"
+        id="helpimprove"
+        style="-ms-grid-column: 2; -ms-grid-column-span: 10; grid-column: 2/10"
+      >
+        <header class="box-h box-h-icon box-h-icon">
+          <svg focusable="false" aria-hidden="true" class="icon-comments">
+            <use href="{{{ pathPrefix }}}/images/icons.svg#icon-comments"></use>
+          </svg>
+          <h2>Help improve this page</h2>
+        </header>
+        <div class="box-i">
+          <p>
+            Please share your ideas, suggestions, or comments via e-mail to
+            <a href="mailto:openacr@gsa.gov">openacr@gsa.gov</a>
+            or via GitHub.
+          </p>
+          <div class="button-group">
+            <a href="mailto:openacr@gsa.gov" class="button" target="_blank">
+              <span>E-mail</span>
+              <span class="visuallyhidden">(opens in a new window or tab)</span>
+            </a>
+            <a
+              href="https://github.com/GSA/openacr-editor"
+              class="button"
+              target="_blank"
+            >
+              <span>Fork &amp; Edit on GitHub</span>
+              <span class="visuallyhidden"
+                >(opens in a new window or tab)</span
+              > </a
+            ><a
+              href="https://github.com/GSA/openacr-editor/issues/new"
+              class="button"
+              target="_blank"
+            >
+              <span>New GitHub Issue</span>
+              <span class="visuallyhidden">(opens in a new window or tab)</span>
+            </a>
           </div>
-        </aside>
-      </div>
+        </div>
+      </aside>
     </div>
     <footer
       id="wai-site-footer"
