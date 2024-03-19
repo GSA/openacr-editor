@@ -7,7 +7,7 @@
     -ms-grid-row-span: 1;
     grid-row: 1;
     overflow: auto;
-    margin: -32px 0 40px;
+    margin: -30px 0 40px;
     background-color: #d0e1f1;
     background-color: var(--cloudy-subtle);
   }
