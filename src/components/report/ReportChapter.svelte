@@ -22,7 +22,7 @@
   }
   thead {
     position: sticky;
-    top: 0;
+    top: 3em;
     z-index: 1;
   }
   thead th {
@@ -44,7 +44,7 @@
 {/if}
 
 {#if $evaluation['chapters'][chapterId]['criteria'] && !$evaluation['chapters'][chapterId]['disabled'] }
-  <table class="usa-table">
+  <table>
     <thead>
     <tr>
       <th>Criteria</th>
