@@ -30,7 +30,7 @@
   function setInteracted(e) {
     if (e.target.type != "file") {
       window.removeEventListener("input", setInteracted);
-      //window.onbeforeunload = closeEditorWarning;
+       //window.onbeforeunload = closeEditorWarning;
     }
   }
 
