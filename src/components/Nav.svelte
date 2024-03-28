@@ -17,12 +17,6 @@
 	margin: 0;
 	padding: 0;
 	}
-
-	@media (max-width: 1910px) {
-	.nav {
-		margin: -31px 0 40px;
-	}
-	}
 </style>
 
 <nav class="nav" aria-label="Steps">
