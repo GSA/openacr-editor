@@ -207,17 +207,20 @@
           background-image: linear-gradient(#d0e1f1 0, #d0e1f1 49px, #fff 48px);
         }
       }
-      .nav__item a:not(.active):focus, .nav__item a:not(.active):hover, .nav__item a:not([aria-current=page]):focus, .nav__item a:not([aria-current=page]):hover {
-        border-bottom:none;
+      .nav__item a:not(.active):focus,
+      .nav__item a:not(.active):hover,
+      .nav__item a:not([aria-current="page"]):focus,
+      .nav__item a:not([aria-current="page"]):hover {
+        border-bottom: none;
       }
-        .nav__item .active {
-            border-bottom: 1px solid transparent;
-        }
+      .nav__item .active {
+        border-bottom: 1px solid transparent;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <a href="#content" class="visuallyhidden focusable skip-link">
-        Skip to main content
+      Skip to main content
     </a>
     <div id="header-508" class="section508-external-block"></div>
     <header id="site-header" class="default-grid with-gap">
@@ -232,60 +235,71 @@
         </div>
     </header>
     <main>
-        <div id="openacr-editor" class="default-grid leftcol">
-            <!-- app 'renders' here -->
-        </div>
+      <div id="openacr-editor" class="default-grid leftcol">
+        <!-- app 'renders' here -->
+      </div>
     </main>
 
     <div class="default-grid">
-        <aside class="box box-icon"
-               id="helpimprove"
-               style="-ms-grid-column: 2; -ms-grid-column-span: 10; grid-column: 2/10">
-            <header class="box-h box-h-icon box-h-icon">
-                <svg focusable="false" aria-hidden="true" class="icon-comments">
-                    <use href="{{{ pathPrefix }}}/images/icons.svg#icon-comments"></use>
-                </svg>
-                <h2>Help improve this page</h2>
-            </header>
-            <div class="box-i">
-                <p>
-                    Please share your ideas, suggestions, or comments via e-mail to
-                    <a href="mailto:openacr@gsa.gov">openacr@gsa.gov</a>
-                    or via GitHub.
-                </p>
-                <div class="button-group">
-                    <a href="mailto:openacr@gsa.gov" class="button" target="_blank">
-                        <span>E-mail</span>
-                        <span class="visuallyhidden">(opens in a new window or tab)</span>
-                    </a>
-                    <a href="https://github.com/GSA/openacr-editor"
-                       class="button"
-                       target="_blank">
-                        <span>Fork &amp; Edit on GitHub</span>
-                        <span class="visuallyhidden">(opens in a new window or tab)</span>
-                    </a><a href="https://github.com/GSA/openacr-editor/issues/new"
-                           class="button"
-                           target="_blank">
-                        <span>New GitHub Issue</span>
-                        <span class="visuallyhidden">(opens in a new window or tab)</span>
-                    </a>
-                </div>
-            </div>
-        </aside>
+      <aside
+        class="box box-icon"
+        id="helpimprove"
+        style="-ms-grid-column: 2; -ms-grid-column-span: 10; grid-column: 2/10"
+      >
+        <header class="box-h box-h-icon box-h-icon">
+          <svg focusable="false" aria-hidden="true" class="icon-comments">
+            <use href="{{{ pathPrefix }}}/images/icons.svg#icon-comments"></use>
+          </svg>
+          <h2>Help improve this page</h2>
+        </header>
+        <div class="box-i">
+          <p>
+            Please share your ideas, suggestions, or comments via e-mail to
+            <a href="mailto:openacr@gsa.gov">openacr@gsa.gov</a>
+            or via GitHub.
+          </p>
+          <div class="button-group">
+            <a href="mailto:openacr@gsa.gov" class="button" target="_blank">
+              <span>E-mail</span>
+              <span class="visuallyhidden">(opens in a new window or tab)</span>
+            </a>
+            <a
+              href="https://github.com/GSA/openacr-editor"
+              class="button"
+              target="_blank"
+            >
+              <span>Fork &amp; Edit on GitHub</span>
+              <span class="visuallyhidden"
+                >(opens in a new window or tab)</span
+              > </a
+            ><a
+              href="https://github.com/GSA/openacr-editor/issues/new"
+              class="button"
+              target="_blank"
+            >
+              <span>New GitHub Issue</span>
+              <span class="visuallyhidden">(opens in a new window or tab)</span>
+            </a>
+          </div>
+        </div>
+      </aside>
     </div>
-    <footer id="wai-site-footer"
-            class="page-footer default-grid"
-            aria-label="Page"
-            style="border-bottom: 1px solid var(--line-grey)">
-        <div class="inner"
-             style="
+    <footer
+      id="wai-site-footer"
+      class="page-footer default-grid"
+      aria-label="Page"
+      style="border-bottom: 1px solid var(--line-grey)"
+    >
+      <div
+        class="inner"
+        style="
           -ms-grid-column: 2;
           -ms-grid-column-span: 10;
           grid-column: 2 / 10;
         ">
             <p><a href="#">Return to top</a></p>
-            <p><strong>Date:</strong> Published April 2024.</p>
-            <p><strong>Version:</strong> v1.0</p>
+            <p><strong>Date:</strong> Published December 2021.</p>
+            <p><strong>Version:</strong> v0.1.0</p>
             <p>
                 <a href="https://github.com/GSA/openacr" target="_blank">
                     OpenACR
@@ -315,5 +329,5 @@
     <div id="footer-508" class="section508-external-block"></div>
     <!-- Analytics code -->
     <!-- End Analytics Code -->
-</body>
+  </body>
 </html>
