@@ -82,9 +82,15 @@ To integrate the Section 508 header and footer into your website, follow these s
 Add the following stylesheet and JavaScript files to your website's HTML code:
 
 ```html
- <link rel="stylesheet" href="https://www.section508.gov/assets/css/external-blocks.css"/>
- <script defer src="https://www.section508.gov/assets/js/external-508-blocks.js"></script>
- <script defer src="https://www.section508.gov/assets/js/uswds.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://www.section508.gov/assets/css/external-blocks.css"
+/>
+<script
+  defer
+  src="https://www.section508.gov/assets/js/external-508-blocks.js"
+></script>
+<script defer src="https://www.section508.gov/assets/js/uswds.min.js"></script>
 ```
 
 ### Example
@@ -94,29 +100,36 @@ Here's an example of how to integrate the Section 508 header and footer into you
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Website</title>
     <!-- Include Section 508 stylesheet and JavaScript after Open ACR-->
-    <link rel="stylesheet" href="https://www.section508.gov/assets/css/external-blocks.css"/>
-    <script defer src="https://www.section508.gov/assets/js/external-508-blocks.js"></script>
-    <script defer src="https://www.section508.gov/assets/js/uswds.min.js"></script>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://www.section508.gov/assets/css/external-blocks.css"
+    />
+    <script
+      defer
+      src="https://www.section508.gov/assets/js/external-508-blocks.js"
+    ></script>
+    <script
+      defer
+      src="https://www.section508.gov/assets/js/uswds.min.js"
+    ></script>
+  </head>
+  <body>
     <!-- Section 508 Header -->
     <div id="header-508"></div>
-    
+
     <!-- Your Website Content Goes Here -->
-    
+
     <!-- Section 508 Footer -->
     <div id="footer-508"></div>
-</body>
+  </body>
 </html>
-
 ```
 
 ### Notes
 
 - Ensure that your website's design accommodates the integration of the Section 508 header and footer appropriately.
-
