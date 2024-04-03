@@ -66,3 +66,70 @@ The vars are now in the `vars` object, you can reference them with `vars.variabl
 ## Data structure
 
 The editor uses the OpenACR [schema](https://github.com/GSA/openacr/tree/main/schema) and [catalog](https://github.com/GSA/open-product-accessibility-template/tree/main/catalog) as data structures.
+
+# External Blocks Integration Documentation
+
+## Overview
+
+The External Blocks feature provided by Section 508 offers functionality to seamlessly integrate the header and footer elements from the Section 508 website into external projects. This documentation outlines the steps required to incorporate Section 508 header and footer elements into your website.
+
+## Integration Steps
+
+To integrate the Section 508 header and footer into your website, follow these steps:
+
+### 1. Include Stylesheet and JavaScript Files
+
+Add the following stylesheet and JavaScript files to your website's HTML code:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://www.section508.gov/assets/css/external-blocks.css"
+/>
+<script
+  defer
+  src="https://www.section508.gov/assets/js/external-508-blocks.js"
+></script>
+<script defer src="https://www.section508.gov/assets/js/uswds.min.js"></script>
+```
+
+### Example
+
+Here's an example of how to integrate the Section 508 header and footer into your HTML code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Website</title>
+    <!-- Include Section 508 stylesheet and JavaScript after Open ACR-->
+    <link
+      rel="stylesheet"
+      href="https://www.section508.gov/assets/css/external-blocks.css"
+    />
+    <script
+      defer
+      src="https://www.section508.gov/assets/js/external-508-blocks.js"
+    ></script>
+    <script
+      defer
+      src="https://www.section508.gov/assets/js/uswds.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- Section 508 Header -->
+    <div id="header-508"></div>
+
+    <!-- Your Website Content Goes Here -->
+
+    <!-- Section 508 Footer -->
+    <div id="footer-508"></div>
+  </body>
+</html>
+```
+
+### Notes
+
+- Ensure that your website's design accommodates the integration of the Section 508 header and footer appropriately.
