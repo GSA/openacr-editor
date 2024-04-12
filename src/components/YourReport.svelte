@@ -24,7 +24,7 @@
   }
 
   function clear() {
-    window.onbeforeunload = null;
+    //window.onbeforeunload = null;
     if (
       window.confirm(
         "This will clear the current OpenACR and start a new one. Are you sure that's what you'd like to do?"
@@ -77,7 +77,7 @@
   @media (min-width: 60em) {
     .your-report--expanded {
       position: sticky;
-      top: 1em;
+      top: 4em;
     }
   }
 

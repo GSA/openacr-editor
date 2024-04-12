@@ -68,7 +68,7 @@ Based on {catalog.title}
 <HeaderWithAnchor id="applicable-standards-guidelines" level=2 {download}>Applicable Standards/Guidelines</HeaderWithAnchor>
 This report covers the degree of conformance for the following accessibility standard/guidelines:
 
-<table class="usa-table">
+<table>
   <thead>
     <tr>
       <th>Standard/Guideline</th>

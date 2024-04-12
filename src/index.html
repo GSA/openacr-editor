@@ -11,11 +11,29 @@
     />
     <title>OpenACR Editor</title>
     <link
+      rel="shortcut icon"
+      type="image/ico"
+      href="{{{ pathPrefix }}}/favicon.ico"
+    />
+    <link rel="icon" type="image/png" href="{{{ pathPrefix }}}/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://www.section508.gov/assets/css/external-blocks.css"
+    />
+    <link
       rel="stylesheet"
       href="https://w3.org/WAI/assets/css/style.css?1573220675560713000"
     />
     <link rel="stylesheet" href="{{{ pathPrefix }}}/build/bundle.css" />
     <script defer src="{{{ pathPrefix }}}/build/bundle.js"></script>
+    <script
+      defer
+      src="https://www.section508.gov/assets/js/external-508-blocks.js"
+    ></script>
+    <script
+      defer
+      src="https://www.section508.gov/assets/js/uswds.min.js"
+    ></script>
     <style>
       /* GSA/Section508 placeholder styling.
        * Dark blue: #162E51
@@ -95,10 +113,15 @@
           padding: 0;
         }
       }
-      main {
-        display: block;
-        padding: 2em 0;
-        background-image: linear-gradient(#d0e1f1 0, #d0e1f1 48px, #fff 48px);
+      @media (min-width: 1910px) {
+        main {
+          display: block;
+          padding: 2em 0;
+          background-image: linear-gradient(#d0e1f1 0, #d0e1f1 53px, #fff 48px);
+        }
+        .nav__item a {
+          padding-bottom: 1.25em !important;
+        }
       }
       .nav__item {
         list-style: none;
@@ -107,12 +130,12 @@
       }
       .nav__item a {
         display: block;
-        font-size: 0.85em;
+        font-size: 0.86em;
         padding: 1em;
         text-decoration: none;
         background-color: #d0e1f1; /* cloudy-subtle */
         color: inherit;
-        white-space: nowrap;
+        white-space: normal;
         transition-duration: 0.1s;
         border-bottom: 1px solid transparent;
       }
@@ -164,27 +187,65 @@
           height: 2em;
         }
       }
+      body {
+        background-color: white;
+      }
+      @media (max-width: 60em) {
+        .img {
+          margin-left: 8px;
+        }
+        .inner {
+          padding-top: 20px;
+          padding-bottom: 20px;
+        }
+      }
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+      .box {
+        border: solid 1px #71767a;
+        border-radius: 0.5rem;
+      }
+      .box-h {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+      @media (max-width: 1910px) {
+        main {
+          display: block;
+          padding: 2em 0;
+          background-image: linear-gradient(#d0e1f1 0, #d0e1f1 49px, #fff 48px);
+        }
+      }
+      .nav__item a:not(.active):focus,
+      .nav__item a:not(.active):hover,
+      .nav__item a:not([aria-current="page"]):focus,
+      .nav__item a:not([aria-current="page"]):hover {
+        border-bottom: none;
+      }
+      .nav__item .active {
+        border-bottom: 1px solid transparent;
+      }
     </style>
   </head>
   <body>
     <a href="#content" class="visuallyhidden focusable skip-link">
       Skip to main content
     </a>
+    <div id="header-508" class="section508-external-block"></div>
     <header id="site-header" class="default-grid with-gap">
       <div class="tool-header">
         <a href="{{{ pathPrefix }}}/">
-          <span class="tool-header-name">OpenACR Editor</span>
+          <img
+            alt="ACR Editor logo"
+            src="{{{ pathPrefix }}}/images/Accessibility Conformance Report A4 White Horizontal (1).png"
+            height="50"
+            style="margin-top: 3px"
+            class="img"
+          />
         </a>
-        <div class="tool-header-logo">
-          <a href="https://www.gsa.gov/">
-            <img
-              alt="GSA"
-              src="{{{ pathPrefix }}}/images/gsa.png"
-              width="32"
-              height="32"
-            />
-          </a>
-        </div>
       </div>
     </header>
     <main>
@@ -192,13 +253,14 @@
         <!-- app 'renders' here -->
       </div>
     </main>
+
     <div class="default-grid">
       <aside
-        class="box box-icon box-space-above"
+        class="box box-icon"
         id="helpimprove"
-        style="-ms-grid-column: 2; -ms-grid-column-span: 8; grid-column: 2 / 8"
+        style="-ms-grid-column: 2; -ms-grid-column-span: 10; grid-column: 2/10"
       >
-        <header class="box-h box-h-icon box-h-space-above box-h-icon">
+        <header class="box-h box-h-icon box-h-icon">
           <svg focusable="false" aria-hidden="true" class="icon-comments">
             <use href="{{{ pathPrefix }}}/images/icons.svg#icon-comments"></use>
           </svg>
@@ -211,29 +273,27 @@
             or via GitHub.
           </p>
           <div class="button-group">
-            <a href="mailto:openacr@gsa.gov" class="button" target="_blank"
-              ><span>E-mail</span>
-              <span class="visuallyhidden"
-                >(opens in a new window or tab)</span
-              ></a
-            >
+            <a href="mailto:openacr@gsa.gov" class="button" target="_blank">
+              <span>E-mail</span>
+              <span class="visuallyhidden">(opens in a new window or tab)</span>
+            </a>
             <a
               href="https://github.com/GSA/openacr-editor"
               class="button"
               target="_blank"
-              ><span>Fork &amp; Edit on GitHub</span>
+            >
+              <span>Fork &amp; Edit on GitHub</span>
               <span class="visuallyhidden"
                 >(opens in a new window or tab)</span
-              ></a
+              > </a
             ><a
               href="https://github.com/GSA/openacr-editor/issues/new"
               class="button"
               target="_blank"
-              ><span>New GitHub Issue</span>
-              <span class="visuallyhidden"
-                >(opens in a new window or tab)</span
-              ></a
             >
+              <span>New GitHub Issue</span>
+              <span class="visuallyhidden">(opens in a new window or tab)</span>
+            </a>
           </div>
         </div>
       </aside>
@@ -242,49 +302,52 @@
       id="wai-site-footer"
       class="page-footer default-grid"
       aria-label="Page"
+      style="border-bottom: 1px solid var(--line-grey)"
     >
       <div
         class="inner"
-        style="-ms-grid-column: 2; -ms-grid-column-span: 8; grid-column: 2 / 8"
+        style="
+          -ms-grid-column: 2;
+          -ms-grid-column-span: 10;
+          grid-column: 2 / 10;
+        "
       >
         <p><a href="#">Return to top</a></p>
-        <p><strong>Date:</strong> Published December 2021.</p>
-        <p><strong>Version:</strong> v0.1.0</p>
+        <p><strong>Date:</strong> Published April 2024.</p>
+        <p><strong>Version:</strong> v1.0</p>
         <p>
-          <a href="https://github.com/GSA/openacr" target="_blank"
-            >OpenACR
-            <span class="visuallyhidden"
-              >(opens in a new window or tab)</span
-            ></a
-          >
+          <a href="https://github.com/GSA/openacr" target="_blank">
+            OpenACR
+            <span class="visuallyhidden">(opens in a new window or tab)</span>
+          </a>
           is a format maintained by the
-          <a href="https://gsa.gov/" target="_blank"
-            >U.S. General Services Administration (GSA)
+          <a href="https://gsa.gov/" target="_blank">
+            U.S. General Services Administration (GSA)
             <span class="visuallyhidden"
               >(opens in a new window or tab)</span
-            ></a
+            > </a
           >. The content is the responsibility of the author.
         </p>
         <p>
           This software includes material copied from or derived from
-          <a href="https://github.com/w3c/wai-atag-report-tool" target="_blank"
-            >W3C ATAG Report Tool (ART)
-            <span class="visuallyhidden"
-              >(opens in a new window or tab)</span
-            ></a
-          >
+          <a href="https://github.com/w3c/wai-atag-report-tool" target="_blank">
+            W3C ATAG Report Tool (ART)
+            <span class="visuallyhidden">(opens in a new window or tab)</span>
+          </a>
           and Copyright © 2021 W3C® (MIT, ERCIM, Keio, Beihang).
           <a
             href="https://www.w3.org/Consortium/Legal/copyright-software"
             target="_blank"
-            >W3C Software notice and license
+          >
+            W3C Software notice and license
             <span class="visuallyhidden"
               >(opens in a new window or tab)</span
-            ></a
+            > </a
           >.
         </p>
       </div>
     </footer>
+    <div id="footer-508" class="section508-external-block"></div>
     <!-- Analytics code -->
     <!-- End Analytics Code -->
   </body>
