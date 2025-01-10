@@ -53,21 +53,25 @@
       h3,
       h4 {
         color: #162e51;
+        align-content: center;
       }
       a[target="_blank"]:after {
         background: 0 0;
         background-color: currentColor;
-        -webkit-mask: url("{{{ pathPrefix }}}/images/external-link.svg")
-          no-repeat center/contain;
-        width: 1.75ex;
+        -webkit-mask: url("{{{ pathPrefix }}}/images/external-link.svg") no-repeat center/contain;
+        mask: url("{{{ pathPrefix }}}/images/external-link.svg") no-repeat center/contain;
         content: "";
         display: inline-block;
-        height: 1.75ex;
-        margin-left: 2px;
-        margin-top: 0.7ex;
+        margin-left: 0.3em;
+        width: 1.2em;
+        height: 1.2em;
+        vertical-align: text-bottom;
+        flex-shrink: 0;
       }
+
       summary > :first-child:before {
         border-color: #162e51;
+        align-content: center;
       }
       .button.button-secondary,
       button.button-secondary {
