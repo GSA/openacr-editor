@@ -153,8 +153,8 @@
   {#if $evaluation['catalog'] !== selectedCatalog }
     <p><em>Select Switch Catalogs to save your new selection.</em></p>
   {/if}
-  <button class="button" on:click={confirmCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog}>Switch Catalogs</button>
-  <button class="button" on:click={resetCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog}>Reset</button>
+  <button class="button" on:click={confirmCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog} style="text-align: center; line-height: 1; padding: 10px;">Switch Catalogs</button>
+  <button class="button" on:click={resetCatalogChange} disabled={$evaluation['catalog'] === selectedCatalog} style="text-align: center; line-height: 1; padding: 10px;">Reset</button>
 </details>
 
 <details open>
@@ -431,7 +431,7 @@
     <Related id={index} count={index + 1} on:DELETE="{handleRelatedDelete}" />
   {/each}
 
-  <AddOther label="Add related OpenACR" on:ADD="{handleRelatedAdd}"></AddOther>
+  <AddOther label="Add related OpenACR" on:ADD="{handleRelatedAdd}" style="text-align: center; line-height: 1; padding: 5px;"></AddOther>
 </details>
 
 <details open>

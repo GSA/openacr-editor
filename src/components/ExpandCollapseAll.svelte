@@ -42,13 +42,13 @@
   <button
     class="expand button button-secondary button-small"
     disabled={!someCollapsed}
-    on:click={expandAll}>
+    on:click={expandAll} style="text-align: center; line-height: 1; padding: 5px;">
     + Expand All Sections
   </button>
   <button
     class="collapse button button-secondary button-small"
     disabled={!someExpanded}
-    on:click={collapseAll}>
+    on:click={collapseAll} style="text-align: center; line-height: 1; padding: 5px;">
     − Collapse All Sections
   </button>
 </div>
