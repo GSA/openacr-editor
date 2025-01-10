@@ -80,6 +80,9 @@
       top: 4em;
     }
   }
+  summary > :first-child::before{
+    align-content: center;
+  }
 
   .your-report__heading {
     font-weight: bold;
