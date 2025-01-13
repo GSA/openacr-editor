@@ -48,7 +48,7 @@
   </li>
   <li>
     You can export your report as YAML (structured data) but also as HTML (web page). Note: You will not be able
-    to edit the report the future without the YAML file.
+    to edit the report in the future without the YAML file.
   </li>
   <li>
     You can add limited formatting to your report with <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank">Markdown <span class="visuallyhidden">(opens in a new window or tab)</span></a>. This allows you to add
