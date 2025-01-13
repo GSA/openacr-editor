@@ -10,13 +10,16 @@
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
   import { evaluation } from "../stores/evaluation.js";
   import { getCatalog } from "../utils/getCatalogs.js";
-
+  import { gasPageSend } from '../utils/dap.js';
+  
   const location = useLocation();
   let catalog = getCatalog($evaluation.catalog);
 
   onMount(() => {
     currentPage.update((currentPage) => "Overview");
 
+    gasPageSend(location.pathname, document.title);
+    
     honourFragmentIdLinks($location);
   });
 </script>

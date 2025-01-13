@@ -5,12 +5,15 @@
   import DTWithAnchor from "../components/DTWithAnchor.svelte";
   import { currentPage } from "../stores/currentPage.js";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
-
+  import { gasPageSend } from '../utils/dap.js';
+  
   const location = useLocation();
 
   onMount(() => {
     currentPage.update(currentPage => "Glossary");
-
+    
+    gasPageSend(location.pathname, document.title);
+    
     honourFragmentIdLinks($location);
   });
 </script>

@@ -5,12 +5,15 @@
   import HeaderWithAnchor from "../components/HeaderWithAnchor.svelte";
   import { currentPage } from "../stores/currentPage.js";
   import { honourFragmentIdLinks } from "../utils/honourFragmentIdLinks.js";
-
+  import { gasPageSend } from '../utils/dap.js';
+  
   const location = useLocation();
 
   onMount(() => {
     currentPage.update(currentPage => "Acknowledgements");
 
+    gasPageSend(location.pathname, document.title);
+    
     honourFragmentIdLinks($location);
   });
 </script>
