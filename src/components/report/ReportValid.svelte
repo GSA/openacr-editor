@@ -66,6 +66,7 @@
     left: 0.9166666667rem;
     position: absolute;
     top: 0;
+    z-index: 1;
   }
   .usa-alert--success .usa-alert__body,
   .usa-alert--error .usa-alert__body {
