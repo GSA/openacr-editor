@@ -19,7 +19,8 @@
   import { reportFilename } from "../utils/reportFilename.js";
   import { getCatalog, getListOfCatalogs } from "../utils/getCatalogs.js";
   import { updateEvaluation } from "../utils/updateEvaluation.js";
-
+  import { gasPageSend } from '../utils/dap.js';
+  
   const location = useLocation();
   let catalog = getCatalog($evaluation.catalog);
   let catalogChoices = getListOfCatalogs();
@@ -27,6 +28,8 @@
 
   onMount(() => {
     currentPage.update(currentPage => "About");
+
+    gasPageSend(location.pathname, document.title);
 
     honourFragmentIdLinks($location);
   });
