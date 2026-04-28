@@ -4,8 +4,7 @@
     "standard": "WCAG2AA",
     "runners": ["axe"],
     "ignore": [
-      "color-contrast",
-      "nested-interactive"
+      "color-contrast"
     ]
   },
   "urls": [

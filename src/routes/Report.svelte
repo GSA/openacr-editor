@@ -39,7 +39,7 @@
 
 <details>
   <summary>
-    <HeaderWithAnchor id="download-help" level=3>Have trouble downloading .zip files?</HeaderWithAnchor>
+    <HeaderWithAnchor id="download-help" level=3 showAnchor={false}>Have trouble downloading .zip files?</HeaderWithAnchor>
   </summary>
 
   <p>Some agencies and corporations have a policy prohibiting the the download .of zip files. <strong>If you cannot download the .zip file</strong> you can download the YAML file by clicking the link above and save the HTML file convenient viewing by:</p>

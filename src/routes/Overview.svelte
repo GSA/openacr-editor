@@ -60,7 +60,7 @@
 
 <details>
   <summary>
-    <HeaderWithAnchor id="about-openacr" level=2>About OpenACR</HeaderWithAnchor>
+    <HeaderWithAnchor id="about-openacr" level=2 showAnchor={false}>About OpenACR</HeaderWithAnchor>
   </summary>
   <p>
     OpenACR is a digital native Accessibility Conformance Report (ACR). The initial development is based on Section 508 requirements.
@@ -84,7 +84,7 @@
 
 <details>
   <summary>
-    <HeaderWithAnchor id="structure-of-this-tool" level=2>Structure of this tool</HeaderWithAnchor>
+    <HeaderWithAnchor id="structure-of-this-tool" level=2 showAnchor={false}>Structure of this tool</HeaderWithAnchor>
   </summary>
   <p>
     Following the structure of OpenACR, this tool takes you through 7
@@ -106,7 +106,7 @@
 
 <details>
   <summary>
-    <HeaderWithAnchor id="terms" level=2>Terms</HeaderWithAnchor>
+    <HeaderWithAnchor id="terms" level=2 showAnchor={false}>Terms</HeaderWithAnchor>
   </summary>
   <p>
     As you go through and enter conformance for your software, you will select a "term" for

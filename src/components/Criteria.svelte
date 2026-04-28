@@ -30,7 +30,7 @@
 <div {id} class="criteria">
   <details>
     <summary>
-      <HeaderWithAnchor id="{id}" level=2>{id}: {handle}</HeaderWithAnchor>
+      <HeaderWithAnchor id="{id}" level=2 showAnchor={false}>{id}: {handle}</HeaderWithAnchor>
     </summary>
     {#if !disabled}
       <span class="observation__meta">
