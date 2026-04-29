@@ -37,6 +37,9 @@
     "serialize-javascript": "^7.0.5"
   },
   "scripts": {
+    "prebuild": "node scripts/clean-legacy-build-artifacts.mjs",
+    "predev": "node scripts/clean-legacy-build-artifacts.mjs",
+    "prestart": "node scripts/clean-legacy-build-artifacts.mjs",
     "build": "vite build",
     "dev": "vite --host 0.0.0.0 --port 10001",
     "start": "vite preview --host 0.0.0.0 --port 10001 --strictPort",
