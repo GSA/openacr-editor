@@ -17,8 +17,7 @@
       change this later, change your response product information questions.
     {:else if chapterId === "success_criteria_level_a"}
       Provide information about Level A issues with your website or web
-      application. Currently OpenACR only supports WCAG 2.0. The default is
-      web-based, and there are optional fields for <a
+      application. The default is web-based, and there are optional fields for <a
         href="#1.1.1-electronic-docs-editor"
         on:click={() => openFirstAccordion()}>Documentation</a
       >,
@@ -32,8 +31,7 @@
       >. Fill out as appropriate.
     {:else if chapterId === "success_criteria_level_aa"}
       Provide information about how your website or web application fails to
-      meet Level AA requirements. Currently OpenACR only supports WCAG 2.0. The
-      default is web-based, and there are optional fields for <a
+      meet Level AA requirements. The default is web-based, and there are optional fields for <a
         href="#1.2.4-electronic-docs-editor"
         on:click={() => openFirstAccordion()}>Documentation</a
       >,
