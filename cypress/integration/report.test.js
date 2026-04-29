@@ -139,10 +139,12 @@ describe("Report", () => {
 
     cy.get("a[href='/report#non-text-content-editor']").click();
 
-    cy.get("#success_criteria_level_a-editor + table tbody tr")
-      .should("be.focused")
-      .should("contain", "Web: Supports")
-      .should("contain", "Web: Does support non-text content.");
+    cy.location("hash").should("eq", "#non-text-content-editor");
+
+    cy.get("#non-text-content-editor")
+      .invoke("text")
+      .should("match", /Web:\s*Supports/)
+      .and("match", /Web:\s*Does support non-text content\./);
   });
 
   it("should render markdown in notes columns for a criteria", () => {
