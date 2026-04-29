@@ -24,10 +24,10 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: export NODE_ENV=ghpages && npm run build
-      - run: cd public && ln -s index.html 404.html # symlink for GH pages fallback
+      - run: npm run build
+      - run: cp dist/index.html dist/404.html
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.8.0
         with:
           BRANCH: gh-pages
-          FOLDER: public
+          FOLDER: dist

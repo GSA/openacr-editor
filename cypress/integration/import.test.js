@@ -1,5 +1,12 @@
 /// <reference types="Cypress" />
 
+const expectReportTotals = (completed, total) => {
+  cy.get(".your-report__description")
+    .invoke("text")
+    .then((text) => text.replace(/\s+/g, " ").trim())
+    .should("contain", `Reported on ${completed} of ${total} Total Criteria.`);
+};
+
 describe("Import", () => {
   const today = new Date().toLocaleDateString();
   const yamlExamples = [
@@ -47,7 +54,7 @@ describe("Import", () => {
       cy.get('input[type="file"]').then(function ($input) {
         const blob = Cypress.Blob.binaryStringToBlob(
           this.yamlFixture,
-          fileType
+          fileType,
         );
         const file = new File([blob], yamlExample.filename, { type: fileType });
         const list = new DataTransfer();
@@ -63,45 +70,42 @@ describe("Import", () => {
         .should("have.been.calledOnce")
         .and(
           "have.been.calledWith",
-          `OpenACR "${yamlExample.reportname}" loaded`
+          `OpenACR "${yamlExample.reportname}" loaded`,
         );
 
       cy.get("h2.your-report__heading").should(
         "contain",
-        `Report for ${yamlExample.reportname}`
+        `Report for ${yamlExample.reportname}`,
       );
 
-      cy.get(".your-report__description").should(
-        "contain",
-        `Reported on\n  ${yamlExample.total}\n  of\n  339\n  Total Criteria.`
-      );
+      expectReportTotals(yamlExample.total, 339);
 
       cy.get(
-        ".progress__principle a[href$='/chapter/success_criteria_level_a'] + .progress__part"
+        ".progress__principle a[href$='/chapter/success_criteria_level_a'] + .progress__part",
       ).should("contain", `${yamlExample.success_criteria_level_a} of 100`);
       cy.get(
-        ".progress__principle a[href$='/chapter/success_criteria_level_aa'] + .progress__part"
+        ".progress__principle a[href$='/chapter/success_criteria_level_aa'] + .progress__part",
       ).should("contain", `${yamlExample.success_criteria_level_aa} of 52`);
       cy.get(
-        ".progress__principle a[href$='/chapter/success_criteria_level_aaa'] + .progress__part"
+        ".progress__principle a[href$='/chapter/success_criteria_level_aaa'] + .progress__part",
       ).should("contain", `${yamlExample.success_criteria_level_aaa} of 92`);
       cy.get(
-        ".progress__principle a[href$='/chapter/functional_performance_criteria'] + .progress__part"
+        ".progress__principle a[href$='/chapter/functional_performance_criteria'] + .progress__part",
       ).should(
         "contain",
-        `${yamlExample.functional_performance_criteria} of 9`
+        `${yamlExample.functional_performance_criteria} of 9`,
       );
       cy.get(
-        ".progress__principle a[href$='/chapter/hardware'] + .progress__part"
+        ".progress__principle a[href$='/chapter/hardware'] + .progress__part",
       ).should("contain", `${yamlExample.hardware} of 55`);
       cy.get(
-        ".progress__principle a[href$='/chapter/software'] + .progress__part"
+        ".progress__principle a[href$='/chapter/software'] + .progress__part",
       ).should("contain", `${yamlExample.software} of 26`);
       cy.get(
-        ".progress__principle a[href$='/chapter/support_documentation_and_services'] + .progress__part"
+        ".progress__principle a[href$='/chapter/support_documentation_and_services'] + .progress__part",
       ).should(
         "contain",
-        `${yamlExample.support_documentation_and_services} of 5`
+        `${yamlExample.support_documentation_and_services} of 5`,
       );
 
       cy.visit("/report", {
@@ -114,7 +118,7 @@ describe("Import", () => {
         .get("h1")
         .should(
           "contain",
-          `${yamlExample.reportname} Accessibility Conformance Report`
+          `${yamlExample.reportname} Accessibility Conformance Report`,
         )
         .get("a[id='download-zip']")
         .invoke("attr", "download")
@@ -126,7 +130,7 @@ describe("Import", () => {
         .should("contain", `Report Date: ${yamlExample.reportDate}`)
         .should(
           "contain",
-          `Last Modified Date: ${yamlExample.lastModifiedDate}`
+          `Last Modified Date: ${yamlExample.lastModifiedDate}`,
         )
         .should("contain", `Version: ${yamlExample.version}`);
 
@@ -159,7 +163,7 @@ describe("Import", () => {
       .should("have.been.calledOnce")
       .and(
         "have.been.calledWith",
-        `OpenACR "${yamlExample.reportname}" loaded`
+        `OpenACR "${yamlExample.reportname}" loaded`,
       );
 
     cy.visit("/about")
@@ -199,7 +203,7 @@ describe("Import", () => {
       .should("have.been.calledOnce")
       .and(
         "have.been.calledWith",
-        `OpenACR "${yamlExample.reportname}" loaded`
+        `OpenACR "${yamlExample.reportname}" loaded`,
       );
 
     // Switch to WCAG 2.1 508 catalog.
@@ -213,7 +217,7 @@ describe("Import", () => {
       .should("have.been.calledTwice")
       .and(
         "have.been.calledWith",
-        "OpenACR passed validation when switching catalog."
+        "OpenACR passed validation when switching catalog.",
       );
 
     cy.get("button")
@@ -235,7 +239,7 @@ describe("Import", () => {
       .should("have.been.calledThrice")
       .and(
         "have.been.calledWith",
-        "OpenACR passed validation when switching catalog."
+        "OpenACR passed validation when switching catalog.",
       );
 
     cy.get("button")
@@ -274,7 +278,7 @@ describe("Import", () => {
       .should("have.been.calledOnce")
       .and(
         "have.been.calledWith",
-        "No data found or invalid import. Message: Cannot read properties of undefined (reading 'success_criteria_level_a')"
+        "No data found or invalid import. Message: Cannot read properties of undefined (reading 'success_criteria_level_a')",
       );
   });
 
@@ -305,7 +309,7 @@ describe("Import", () => {
       .should("have.been.calledOnce")
       .and(
         "have.been.calledWith",
-        `The uploaded file ${textExample.filename} has type ${fileType} which is invalid. Please use one of these types: 'application/x-yaml', 'application/yaml', 'text/yaml'.`
+        `The uploaded file ${textExample.filename} has type ${fileType} which is invalid. Please use one of these types: 'application/x-yaml', 'application/yaml', 'text/yaml'.`,
       );
   });
 });

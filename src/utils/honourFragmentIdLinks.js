@@ -1,11 +1,18 @@
 export function honourFragmentIdLinks(routerLocation) {
   if (routerLocation.hash) {
     const fragment = document.querySelector(
-      `[id='${routerLocation.hash.replace("#", "")}']`
+      `[id='${routerLocation.hash.replace("#", "")}']`,
     );
 
+    if (!fragment) {
+      return;
+    }
+
     // if inside a collapsed section, open it.
-    if (fragment.parentElement.nodeName === "DETAILS") {
+    if (
+      fragment.parentElement &&
+      fragment.parentElement.nodeName === "DETAILS"
+    ) {
       fragment.parentElement.setAttribute("open", "");
     }
 

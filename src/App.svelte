@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  import { Router, Route } from "svelte-navigator";
   import Overview from "./routes/Overview.svelte";
   import About from "./routes/About.svelte";
   import YourReport from "./components/YourReport.svelte";
@@ -14,8 +13,7 @@
   import { showYourReport } from "./stores/showYourReport.js";
   import { evaluation } from "./stores/evaluation.js";
   import { getCatalog } from "./utils/getCatalogs.js";
-  import vars from "./buildVars.js";
-  export let url = "";
+  import { location } from "./lib/router.js";
 
   const pagesWithYourReport = ["Overview", "About", "Evaluation"];
 
@@ -30,15 +28,68 @@
   function setInteracted(e) {
     if (e.target.type != "file") {
       window.removeEventListener("input", setInteracted);
-       //window.onbeforeunload = closeEditorWarning;
+      //window.onbeforeunload = closeEditorWarning;
     }
   }
 
   function closeEditorWarning() {
-    return 'Are you sure?';
+    return "Are you sure?";
   }
+
+  function matchChapter(pathname) {
+    const match = pathname.match(/^\/chapter\/([^/]+)$/);
+
+    if (!match) {
+      return null;
+    }
+
+    return {
+      chapterId: decodeURIComponent(match[1]),
+    };
+  }
+
   $: catalog = getCatalog($evaluation.catalog);
+  $: chapterMatch = matchChapter($location.pathname);
 </script>
+
+<Nav>
+  <NavItem to="/">Overview</NavItem>
+  <NavItem to="/about">About</NavItem>
+  {#each catalog.chapters as chapter}
+    <NavItem to={`/chapter/${chapter.id}`}>
+      {chapter.short_label}
+      <span class="visuallyhidden">: {chapter.label}</span>
+    </NavItem>
+  {/each}
+  <NavItem to="/report">Report</NavItem>
+  <NavItem to="/glossary">Glossary</NavItem>
+  <NavItem to="/acknowledgements">Acknowledgements</NavItem>
+</Nav>
+<section
+  id="content"
+  class="app-content"
+  class:app-content--wide={!needsYourReport($currentPage) || !$showYourReport}
+  aria-label="Main content"
+>
+  {#if $location.pathname === "/"}
+    <Overview />
+  {:else if $location.pathname === "/about"}
+    <About />
+  {:else if chapterMatch}
+    <Chapter chapterId={chapterMatch.chapterId} />
+  {:else if $location.pathname === "/report"}
+    <Report />
+  {:else if $location.pathname === "/acknowledgements"}
+    <Acknowledgements />
+  {:else if $location.pathname === "/glossary"}
+    <Glossary />
+  {:else}
+    <Overview />
+  {/if}
+</section>
+{#if needsYourReport($currentPage)}
+  <YourReport />
+{/if}
 
 <style>
   .app-content {
@@ -54,46 +105,3 @@
     grid-column: 2 / span 8;
   }
 </style>
-
-<Router {url} basepath={vars.pathPrefix}>
-  <Nav>
-    <NavItem to="/">Overview</NavItem>
-    <NavItem to="/about">About</NavItem>
-    {#each catalog.chapters as chapter}
-      <NavItem to="chapter/{chapter.id}">
-        {chapter.short_label}
-        <span class="visuallyhidden">: {chapter.label}</span>
-      </NavItem>
-    {/each}
-    <NavItem to="/report">Report</NavItem>
-    <NavItem to="/glossary">Glossary</NavItem>
-    <NavItem to="/acknowledgements">Acknowledgements</NavItem>
-  </Nav>
-  <section
-    id="content"
-    class="app-content"
-    class:app-content--wide={!needsYourReport($currentPage) || !$showYourReport}
-    aria-label="Main content">
-    <Route path="/">
-      <Overview />
-    </Route>
-    <Route path="/about">
-      <About />
-    </Route>
-    <Route path="/chapter/:chapterId" let:params>
-      <Chapter chapterId={params.chapterId} />
-    </Route>
-    <Route path="/report">
-      <Report />
-    </Route>
-    <Route path="/acknowledgements">
-      <Acknowledgements />
-    </Route>
-    <Route path="/glossary">
-      <Glossary />
-    </Route>
-  </section>
-  {#if needsYourReport($currentPage)}
-    <YourReport />
-  {/if}
-</Router>

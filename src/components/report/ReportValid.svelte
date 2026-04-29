@@ -1,9 +1,37 @@
 <script>
   import { evaluation } from "../../stores/evaluation.js";
   import { validate } from "../../utils/validate.js";
+  import { assetPath } from "../../lib/base.js";
 
   const valid = validate($evaluation);
+  const errorIcon = assetPath("/images/error.svg");
+  const successIcon = assetPath("/images/check_circle.svg");
 </script>
+
+{#if valid.result}
+  <div
+    class="usa-alert usa-alert--success"
+    style={`--alert-icon: url("${successIcon}")`}
+  >
+    <div class="usa-alert__body">
+      <h4 class="usa-alert__heading">Valid Report</h4>
+      <p class="usa-alert__text">Your report has passed validation</p>
+    </div>
+  </div>
+{:else}
+  <div
+    class="usa-alert usa-alert--error"
+    role="alert"
+    style={`--alert-icon: url("${errorIcon}")`}
+  >
+    <div class="usa-alert__body">
+      <h4 class="usa-alert__heading">Error</h4>
+      <p class="usa-alert__text">
+        {@html valid.message}
+      </p>
+    </div>
+  </div>
+{/if}
 
 <style>
   /* TODO remove after switching theme to use USWDS */
@@ -18,7 +46,7 @@
   }
   .usa-alert__heading {
     font-size: 1.33rem;
-    line-height: .9;
+    line-height: 0.9;
     margin-top: 0;
     margin-bottom: 0.5rem;
   }
@@ -38,7 +66,8 @@
   .usa-alert--error:before {
     background: 0 0;
     background-color: #1b1b1b;
-    -webkit-mask: url(../images/error.svg) no-repeat center/contain;
+    -webkit-mask: var(--alert-icon) no-repeat center/contain;
+    mask: var(--alert-icon) no-repeat center/contain;
     width: 2rem;
     content: "";
     display: block;
@@ -55,7 +84,8 @@
   .usa-alert--success:before {
     background: 0 0;
     background-color: #1b1b1b;
-    -webkit-mask: url(../images/check_circle.svg) no-repeat center/contain;
+    -webkit-mask: var(--alert-icon) no-repeat center/contain;
+    mask: var(--alert-icon) no-repeat center/contain;
     width: 2rem;
     content: "";
     display: block;
@@ -70,23 +100,3 @@
     padding-left: 3.8333333334rem;
   }
 </style>
-
-{#if valid.result}
-  <div class="usa-alert usa-alert--success">
-    <div class="usa-alert__body">
-      <h4 class="usa-alert__heading">Valid Report</h4>
-      <p class="usa-alert__text">
-        Your report has passed validation
-      </p>
-    </div>
-  </div>
-{:else}
-  <div class="usa-alert usa-alert--error" role="alert">
-    <div class="usa-alert__body">
-      <h4 class="usa-alert__heading">Error</h4>
-      <p class="usa-alert__text">
-        {@html valid.message}
-      </p>
-    </div>
-  </div>
-{/if}

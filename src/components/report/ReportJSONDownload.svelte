@@ -6,11 +6,11 @@
   const valid = validate($evaluation);
 
   $: jsonDownload = `data:application/json;charset=utf-8,${encodeURIComponent(
-    JSON.stringify($evaluation)
+    JSON.stringify($evaluation),
   )}`;
 </script>
 
-{#if valid.result }
+{#if valid.result}
   <a href={jsonDownload} download="{filename}.json" class="button">
     Download Report (JSON)
   </a>

@@ -21,7 +21,7 @@ export function createHTMLDownload(template, title, lang) {
     [`<!doctype HTML>${htmlDocument.documentElement.outerHTML}`],
     {
       type: "text/html",
-    }
+    },
   );
 
   return blob;

@@ -3,56 +3,128 @@
   import ProgressBar from "./ProgressBar.svelte";
   import ButtonShowHide from "./ButtonShowHide.svelte";
   import ReportNumbers from "./report/ReportNumbers.svelte";
-  import { navigate } from "svelte-navigator";
   import { evaluation } from "../stores/evaluation.js";
   import { currentPage } from "../stores/currentPage.js";
   import { showYourReport } from "../stores/showYourReport.js";
   import { importEvaluation } from "../utils/importEvaluation.js";
-  import { getEvaluatedChapterCriteriaComponents, getChapterCriteriaComponents, getProgressPerChapter } from "../utils/getEvaluatedItems.js";
+  import {
+    getEvaluatedChapterCriteriaComponents,
+    getChapterCriteriaComponents,
+    getProgressPerChapter,
+  } from "../utils/getEvaluatedItems.js";
   import { getCatalog } from "../utils/getCatalogs.js";
-  import vars from "../buildVars.js";
+  import { goto } from "../lib/router.js";
 
   let fresh, box;
 
   function startNew() {
-    navigate(`${vars.pathPrefix}/about`, { replace: false });
+    goto("/about");
     fresh = false;
   }
 
   function toOverview() {
-    navigate(`${vars.pathPrefix}/report`, { replace: false });
+    goto("/report");
   }
 
   function clear() {
     //window.onbeforeunload = null;
     if (
       window.confirm(
-        "This will clear the current OpenACR and start a new one. Are you sure that's what you'd like to do?"
+        "This will clear the current OpenACR and start a new one. Are you sure that's what you'd like to do?",
       )
     ) {
       evaluation.clearCache();
-      navigate(`${vars.pathPrefix}/`, { replace: true });
+      goto("/", { replace: true });
     }
   }
 
   function toggleYourReport() {
-    showYourReport.update(v => (v = !v));
+    showYourReport.update((v) => (v = !v));
     box.focus();
   }
 
-  evaluation.subscribe(value => {
+  evaluation.subscribe((value) => {
     fresh = evaluation.isFresh();
   });
 
   $: fresh = evaluation.isFresh();
-  $: nameProvided =
-    $evaluation["product"] &&
-    $evaluation["product"]["name"];
+  $: nameProvided = $evaluation["product"] && $evaluation["product"]["name"];
   $: progressPerChapter = getProgressPerChapter($evaluation);
   $: evaluatedItems = getEvaluatedChapterCriteriaComponents($evaluation);
   $: totalCriteria = getChapterCriteriaComponents($evaluation);
   $: catalog = getCatalog($evaluation.catalog);
 </script>
+
+<div
+  class="your-report"
+  class:your-report--expanded={$showYourReport === true}
+  bind:this={box}
+  tabindex="-1"
+  aria-live="polite"
+>
+  {#if $showYourReport === true}
+    {#if fresh && $currentPage === "Overview"}
+      <h2 class="your-report__heading">
+        Your report
+        <ButtonShowHide expanded={true} on:toggle={toggleYourReport}>
+          Hide
+        </ButtonShowHide>
+      </h2>
+      <p>No report started.</p>
+      <button class="button" on:click={startNew}>Start new report</button>
+      <input
+        type="file"
+        id="import-evaluation"
+        on:change={importEvaluation}
+        class="visuallyhidden your-report__import"
+        accept="application/yaml"
+      />
+      <label
+        for="import-evaluation"
+        class="button button-secondary your-report__import-label"
+      >
+        Open report
+      </label>
+    {:else}
+      <h2 class="your-report__heading">
+        {#if nameProvided}
+          <div>
+            <small class="your-report__heading-pre">Report for</small>
+            {$evaluation["product"]["name"]}
+          </div>
+        {:else}Your Report{/if}
+        <ButtonShowHide expanded={true} on:toggle={toggleYourReport}>
+          Hide
+        </ButtonShowHide>
+      </h2>
+      <ReportNumbers className="your-report__description" />
+      <ProgressBar
+        percentage={100 / (totalCriteria.length / evaluatedItems.length)}
+      />
+      <ul class="your-report__progress-by-principle">
+        {#each catalog.chapters as chapter}
+          {#if !$evaluation.chapters[chapter.id].disabled}
+            <YourReportProgress
+              {chapter}
+              done={progressPerChapter[chapter.id]["evaluated"]}
+              total={progressPerChapter[chapter.id]["total"]}
+            />
+          {/if}
+        {/each}
+      </ul>
+      <button class="button" on:click={toOverview}>View Report</button>
+      {#if $currentPage === "Overview"}
+        <button type="button" class="button button-secondary" on:click={clear}>
+          New Report
+        </button>
+      {/if}
+    {/if}
+  {:else}
+    <ButtonShowHide expanded={false} on:toggle={toggleYourReport}>
+      Show "Your Report"
+    </ButtonShowHide>
+  {/if}
+</div>
 
 <style>
   .your-report {
@@ -113,68 +185,3 @@
     margin-bottom: 4px;
   }
 </style>
-
-<div
-  class="your-report"
-  class:your-report--expanded={$showYourReport === true}
-  bind:this={box}
-  tabindex="-1"
-  aria-live="polite">
-  {#if $showYourReport === true}
-    {#if fresh && $currentPage === 'Overview'}
-      <h2 class="your-report__heading">
-        Your report
-        <ButtonShowHide expanded={true} on:toggle={toggleYourReport}>
-          Hide
-        </ButtonShowHide>
-      </h2>
-      <p>No report started.</p>
-      <button class="button" on:click={startNew}>Start new report</button>
-      <input
-        type="file"
-        id="import-evaluation"
-        on:change={importEvaluation}
-        class="visuallyhidden your-report__import"
-        accept="application/yaml" />
-      <label
-        for="import-evaluation"
-        class="button button-secondary your-report__import-label">
-        Open report
-      </label>
-    {:else}
-      <h2 class="your-report__heading">
-        {#if nameProvided}
-          <div>
-            <small class="your-report__heading-pre">Report for</small>
-            {$evaluation['product']['name']}
-          </div>
-        {:else}Your Report{/if}
-        <ButtonShowHide expanded={true} on:toggle={toggleYourReport}>
-          Hide
-        </ButtonShowHide>
-      </h2>
-      <ReportNumbers className="your-report__description" />
-      <ProgressBar percentage={100 / (totalCriteria.length / evaluatedItems.length)} />
-      <ul class="your-report__progress-by-principle">
-        {#each catalog.chapters as chapter}
-          {#if !$evaluation.chapters[chapter.id].disabled}
-            <YourReportProgress
-              {chapter}
-              done={progressPerChapter[chapter.id]['evaluated']}
-              total={progressPerChapter[chapter.id]['total']} />
-          {/if}
-        {/each}
-      </ul>
-      <button class="button" on:click={toOverview}>View Report</button>
-      {#if $currentPage === 'Overview'}
-        <button type="button" class="button button-secondary" on:click={clear}>
-          New Report
-        </button>
-      {/if}
-    {/if}
-  {:else}
-    <ButtonShowHide expanded={false} on:toggle={toggleYourReport}>
-      Show "Your Report"
-    </ButtonShowHide>
-  {/if}
-  </div>

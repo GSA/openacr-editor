@@ -1,5 +1,5 @@
 <script>
-  import { link } from "svelte-navigator";
+  import { href, link } from "../lib/router.js";
   export let chapterId;
 
   function openFirstAccordion() {
@@ -63,7 +63,7 @@
     {:else if chapterId === "software"}
       If your software product is a web application or is rendered through a web
       browser, do not fill out this section. Fill out <a
-        href="success_criteria_level_a"
+        href={href("/chapter/success_criteria_level_a")}
         use:link>Tables 1, 2, and 3</a
       >. Fill out this section if your software product is not web-based.
       Desktop applications are a common example of software which is not

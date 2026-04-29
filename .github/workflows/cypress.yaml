@@ -22,10 +22,13 @@ jobs:
         run: npm ci
 
       - name: Build app.
-        run: export NODE_ENV=development && npm run build
+        run: npm run build
 
       - name: Run app.
-        run: export NODE_ENV=development && npm run dev &
+        run: npm run start &
+
+      - name: Wait for app.
+        run: until curl -sf http://localhost:10001 > /dev/null; do sleep 1; done
 
       - name: Run tests
         run: npm test

@@ -75,7 +75,7 @@ export function createCleanEvaluation() {
     "New evaluation is valid? Answer: " +
       valid.result +
       ", message: " +
-      valid.message
+      valid.message,
   );
 
   return cleanEvaluation;

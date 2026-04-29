@@ -1,6 +1,9 @@
 <script>
   import { evaluation } from "../../stores/evaluation.js";
-  import { getEvaluatedChapterCriteriaComponents, getChapterCriteriaComponents } from "../../utils/getEvaluatedItems.js";
+  import {
+    getEvaluatedChapterCriteriaComponents,
+    getChapterCriteriaComponents,
+  } from "../../utils/getEvaluatedItems.js";
 
   export let className = "";
 

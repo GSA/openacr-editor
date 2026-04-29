@@ -3,30 +3,30 @@
 
   let someCollapsed, someExpanded;
 
-  let expandAll = function() {
-    Array.from(document.querySelectorAll("details")).forEach(excol => {
+  let expandAll = function () {
+    Array.from(document.querySelectorAll("details")).forEach((excol) => {
       excol.setAttribute("open", "");
     });
     setButtonStatus();
   };
 
-  let collapseAll = function() {
-    Array.from(document.querySelectorAll("details")).forEach(excol => {
+  let collapseAll = function () {
+    Array.from(document.querySelectorAll("details")).forEach((excol) => {
       excol.removeAttribute("open", "");
     });
     setButtonStatus();
   };
 
-  let setButtonStatus = function() {
+  let setButtonStatus = function () {
     someCollapsed = document.querySelectorAll("details:not([open])").length > 0;
     someExpanded = document.querySelectorAll("details[open]").length > 0;
   };
 
-  let initButtonStatus = function() {
+  let initButtonStatus = function () {
     let details = document.querySelectorAll("details");
 
     for (var i = 0, length = details.length; i < length; i++) {
-      details[i].addEventListener("toggle", function() {
+      details[i].addEventListener("toggle", function () {
         setTimeout(setButtonStatus, 100);
       });
     }
@@ -42,13 +42,17 @@
   <button
     class="expand button button-secondary button-small"
     disabled={!someCollapsed}
-    on:click={expandAll} style="text-align: center; line-height: 1; padding: 5px;">
+    on:click={expandAll}
+    style="text-align: center; line-height: 1; padding: 5px;"
+  >
     + Expand All Sections
   </button>
   <button
     class="collapse button button-secondary button-small"
     disabled={!someExpanded}
-    on:click={collapseAll} style="text-align: center; line-height: 1; padding: 5px;">
+    on:click={collapseAll}
+    style="text-align: center; line-height: 1; padding: 5px;"
+  >
     − Collapse All Sections
   </button>
 </div>

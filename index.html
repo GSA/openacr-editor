@@ -10,12 +10,8 @@
       content="Tool to help generate Accessibility Conformance Report in the OpenACR format."
     />
     <title>OpenACR Editor</title>
-    <link
-      rel="shortcut icon"
-      type="image/ico"
-      href="{{{ pathPrefix }}}/favicon.ico"
-    />
-    <link rel="icon" type="image/png" href="{{{ pathPrefix }}}/favicon.ico" />
+    <link rel="shortcut icon" type="image/ico" href="%BASE_URL%favicon.ico" />
+    <link rel="icon" type="image/png" href="%BASE_URL%favicon.ico" />
     <link
       rel="stylesheet"
       href="https://www.section508.gov/assets/css/external-blocks.css"
@@ -24,8 +20,6 @@
       rel="stylesheet"
       href="https://w3.org/WAI/assets/css/style.css?1573220675560713000"
     />
-    <link rel="stylesheet" href="{{{ pathPrefix }}}/build/bundle.css" />
-    <script defer src="{{{ pathPrefix }}}/build/bundle.js"></script>
     <script
       defer
       src="https://www.section508.gov/assets/js/external-508-blocks.js"
@@ -35,10 +29,6 @@
       src="https://www.section508.gov/assets/js/uswds.min.js"
     ></script>
     <style>
-      /* GSA/Section508 placeholder styling.
-       * Dark blue: #162E51
-       * Light blue: #1e6ad6
-       */
       #site-header,
       th {
         background-color: #162e51;
@@ -58,9 +48,9 @@
       a[target="_blank"]:after {
         background: 0 0;
         background-color: currentColor;
-        -webkit-mask: url("{{{ pathPrefix }}}/images/external-link.svg")
-          no-repeat center/contain;
-        mask: url("{{{ pathPrefix }}}/images/external-link.svg") no-repeat
+        -webkit-mask: url("%BASE_URL%images/external-link.svg") no-repeat
+          center/contain;
+        mask: url("%BASE_URL%images/external-link.svg") no-repeat
           center/contain;
         content: "";
         display: inline-block;
@@ -70,7 +60,6 @@
         vertical-align: text-bottom;
         flex-shrink: 0;
       }
-
       summary > :first-child:before {
         border-color: #162e51;
         align-content: center;
@@ -131,7 +120,6 @@
       details[open] > summary > :first-child:before {
         content: "\2212";
       }
-      /* End placeholder styling. */
       :target {
         scroll-margin-top: 5rem;
       }
@@ -174,14 +162,14 @@
         font-size: 0.86em;
         padding: 1em;
         text-decoration: none;
-        background-color: #d0e1f1; /* cloudy-subtle */
+        background-color: #d0e1f1;
         color: inherit;
         white-space: normal;
         transition-duration: 0.1s;
         border-bottom: 1px solid transparent;
       }
       .nav__item .active {
-        background-color: #fff; /* body-bg */
+        background-color: #fff;
         border-bottom: 1px solid #fff;
       }
       .nav__item a:focus {
@@ -442,10 +430,10 @@
     <div id="header-508" class="section508-external-block"></div>
     <header id="site-header" class="default-grid with-gap">
       <div class="tool-header">
-        <a href="{{{ pathPrefix }}}/">
+        <a href="%BASE_URL%">
           <img
             alt="ACR Editor logo"
-            src="{{{ pathPrefix }}}/images/Accessibility Conformance Report A4 White Horizontal (1).png"
+            src="%BASE_URL%images/Accessibility%20Conformance%20Report%20A4%20White%20Horizontal%20(1).png"
             height="50"
             style="margin-top: 3px"
             class="img"
@@ -454,9 +442,7 @@
       </div>
     </header>
     <main>
-      <div id="openacr-editor" class="default-grid leftcol">
-        <!-- app 'renders' here -->
-      </div>
+      <div id="openacr-editor" class="default-grid leftcol"></div>
     </main>
 
     <div class="default-grid">
@@ -467,7 +453,7 @@
       >
         <header class="box-h box-h-icon box-h-icon">
           <svg focusable="false" aria-hidden="true" class="icon-comments">
-            <use href="{{{ pathPrefix }}}/images/icons.svg#icon-comments"></use>
+            <use href="%BASE_URL%images/icons.svg#icon-comments"></use>
           </svg>
           <h2>Help improve this page</h2>
         </header>
@@ -488,10 +474,9 @@
               target="_blank"
             >
               <span>Fork &amp; Edit on GitHub</span>
-              <span class="visuallyhidden"
-                >(opens in a new window or tab)</span
-              > </a
-            ><a
+              <span class="visuallyhidden">(opens in a new window or tab)</span>
+            </a>
+            <a
               href="https://github.com/GSA/openacr-editor/issues/new"
               class="button"
               target="_blank"
@@ -528,10 +513,9 @@
           is a format maintained by the
           <a href="https://gsa.gov/" target="_blank">
             U.S. General Services Administration (GSA)
-            <span class="visuallyhidden"
-              >(opens in a new window or tab)</span
-            > </a
-          >. The content is the responsibility of the author.
+            <span class="visuallyhidden">(opens in a new window or tab)</span>
+          </a>
+          . The content is the responsibility of the author.
         </p>
         <p>
           This software includes material copied from or derived from
@@ -545,17 +529,17 @@
             target="_blank"
           >
             W3C Software notice and license
-            <span class="visuallyhidden"
-              >(opens in a new window or tab)</span
-            > </a
-          >.
+            <span class="visuallyhidden">(opens in a new window or tab)</span>
+          </a>
+          .
         </p>
       </div>
     </footer>
     <div id="footer-508" class="section508-external-block"></div>
-    <!-- Analytics code -->
-    <script id="_fed_an_ua_tag"
-    src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA"></script>
-    <!-- End Analytics Code -->
+    <script
+      id="_fed_an_ua_tag"
+      src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA"
+    ></script>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

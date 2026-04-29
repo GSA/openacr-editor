@@ -1,11 +1,11 @@
 export function cleanUp(node) {
   const removeEls = Array.from(
-    node.querySelectorAll("button, input, .results-label-mobile")
+    node.querySelectorAll("button, input, .results-label-mobile"),
   );
   const tables = Array.from(node.querySelectorAll("table"));
   const emptyValues = Array.from(node.querySelectorAll("span.no-result"));
   const removeAttributeEls = Array.from(
-    node.querySelectorAll("[class], [id], [aria-labelledby]")
+    node.querySelectorAll("[class], [id], [aria-labelledby]"),
   );
 
   removeEls.forEach((el) => {
@@ -14,10 +14,10 @@ export function cleanUp(node) {
 
   tables.forEach((el) => {
     const editColumnItems = Array.from(
-      el.querySelectorAll(".result-row__edit")
+      el.querySelectorAll(".result-row__edit"),
     );
     const notInScopeNoObservations = Array.from(
-      el.querySelectorAll(".not-in-scope-no-observations")
+      el.querySelectorAll(".not-in-scope-no-observations"),
     );
 
     el.setAttribute("border", "1");

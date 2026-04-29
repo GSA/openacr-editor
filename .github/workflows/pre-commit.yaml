@@ -11,13 +11,16 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
       - uses: actions/setup-python@v6
       # Skip checks that don't auto-fix issues initially.
       - uses: pre-commit/action@v3.0.1
         env:
           SKIP: remark,check-yaml,check-json,check-added-large-files
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       # Final run without committing to ensure passes.
       - uses: pre-commit/action@v3.0.1
         env:

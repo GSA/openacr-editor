@@ -10,6 +10,58 @@
   export let expanded;
 </script>
 
+{#if expanded}
+  <button
+    type="button"
+    class="button-secondary button-small button-showhide"
+    on:click={handleClick}
+  >
+    <span>
+      <slot />
+    </span>
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  </button>
+{:else}
+  <button
+    type="button"
+    class="button-secondary button-small button-showhide"
+    on:click={handleClick}
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+    <span>
+      <slot />
+    </span>
+  </button>
+{/if}
+
 <style>
   .button-showhide {
     border-width: 1px;
@@ -36,51 +88,3 @@
     margin: 0 -0.25em 0 0.25em;
   }
 </style>
-
-{#if expanded}
-  <button
-    type="button"
-    class="button-secondary button-small button-showhide"
-    on:click={handleClick}>
-    <span>
-      <slot />
-    </span>
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6" />
-    </svg>
-  </button>
-{:else}
-  <button
-    type="button"
-    class="button-secondary button-small button-showhide"
-    on:click={handleClick}>
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6" />
-    </svg>
-    <span>
-      <slot />
-    </span>
-  </button>
-{/if}

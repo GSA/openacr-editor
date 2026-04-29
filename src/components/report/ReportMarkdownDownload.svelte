@@ -69,7 +69,7 @@ This report covers the degree of conformance for the following accessibility sta
 | Standard/Guideline | Included In Report |
 | --- | --- |`;
 
-  catalog.standards.forEach(standard => {
+  catalog.standards.forEach((standard) => {
     mdTemplate += `
 | [${standard.label}](${standard.url}) | ${standardsIncluded($evaluation.catalog, standard.chapters)} |`;
   });
@@ -80,7 +80,7 @@ This report covers the degree of conformance for the following accessibility sta
 The terms used in the Conformance Level information are defined as follows:
   `;
 
-  catalog.terms.forEach(term => {
+  catalog.terms.forEach((term) => {
     mdTemplate += `
 - **${term.label}**: ${term.description}`;
   });
@@ -116,7 +116,7 @@ This content is licensed under a ${licenseOutput}.`;
   });
 </script>
 
-{#if valid.result }
+{#if valid.result}
   <a href={mdDownload} download="{filename}.markdown" class="button">
     Download Report (Markdown)
   </a>

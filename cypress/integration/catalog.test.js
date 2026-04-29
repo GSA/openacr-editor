@@ -21,7 +21,7 @@ describe("Catalogs", () => {
 
       cy.get("p").should(
         "contain",
-        "Select Switch Catalogs to save your new selection."
+        "Select Switch Catalogs to save your new selection.",
       );
 
       cy.get("button").contains("Switch Catalogs").click();
@@ -60,7 +60,7 @@ describe("Catalogs", () => {
 
     cy.get("#success_criteria_level_a-editor + table tbody tr").should(
       "contain",
-      wcag21Criteria
+      wcag21Criteria,
     );
 
     cy.visit("/about");
@@ -78,7 +78,7 @@ describe("Catalogs", () => {
 
     cy.get("#success_criteria_level_a-editor + table tbody tr").should(
       "not.contain",
-      wcag21Criteria
+      wcag21Criteria,
     );
   });
 
@@ -96,7 +96,7 @@ describe("Catalogs", () => {
       .should("have.been.calledOnce")
       .and(
         "have.been.calledWith",
-        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog.\n\nPlease download your report before switching catalogs to avoid losing information. Select Cancel to save before switching."
+        "Switching catalogs may remove entered data and notes from your ACR that are not part of the newly selected catalog.\n\nPlease download your report before switching catalogs to avoid losing information. Select Cancel to save before switching.",
       );
   });
 
@@ -126,7 +126,7 @@ describe("Catalogs", () => {
 
     cy.get("#content").should(
       "contain",
-      "Based on VPAT® 2.4 WCAG 2.1 and Revised Section 508 Edition"
+      "Based on VPAT® 2.4 WCAG 2.1 and Revised Section 508 Edition",
     );
   });
 });
