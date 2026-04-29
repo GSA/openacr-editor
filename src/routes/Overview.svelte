@@ -59,8 +59,8 @@
   </li>
   <li>
     You can export your report as YAML (structured data) but also as HTML (web
-    page). Note: You will not be able to edit the report in the future without the
-    YAML file.
+    page). Note: You will not be able to edit the report in the future without
+    the YAML file.
   </li>
   <li>
     You can add limited formatting to your report with <a

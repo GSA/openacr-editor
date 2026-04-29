@@ -31,7 +31,8 @@
       >. Fill out as appropriate.
     {:else if chapterId === "success_criteria_level_aa"}
       Provide information about how your website or web application fails to
-      meet Level AA requirements. The default is web-based, and there are optional fields for <a
+      meet Level AA requirements. The default is web-based, and there are
+      optional fields for <a
         href="#1.2.4-electronic-docs-editor"
         on:click={() => openFirstAccordion()}>Documentation</a
       >,
