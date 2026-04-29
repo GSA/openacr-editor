@@ -96,6 +96,41 @@
       a.button:after {
         margin-top: 0;
       }
+      summary {
+        cursor: pointer;
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::marker {
+        display: none;
+      }
+      summary > :first-child {
+        align-items: center;
+        border-bottom: 1px solid var(--line-grey);
+        display: flex;
+        min-height: 2rem;
+        padding-bottom: 0.25rem;
+      }
+      summary > :first-child:before {
+        align-items: center;
+        border: 2px solid currentColor;
+        border-radius: 0.2rem;
+        content: "+";
+        display: inline-flex;
+        flex: none;
+        font-size: 1rem;
+        font-weight: 700;
+        height: 1.4rem;
+        justify-content: center;
+        line-height: 1;
+        margin-right: 0.5rem;
+        width: 1.4rem;
+      }
+      details[open] > summary > :first-child:before {
+        content: "\2212";
+      }
       /* End placeholder styling. */
       :target {
         scroll-margin-top: 5rem;
@@ -196,6 +231,29 @@
       body {
         background-color: white;
       }
+      .visuallyhidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+      }
+      .visuallyhidden.focusable:active,
+      .visuallyhidden.focusable:focus {
+        clip: auto;
+        clip-path: none;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+        white-space: inherit;
+      }
       @media (max-width: 60em) {
         .img {
           margin-left: 8px;
@@ -218,12 +276,153 @@
         border-top-left-radius: 0.5rem;
         border-top-right-radius: 0.5rem;
       }
+      .box-h-icon {
+        align-items: center;
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+      }
+      .icon-comments {
+        flex: none;
+        height: 1.1rem;
+        width: 1.1rem;
+      }
+      .box-i {
+        padding: 1rem;
+      }
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .button-group .button {
+        flex: 1 1 14rem;
+        justify-content: center;
+        text-align: center;
+      }
       @media (max-width: 1910px) {
         main {
           display: block;
           padding: 2em 0;
           background-image: linear-gradient(#d0e1f1 0, #d0e1f1 49px, #fff 48px);
         }
+      }
+      .pager ul {
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .pager--item a {
+        align-items: center;
+        display: inline-flex;
+        gap: 0.5rem;
+        text-decoration: none;
+      }
+      .pager--item.next a {
+        flex-direction: row-reverse;
+      }
+      .pager--item-icon {
+        flex: none;
+        height: 2rem;
+        width: 2rem;
+      }
+      .your-report {
+        -ms-grid-column: 8;
+        -ms-grid-column-span: 1;
+        grid-column: 8 / span 2;
+        -ms-grid-row: 2;
+        grid-row-start: 2;
+        align-self: start;
+        justify-self: end;
+        padding: 1em 0;
+        border: 1px solid transparent;
+        outline: none;
+      }
+      .your-report--expanded {
+        background: var(--footer-grey);
+        box-shadow: 0 2px 8px -7px #000;
+        border-color: var(--line-grey);
+        margin-bottom: 2em;
+        padding: 1em;
+      }
+      @media (min-width: 60em) {
+        .your-report--expanded {
+          position: sticky;
+          top: 4em;
+        }
+      }
+      .your-report__heading {
+        align-items: center;
+        display: flex;
+        font-size: 1em;
+        font-weight: bold;
+        margin: 0;
+      }
+      .your-report__heading-pre {
+        color: var(--dk-blue);
+        display: block;
+        font-weight: normal;
+      }
+      .your-report__description {
+        margin-bottom: 0.5em;
+      }
+      .your-report__progress-by-principle {
+        column-gap: 1.5em;
+        columns: 1;
+        margin: 2.25em 0 1.75em 0;
+        padding: 0;
+      }
+      .your-report .button,
+      .your-report input {
+        margin-bottom: 4px;
+      }
+      .progress {
+        list-style: none;
+        margin-bottom: 1em;
+      }
+      .progress__principle {
+        align-items: center;
+        display: flex;
+        margin-bottom: 0.125em;
+      }
+      .progress__part {
+        font-size: 0.65em;
+        margin-left: auto;
+      }
+      .principle__name {
+        color: var(--off-black);
+        font-weight: bold;
+        text-decoration: none;
+      }
+      .principle__name:hover span {
+        text-decoration: underline;
+      }
+      .button-showhide {
+        background-color: transparent;
+        border-color: var(--line-grey);
+        border-width: 1px;
+        color: var(--off-black);
+        display: flex;
+        font-weight: normal;
+        margin-bottom: 2px;
+        margin-left: auto;
+        margin-top: 2px;
+        padding: 0 6px;
+      }
+      .button-showhide:hover {
+        border-color: currentColor;
+      }
+      .button-showhide svg {
+        fill: transparent;
+      }
+      .button-showhide svg:first-child {
+        margin: 0 0.25em 0 -0.25em;
+      }
+      .button-showhide svg:last-child {
+        margin: 0 -0.25em 0 0.25em;
       }
       .nav__item a:not(.active):focus,
       .nav__item a:not(.active):hover,
