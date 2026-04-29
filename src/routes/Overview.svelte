@@ -59,7 +59,7 @@
   </li>
   <li>
     You can export your report as YAML (structured data) but also as HTML (web
-    page). Note: You will not be able to edit the report the future without the
+    page). Note: You will not be able to edit the report in the future without the
     YAML file.
   </li>
   <li>
