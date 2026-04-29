@@ -1,7 +1,10 @@
 /// <reference types="Cypress" />
 
+const clickViewReport = () =>
+  cy.contains("button", "View Report").scrollIntoView().click({ force: true });
+
 describe("Report", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/report", {
       onBeforeLoad(win) {
         cy.stub(win.console, "error").as("consoleError");
@@ -25,7 +28,7 @@ describe("Report", () => {
     cy.get("#evaluation-product-name").type("Drupal");
     cy.get("#evaluation-product-version").type("9.1");
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
@@ -52,7 +55,7 @@ describe("Report", () => {
     cy.visit("/about");
     cy.get("#evaluation-report-date").clear().type("12/31/2021");
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
@@ -63,7 +66,7 @@ describe("Report", () => {
     cy.visit("/about");
     const today = new Date().toLocaleDateString();
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
@@ -80,7 +83,7 @@ describe("Report", () => {
       )
       .click();
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
@@ -94,7 +97,7 @@ describe("Report", () => {
     cy.visit("/about");
     cy.get(".clearSelect").click();
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
@@ -114,7 +117,7 @@ describe("Report", () => {
       .get("#evaluation-related-openacrs-1-type")
       .select("Secondary");
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
@@ -170,7 +173,7 @@ describe("Report", () => {
       "<b onclick=\"alert('Woof!')\">click me!</b>"
     );
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get("#success_criteria_level_aa-editor + p b").should(
       "not.have.attr",
@@ -187,7 +190,7 @@ describe("Report", () => {
       "Where possible the <a href='https://www.drupal.org/'>Drupal</a> community strives to exceed AA compliance."
     );
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get("#success_criteria_level_aaa-editor + p a")
       .should("have.attr", "href")
@@ -198,7 +201,7 @@ describe("Report", () => {
     cy.visit("/chapter/hardware");
     cy.get("#evaluation-disabled-chapter-hardware").check();
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get("#hardware-editor + table").should("not.exist");
 

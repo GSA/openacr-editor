@@ -10,7 +10,7 @@
   import { importEvaluation } from "../utils/importEvaluation.js";
   import { getEvaluatedChapterCriteriaComponents, getChapterCriteriaComponents, getProgressPerChapter } from "../utils/getEvaluatedItems.js";
   import { getCatalog } from "../utils/getCatalogs.js";
-  import vars from "../../config/__buildEnv__.json";
+  import vars from "../buildVars.js";
 
   let fresh, box;
 
@@ -80,10 +80,6 @@
       top: 4em;
     }
   }
-  summary > :first-child::before{
-    align-content: center;
-  }
-
   .your-report__heading {
     font-weight: bold;
     font-size: 1em;

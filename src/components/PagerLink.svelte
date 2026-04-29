@@ -1,6 +1,6 @@
 <script>
   import { Link } from "svelte-navigator";
-  import vars from "../../config/__buildEnv__.json";
+  import vars from "../buildVars.js";
 
   export let to = "";
   export let direction = "";

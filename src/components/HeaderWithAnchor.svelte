@@ -57,9 +57,6 @@
     font-size: large;
     opacity: 1;
   }
-  summary>h3:first-child:before {
-    line-height: 1.2;
-  }
 </style>
 
 {#if level == 2}

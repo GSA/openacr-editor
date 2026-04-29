@@ -1,17 +1,30 @@
 import svelte from "rollup-plugin-svelte";
-import resolve from "rollup-plugin-node-resolve";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import babel from "rollup-plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
+import css from "rollup-plugin-css-only";
 import livereload from "rollup-plugin-livereload";
 import serve from "rollup-plugin-serve";
-import { terser } from "rollup-plugin-terser";
+import terser from "@rollup/plugin-terser";
 import json from "@rollup/plugin-json";
 import yaml from "@rollup/plugin-yaml";
 import replace from "@rollup/plugin-replace";
-import typescript from "rollup-plugin-typescript";
 
 const production = !process.env.ROLLUP_WATCH;
 const buildEnv = process.env.NODE_ENV || "development";
+
+function handleSvelteWarning(warning, defaultHandler) {
+  if (
+    warning.filename &&
+    warning.filename.includes("node_modules/svelte-select") &&
+    warning.code &&
+    warning.code.startsWith("a11y-")
+  ) {
+    return;
+  }
+
+  defaultHandler(warning);
+}
 
 export default {
   input: "src/main.js",
@@ -22,14 +35,20 @@ export default {
     file: `public/build/bundle.js`,
   },
   plugins: [
+    replace({
+      preventAssignment: true,
+      __buildEnv__: buildEnv,
+    }),
     svelte({
-      // enable run-time checks when not in production
-      dev: !production,
-      // we'll extract any component CSS out into
-      // a separate file — better for performance
-      css: (css) => {
-        css.write(`public/build/bundle.css`);
+      compilerOptions: {
+        // enable run-time checks when not in production
+        dev: !production,
       },
+      emitCss: true,
+      onwarn: handleSvelteWarning,
+    }),
+    css({
+      fileName: "bundle.css",
     }),
 
     // If you have external dependencies installed from
@@ -37,12 +56,11 @@ export default {
     // some cases you'll need additional configuration —
     // consult the documentation for details:
     // https://github.com/rollup/rollup-plugin-commonjs
-    resolve({
+    nodeResolve({
       browser: true,
       dedupe: (importee) =>
         importee === "svelte" || importee.startsWith("svelte/"),
     }),
-    typescript({ target: "es6" }),
     commonjs({
       extensions: [".js", ".ts"],
       transformMixedEsModules: true,
@@ -78,24 +96,22 @@ export default {
         ],
       ],
     }),
-    replace({
-      __buildEnv__: buildEnv,
-    }),
-    // In dev mode, call `npm run start` once
-    // the bundle has been generated
-    !production &&
-      serve({
-        contentBase: "public",
-        historyApiFallback: true,
-      }),
+    ...(!production
+      ? [
+          // In dev mode, call `npm run start` once
+          // the bundle has been generated
+          serve({
+            contentBase: "public",
+            historyApiFallback: true,
+          }),
 
-    // Watch the `public` directory and refresh the
-    // browser on changes when not in production
-    !production &&
-      livereload({
-        watch: "public",
-      }),
-
+          // Watch the `public` directory and refresh the
+          // browser on changes when not in production
+          livereload({
+            watch: "public",
+          }),
+        ]
+      : []),
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     production && terser(),

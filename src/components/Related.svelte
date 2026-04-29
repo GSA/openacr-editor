@@ -16,13 +16,24 @@
 <style>
   .Related__Control--delete {
     font-size: 1em;;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     float: right;
+    width: 1.75rem;
+    height: 1.75rem;
+    line-height: 1;
     margin-left: 1em;
     margin-top: .25em;
     padding: 0;
     border: 0;
     background-color: transparent;
     color: currentColor;
+  }
+  .Related__Control--delete svg {
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
   }
   .Related {
     background: var(--trans-line-grey);
@@ -56,6 +67,8 @@
     on:click="{dispatchDelete}"
     >
       <svg
+        width="20"
+        height="20"
         focusable="false"
         aria-hidden="true"
         role="presentation"

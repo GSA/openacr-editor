@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("About", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/about", {
       onBeforeLoad(win) {
         cy.stub(win.console, "error").as("consoleError");
@@ -59,6 +59,7 @@ describe("About", () => {
 
     cy.get(".Related__Control--delete")
       .first()
+      .scrollIntoView()
       .click()
       .get(".Related__Contents")
       .should("not.contain", "Related OpenACR 2");

@@ -1,5 +1,5 @@
 <script>
-  import vars from "../../config/__buildEnv__.json";
+  import vars from "../buildVars.js";
 
   export let id;
   export let download = false;

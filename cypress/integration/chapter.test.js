@@ -39,7 +39,7 @@ describe("All chapters", () => {
 });
 
 describe("Chapter", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/chapter/success_criteria_level_a");
     cy.get("button").contains("+ Expand All Sections").click();
   });

@@ -97,19 +97,17 @@
       position: absolute;
       width: 1px;
       white-space: nowrap;
-      &.focusable {
-          &:active,
-          &:focus {
-              clip: auto;
-              clip-path: none;
-              height: auto;
-              margin: 0;
-              overflow: visible;
-              position: static;
-              width: auto;
-              white-space: inherit;
-          }
-      }
+    }
+    .visuallyhidden.focusable:active,
+    .visuallyhidden.focusable:focus {
+      clip: auto;
+      clip-path: none;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      position: static;
+      width: auto;
+      white-space: inherit;
     }
   </style>
   <main>

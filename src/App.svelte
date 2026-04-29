@@ -14,7 +14,7 @@
   import { showYourReport } from "./stores/showYourReport.js";
   import { evaluation } from "./stores/evaluation.js";
   import { getCatalog } from "./utils/getCatalogs.js";
-  import vars from "../config/__buildEnv__.json";
+  import vars from "./buildVars.js";
   export let url = "";
 
   const pagesWithYourReport = ["Overview", "About", "Evaluation"];

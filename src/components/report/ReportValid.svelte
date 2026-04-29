@@ -7,9 +7,6 @@
 
 <style>
   /* TODO remove after switching theme to use USWDS */
-  *+.usa-alert {
-    margin-top: 1rem;
-  }
   .usa-alert {
     font-size: 1.06rem;
     line-height: 1.5;

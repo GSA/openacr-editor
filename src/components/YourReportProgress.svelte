@@ -1,6 +1,6 @@
 <script>
   import ProgressBar from "./ProgressBar.svelte";
-  import vars from "../../config/__buildEnv__.json";
+  import vars from "../buildVars.js";
 
   export let chapter;
   export let done;
