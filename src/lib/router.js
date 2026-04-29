@@ -25,9 +25,8 @@ function splitPath(path = "/") {
   const withoutHash = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
   const searchIndex = withoutHash.indexOf("?");
   const search = searchIndex >= 0 ? withoutHash.slice(searchIndex) : "";
-  const pathname = searchIndex >= 0
-    ? withoutHash.slice(0, searchIndex)
-    : withoutHash;
+  const pathname =
+    searchIndex >= 0 ? withoutHash.slice(0, searchIndex) : withoutHash;
 
   return {
     pathname: pathname || "/",
@@ -97,7 +96,11 @@ export function goto(path, { replace = false } = {}) {
   const nextUrl = new URL(nextHref, window.location.origin);
   const method = replace ? "replaceState" : "pushState";
 
-  window.history[method]({}, "", `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`);
+  window.history[method](
+    {},
+    "",
+    `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`,
+  );
   notifyNavigation();
 }
 
