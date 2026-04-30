@@ -1,32 +1,29 @@
 <script>
-  import { Link } from "svelte-navigator";
-  import vars from "../../config/__buildEnv__.json";
+  import { assetPath } from "../lib/base.js";
+  import { href, link } from "../lib/router.js";
 
   export let to = "";
   export let direction = "";
+  $: currentHref = href(to);
 </script>
 
-<style>
-  .pager--item-text-direction {
-    text-transform: capitalize;
-  }
-</style>
-
 <li class={`pager--item ${direction}`}>
-  <Link {to}>
-    {#if direction === 'previous'}
+  <a href={currentHref} use:link>
+    {#if direction === "previous"}
       <svg
         focusable="false"
         aria-hidden="true"
-        class="icon-arrow-right pager--item-icon">
-        <use href={`${vars.pathPrefix}/images/icons.svg#icon-arrow-left`} />
+        class="icon-arrow-right pager--item-icon"
+      >
+        <use href={assetPath("/images/icons.svg#icon-arrow-left")} />
       </svg>
-    {:else if direction === 'next'}
+    {:else if direction === "next"}
       <svg
         focusable="false"
         aria-hidden="true"
-        class="icon-arrow-right pager--item-icon">
-        <use href={`${vars.pathPrefix}/images/icons.svg#icon-arrow-right`} />
+        class="icon-arrow-right pager--item-icon"
+      >
+        <use href={assetPath("/images/icons.svg#icon-arrow-right")} />
       </svg>
     {/if}
     <span class="pager--item-text">
@@ -37,5 +34,11 @@
         <slot />
       </span>
     </span>
-  </Link>
+  </a>
 </li>
+
+<style>
+  .pager--item-text-direction {
+    text-transform: capitalize;
+  }
+</style>

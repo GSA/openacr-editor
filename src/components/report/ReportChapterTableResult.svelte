@@ -1,5 +1,9 @@
 <script>
-  import { catalogChapterCriteria, catalogComponentLabel, levelLabel } from "../../utils/getCatalogItems.js";
+  import {
+    catalogChapterCriteria,
+    catalogComponentLabel,
+    levelLabel,
+  } from "../../utils/getCatalogItems.js";
   import { sanitizeMarkdown } from "../../utils/sanitizeMarkdown.js";
 
   export let catalogName;
@@ -8,9 +12,60 @@
   export let criteria;
   export let download = false;
 
-  $: catalogCriteria = catalogChapterCriteria(catalogName, chapterId, criteria.num);
+  $: catalogCriteria = catalogChapterCriteria(
+    catalogName,
+    chapterId,
+    criteria.num,
+  );
   const extraId = download ? "-download" : "-editor";
 </script>
+
+{#if catalogCriteria}
+  <tr class="result-row" id="{catalogCriteria.alt_id}{extraId}">
+    <td>
+      <a href="{standard.url}#{catalogCriteria.alt_id}" target="_blank">
+        {criteria.num}
+        {catalogCriteria.handle}
+        <span class="visuallyhidden">(opens in a new window or tab)</span>
+      </a>
+    </td>
+    <td>
+      {#if criteria.components}
+        <ul>
+          {#each criteria.components as component}
+            {#if component.adherence.level}
+              <li>
+                {@html catalogComponentLabel(
+                  catalogName,
+                  component.name,
+                  "html",
+                )}
+                <p>{levelLabel(catalogName, component.adherence.level)}</p>
+              </li>
+            {/if}
+          {/each}
+        </ul>
+      {/if}
+    </td>
+    <td>
+      {#if criteria.components}
+        <ul>
+          {#each criteria.components as component}
+            {#if component.adherence.notes}
+              <li>
+                {@html catalogComponentLabel(
+                  catalogName,
+                  component.name,
+                  "html",
+                )}{@html sanitizeMarkdown(component.adherence.notes)}
+              </li>
+            {/if}
+          {/each}
+        </ul>
+      {/if}
+    </td>
+  </tr>
+{/if}
 
 <style>
   .result-row {
@@ -35,35 +90,3 @@
     }
   }
 </style>
-
-{#if catalogCriteria }
-<tr class="result-row" id="{catalogCriteria.alt_id}{extraId}">
-  <td>
-    <a href="{standard.url}#{catalogCriteria.alt_id}" target="_blank">
-      {criteria.num} {catalogCriteria.handle} <span class="visuallyhidden">(opens in a new window or tab)</span>
-    </a>
-  </td>
-  <td>
-    {#if criteria.components}
-      <ul>
-        {#each criteria.components as component}
-          {#if component.adherence.level}
-            <li>{@html catalogComponentLabel(catalogName, component.name, "html")}<p>{levelLabel(catalogName, component.adherence.level)}</p></li>
-          {/if}
-        {/each}
-      </ul>
-    {/if}
-  </td>
-  <td>
-    {#if criteria.components}
-      <ul>
-        {#each criteria.components as component}
-        {#if component.adherence.notes}
-          <li>{@html catalogComponentLabel(catalogName, component.name, "html")}{@html sanitizeMarkdown(component.adherence.notes)}</li>
-          {/if}
-        {/each}
-      </ul>
-    {/if}
-  </td>
-</tr>
-{/if}

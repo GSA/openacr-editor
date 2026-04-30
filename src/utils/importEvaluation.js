@@ -23,7 +23,7 @@ export function importEvaluation(event) {
         fileType = "empty";
       }
       alert(
-        `The uploaded file ${file.name} has type ${fileType} which is invalid. Please use one of these types: 'application/x-yaml', 'application/yaml', 'text/yaml'.`
+        `The uploaded file ${file.name} has type ${fileType} which is invalid. Please use one of these types: 'application/x-yaml', 'application/yaml', 'text/yaml'.`,
       );
       return;
     }

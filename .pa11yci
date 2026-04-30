@@ -1,11 +1,16 @@
 {
   "defaults": {
+    "chromeLaunchConfig": {
+      "args": [
+        "--no-sandbox",
+        "--disable-setuid-sandbox"
+      ]
+    },
     "concurrency": 1,
     "standard": "WCAG2AA",
     "runners": ["axe"],
     "ignore": [
-      "color-contrast",
-      "nested-interactive"
+      "color-contrast"
     ]
   },
   "urls": [

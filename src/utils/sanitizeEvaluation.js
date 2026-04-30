@@ -23,21 +23,21 @@ export function sanitizeEvaluation(evaluation) {
         ][componentIndex]["adherence"]["notes"] = sanitizeHtml(
           evaluation["chapters"][chapter.id]["criteria"][chapterCriteriaIndex][
             "components"
-          ][componentIndex]["adherence"]["notes"]
+          ][componentIndex]["adherence"]["notes"],
         );
       }
     }
 
     evaluation["chapters"][chapter.id]["notes"] = sanitizeHtml(
-      evaluation["chapters"][chapter.id]["notes"]
+      evaluation["chapters"][chapter.id]["notes"],
     );
   }
   evaluation["product"]["description"] = sanitizeHtml(
-    evaluation["product"]["description"]
+    evaluation["product"]["description"],
   );
   evaluation["notes"] = sanitizeHtml(evaluation["notes"]);
   evaluation["evaluation_methods_used"] = sanitizeHtml(
-    evaluation["evaluation_methods_used"]
+    evaluation["evaluation_methods_used"],
   );
   evaluation["legal_disclaimer"] = sanitizeHtml(evaluation["legal_disclaimer"]);
   return evaluation;

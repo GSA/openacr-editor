@@ -13,6 +13,37 @@
   $: chapter = getCatalogChapter(catalogName, chapterId);
 </script>
 
+<HeaderWithAnchor id={chapterId} level="3" {download}
+  >{chapter.label}</HeaderWithAnchor
+>
+
+{#if $evaluation["chapters"][chapterId]["notes"]}
+  Notes: {@html sanitizeMarkdown($evaluation["chapters"][chapterId]["notes"])}
+{/if}
+
+{#if $evaluation["chapters"][chapterId]["criteria"] && !$evaluation["chapters"][chapterId]["disabled"]}
+  <table>
+    <thead>
+      <tr>
+        <th>Criteria</th>
+        <th>Conformance Level</th>
+        <th>Remarks and Explanations</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#each $evaluation["chapters"][chapterId]["criteria"] as criteria}
+        <ReportChapterTableResult
+          {catalogName}
+          {standard}
+          {chapterId}
+          {criteria}
+          {download}
+        />
+      {/each}
+    </tbody>
+  </table>
+{/if}
+
 <style>
   table {
     width: 100%;
@@ -36,26 +67,3 @@
     }
   }
 </style>
-
-<HeaderWithAnchor id={chapterId} level=3 {download}>{chapter.label}</HeaderWithAnchor>
-
-{#if $evaluation['chapters'][chapterId]['notes']}
-  Notes: {@html sanitizeMarkdown($evaluation['chapters'][chapterId]['notes'])}
-{/if}
-
-{#if $evaluation['chapters'][chapterId]['criteria'] && !$evaluation['chapters'][chapterId]['disabled'] }
-  <table>
-    <thead>
-    <tr>
-      <th>Criteria</th>
-      <th>Conformance Level</th>
-      <th>Remarks and Explanations</th>
-    </tr>
-    </thead>
-    <tbody>
-      {#each $evaluation['chapters'][chapterId]['criteria'] as criteria}
-        <ReportChapterTableResult {catalogName} {standard} {chapterId} {criteria} {download} />
-      {/each}
-    </tbody>
-  </table>
-{/if}

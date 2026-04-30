@@ -5,5 +5,5 @@
 # Name or Organization <email address> and/or (GitHub)
 
  General Services Administration - GSA
- Andrew Neilson <andrew.nielson@gsa.gov> (drewnielson)
+ Andrew Nielson <andrew.nielson@gsa.gov> (drewnielson)
  Syed Azeem <syed.azeem@gsa.gov> (saz33m)

@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  import { useLocation } from "svelte-navigator";
   import Header from "./Header.svelte";
   import HelpText from "../components/HelpText.svelte";
   import Criteria from "./Criteria.svelte";
@@ -13,6 +12,7 @@
   import { evaluation } from "../stores/evaluation.js";
   import ExpandCollapseAll from "../components/ExpandCollapseAll.svelte";
   import { getCatalog } from "../utils/getCatalogs.js";
+  import { location } from "../lib/router.js";
 
   export let chapterId = null;
   export let className = undefined;
@@ -20,15 +20,20 @@
   let standards = catalog.standards;
   let chapters = catalog.chapters;
 
-  const location = useLocation();
-  $: currentChapter = chapters.find( ({ id }) => id === chapterId);
-  $: currentChapterKey = chapters.findIndex( ({ id }) => id === chapterId);
-  $: currentStandard = standards.find( ({ chapters }) => chapters.includes(chapterId));
+  $: currentChapter = chapters.find(({ id }) => id === chapterId);
+  $: currentChapterKey = chapters.findIndex(({ id }) => id === chapterId);
+  $: currentStandard = standards.find(({ chapters }) =>
+    chapters.includes(chapterId),
+  );
 
   onMount(() => {
-    currentPage.update(currentPage => "Evaluation");
+    currentPage.update((currentPage) => "Evaluation");
 
-    honourFragmentIdLinks($location);
+    const unsubscribe = location.subscribe((currentLocation) => {
+      honourFragmentIdLinks(currentLocation);
+    });
+
+    return unsubscribe;
   });
 </script>
 
@@ -50,11 +55,12 @@
   <div class="field">
     <label for="evaluation-chapter-notes">Notes</label>
     <textarea
-      bind:value={$evaluation['chapters'][chapterId]['notes']}
+      bind:value={$evaluation["chapters"][chapterId]["notes"]}
       id="evaluation-chapter-notes"
       cols="20"
       rows="5"
-      on:change={() => evaluation.updateCache($evaluation)} />
+      on:change={() => evaluation.updateCache($evaluation)}
+    ></textarea>
     <HelpText type="chapters" field="notes" />
   </div>
 
@@ -63,37 +69,44 @@
       <input
         type="checkbox"
         value={chapterId}
-        bind:checked="{$evaluation['chapters'][chapterId]['disabled']}"
+        bind:checked={$evaluation["chapters"][chapterId]["disabled"]}
         id="evaluation-disabled-chapter-{chapterId}"
-        on:change={() => evaluation.updateCache($evaluation)} />
+        on:change={() => evaluation.updateCache($evaluation)}
+      />
 
       Disabled?
     </label>
-    <HelpText type="disabled_chapters" field="{chapterId}" />
+    <HelpText type="disabled_chapters" field={chapterId} />
   </div>
 
   <ExpandCollapseAll />
 
   {#each currentChapter.criteria as criteria, i (criteria.id)}
-    <Criteria chapterId={chapterId} chapterLink={currentStandard.url} {...criteria} />
+    <Criteria {chapterId} chapterLink={currentStandard.url} {...criteria} />
   {/each}
 
   <Pager label="Previous/Next Chapter">
     {#if chapterId === "success_criteria_level_a"}
-      <PagerLink to={'/about'} direction="previous">About</PagerLink>
+      <PagerLink to={"/about"} direction="previous">About</PagerLink>
     {/if}
     {#if currentChapterKey > 0}
-      <PagerLink to={`/chapter/${chapters[currentChapterKey - 1].id}`} direction="previous">
+      <PagerLink
+        to={`/chapter/${chapters[currentChapterKey - 1].id}`}
+        direction="previous"
+      >
         {chapters[currentChapterKey - 1].short_label}
       </PagerLink>
     {/if}
     {#if currentChapterKey + 1 < chapters.length}
-      <PagerLink to={`/chapter/${chapters[currentChapterKey + 1].id}`} direction="next">
+      <PagerLink
+        to={`/chapter/${chapters[currentChapterKey + 1].id}`}
+        direction="next"
+      >
         {chapters[currentChapterKey + 1].short_label}
       </PagerLink>
     {/if}
     {#if currentChapterKey + 1 === chapters.length}
-      <PagerLink to={'/report'} direction="next">View report</PagerLink>
+      <PagerLink to={"/report"} direction="next">View report</PagerLink>
     {/if}
   </Pager>
 </div>

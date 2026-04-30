@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
@@ -10,22 +10,13 @@
       content="Tool to help generate Accessibility Conformance Report in the OpenACR format."
     />
     <title>OpenACR Editor</title>
-    <link
-      rel="shortcut icon"
-      type="image/ico"
-      href="{{{ pathPrefix }}}/favicon.ico"
-    />
-    <link rel="icon" type="image/png" href="{{{ pathPrefix }}}/favicon.ico" />
+    <link rel="shortcut icon" type="image/ico" href="%BASE_URL%favicon.ico" />
+    <link rel="icon" type="image/png" href="%BASE_URL%favicon.ico" />
     <link
       rel="stylesheet"
       href="https://www.section508.gov/assets/css/external-blocks.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://w3.org/WAI/assets/css/style.css?1573220675560713000"
-    />
-    <link rel="stylesheet" href="{{{ pathPrefix }}}/build/bundle.css" />
-    <script defer src="{{{ pathPrefix }}}/build/bundle.js"></script>
+    <link rel="stylesheet" href="%BASE_URL%w3c-style.css" />
     <script
       defer
       src="https://www.section508.gov/assets/js/external-508-blocks.js"
@@ -35,10 +26,6 @@
       src="https://www.section508.gov/assets/js/uswds.min.js"
     ></script>
     <style>
-      /* GSA/Section508 placeholder styling.
-       * Dark blue: #162E51
-       * Light blue: #1e6ad6
-       */
       #site-header,
       th {
         background-color: #162e51;
@@ -58,10 +45,9 @@
       a[target="_blank"]:after {
         background: 0 0;
         background-color: currentColor;
-        -webkit-mask: url("{{{ pathPrefix }}}/images/external-link.svg")
-          no-repeat center/contain;
-        mask: url("{{{ pathPrefix }}}/images/external-link.svg") no-repeat
+        -webkit-mask: url("%BASE_URL%images/external-link.svg") no-repeat
           center/contain;
+        mask: url("%BASE_URL%images/external-link.svg") no-repeat center/contain;
         content: "";
         display: inline-block;
         margin-left: 0.3em;
@@ -70,7 +56,6 @@
         vertical-align: text-bottom;
         flex-shrink: 0;
       }
-
       summary > :first-child:before {
         border-color: #162e51;
         align-content: center;
@@ -96,7 +81,41 @@
       a.button:after {
         margin-top: 0;
       }
-      /* End placeholder styling. */
+      summary {
+        cursor: pointer;
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::marker {
+        display: none;
+      }
+      summary > :first-child {
+        align-items: center;
+        border-bottom: 1px solid var(--line-grey);
+        display: flex;
+        min-height: 2rem;
+        padding-bottom: 0.25rem;
+      }
+      summary > :first-child:before {
+        align-items: center;
+        border: 2px solid currentColor;
+        border-radius: 0.2rem;
+        content: "+";
+        display: inline-flex;
+        flex: none;
+        font-size: 1rem;
+        font-weight: 700;
+        height: 1.4rem;
+        justify-content: center;
+        line-height: 1;
+        margin-right: 0.5rem;
+        width: 1.4rem;
+      }
+      details[open] > summary > :first-child:before {
+        content: "\2212";
+      }
       :target {
         scroll-margin-top: 5rem;
       }
@@ -139,14 +158,14 @@
         font-size: 0.86em;
         padding: 1em;
         text-decoration: none;
-        background-color: #d0e1f1; /* cloudy-subtle */
+        background-color: #d0e1f1;
         color: inherit;
         white-space: normal;
         transition-duration: 0.1s;
         border-bottom: 1px solid transparent;
       }
       .nav__item .active {
-        background-color: #fff; /* body-bg */
+        background-color: #fff;
         border-bottom: 1px solid #fff;
       }
       .nav__item a:focus {
@@ -196,6 +215,29 @@
       body {
         background-color: white;
       }
+      .visuallyhidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+      }
+      .visuallyhidden.focusable:active,
+      .visuallyhidden.focusable:focus {
+        clip: auto;
+        clip-path: none;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+        white-space: inherit;
+      }
       @media (max-width: 60em) {
         .img {
           margin-left: 8px;
@@ -218,12 +260,153 @@
         border-top-left-radius: 0.5rem;
         border-top-right-radius: 0.5rem;
       }
+      .box-h-icon {
+        align-items: center;
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+      }
+      .icon-comments {
+        flex: none;
+        height: 1.1rem;
+        width: 1.1rem;
+      }
+      .box-i {
+        padding: 1rem;
+      }
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .button-group .button {
+        flex: 1 1 14rem;
+        justify-content: center;
+        text-align: center;
+      }
       @media (max-width: 1910px) {
         main {
           display: block;
           padding: 2em 0;
           background-image: linear-gradient(#d0e1f1 0, #d0e1f1 49px, #fff 48px);
         }
+      }
+      .pager ul {
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .pager--item a {
+        align-items: center;
+        display: inline-flex;
+        gap: 0.5rem;
+        text-decoration: none;
+      }
+      .pager--item.next a {
+        flex-direction: row-reverse;
+      }
+      .pager--item-icon {
+        flex: none;
+        height: 2rem;
+        width: 2rem;
+      }
+      .your-report {
+        -ms-grid-column: 8;
+        -ms-grid-column-span: 1;
+        grid-column: 8 / span 2;
+        -ms-grid-row: 2;
+        grid-row-start: 2;
+        align-self: start;
+        justify-self: end;
+        padding: 1em 0;
+        border: 1px solid transparent;
+        outline: none;
+      }
+      .your-report--expanded {
+        background: var(--footer-grey);
+        box-shadow: 0 2px 8px -7px #000;
+        border-color: var(--line-grey);
+        margin-bottom: 2em;
+        padding: 1em;
+      }
+      @media (min-width: 60em) {
+        .your-report--expanded {
+          position: sticky;
+          top: 4em;
+        }
+      }
+      .your-report__heading {
+        align-items: center;
+        display: flex;
+        font-size: 1em;
+        font-weight: bold;
+        margin: 0;
+      }
+      .your-report__heading-pre {
+        color: var(--dk-blue);
+        display: block;
+        font-weight: normal;
+      }
+      .your-report__description {
+        margin-bottom: 0.5em;
+      }
+      .your-report__progress-by-principle {
+        column-gap: 1.5em;
+        columns: 1;
+        margin: 2.25em 0 1.75em 0;
+        padding: 0;
+      }
+      .your-report .button,
+      .your-report input {
+        margin-bottom: 4px;
+      }
+      .progress {
+        list-style: none;
+        margin-bottom: 1em;
+      }
+      .progress__principle {
+        align-items: center;
+        display: flex;
+        margin-bottom: 0.125em;
+      }
+      .progress__part {
+        font-size: 0.65em;
+        margin-left: auto;
+      }
+      .principle__name {
+        color: var(--off-black);
+        font-weight: bold;
+        text-decoration: none;
+      }
+      .principle__name:hover span {
+        text-decoration: underline;
+      }
+      .button-showhide {
+        background-color: transparent;
+        border-color: var(--line-grey);
+        border-width: 1px;
+        color: var(--off-black);
+        display: flex;
+        font-weight: normal;
+        margin-bottom: 2px;
+        margin-left: auto;
+        margin-top: 2px;
+        padding: 0 6px;
+      }
+      .button-showhide:hover {
+        border-color: currentColor;
+      }
+      .button-showhide svg {
+        fill: transparent;
+      }
+      .button-showhide svg:first-child {
+        margin: 0 0.25em 0 -0.25em;
+      }
+      .button-showhide svg:last-child {
+        margin: 0 -0.25em 0 0.25em;
       }
       .nav__item a:not(.active):focus,
       .nav__item a:not(.active):hover,
@@ -243,10 +426,10 @@
     <div id="header-508" class="section508-external-block"></div>
     <header id="site-header" class="default-grid with-gap">
       <div class="tool-header">
-        <a href="{{{ pathPrefix }}}/">
+        <a href="%BASE_URL%">
           <img
             alt="ACR Editor logo"
-            src="{{{ pathPrefix }}}/images/Accessibility Conformance Report A4 White Horizontal (1).png"
+            src="%BASE_URL%images/Accessibility%20Conformance%20Report%20A4%20White%20Horizontal%20(1).png"
             height="50"
             style="margin-top: 3px"
             class="img"
@@ -255,9 +438,7 @@
       </div>
     </header>
     <main>
-      <div id="openacr-editor" class="default-grid leftcol">
-        <!-- app 'renders' here -->
-      </div>
+      <div id="openacr-editor" class="default-grid leftcol"></div>
     </main>
 
     <div class="default-grid">
@@ -268,7 +449,7 @@
       >
         <header class="box-h box-h-icon box-h-icon">
           <svg focusable="false" aria-hidden="true" class="icon-comments">
-            <use href="{{{ pathPrefix }}}/images/icons.svg#icon-comments"></use>
+            <use href="%BASE_URL%images/icons.svg#icon-comments"></use>
           </svg>
           <h2>Help improve this page</h2>
         </header>
@@ -289,10 +470,9 @@
               target="_blank"
             >
               <span>Fork &amp; Edit on GitHub</span>
-              <span class="visuallyhidden"
-                >(opens in a new window or tab)</span
-              > </a
-            ><a
+              <span class="visuallyhidden">(opens in a new window or tab)</span>
+            </a>
+            <a
               href="https://github.com/GSA/openacr-editor/issues/new"
               class="button"
               target="_blank"
@@ -329,10 +509,9 @@
           is a format maintained by the
           <a href="https://gsa.gov/" target="_blank">
             U.S. General Services Administration (GSA)
-            <span class="visuallyhidden"
-              >(opens in a new window or tab)</span
-            > </a
-          >. The content is the responsibility of the author.
+            <span class="visuallyhidden">(opens in a new window or tab)</span>
+          </a>
+          . The content is the responsibility of the author.
         </p>
         <p>
           This software includes material copied from or derived from
@@ -346,17 +525,17 @@
             target="_blank"
           >
             W3C Software notice and license
-            <span class="visuallyhidden"
-              >(opens in a new window or tab)</span
-            > </a
-          >.
+            <span class="visuallyhidden">(opens in a new window or tab)</span>
+          </a>
+          .
         </p>
       </div>
     </footer>
     <div id="footer-508" class="section508-external-block"></div>
-    <!-- Analytics code -->
-    <script id="_fed_an_ua_tag"
-    src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA"></script>
-    <!-- End Analytics Code -->
+    <script
+      id="_fed_an_ua_tag"
+      src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA"
+    ></script>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

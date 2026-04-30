@@ -10,7 +10,7 @@ This software includes builds on the work from the WAI's [ATAG Report Tool (ART)
 
 ## Development
 
-This application is built with [Svelte](https://svelte.dev). To run it locally, you need to clone it this repository, have [Node](https://nodejs.org) installed and then run this in the project's directory:
+This application is built with [Svelte](https://svelte.dev) and [Vite](https://vitejs.dev). To run it locally, you need to clone this repository, have [Node](https://nodejs.org) installed and then run this in the project's directory:
 
 ```bash
 npm install
@@ -18,10 +18,10 @@ npm install
 
 This may take a while the first time, but it only needs to be done once.
 
-Then, to build the app with [Rollup](https://rollupjs.org), and serve it on a local dev server, run:
+Then start the local development server:
 
 ```bash
-export NODE_ENV=development; npm run dev
+npm run dev
 ```
 
 Navigate to [localhost:10001](http://localhost:10001). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
@@ -34,34 +34,23 @@ To create an optimised version of the app:
 npm run build
 ```
 
+To preview the built app locally:
+
+```bash
+npm run start
+```
+
 ### Release to GitHub pages
 
 The site serves what's on GitHub pages. To release to GitHub pages, [create a new release](https://github.com/GSA/openacr-editor/releases/new). This should trigger a [deploy action](https://github.com/GSA/openacr-editor/actions?query=workflow%3ADeploy).
 
-### Environment-specific variables in HTML and JavaScript (.svelte)
+### Base path handling
 
-In some deployment contexts, things like paths may need to vary. There are two steps to this:
+The app now uses Vite's `BASE_URL` support for the site root and static asset paths.
 
-1. Add environment specific settings to `config/[environment-name].json`, for example `{ pathPrefix: "/editor" }` or `{ imageDir: "/images" }`
-2. Before running `npm run build` or `npm run dev`, set `export NODE_ENV=[environment-name]`
-
-#### Using in HTML
-
-Use variables in HTML, with `{{ variable-name }}`, for instance `{{ pathPrefix }}`. If you need these non-escaped, use triple brackets, for instance `{{{ pathPrefix }}}`.
-
-[Mustache](http://mustache.github.io/) replaces the variables in `src/index.html` and places the resulting HTML in `public/index.html`.
-
-#### Using in JavaScript
-
-In JavaScript, `__buildEnv__` is replaced with the name of the build environment using the [replace plugin for rollup](https://github.com/rollup/plugins).
-
-To use variables, this is how you can import the JSON file that your build environment needs:
-
-```js
-import vars from "../../config/__buildEnv__.json";
-```
-
-The vars are now in the `vars` object, you can reference them with `vars.variableName`, for instance `vars.pathPrefix`.
+- JavaScript routing and asset helpers live in `src/lib/base.js` and `src/lib/router.js`
+- HTML shell asset paths are based on `%BASE_URL%` in `index.html`
+- if you ever need a non-root build path, set `BASE_PATH` before `npm run build`
 
 ## Data structure
 
@@ -71,15 +60,15 @@ The editor uses the OpenACR [schema](https://github.com/GSA/openacr/tree/main/sc
 
 ## Overview
 
-The External Blocks feature provided by Section 508 offers functionality to seamlessly integrate the header and footer elements from the Section 508 website into external projects. This documentation outlines the steps required to incorporate Section 508 header and footer elements into your website.
+The External Blocks feature provided by Section508.gov offers functionality to help the Section508.gov team seamlessly integrate the header and footer elements from the Section508.gov website into external projects. This documentation outlines the steps required to incorporate the Section508.gov header and footer elements into this website.
 
 ## Integration Steps
 
-To integrate the Section 508 header and footer into your website, follow these steps:
+To integrate the Section508.gov header and footer into the website, follow these steps:
 
 ### 1. Include Stylesheet and JavaScript Files
 
-Add the following stylesheet and JavaScript files to your website's HTML code:
+Add the following stylesheet and JavaScript files to the website's HTML code:
 
 ```html
 <link
@@ -95,7 +84,7 @@ Add the following stylesheet and JavaScript files to your website's HTML code:
 
 ### Example
 
-Here's an example of how to integrate the Section 508 header and footer into your HTML code:
+Here's an example of how to integrate the Section508.gov header and footer into the HTML code:
 
 ```html
 <!DOCTYPE html>
@@ -132,4 +121,4 @@ Here's an example of how to integrate the Section 508 header and footer into you
 
 ### Notes
 
-- Ensure that your website's design accommodates the integration of the Section 508 header and footer appropriately.
+- Ensure that your website's design accommodates the integration of the Section508.gov header and footer appropriately.

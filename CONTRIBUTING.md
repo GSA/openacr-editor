@@ -53,7 +53,7 @@ Any GSA team member should be able to make a branch of the site and submit a pul
 
 - Submit **new design work, content changes, and features** as pull requests to the `dev` branch. This will allow us to test and review batches of changes before deploying them.
 
-**The `master`, `staging`, and `production` branches are protected.** Only administrators of the repo can push directly to those branches.
+**The `main` and some other branches are protected.** Only administrators of the repo can push directly to those branches.
 
 ### Submitting pull requests
 

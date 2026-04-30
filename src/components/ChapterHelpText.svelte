@@ -1,5 +1,5 @@
 <script>
-  import { link } from "svelte-navigator";
+  import { href, link } from "../lib/router.js";
   export let chapterId;
 
   function openFirstAccordion() {
@@ -17,8 +17,7 @@
       change this later, change your response product information questions.
     {:else if chapterId === "success_criteria_level_a"}
       Provide information about Level A issues with your website or web
-      application. Currently OpenACR only supports WCAG 2.0. The default is
-      web-based, and there are optional fields for <a
+      application. The default is web-based, and there are optional fields for <a
         href="#1.1.1-electronic-docs-editor"
         on:click={() => openFirstAccordion()}>Documentation</a
       >,
@@ -32,8 +31,8 @@
       >. Fill out as appropriate.
     {:else if chapterId === "success_criteria_level_aa"}
       Provide information about how your website or web application fails to
-      meet Level AA requirements. Currently OpenACR only supports WCAG 2.0. The
-      default is web-based, and there are optional fields for <a
+      meet Level AA requirements. The default is web-based, and there are
+      optional fields for <a
         href="#1.2.4-electronic-docs-editor"
         on:click={() => openFirstAccordion()}>Documentation</a
       >,
@@ -63,7 +62,7 @@
     {:else if chapterId === "software"}
       If your software product is a web application or is rendered through a web
       browser, do not fill out this section. Fill out <a
-        href="success_criteria_level_a"
+        href={href("/chapter/success_criteria_level_a")}
         use:link>Tables 1, 2, and 3</a
       >. Fill out this section if your software product is not web-based.
       Desktop applications are a common example of software which is not

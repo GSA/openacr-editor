@@ -39,7 +39,7 @@ describe("All chapters", () => {
 });
 
 describe("Chapter", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/chapter/success_criteria_level_a");
     cy.get("button").contains("+ Expand All Sections").click();
   });
@@ -81,16 +81,16 @@ describe("Chapter", () => {
     const notesMessageSpan = ".notes-message";
 
     cy.get(nonTextContentWebComponentNotesField).type(
-      "Drupal 8 requires alt text for images by default."
+      "Drupal 8 requires alt text for images by default.",
     );
 
     cy.get(notesMessageSpan).should(
       "contain",
-      "Longer description may be helpful"
+      "Longer description may be helpful",
     );
 
     cy.get(nonTextContentWebComponentNotesField).type(
-      " And requires captions for videos."
+      " And requires captions for videos.",
     );
 
     cy.get(notesMessageSpan).should("contain", "Good");

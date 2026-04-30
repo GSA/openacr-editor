@@ -1,11 +1,27 @@
 <script>
-  import vars from "../../config/__buildEnv__.json";
+  import { assetPath } from "../lib/base.js";
 
   export let id;
   export let download = false;
 
   const extraId = download ? "-download" : "-editor";
 </script>
+
+<dt id="{id}{extraId}">
+  <slot />
+  <a
+    href="#{id}{extraId}"
+    class="header-anchor"
+    aria-labelledby="{id}{extraId}"
+  >
+    <span class="anchor-icon" aria-hidden="true">
+      <svg focusable="false" aria-hidden="true" class="icon-link">
+        <use href={assetPath("/images/icons.svg#link")} />
+      </svg>
+    </span>
+    <span class="visuallyhidden">Anchor link</span>
+  </a>
+</dt>
 
 <style>
   dt {
@@ -18,20 +34,20 @@
   dt a.header-anchor:hover svg,
   dt a.header-anchor:focus svg,
   dt a.header-anchor:focus-within svg {
-    fill: #0000EE;
+    fill: #0000ee;
     opacity: 1;
   }
   dt a.header-anchor svg {
     width: 24px;
     height: 24px;
-    opacity: .3;
+    opacity: 0.3;
   }
   @media all and (max-width: 63.99em) {
     dt a.header-anchor {
-      position:relative;
+      position: relative;
       opacity: 1;
       left: 0;
-      vertical-align: top
+      vertical-align: top;
     }
   }
   a.header-anchor {
@@ -40,29 +56,23 @@
     text-decoration: none;
     position: relative;
     left: 20px;
-    -webkit-transition: opacity 1s, font-size 1s;
-    -moz-transition: opacity 1s, font-size 1s;
-    -o-transition: opacity 1s, font-size 1s;
-    transition: opacity 1s, font-size 1s;
+    -webkit-transition:
+      opacity 1s,
+      font-size 1s;
+    -moz-transition:
+      opacity 1s,
+      font-size 1s;
+    -o-transition:
+      opacity 1s,
+      font-size 1s;
+    transition:
+      opacity 1s,
+      font-size 1s;
   }
-  a.header-anchor:focus,a.header-anchor:hover {
+  a.header-anchor:focus,
+  a.header-anchor:hover {
     text-decoration: underline;
     font-size: large;
-    opacity: 1
+    opacity: 1;
   }
 </style>
-
-<dt id="{id}{extraId}">
-  <slot />
-  <a href="#{id}{extraId}" class="header-anchor" aria-labelledby="{id}{extraId}">
-    <span class="anchor-icon" aria-hidden="true">
-      <svg
-        focusable="false"
-        aria-hidden="true"
-        class="icon-link">
-        <use href={`${vars.pathPrefix}/images/icons.svg#link`} />
-      </svg>
-    </span>
-    <span class="visuallyhidden">Anchor link</span>
-  </a>
-</dt>

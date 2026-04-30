@@ -1,7 +1,14 @@
 /// <reference types="Cypress" />
 
+const expectReportTotals = (completed, total) => {
+  cy.get(".your-report__description")
+    .invoke("text")
+    .then((text) => text.replace(/\s+/g, " ").trim())
+    .should("contain", `Reported on ${completed} of ${total} Total Criteria.`);
+};
+
 describe("About", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/about", {
       onBeforeLoad(win) {
         cy.stub(win.console, "error").as("consoleError");
@@ -22,20 +29,20 @@ describe("About", () => {
     cy.get("#evaluation-report-date").should("have.value", today);
   });
 
-  it("license dropdown is searchaeble", () => {
+  it("license dropdown is searchable", () => {
     cy.get("#evaluation-license")
       .type("creative commons")
-      .get(".listContainer")
+      .get(".svelte-select-list")
       .contains(
-        "Creative Commons Attribution Share Alike 4.0 International (CC-BY-SA-4.0)"
+        "Creative Commons Attribution Share Alike 4.0 International (CC-BY-SA-4.0)",
       )
       .click()
-      .get(".selectedItem")
+      .get(".selected-item")
       .should("contain", "CC-BY-SA-4.0");
   });
 
   it("license dropdown is clearable", () => {
-    cy.get(".clearSelect").click().get(".selectedItem").should("not.exist");
+    cy.get(".clear-select").click().get(".selected-item").should("not.exist");
   });
 
   it("add and remove related OpenACRs", () => {
@@ -51,7 +58,7 @@ describe("About", () => {
         .should("contain", `Related OpenACR ${number}`)
         .get(`#evaluation-related-openacrs-${number}-url`)
         .type(
-          "https://ckeditor.com/docs/ckeditor4/latest/guide/dev_section508.html"
+          "https://ckeditor.com/docs/ckeditor4/latest/guide/dev_section508.html",
         )
         .get(`#evaluation-related-openacrs-${number}-type`)
         .select("Secondary");
@@ -59,6 +66,7 @@ describe("About", () => {
 
     cy.get(".Related__Control--delete")
       .first()
+      .scrollIntoView()
       .click()
       .get(".Related__Contents")
       .should("not.contain", "Related OpenACR 2");
@@ -70,16 +78,13 @@ describe("About", () => {
     cy.get("#evaluation-disabled-chapter-software").check();
 
     cy.get(
-      ".progress__principle a[href$='/chapter/hardware'] + .progress__part"
+      ".progress__principle a[href$='/chapter/hardware'] + .progress__part",
     ).should("not.exist");
 
     cy.get(
-      ".progress__principle a[href$='/chapter/software'] + .progress__part"
+      ".progress__principle a[href$='/chapter/software'] + .progress__part",
     ).should("not.exist");
 
-    cy.get(".your-report__description").should(
-      "contain",
-      `Reported on\n  0\n  of\n  326\n  Total Criteria.`
-    );
+    expectReportTotals(0, 326);
   });
 });

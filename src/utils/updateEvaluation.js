@@ -38,7 +38,7 @@ export function updateEvaluation(catalogName, converted) {
   } else {
     alert(
       "OpenACR failed validation when trying to switch catalog. Message: " +
-        valid.message
+        valid.message,
     );
   }
 }
@@ -62,7 +62,7 @@ export function initializeMissingChapters(catalogName, converted) {
       let currentEvaluationCriteria =
         converted["chapters"] && converted["chapters"][chapter.id]["criteria"]
           ? converted["chapters"][chapter.id]["criteria"].find(
-              ({ num }) => num === chapterCriteria.id
+              ({ num }) => num === chapterCriteria.id,
             )
           : null;
       if (currentEvaluationCriteria) {
@@ -116,7 +116,7 @@ function removeCriteria(chapterId, criteria, converted) {
   let criteriaIndex =
     converted["chapters"] && converted["chapters"][chapterId]["criteria"]
       ? converted["chapters"][chapterId]["criteria"].findIndex(
-          ({ num }) => num === criteria
+          ({ num }) => num === criteria,
         )
       : null;
   if (criteriaIndex) {

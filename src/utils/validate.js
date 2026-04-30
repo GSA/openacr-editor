@@ -1,5 +1,5 @@
-import { validateOpenACR } from "@openacr/openacr/src/validateOpenACR.ts";
-import { validateOpenACRCatalogValues } from "@openacr/openacr/src/validateOpenACRCatalogValues.ts";
+import { validateOpenACR } from "@openacr/openacr/dist/validateOpenACR.js";
+import { validateOpenACRCatalogValues } from "@openacr/openacr/dist/validateOpenACRCatalogValues.js";
 import { getCatalog } from "./getCatalogs.js";
 
 export function validate(evaluation) {

@@ -10,29 +10,38 @@ jobs:
 
     steps:
       - name: Checkout source.
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies.
         run: npm ci
 
       - name: Build app.
-        run: export NODE_ENV=development && npm run build
+        run: npm run build
 
       - name: Run app.
-        run: export NODE_ENV=development && npm run dev &
+        run: npm run start &
+
+      - name: Wait for app.
+        run: until curl -sf http://localhost:10001 > /dev/null; do sleep 1; done
 
       - name: Run tests
         run: npm test
 
       - name: Publish test results.
-        uses: EnricoMi/publish-unit-test-result-action@v1
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: cypress/results/*.xml
           check_name: "Cypress Test Results"
 
       - name: Archive test results.
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: cypress-results

@@ -2,6 +2,12 @@
   export let percentage = 0;
 </script>
 
+<div class="progress-bar">
+  <span class="progress-bar__progress" style={`width: ${percentage}%`}>
+    <span class="visuallyhidden">{percentage} %</span>
+  </span>
+</div>
+
 <style>
   .progress-bar {
     height: 0.25em;
@@ -18,9 +24,3 @@
     transition: width 0.2s;
   }
 </style>
-
-<div class="progress-bar">
-  <span class="progress-bar__progress" style={`width: ${percentage}%`}>
-    <span class="visuallyhidden">{percentage} %</span>
-  </span>
-</div>

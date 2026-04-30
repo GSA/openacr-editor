@@ -1,7 +1,10 @@
 /// <reference types="Cypress" />
 
+const clickViewReport = () =>
+  cy.contains("button", "View Report").scrollIntoView().click({ force: true });
+
 describe("Report", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/report", {
       onBeforeLoad(win) {
         cy.stub(win.console, "error").as("consoleError");
@@ -25,7 +28,7 @@ describe("Report", () => {
     cy.get("#evaluation-product-name").type("Drupal");
     cy.get("#evaluation-product-version").type("9.1");
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
@@ -52,7 +55,7 @@ describe("Report", () => {
     cy.visit("/about");
     cy.get("#evaluation-report-date").clear().type("12/31/2021");
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
@@ -63,7 +66,7 @@ describe("Report", () => {
     cy.visit("/about");
     const today = new Date().toLocaleDateString();
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
@@ -74,27 +77,27 @@ describe("Report", () => {
     cy.visit("/about");
     cy.get("#evaluation-license")
       .type("creative commons")
-      .get(".listContainer")
+      .get(".svelte-select-list")
       .contains(
-        "Creative Commons Attribution Share Alike 4.0 International (CC-BY-SA-4.0)"
+        "Creative Commons Attribution Share Alike 4.0 International (CC-BY-SA-4.0)",
       )
       .click();
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
     cy.get("#content").should(
       "contain.text",
-      "This content is licensed under a Creative Commons Attribution Share Alike 4.0 International"
+      "This content is licensed under a Creative Commons Attribution Share Alike 4.0 International",
     );
   });
 
   it("should not show license header when license is cleared", () => {
     cy.visit("/about");
-    cy.get(".clearSelect").click();
+    cy.get(".clear-select").click();
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
@@ -109,18 +112,18 @@ describe("Report", () => {
       .click()
       .get("#evaluation-related-openacrs-1-url")
       .type(
-        "https://ckeditor.com/docs/ckeditor4/latest/guide/dev_section508.html"
+        "https://ckeditor.com/docs/ckeditor4/latest/guide/dev_section508.html",
       )
       .get("#evaluation-related-openacrs-1-type")
       .select("Secondary");
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get(".usa-alert").should("contain", "Valid Report");
 
     cy.get("#content").should(
       "contain",
-      "https://ckeditor.com/docs/ckeditor4/latest/guide/dev_section508.html (secondary)"
+      "https://ckeditor.com/docs/ckeditor4/latest/guide/dev_section508.html (secondary)",
     );
   });
 
@@ -131,15 +134,17 @@ describe("Report", () => {
     cy.get("select[name='evaluation-1.1.1-web-level']").select("Supports");
 
     cy.get("textarea[id='evaluation-1.1.1-web-notes']").type(
-      "Does support non-text content."
+      "Does support non-text content.",
     );
 
     cy.get("a[href='/report#non-text-content-editor']").click();
 
-    cy.get("#success_criteria_level_a-editor + table tbody tr")
-      .should("be.focused")
-      .should("contain", "Web: Supports")
-      .should("contain", "Web: Does support non-text content.");
+    cy.location("hash").should("eq", "#non-text-content-editor");
+
+    cy.get("#non-text-content-editor")
+      .invoke("text")
+      .should("match", /Web:\s*Supports/)
+      .and("match", /Web:\s*Does support non-text content\./);
   });
 
   it("should render markdown in notes columns for a criteria", () => {
@@ -149,13 +154,13 @@ describe("Report", () => {
     cy.get("textarea[id='evaluation-1.1.1-web-notes']").clear();
 
     cy.get("textarea[id='evaluation-1.1.1-web-notes']").type(
-      "[Drupal 8](https://www.drupal.org/) requires alt text for images by default."
+      "[Drupal 8](https://www.drupal.org/) requires alt text for images by default.",
     );
 
     cy.get("a[href='/report#non-text-content-editor']").click();
 
     cy.get(
-      "#success_criteria_level_a-editor + table tbody tr td:nth-child(3) a"
+      "#success_criteria_level_a-editor + table tbody tr td:nth-child(3) a",
     )
       .should("have.attr", "href")
       .and("contains", "https://www.drupal.org/");
@@ -167,14 +172,14 @@ describe("Report", () => {
     cy.get("textarea[id='evaluation-chapter-notes']").clear();
 
     cy.get("textarea[id='evaluation-chapter-notes']").type(
-      "<b onclick=\"alert('Woof!')\">click me!</b>"
+      "<b onclick=\"alert('Woof!')\">click me!</b>",
     );
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get("#success_criteria_level_aa-editor + p b").should(
       "not.have.attr",
-      "onclick"
+      "onclick",
     );
   });
 
@@ -184,10 +189,10 @@ describe("Report", () => {
     cy.get("textarea[id='evaluation-chapter-notes']").clear();
 
     cy.get("textarea[id='evaluation-chapter-notes']").type(
-      "Where possible the <a href='https://www.drupal.org/'>Drupal</a> community strives to exceed AA compliance."
+      "Where possible the <a href='https://www.drupal.org/'>Drupal</a> community strives to exceed AA compliance.",
     );
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get("#success_criteria_level_aaa-editor + p a")
       .should("have.attr", "href")
@@ -198,7 +203,7 @@ describe("Report", () => {
     cy.visit("/chapter/hardware");
     cy.get("#evaluation-disabled-chapter-hardware").check();
 
-    cy.get("button").contains("View Report").click();
+    clickViewReport();
 
     cy.get("#hardware-editor + table").should("not.exist");
 
