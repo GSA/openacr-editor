@@ -3,6 +3,10 @@ name: OpenACR editor cypress testing
 on:
   pull_request:
 
+permissions:
+  contents: read
+  checks: write
+
 jobs:
   build-test:
     name: Building app, run app and tests

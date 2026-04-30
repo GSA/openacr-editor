@@ -3,6 +3,9 @@ name: OpenACR editor accessibility testing
 on:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   build-test:
     name: Building app, run app and test for accessibility issues
